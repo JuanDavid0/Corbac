@@ -1,0 +1,184 @@
+#landing-3{
+	width: 90%;
+	margin:0px auto;
+	padding:50px 0;
+	box-sizing: border-box;
+	max-width: 1400px;
+	margin-top: -50px;
+}
+#landing-3-titulo{
+	width: 100%;
+	height: auto;
+	margin-bottom: 40px;
+	text-align: center;
+	color: rgba(2,82,86,1);
+	text-transform: uppercase;
+	font-size: 25px;
+	font-family: 'Titulo',helvetica,verdana,sans-serif;
+}
+#landing-3-contenido{
+	width: 100%;
+	height: auto;
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 1500px;
+	margin:0px auto;
+	align-items: flex-start;
+	justify-content: center;
+}
+.landing-3-esp{
+	box-sizing: border-box;
+	width:23%;
+	margin:10px 1%;
+	position: relative;
+    border: 2px solid rgba(53,136,149,1);
+    overflow: hidden;
+    box-shadow: 0 3px 5px 0.3px rgba(0,0,0,.24);
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    min-width: 250px;
+}
+.landing-3-esp:hover{
+	box-shadow: 0 3px 5px 0.3px rgba(6,38,63,.3);
+}
+.landing-3-esp-titulo{
+	width: 100%;
+	height: auto;
+	padding:10px 5%;
+	box-sizing: border-box;
+	text-align: center;
+	color: rgba(53,136,149,1);
+	font-size: 18px;
+	font-family: 'Principal',helvetica,verdana,sans-serif;
+}
+.landing-3-esp-titulo a{
+	color: rgba(53,136,149,1);
+}
+.landing-3-esp-titulo a:hover{
+	text-decoration: underline;
+}
+.landing-3-esp-img{
+	position: relative;
+	width: calc(100% - 20px);
+	margin:0px auto 10px auto;
+	height: 300px;
+	box-sizing: border-box;
+	background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    overflow: hidden;
+}
+.landing-3-esp-capa{
+	display: block;
+	position: absolute;
+	bottom: -100%;
+	left: 0;
+	width: 100%;
+	height: 50%;
+	background-color: rgba(53,136,149,.6);
+	opacity: 0;
+	-webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out; 
+}
+.landing-3-esp:nth-child(2n) .landing-3-esp-capa::before,
+.landing-3-esp:nth-child(2n+1) .landing-3-esp-capa::before{
+    width: 100%;
+    content: " ";
+    position: absolute;
+    left: 0%;
+    top: -50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    z-index: 3;
+}
+.landing-3-esp:nth-child(2n) .landing-3-esp-capa::before{
+	background-image: url(../assets/cservicio.png);
+}
+.landing-3-esp:nth-child(2n+1) .landing-3-esp-capa::before{
+	background-image: url(../assets/cservicio1.png);
+}
+.landing-3-esp:hover .landing-3-esp-capa{
+	opacity: 1;
+	bottom: 0%;
+}
+.landing-3-esp-contenido{
+	width: 100%;
+	padding:20px;
+	box-sizing: border-box;
+	position: absolute;
+	bottom: -100%;
+	-webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out; 
+    z-index: 12;
+}
+.landing-3-esp:hover .landing-3-esp-contenido{
+	bottom: 0;
+}
+.landing-3-esp-contenido-texto{
+	width: 100%;
+	margin:0px auto;
+	box-sizing: border-box;
+	font-size: 14px;
+	line-height: 1.3em;
+	color: rgba(255,255,255,1);
+	font-family: 'Principal',helvetica,verdana,sans-serif;	
+	text-align: center;
+}
+.landing-3-esp-contenido-boton{
+	width: 120px;
+	text-align: center;
+	padding: 10px 25px;
+	box-sizing: border-box;
+	color: rgba(255,255,255,1);
+	font-family: 'Titulo',helvetica,verdana,sans-serif;
+	background-color: rgba(53,136,149,1);
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    display: block;
+    margin:10px auto;
+}
+.landing-3-esp-contenido-boton:hover{
+	background-color: rgba(255,255,255,1);
+	color: rgba(53,136,149,1);
+}
+.landing-3-esp-contenido-boton a{
+	color: rgba(61,90,154,1);
+}
+@media (max-width: 900px){
+	.landing-3-esp{
+		width: 100%;
+	}
+}
+@media (max-width: 600px){
+	#landing-3{
+		width: 90%;
+	}
+	.landing-3-esp-img{
+		width: 100%;
+		margin:0px auto;
+		display: block;
+	}
+	.landing-3-esp-contenido{
+		width: 100%;
+		margin:0px auto;
+		display: block;
+		height: auto;
+	}
+}

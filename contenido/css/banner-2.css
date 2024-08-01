@@ -1,0 +1,270 @@
+#banner {
+    width: 100%;
+    height: auto;
+    background-color: rgba(255,255,255,1);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    position: relative;
+    left: 0px;
+}
+#banner-capa {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    background-color: rgba(0,0,0,.4);
+    z-index: 1;
+}
+.contenedorBannerPrincipal {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: block;
+    border-bottom: 2px dotted rgba(180,180,180,1);
+}
+.contenedorBanner {
+    width: 100%;
+    height: 500px;
+    position: relative;    
+    display: inline-flex;
+    overflow: hidden;
+    z-index: 2;
+}
+.slideBanner {
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    opacity: 0;  
+    left: -100%;
+    z-index: 2;
+}
+.botonBannerEnlase {
+    color: rgba(255,255,255,1);
+    background: rgba(6,38,63,.8);
+    font-size: 20px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    box-sizing: border-box;    
+    font-family: 'Titulo',helvetica,verdana,sans-serif;
+    font-size: 17px;
+    cursor: pointer;
+    z-index: 5;  
+    width: 100%;    
+    padding: 10px 25px;
+    position: relative;
+    margin-bottom: 5px;
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+}
+.botonBannerEnlase:hover { background: rgba(6,38,63,.4);}
+.anteriorBanner, .siguienteBanner {    
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    width: auto;
+    height: 500px;
+    line-height: 400px;
+    margin-top: 0px;
+    margin: 0px;
+    padding: 0px 16px 0px 16px;
+    color: rgba(6,38,63,.8);
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    z-index: 5;
+}
+.imgBanner {
+    background-size: cover;
+    background-position: center; 
+    background-attachment: scroll;
+    width:100%; 
+    height: 500px;  
+    z-index: 4;
+    position: absolute;
+}
+.siguienteBanner {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.anteriorBanner:hover, .siguienteBanner:hover {
+    background-color: rgba(6,38,63,.6);
+    color: rgba(255,255,255,1);
+}
+.informacionBanner {
+    position: relative;
+    width: 40%;
+    height: auto;
+    z-index: 5;         
+    left:-200%;  
+    color: rgba(33,33,33,1);
+    background: rgba(255,255,255,.8);
+    padding: 35px 20px;
+    border-radius: 0px 5px 0px 0px;
+    border-bottom: 7px solid rgba(6,38,63,.8);
+    border-left: 7px solid rgba(6,38,63,.8);
+    border-right: 1px dotted rgba(6,38,63,.8);
+    border-top: 1px dotted rgba(6,38,63,.8);
+    margin: 10px;
+}
+.textoBanner {     
+    position: relative;
+    bottom: 8px;
+    width: 100%;   
+    font-family: 'Principal',helvetica,verdana,sans-serif;
+    z-index: 5;
+    font-size: 17px;
+    padding-bottom: 15px;
+    margin: 5px 5px 0px 5px;
+    color: rgba(33,33,33,1);
+}
+.tituloBanner {
+    width: 100%;    
+    font-size: 30px; 
+    position: relative;
+    font-family: 'Titulo',helvetica,verdana,sans-serif;
+    z-index: 5;
+    margin: 20px 5px;
+    color: rgba(6,38,63,.8);
+}
+.botonesBanner {
+    width: 100%;
+    height: auto;
+    display: inline-flex;    
+    justify-content: center;
+    position: relative;    
+    z-index: 5;    
+    overflow: hidden;
+    background-color: rgba(255,255,255,1);
+}
+.bullet {
+    cursor: pointer;
+    height: 85px;
+    width: 150px;
+    margin: 0px 5px;
+    -webkit-border-radius: 10px 0px 10px 0px;
+    -moz-border-radius: 10px 0px 10px 0px;
+    border-radius: 10px 0px 10px 0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);  
+    border:solid 2px rgba(6,38,63,0);
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;  
+}
+.botonactivoBanner, .bullet:hover {
+    background-color: rgba(0,0,0,1);
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    -ms-filter: grayscale(0%);
+    -o-filter: grayscale(0%);
+    border:solid 2px rgba(6,38,63,.8);
+}
+.moverIActualBanner {
+    animation: moverIActual 0.7s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.moverISiguienteBanner {
+    animation: moverISiguiente 0.7s ease-in-out;
+    animation-fill-mode: forwards; 
+}
+@keyframes moverIActual {from{left:0; opacity:1;} to { left:-100%; opacity:1;}}
+@keyframes moverISiguiente {from{ left:100%; opacity:1;} to {left:0%; opacity:1;}}
+.moverDActualBanner {
+    animation: moverDActual 0.7s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.moverDSiguienteBanner {
+    animation: moverDSiguiente 0.7s ease-in-out;
+    animation-fill-mode: forwards; 
+}
+@keyframes moverDActual { from{ left:0; opacity:1;} to { left:100%; opacity:1; }}
+@keyframes moverDSiguiente { from{left:-100%; opacity:1;} to { left:0%; opacity:1;}}
+.moverDTexto {
+    animation: moverDTexto 1.5s ease-out;
+    animation-fill-mode: forwards;
+    text-align: right;    
+}
+@keyframes moverDTexto {
+    from{ top:200%; left:50%; transform: translate(10%, 0%); -webkit-transform: translate(10%, 0%);}
+    to{ top:25%; left:50%; transform: translate(10%, 0%); -webkit-transform: translate(10%, 0%);}
+}
+.moverITexto {
+    animation: moverITexto 1.5s ease-out;
+    animation-fill-mode: forwards;
+    text-align: left;
+}
+@keyframes moverITexto {
+    from{ left:7%; top:-200%; color:rgba(255,255,255,0.1);} to {left:7%; top:25%; }
+}
+.moverCTexto {
+    animation: moverCTexto 1.5s ease-out;
+    animation-fill-mode: forwards;
+    text-align: center;
+}
+@keyframes moverCTexto {
+    from{ left:50%; top:200%; transform: translate(-50%, 0%); -webkit-transform: translate(-50%, 0%); }
+    to{ left:50%; top:25%; transform: translate(-50%, 0%); -webkit-transform: translate(-50%, 0%); }
+}
+@media only screen and (max-width: 1207px) {
+    @keyframes moverITexto {
+        from{left:6%; top:-200%; color:rgba(255,255,255,0.1);} to {left:6%; top:25%; }
+    }
+    .textoBanner { font-size: 15px; }
+    .tituloBanner { font-size: 25px;}
+    .botonBannerEnlase { font-size: 12px; }
+}
+@media only screen and (max-width: 650px) {
+    .anteriorBanner, .siguienteBanner {                
+        width: auto;        
+        line-height: 350px;
+        font-size: 15px;
+    }
+    .anteriorBanner:hover, .siguienteBanner:hover {
+        background-color: rgba(0,0,0,0);
+        color: rgba(1,1,1,1);
+    }
+    .informacionBanner {
+    width: 400px;
+    padding: 20px;
+    }
+    @keyframes moverITexto {
+        from{left:8%; top:-200%; color:rgba(255,255,255,0.1);} to {left:8%; top:15%;}
+    }
+    .textoBanner { font-size: 13px;}
+    .tituloBanner { font-size: 25px;}
+    .botonBannerEnlase { font-size: 10px; }
+}
+@media only screen and (max-width: 450px) {
+    .anteriorBanner, .siguienteBanner {                
+        width: auto;        
+        line-height: 350px;
+        font-size: 15px;
+    }
+    .informacionBanner {
+        width: 70%;
+        padding: auto; 
+    }
+    .textoBanner { font-size: 13px; }
+    .tituloBanner { font-size: 20px;}
+    .botonBannerEnlase {font-size: 10px;}
+    @keyframes moverITexto{
+        from{left:8%; top:-200%; color:rgba(255,255,255,0.1);} to {left:8%; top:15%;}
+    }
+}

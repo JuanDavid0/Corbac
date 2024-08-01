@@ -1,0 +1,41 @@
+#redes-1{
+	position: fixed;
+	right: 10px;
+	top: 110px;
+	z-index: 20;
+}
+.redes-1-red{
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	font-size: .8em;
+	margin:5px auto;
+	background-color: rgba(47,101,53,1);
+	-webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    display: block;
+    position: relative;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+.redes-1-red:nth-child(1):hover{
+	color: rgba(255,255,255,1);
+	background-color: rgba(59,89,152,1);
+}
+.redes-1-red:nth-child(2):hover{
+	color: rgba(255,255,255,1);
+	background-color: rgba(0,128,0,1);
+}
+.redes-1-red:nth-child(3):hover{
+	color: rgba(255,255,255,1);
+	background-color: rgba(221,42,123,1);
+}
+.redes-1-red:nth-child(4):hover{
+	color: rgba(255,255,255,1);
+	background-color: rgba(8,160,233,1);
+}

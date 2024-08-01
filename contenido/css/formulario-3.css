@@ -1,0 +1,276 @@
+#formulario-3{
+	width: 70%;
+	padding:50px 5%;
+	box-sizing: border-box;
+    position: relative;
+    margin:50px auto;
+    border: 2px solid rgba(84,127,8,1);
+}
+#formulario-3::before{
+    content: "";
+    background-image: url(../assets/ocetalogo.png);
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: -35px;
+    right: 0%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, 0%);
+    -webkit-transform: translate(-50%, 0%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+#formulario-3-info,
+#formulario-3-form{
+	padding:30px;
+	box-sizing: border-box;
+    margin:0px auto;
+    display: inline-block;
+    vertical-align: top;		
+}
+#formulario-3-info{
+    width: 38%;
+	margin-right: 1%;
+    background-color: rgba(84,127,8,.3);
+    font-family: 'Principal',helvetica,verdana,sans-serif;
+    color: rgba(84,127,8,1);
+}
+#formulario-3-form{
+    width: 58%;
+	margin-left: 1%;
+    padding:0;
+    border:1px solid rgba(84,127,8,1);
+    background-color: rgba(255,255,255,.6);
+}
+#formulario-3-form-titulo{
+	width: 100%;
+	box-sizing: border-box;
+	text-align: center;
+	font-family: 'Titulo',helvetica,verdana,sans-serif;
+	color: rgba(255,255,255,1);
+    background-color: rgba(84,127,8,1);
+	font-size: 26px;
+    padding: 10px;
+}
+#formulario-3-form-formulario{
+    display: block;
+    padding: 30px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.formulario-3-input{
+	border:none;
+	border-bottom:2px solid rgba(84,127,8,1);
+	background-color: rgba(255,255,255,0);
+    color: rgba(80,80,80,1);
+    font-family: 'Titulo',helvetica,verdana,sans-serif;
+    padding: 10px 5px;
+    margin:10px auto;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+.formulario-3-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(80,80,80,1);
+}
+.formulario-3-input::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(80,80,80,1);
+}
+.formulario-3-input:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(80,80,80,1);
+}
+.formulario-3-input:-moz-placeholder { /* Firefox 18- */
+  color: rgba(80,80,80,1);
+}
+.formulario-3-input:focus{
+	background-color: rgba(84,127,8,.1);
+	outline: none;
+}
+#formulario-3-form-formulario textarea{
+	border:none;
+	border-bottom:2px solid rgba(84,127,8,1);
+    background-color: rgba(255,255,255,0);
+    color: rgba(80,80,80,1);
+    font-family: 'Titulo',helvetica,verdana,sans-serif;
+    padding: 5px;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    width: 99%;
+    height: 80px;
+    resize: none;
+    margin-top:20px;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+#formulario-3-form-formulario textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(80,80,80,1);
+}
+#formulario-3-form-formulario textarea::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(80,80,80,1);
+}
+#formulario-3-form-formulario textarea:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(80,80,80,1);
+}
+#formulario-3-form-formulario textarea:-moz-placeholder { /* Firefox 18- */
+  color: rgba(80,80,80,1);
+}
+
+#formulario-3-form-formulario textarea:focus{
+	background-color: rgba(84,127,8,.1);
+    outline: none;
+}
+#formulario-3-boton{
+	max-width: 120px;
+	color: rgba(255,255,255,1);
+	background-color: rgba(84,127,8,1);
+	text-align: center;
+	margin:20px auto;
+	padding: 10px 25px;
+	border:none;
+	box-sizing: border-box;
+    -webkit-border-radius: 15px 0px;
+    -moz-border-radius: 15px 0px;
+    border-radius: 15px 0px;
+    cursor: pointer;
+    font-family: 'Titulo',helvetica,verdana,sans-serif;
+	-webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out; 
+}
+#formulario-3-boton:hover{
+	background-color: rgba(84,127,8,.6);
+}
+@media (max-width: 800px){
+    #formulario-3{
+        border:none;
+    }
+	#formulario-3-info,
+	#formulario-3-form{
+		width: 100%;
+		margin:10px auto;
+	}
+}
+@media (max-width: 600px){
+    #formulario-3{
+        width: 100%;
+        padding:50px 5%;
+    }
+}
+.modalDialog {
+    position: fixed;        
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 999;    
+    -webkit-transition: all 400ms ease-in;
+    -moz-transition: all 400ms ease-in;
+    transition: all 400ms ease-in;    
+    overflow: scroll;
+}
+.logoModal{
+    margin: 0px auto;
+    width: 200px;
+    content: " ";
+    background-image: url(../assets/anbu-astronauta.png);
+    position: relative;
+    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 150px auto;
+    -webkit-background-size: 150px auto;
+    -moz-background-size: 150px auto;
+    -o-background-size: 150px auto;
+}
+.invisible { visibility: hidden; opacity: 0; }
+.modalDialog > div {
+    width: 70%;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background-image: linear-gradient(to left top, #3d5a9a, #026da4, #007ea4, #008d9e, #3d9a96);
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+}
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    border: none;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;    
+    z-index: 9999;
+    cursor: pointer;
+}
+.close:hover { background: #00d9ff; }
+#contenedorModal h3, #contenedorModal i{
+    width: 100%;
+    padding: 10px 0;
+    box-sizing: border-box;
+    color: rgba(53,53,53,1);
+    font-size: 25px;
+    font-family: 'Titulo',helvetica,verdana,sans-serif;
+    text-align: center;    
+}
+#contenedorModal h3{
+    color: rgba(21,56,98,1); 
+}
+#contenedorModal i:hover{
+    color: rgba(22,155,140,0.83); 
+}
+#contenedorModal p{
+    width: 100%;
+    padding: 25px 25px;
+    box-sizing: border-box;
+    color: rgba(255,255,255,1);
+    font-size: 20px;
+    font-family: 'Principal',helvetica,verdana,sans-serif;
+    text-align: center;
+}
+#contenedorModal a{
+    margin-top: 10px;
+    padding: 8px;
+    text-decoration: none;
+    background-color: rgba(21,56,98,1);
+    font-size: 15px;    
+    font-family: 'Principal',helvetica,verdana,sans-serif;    
+    color: rgba(255,255,255,1);
+    transition: all 1s;
+    border-width: 0px;
+    border-style: solid;        
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;    
+    display: inline-block;
+}
+#contenedorModal a:hover{
+    cursor: pointer;
+    background: rgba(22,155,140,0.83);    
+}

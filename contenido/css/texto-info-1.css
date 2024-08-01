@@ -1,0 +1,32 @@
+#texto-info-1{
+	width: 100%;
+	padding: 50px 5%;
+	box-sizing: border-box;
+}
+#texto-info-1-titulo{
+	width: 100%;
+	box-sizing: border-box;
+	text-align: center;
+	font-family: 'Titulo',helvetica,verdana,sans-serif;
+	color: rgba(47,101,53,1);
+	font-size: 35px; 
+	text-transform: uppercase;
+}
+#texto-info-1-contenido{
+	width: 80%;
+	box-sizing: border-box;
+	text-align: justify;
+	margin:40px auto 0px auto;
+	font-family: 'Principal',helvetica,verdana,sans-serif;
+	color: rgba(80,80,80,1);
+	font-size: 17px; 
+	line-height: 1.6em;
+}
+@media (max-width: 800px){
+	#texto-info-1-contenido{
+		width: 90%;
+	}
+	#texto-info-1-contenido{
+		text-align: center;
+	}
+}

@@ -1,0 +1,33 @@
+#Impedir que se pueda ver el listado de contenidos de un directorio
+
+Options All -Indexes
+
+# URL Amigables
+RewriteEngine On
+RewriteRule ^([-a-zA-Z0-9/]+)$ index.php?h=$1
+
+#comprimir archivos de texto, html, javascript, css, xml
+#AddOutputFilterByType DEFLATE text/plain
+#AddOutputFilterByType DEFLATE text/html
+#AddOutputFilterByType DEFLATE text/xml
+#AddOutputFilterByType DEFLATE text/css
+#AddOutputFilterByType DEFLATE application/xml
+#AddOutputFilterByType DEFLATE application/xhtml+xml
+#AddOutputFilterByType DEFLATE application/rss+xml
+#AddOutputFilterByType DEFLATE application/javascript
+#AddOutputFilterByType DEFLATE application/x-javascript
+
+#Cache de imágenes en el navegador durante un mes
+#<FilesMatch "\.(ico|jpg|jpeg|png|gif)$">
+#Header set Cache-Control "max-age=2592000, public"
+#</FilesMatch>
+# redireccion de la seccion blog a la seccion noticias de anbunegocios.com.co
+#Redirect 301 /blog https://anbunegocios.com.co/actualidad
+
+#redireccion de noticias de anbunegocios
+#Redirect 301 /blog/conceptos-basicos-de-marketing-2019 https://anbunegocios.com.co/post/todo-sobre-marketing-2019
+#Redirect 301 /blog/el-mejor-nombre-para-su-empresa-en-internet https://anbunegocios.com.co/post/que-es-un-dominio-2019
+#Redirect 301 /blog/estrategias-de-marketing-digtal-2019 https://anbunegocios.com.co/post/marketing-digital-y-publicidad-redes-sociales-2019
+#Redirect 301 /blog/Email-marketing-2019 https://anbunegocios.com.co/post/email-marketing-2019
+
+

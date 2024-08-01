@@ -1,0 +1,196 @@
+#post-1{
+	width: 100%;
+	margin:0px auto;
+	box-sizing: border-box;
+	position: relative;
+}
+#post-1-conta{
+	padding:50px 5%;
+	box-sizing: border-box;
+	width: 100%;
+	height: auto;
+	position: relative;
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 310px;
+    -webkit-background-size: 100% 310px;
+    -moz-background-size: 100% 310px;
+    -o-background-size: 100% 310px;
+    background-image: url(../assets/post.png);
+    background-position-y:0px;
+}
+#post-1-conta-img{
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	width: 300px;
+	height: 300px;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin-top: 30px;
+    border:5px solid rgba(255,255,255,1);
+    margin-top: -30px;
+}
+#post-1-contaco{
+	display: inline-block;
+	vertical-align: top;
+	width: calc(99% - 300px);
+	padding:50px 0px 0px 50px;
+	box-sizing: border-box;
+	position: relative;
+}
+#post-compartir{
+    width: 100%;
+    padding:20px 5%;
+    text-align: left;
+    font-family: 'Titulo',helvetica,verdana,sans-serif;
+    font-size: 21px;
+    color: rgba(80,80,80,1);
+    box-sizing: border-box;
+}
+#post-compartir p{
+    display: inline-block;
+}
+.post-compartir-red{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    font-size: .8em;
+    color:rgba(255,255,255,1);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin:0px 10px;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+.compartir-facebook{
+    background-color: rgba(59,89,152,1);
+}
+.compartir-facebook:hover{
+    color: rgba(59,89,152,1);
+    background-color: rgba(235,235,235,1);	
+}
+.compartir-twitter{
+    background-color: rgba(8,160,233,1);
+}
+.compartir-twitter:hover{
+    color: rgba(8,160,233,1);
+    background-color: rgba(235,235,235,1);
+}
+.compartir-google{
+    background-color: rgba(219,68,55,1);
+}
+.compartir-google:hover{
+    color: rgba(219,68,55,1);
+    background-color: rgba(235,235,235,1);
+}
+#post-1-contaco-titulo{
+	width: calc(99% - 300px);
+	font-size: 25px;
+	font-family: 'Principal',helvetica,verdana,sans-serif;
+	color: rgba(2,82,86,1);
+	text-transform: uppercase;
+	margin-left: 300px;
+	padding:0px 0px 0px 50px;
+	box-sizing: border-box;
+}
+#post-1-contaco-introduccion{
+	width: 100%;
+	font-size: 17px;
+	line-height: 1.6em;
+	font-family: 'Principal',helvetica,verdana,sans-serif;
+	color: rgba(80,80,80,1);
+}
+#post-1-video{
+	width: 90%;
+	margin:0px auto;
+	padding:50px 0px;
+	box-sizing: border-box;
+	border-top: 2px dotted rgba(180,180,180,1);
+	border-bottom: 2px dotted rgba(180,180,180,1);
+}
+#post-1-video-cont{
+	display: inline-block;
+	vertical-align: top;
+	width: 49%;
+	padding:0px 20px;
+	box-sizing: border-box;
+}
+#post-1-video-titulo{
+	width: 100%;
+	font-size: 23px;
+	line-height: 1.6em;
+	font-family: 'Principal',helvetica,verdana,sans-serif;
+	color: rgba(2,82,86,1);
+	margin-bottom: 30px;
+	text-transform: uppercase;
+}
+#post-1-video-contenido{
+	width: 100%;
+	font-size: 17px;
+	line-height: 1.6em;
+	font-family: 'Principal',helvetica,verdana,sans-serif;
+	color: rgba(80,80,80,1);
+}
+#post-1-video-video{
+	display: inline-block;
+	vertical-align: top;
+	width: 49%;	
+}
+#post-1-video-video iframe{
+	width: 100%;
+	height: 400px;
+}
+#post-1-contenido{
+	width: 90%;
+	margin:0px auto;
+	padding:50px 0px;
+	box-sizing: border-box;
+	font-size: 17px;
+	line-height: 1.6em;
+	font-family: 'Principal',helvetica,verdana,sans-serif;
+	color: rgba(80,80,80,1);
+}
+@media (max-width: 900px){
+	#post-1-contaco-titulo{
+		width: 100%;
+		margin:0px auto;
+		padding:10px 5% 40px 5%;
+		box-sizing: border-box;
+		text-align: center;
+		font-size: 21px;
+	}
+	#post-1-conta-img{
+		display: block;
+		margin:0px auto;
+	}
+	#post-1-contaco{
+		width: 100%;
+		margin:20px auto;
+		padding:0;
+	}
+	#post-1-video-cont{
+		width: 100%;
+		display: block;
+		padding:0;
+	}
+	#post-1-video-video{
+		width: 100%;
+		display: block;
+		margin:20px auto;
+	}
+	
+	#post-1-contaco{
+		border-left: none;
+	}
+	#post-1-contaco::before{
+		display: none;
+	}
+}

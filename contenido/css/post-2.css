@@ -1,0 +1,202 @@
+#post-2{
+	width: 100%;
+	margin:0px auto;
+	box-sizing: border-box;
+	position: relative;
+}
+#post-2-titulo{
+	width: 100%;
+	height: auto;
+	text-align: left;
+	color: rgba(255,255,255,1);
+	font-size: 21px;
+	font-family: 'Principal',helvetica,verdana,sans-serif;
+	position: relative;
+	display: block;
+  	text-transform: uppercase;
+  	margin-bottom: 50px;
+}
+#post-2-cont{
+	width: 100%;
+	margin:0px auto;
+	box-sizing: border-box;
+	position: relative;
+	
+}
+#post-2-info{
+	width: 100%;
+	height: auto;
+	padding: 50px 5%;
+	display: block;
+	position: relative;
+	box-sizing: border-box;
+	background-color: rgba(148,76,165,1);
+}
+#post-2-info-contenido{
+	display: inline-block;
+	vertical-align: top;
+	width: 60%;
+	margin:0px auto;
+	margin-left: -4px;
+	height: auto;
+	font-size: 16px;
+	line-height: 1.6em;
+	text-align: justify;
+	font-family: 'Principal',helvetica,verdana,sans-serif;
+	padding-right: 30px;
+	box-sizing: border-box;
+	color: rgba(255,255,255,1);
+}
+#post-2-info-galeria{
+	display: inline-block;
+	vertical-align: top;
+	width: 40%;
+	margin:80px auto 0px auto;
+	margin-left: -4px;
+	background-color: rgba(220,220,220,1);
+	height: 400px;
+}
+.slide-post-2-galeria {
+    width: 100%;
+    height: 400px; 
+    position: relative;
+    overflow: hidden;
+}
+.slideImg {
+    width: 100%;
+    height: 400px;
+    left: -100%;    
+    position: absolute;
+    opacity: 1; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+}
+.siguienteSlide , .anteriorSlide {    
+    cursor: pointer;
+    position: absolute;    
+    width: auto;
+    height: 100%;
+    top: 0px;
+    line-height: 400px;    
+    padding: 0px 5px 0px 5px;
+    color: rgba(255,255,255,1);
+    background-color: rgba(0,0,0,.4);
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    z-index: 15;
+}
+.siguienteSlide { 
+	right: 0; 
+}
+.anteriorSlide:hover, .siguienteSlide:hover {
+    background-color: rgba(0,0,0,.7);
+    color: rgba(250,183,2,1);
+}
+.moverIActualImg {
+    animation: moverIActualImg 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.moverISiguienteImg {
+    animation: moverISiguienteImg 0.5s ease-in-out;
+    animation-fill-mode: forwards; 
+}
+@keyframes moverIActualImg{
+    from{left:0; opacity:1;} to { left:-100%; opacity:1;}
+}
+@keyframes moverISiguienteImg{
+    from{ left:100%; opacity:1;} to {left:0%; opacity:1;}
+}
+.moverDActualImg{
+    animation: moverDActualImg 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.moverDSiguienteImg{
+    animation: moverDSiguienteImg 0.5s ease-in-out;
+    animation-fill-mode: forwards; 
+}
+@keyframes moverDActualImg{
+    from{ left:0; opacity:1;} to { left:100%; opacity:1; }
+}
+@keyframes moverDSiguienteImg{
+    from{left:-100%; opacity:1;} to { left:0%; opacity:1;}
+}
+#post-2-video{
+	width: 100%;
+	height: auto;
+	padding: 50px 5%;
+	display: block;
+	position: relative;
+	box-sizing: border-box;
+	border-top: 1px solid rgba(220,220,220,1);
+	max-width: 1400px;
+}
+#post-2-video-video{
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
+	margin:0px auto;
+	margin-left: -4px;
+	height: auto;
+	padding-right: 30px;
+}
+#post-2-video-video iframe{
+	width: 100%;
+	height: 300px;
+	display: block;
+	margin:0px auto;
+}
+#post-2-video-texto{
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
+	margin:0px auto;
+	margin-left: -4px;
+	height: auto;
+	font-size: 16px;
+	line-height: 1.6em;
+	text-align: justify;
+	font-family: 'Principal',helvetica,verdana,sans-serif;
+	box-sizing: border-box;
+}
+@media (max-width: 900px){
+	#post-2-info-contenido{
+		width: 100%;
+		margin:0px auto;
+		padding:0;
+	}
+	#post-2-info-galeria{
+		width: 100%;
+		margin:40px auto 0px auto;
+	}
+	#post-2-video-video{
+		width: 100%;
+		margin:0px auto;
+		padding:0;
+	}
+	#post-2-video-texto{
+		width: 100%;
+		margin:40px auto 0px auto;
+	}
+}
+@media (max-width: 500px){
+	#post-2-banner-titulo{
+		font-size: 19px;
+	}
+	#post-2-info-galeria{
+		height: 250px;
+	}
+	.slide-post-2-galeria {
+	    height: 250px; 
+	}
+	.slideImg {
+	    height: 250px;
+	}
+	.siguienteSlide , .anteriorSlide {    
+	    line-height: 250px;    
+	}
+	
+}

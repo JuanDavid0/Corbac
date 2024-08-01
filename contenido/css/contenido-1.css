@@ -1,0 +1,21 @@
+#contenido-1{
+	width: 90%;
+	max-width: 1300px;
+	margin:0px auto;
+	padding:0px 5% 50px 5%;
+	box-sizing: border-box;
+}
+#contenido-1 p{
+	font-size: 17px;
+	line-height: 1.5em;
+	color: rgba(80,80,80,1);
+	margin-top: 17px;
+	font-family: 'Principal',helvetica,verdana,sans-serif;
+	text-align: center;
+}
+@media (max-width: 900px){
+	#contenido-1{
+		width: 100%;
+		padding:50px 5%;
+	}
+}

@@ -1,0 +1,107 @@
+#galeria-3{
+	width: 100%;
+	height: auto;
+	padding: 50px 5%;
+	box-sizing: border-box;
+	background-image: url(../assets/servicios-oceta2.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+#galeria-3-titulo{
+	width: 100%;
+	box-sizing: border-box;
+	text-align: center;
+	font-family: 'Titulo',helvetica,verdana,sans-serif;
+	color: rgba(255,255,255,1);
+	font-size: 26px; 
+	margin-bottom: 40px;
+    padding: 10px 0px;
+    text-decoration: underline;
+}
+#galeria-3-cont{
+	width: 100%;
+	height: auto;
+	text-align: center;
+	position: relative;
+	z-index: 2;
+}
+.galeria-3-esp{
+	width: 30%;
+	margin:10px 1.5%;
+	padding: 50px 20px 30px 20px;
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: top;
+	-webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out; 
+}
+.galeria-3-esp:hover{
+	
+}
+.galeria-3-img{
+	width: 200px;
+	text-align: center;
+	height: 200px;
+	padding:20px;
+	box-sizing: border-box;
+	margin:0px auto;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    border:5px solid rgba(84,127,8,1);
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out; 
+}
+.galeria-3-esp:hover .galeria-3-img{
+	border:2px solid rgba(84,127,8,.5);
+}
+.galeria-3-img img{
+    width: auto;
+    display: block;
+    position: absolute;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+.galeria-3-titulo-esp{
+	width: 100%;
+	box-sizing: border-box;
+	text-align: center;
+	font-family: 'Titulo',helvetica,verdana,sans-serif;
+	color: rgba(255,255,255,1);
+	font-size: 27px;
+	padding:20px 0px;
+}
+.galeria-3-esp:hover .galeria-3-titulo-esp{
+	text-decoration: underline;
+}
+@media (max-width: 850px){
+	.galeria-3-esp{
+		width: 46%;
+		padding:0;
+	}
+	.galeria-3-img{
+		width: 140px;
+		height: 140px;
+	}
+}
+@media (max-width: 640px){
+	.galeria-3-esp{
+		width: 100%;
+		margin:20px auto;
+	}
+}

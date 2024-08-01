@@ -1,0 +1,44 @@
+#pagina-no-encontrada{
+	background-image: linear-gradient(to bottom, #051937, #1a3a5f, #2e5e8a, #4286b6, #55b0e2);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding:0;
+	margin:0;
+	text-align: center;
+	background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+#pagina-no-encontrada h1{
+	display: block;
+	position: relative;
+	font-size: 15em;
+	font-family: 'Titulo',helvetica,verdana,sans-serif;
+	color: rgba(255,255,255,1);
+	padding: 50px 30px;
+	box-sizing: border-box;
+    top: 15%;
+    text-align: center;
+}
+#pagina-no-encontrada a{
+	padding:8px 5px;
+	position: relative;
+	margin:0px auto;
+	display: block;
+	text-align: center;
+	font-family: 'Titulo',helvetica,verdana,sans-serif;
+	font-size: 17px;
+	color: rgba(19,59,100,1);
+	background-color: rgba(255,255,255,1);
+	-webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    border:none;
+    max-width: 160px;
+    top: 20%;
+}
