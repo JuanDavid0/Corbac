@@ -4,7 +4,6 @@ error_reporting(E_ALL ^ E_NOTICE);
 // Funcion para traer los meta tags de esta pagina
 $consultametatags = consultaMetaTags($con); //CURIOSO
 $resmetatag = mysqli_fetch_array($consultametatags);
-echo '<script>console.log("' . $resmetatag['titulo'] . '"); </script>';
 if ($con == 'servicio') {
     $consultametatags_ser = consultaMetaTagsser($varEspecifico['url_amigable']);
     $resmetatag_ser = mysqli_fetch_array($consultametatags_ser);

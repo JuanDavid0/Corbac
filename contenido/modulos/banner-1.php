@@ -8,9 +8,7 @@
     <div class="contenedorBanner">
         <?php while ($banners = mysqli_fetch_array($consulta)) { ?>
             <div class="slideBanner">
-                <div style="background-image: url('
-                <?php echo $rutaFinal; ?>
-                contenido/assets/<?php echo $banners['imagen']; ?>.jpg')"
+                <div style="background-image: url('<?php echo $rutaFinal; ?>contenido/assets/<?php echo $banners['imagen']; ?>')"
                     class="imgBanner"></div>
                 <div class="slideBanner-capa"></div>
                 <div id="disposicionTextoBaner<?php echo $banners['disposicion']; ?>" class="informacionBanner">

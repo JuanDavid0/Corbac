@@ -1,17 +1,4 @@
 <header id="header">
-    <div id="header-info">
-        <div id="header-info-redes">
-            <?php
-            $consultageneral = consultaGeneralSinIdioma('redes');
-            while ($resgeneral = mysqli_fetch_array($consultageneral)) {
-                ?>
-                <div class="header-red">
-                    <a href="<?php echo $resgeneral['variable']; ?>" target="_blank" rel="noopener noreferrer"
-                        class="<?php echo $resgeneral['clase']; ?>"></a>
-                </div>
-            <?php } ?>
-        </div>
-    </div>
     <div id="header-contenedor" class="header-contenedor">
         <div id="logo" style="opacity: 1;">
             <!-- Menu Mobile -->
