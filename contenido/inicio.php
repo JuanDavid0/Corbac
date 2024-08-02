@@ -1,14 +1,16 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 error_reporting(E_ALL ^ E_NOTICE);
+
 // Funcion para traer los meta tags de esta pagina
-$consultametatags = consultaMetaTags($con); //CURIOSO
+$consultametatags = consultaMetaTags($con);
 $resmetatag = mysqli_fetch_array($consultametatags);
 if ($con == 'servicio') {
     $consultametatags_ser = consultaMetaTagsser($varEspecifico['url_amigable']);
     $resmetatag_ser = mysqli_fetch_array($consultametatags_ser);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -16,7 +18,8 @@ if ($con == 'servicio') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!-- Metatags -->
-    <title> RENOVA </title>
+    <title> CORBAC </title>
+
     <!-- <meta name="description" content="<?php if (($varEspecifico != null) && ($con != 'servicio')) {
         echo $varEspecifico['descripcion'];
     } else if (($varEspecifico != null) && ($con == 'servicio')) {
@@ -31,6 +34,7 @@ if ($con == 'servicio') {
     } ?>"> 
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo $rutaFinal ?>contenido/assets/favicon.ico">
     -->
+
     <!-- og tags Facebook -->
     <meta property="og:url" content="<?php if ($varEspecifico != null) {
         echo $ruta . $con . "/" . $varEspecifico['url_amigable'];
@@ -42,6 +46,7 @@ if ($con == 'servicio') {
     } else {
         echo $resmetatag['typefb'];
     } ?>" />
+
     <meta property="og:title" content="<?php if (($varEspecifico != null) && ($con != 'servicio')) {
         echo $varEspecifico['nombre'] . $resmetatag['titulo'];
     } else if (($varEspecifico != null) && ($con == 'servicio')) {
@@ -49,6 +54,7 @@ if ($con == 'servicio') {
     } else {
         echo $resmetatag['titulo'];
     } ?>" />
+
     <meta property="og:description" content="<?php if (($varEspecifico != null) && ($con != 'servicio')) {
         echo $varEspecifico['descripcion'];
     } else if (($varEspecifico != null) && ($con == 'servicio')) {
@@ -56,6 +62,7 @@ if ($con == 'servicio') {
     } else {
         echo $resmetatag['descripcion'];
     } ?>" />
+
     <meta property="og:image" content="<?php
     if ($varEspecifico != null) {
         if ($con != "noticia") {
@@ -66,6 +73,7 @@ if ($con == 'servicio') {
     } else {
         echo $rutaFinal . "contenido/assets/" . $resmetatag['imagen'] . ".jpg";
     } ?>" />
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="<?php if ($varEspecifico != null) {
@@ -73,6 +81,7 @@ if ($con == 'servicio') {
     } else {
         echo $ruta . $con;
     } ?>" />
+
     <meta name="twitter:title" content="<?php if (($varEspecifico != null) && ($con != 'servicio')) {
         echo $varEspecifico['nombre'] . $resmetatag['titulo'];
     } else if (($varEspecifico != null) && ($con == 'servicio')) {
@@ -80,6 +89,7 @@ if ($con == 'servicio') {
     } else {
         echo $resmetatag['titulo'];
     } ?>" />
+
     <meta name="twitter:description" content="<?php if (($varEspecifico != null) && ($con != 'servicio')) {
         echo $varEspecifico['descripcion'];
     } else if (($varEspecifico != null) && ($con == 'servicio')) {
@@ -87,6 +97,7 @@ if ($con == 'servicio') {
     } else {
         echo $resmetatag['descripcion'];
     } ?>" />
+
     <meta name="twitter:creator" content="<?php
     if ($varEspecifico != null) {
         if ($con != "noticia") {
@@ -98,6 +109,7 @@ if ($con == 'servicio') {
         echo $resmetatag['creatortw'];
     }
     ?>" />
+
     <meta name="twitter:image:src" content="<?php
     if ($varEspecifico != null) {
         if ($con != "noticia") {
@@ -108,6 +120,7 @@ if ($con == 'servicio') {
     } else {
         echo $rutaFinal . "contenido/assets/" . $resmetatag['imagen'] . ".jpg";
     } ?>" />
+
     <meta name="twitter:domain" content="<?php
     if ($varEspecifico != null) {
         if ($con != "noticia") {
@@ -119,9 +132,11 @@ if ($con == 'servicio') {
         echo $resmetatag['domaintw'];
     }
     ?>" />
+
     <!-- canonical 
     <link rel="canonical" href="<?php echo $ruta . $con . "/" . $varEspecifico['url_amigable']; ?>" />
     -->
+
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo $rutaFinal ?>contenido/css/general.css">
     <?php
@@ -133,6 +148,7 @@ if ($con == 'servicio') {
             <link rel="stylesheet" type="text/css" href="<?php echo $rutaFinal ?>contenido/css/<?php echo $resmod[0]; ?>.css">
         <?php }
     } ?>
+    
     <!-- JS -->
     <?php
     // Consulta de estilos necesarios de los modulos llamados
