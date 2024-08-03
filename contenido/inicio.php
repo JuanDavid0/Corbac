@@ -32,8 +32,12 @@ if ($con == 'servicio') {
     } else {
         echo $resmetatag['color_movil'];
     } ?>"> 
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $rutaFinal ?>contenido/assets/favicon.ico">
     -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="<?php echo $rutaFinal ?>contenido/assets/favicon.png">
+    <!--<link rel="shortcut icon" type="image/x-icon" href="<?php echo $rutaFinal ?>contenido/assets/favicon.ico">-->
+
 
     <!-- og tags Facebook -->
     <meta property="og:url" content="<?php if ($varEspecifico != null) {
@@ -41,6 +45,7 @@ if ($con == 'servicio') {
     } else {
         echo $ruta . $con;
     } ?>" />
+
     <meta property="og:type" content="<?php if ($con == 'servicio') {
         echo $resmetatag_ser['typefb'];
     } else {
@@ -76,6 +81,7 @@ if ($con == 'servicio') {
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    
     <meta name="twitter:site" content="<?php if ($varEspecifico != null) {
         echo $ruta . $con . "/" . $varEspecifico['url_amigable'];
     } else {

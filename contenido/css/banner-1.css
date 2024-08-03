@@ -1,11 +1,26 @@
-.moverScroll{
+@font-face {
+    font-family: 'Montserrat-bold';
+    src: url(/contenido/fonts/Montserrat-Bold.ttf);
+    font-weight: bold;
+    font-style: bold;
+}
+
+.moverScroll {
     animation: moverDSiguiente 0.7s ease-in-out;
-    animation-fill-mode: forwards; 
+    animation-fill-mode: forwards;
 }
-@keyframes moverScroll{
-    from{scrollTo(0,0);} to { scrollTo(0,300); }
+
+@keyframes moverScroll {
+    from {
+        scrollTo(0, 0);
+    }
+
+    to {
+        scrollTo(0, 300);
+    }
 }
-#banner{
+
+#banner {
     width: 100%;
     height: 600px;
     background-attachment: scroll;
@@ -20,7 +35,9 @@
     left: 0px;
     overflow: hidden;
 }
-#banner::before{
+
+/*
+#banner::before {
     width: 100%;
     content: " ";
     background-image: url(../assets/banner.png);
@@ -35,6 +52,8 @@
     -o-background-size: 100%;
     z-index: 3;
 }
+*/
+
 /*#banner::before{
     content: " ";
     width: 100%;
@@ -46,57 +65,63 @@
     bottom: -50px;
     z-index: 5;
 }*/
-#banner-capa{
+
+#banner-capa {
     width: 100%;
     height: 100%;
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0, 0, 0, .4);
     z-index: 1;
 }
+
 /*estilos nicolas*/
-.contenedorBanner{
+.contenedorBanner {
     width: 100%;
     height: 600px;
-    position: relative;    
+    position: relative;
     display: inline-flex;
     overflow: hidden;
     z-index: 2;
 }
-.slideBanner{
+
+.slideBanner {
     width: 100%;
     height: 600px;
     position: absolute;
-    opacity: 0;  
+    opacity: 0;
     left: -100%;
     z-index: 2;
     overflow: hidden;
 }
-.slideBanner-capa{
+
+.slideBanner-capa {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to right, #026aa5, #0c6fb2, #1b74be, #2a78cb, #3a7cd7, #2f86e0, #1f90e9, #009af1, #00aaf2, #00b9ed, #00c6e4, #33d1da);
+    /*background-image: linear-gradient(to right, #026aa5, #0c6fb2, #1b74be, #2a78cb, #3a7cd7, #2f86e0, #1f90e9, #009af1, #00aaf2, #00b9ed, #00c6e4, #33d1da);
     opacity: .4;
-    z-index: 4;
+    z-index: 4;*/
 }
-.botonBannerEnlase{
-    color:rgba(255,255,255,1);
-    background-color: rgba(255,255,255,.15);
-    box-sizing: border-box;    
-    font-family: 'Titulo',helvetica,verdana,sans-serif;
+
+/*Boton banner*/
+.botonBannerEnlase {
+    color: rgba(0, 17, 52, 1);
+    background-color: rgba(255, 255, 255, .15);
+    box-sizing: border-box;
+    font-family: 'Montserrat-bold';
     font-size: 17px;
-    border: 3px solid rgba(255,255,255,1);
+    border: 3px solid rgba(0, 17, 52, 1);
     cursor: pointer;
-    z-index: 5;     
+    z-index: 5;
     width: 140px;
     text-align: center;
     padding: 10px;
     display: block;
-    -webkit-border-radius: 30px; 
+    -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     border-radius: 30px;
     -webkit-transition: all 0.5s ease-out;
@@ -104,11 +129,15 @@
     -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
 }
-.botonBannerEnlase:hover{            
-    background:rgba(255,255,255,1);
-    color: rgba(2,82,86,1);
+
+/*Hover para el boton del banner*/
+.botonBannerEnlase:hover {
+    background: rgba(232, 145, 65, 1);
+    color: rgba(255, 255, 255, 1);
 }
-.anteriorBanner, .siguienteBanner {    
+
+.anteriorBanner,
+.siguienteBanner {
     cursor: pointer;
     position: absolute;
     width: 80px;
@@ -116,7 +145,7 @@
     top: calc(50% - 40px);
     line-height: 80px;
     box-sizing: border-box;
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
     font-weight: bold;
     font-size: 15px;
     -webkit-transition: all 0.5s ease-out;
@@ -124,16 +153,20 @@
     -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
     z-index: 6;
-    padding:0px 15px;
+    padding: 0px 15px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: rgba(232, 145, 65, 1);
 }
-.anteriorBanner{
+
+.anteriorBanner {
     left: -40px;
     text-align: right;
 }
-.imgBanner{
+
+.imgBanner {
     background-attachment: scroll;
     background-position: center;
     background-repeat: no-repeat;
@@ -141,54 +174,67 @@
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    width:100%; 
-    height: 600px;  
+    width: 100%;
+    height: 600px;
     z-index: 4;
     position: absolute;
 }
+
 .siguienteBanner {
     right: -40px;
     text-align: left;
 }
-.anteriorBanner:hover, .siguienteBanner:hover {
-    background-color: rgba(2,82,86,.7);
+
+/*Hover para flecha de cambio de banner*/
+.anteriorBanner:hover,
+.siguienteBanner:hover {
+    background-color: rgba(232, 145, 65, 1);
 }
+
 .informacionBanner {
     position: relative;
     width: 45%;
     margin-top: 13%;
     height: auto;
-    z-index: 5;         
+    z-index: 5;
     padding: 20px;
     box-sizing: border-box;
-    left:8%;
-    color: rgba(255,255,255,1);
+    left: 8%;
+    color: rgba(255, 255, 255, 1);
     -webkit-border-radius: 15px 0px;
     -moz-border-radius: 15px 0px;
     border-radius: 15px 0px;
 }
-.textoBanner {     
+
+.textoBanner {
     position: relative;
-    width: 100%;   
-    font-family: 'Principal',helvetica,verdana,sans-serif;
+    width: 100%;
+    font-family: 'Principal', helvetica, verdana, sans-serif;
     z-index: 5;
     font-size: 17px;
     margin-bottom: 20px;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: rgba(0, 17, 52, 1);
 }
+
+/*CSS para el titulo del banner*/
 .tituloBanner {
-    width: 100%;    
-    font-size: 55px; 
+    width: 100%;
+    font-size: 55px;
     position: relative;
-    font-family: 'Titulo',helvetica,verdana,sans-serif;
+    font-family: 'Titulo', helvetica, verdana, sans-serif;
     z-index: 5;
     margin-bottom: 15px;
     text-transform: uppercase;
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 17, 52, 1);
 }
-.botonesBanner{
+
+.botonesBanner {
     width: 30px;
     height: auto;
-    padding:0px 2%;
+    padding: 0px 2%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -198,12 +244,14 @@
     z-index: 5;
     right: 10px;
 }
-.bullet{
+
+/*CSS para el boton para cambios en el banner*/
+.bullet {
     cursor: pointer;
     height: 17px;
     width: 17px;
     margin: 3px auto;
-    background-color:rgba(255,255,255,1);
+    background-color: rgba(255, 255, 255, 1);
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -211,71 +259,160 @@
     -moz-transition: all 0.5s linear;
     -o-transition: all 0.5s linear;
     transition: all 0.5s linear;
-    border:2px solid rgba(255,255,255,1);
+    border: 2px solid rgba(255, 255, 255, 1);
 }
-.botonactivoBanner, .botonBanner:hover {
-    background-color:rgba(2,82,86,1);
+
+/*CSS para cuando un banner esta activo, cambia color*/
+.botonactivoBanner,
+.botonBanner:hover {
+    background-color: rgba(232, 145, 65, 1);
 }
-.moverIActualBanner{
+
+.moverIActualBanner {
     animation: moverIActual 0.7s ease-in-out;
     animation-fill-mode: forwards;
 }
-.moverISiguienteBanner{
+
+.moverISiguienteBanner {
     animation: moverISiguiente 0.7s ease-in-out;
-    animation-fill-mode: forwards; 
+    animation-fill-mode: forwards;
 }
-@keyframes moverIActual{
-    from{left:0; opacity:1;} to { left:-100%; opacity:1;}
+
+@keyframes moverIActual {
+    from {
+        left: 0;
+        opacity: 1;
+    }
+
+    to {
+        left: -100%;
+        opacity: 1;
+    }
 }
-@keyframes moverISiguiente{
-    from{ left:100%; opacity:1;} to {left:0%; opacity:1;}
+
+@keyframes moverISiguiente {
+    from {
+        left: 100%;
+        opacity: 1;
+    }
+
+    to {
+        left: 0%;
+        opacity: 1;
+    }
 }
-.moverDActualBanner{
+
+.moverDActualBanner {
     animation: moverDActual 0.7s ease-in-out;
     animation-fill-mode: forwards;
 }
-.moverDSiguienteBanner{
+
+.moverDSiguienteBanner {
     animation: moverDSiguiente 0.7s ease-in-out;
-    animation-fill-mode: forwards; 
+    animation-fill-mode: forwards;
 }
-@keyframes moverDActual{
-    from{ left:0; opacity:1;} to { left:100%; opacity:1; }
+
+@keyframes moverDActual {
+    from {
+        left: 0;
+        opacity: 1;
+    }
+
+    to {
+        left: 100%;
+        opacity: 1;
+    }
 }
-@keyframes moverDSiguiente{
-    from{left:-100%; opacity:1;} to { left:0%; opacity:1;}
+
+@keyframes moverDSiguiente {
+    from {
+        left: -100%;
+        opacity: 1;
+    }
+
+    to {
+        left: 0%;
+        opacity: 1;
+    }
 }
+
 /*Textos*/
-.moverDTexto{
+.moverDTexto {
     animation: moverDTexto 1.5s ease-out;
     animation-fill-mode: forwards;
-    text-align: right;    
+    text-align: right;
 }
-@keyframes moverDTexto{
-    from{ top:200%; left:37%; transform: translate(10%, 0%); -webkit-transform: translate(10%, 0%);color:rgba(255,255,255,0.1);}
-    to{ top:25%; left:37%; transform: translate(10%, 0%); -webkit-transform: translate(10%, 0%);color:rgba(255,255,255,1)}
+
+@keyframes moverDTexto {
+    from {
+        top: 200%;
+        left: 37%;
+        transform: translate(10%, 0%);
+        -webkit-transform: translate(10%, 0%);
+        color: rgba(255, 255, 255, 0.1);
+    }
+
+    to {
+        top: 25%;
+        left: 37%;
+        transform: translate(10%, 0%);
+        -webkit-transform: translate(10%, 0%);
+        color: rgba(255, 255, 255, 1)
+    }
 }
-.moverITexto{
+
+.moverITexto {
     animation: moverITexto 1.2s ease-out;
     animation-fill-mode: forwards;
     text-align: left;
 }
+
 /*@keyframes moverITexto{
     from{left:7%; top:-200%; color:rgba(255,255,255,0.1);} to {left:7%; top:25%; color:rgba(255,255,255,1); }
 }*/
-@keyframes moverITexto{
-    from{opacity: 0; color:rgba(255,255,255,0.1);} to { opacity:1; color:rgba(255,255,255,1); }
+
+@keyframes moverITexto {
+    from {
+        opacity: 0;
+        color: rgba(255, 255, 255, 0.1);
+    }
+
+    to {
+        opacity: 1;
+        color: rgba(255, 255, 255, 1);
+    }
 }
-.moverCTexto{
+
+.moverCTexto {
     animation: moverCTexto 1.5s ease-out;
     animation-fill-mode: forwards;
     text-align: center;
 }
-@keyframes moverCTexto{
-    from{ left:50%; top:200%; transform: translate(-50%, 0%); -webkit-transform: translate(-50%, 0%); color:rgba(255,255,255,1);}
-    to{ left:50%; top:25%; transform: translate(-50%, 0%); -webkit-transform: translate(-50%, 0%); color:rgba(255,255,255,1) }
+
+@keyframes moverCTexto {
+    from {
+        left: 50%;
+        top: 200%;
+        transform: translate(-50%, 0%);
+        -webkit-transform: translate(-50%, 0%);
+        color: rgba(255, 255, 255, 1);
+    }
+
+    to {
+        left: 50%;
+        top: 25%;
+        transform: translate(-50%, 0%);
+        -webkit-transform: translate(-50%, 0%);
+        color: rgba(255, 255, 255, 1)
+    }
 }
-#contenedorBusquedaUbicacion , #contenedorBusquedaRazon, #contenedorBusquedaUbicacionH , #contenedorBusquedaRazonH 
-, #contenedorBusquedaUbicacionM , #contenedorBusquedaRazonM{   
+
+#contenedorBusquedaUbicacion,
+#contenedorBusquedaRazon,
+#contenedorBusquedaUbicacionH,
+#contenedorBusquedaRazonH,
+#contenedorBusquedaUbicacionM,
+#contenedorBusquedaRazonM {
     display: none;
     flex-direction: row;
     flex-wrap: wrap;
@@ -284,89 +421,108 @@
     box-sizing: border-box;
     width: 300px;
     height: auto;
-    border-radius: 5px; 
-    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.3);    
-    background: rgba(255,255,255,1);
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 1);
     z-index: 80;
 }
-#contenedorBusquedaUbicacionM , #contenedorBusquedaRazonM{  
+
+#contenedorBusquedaUbicacionM,
+#contenedorBusquedaRazonM {
     width: 280px;
 }
-#contenedorItemBI{
+
+#contenedorItemBI {
     width: 35%;
     margin-right: 20px;
     top: 0px;
-} #contenedorItemBD{        
-    width: 55%;       
 }
-#itemBusqueda{
+
+#contenedorItemBD {
+    width: 55%;
+}
+
+#itemBusqueda {
     text-align: left;
     width: 100%;
-    font-family: 'Principal',helvetica,verdana,sans-serif;
-    font-size: 12px;    
-    color: rgba(97,97,97,1);
-    border-bottom: 1px solid rgba(97,97,97,0.5);
-    cursor:pointer;
-    font-family: arial,helvetica,verdana,sans-serif; 
+    font-family: 'Principal', helvetica, verdana, sans-serif;
+    font-size: 12px;
+    color: rgba(97, 97, 97, 1);
+    border-bottom: 1px solid rgba(97, 97, 97, 0.5);
+    cursor: pointer;
+    font-family: arial, helvetica, verdana, sans-serif;
     padding: 2px;
     box-sizing: border-box;
 }
+
 #itemBusqueda:hover {
-    background: rgba(81,110,174,0.1)
+    background: rgba(81, 110, 174, 0.1)
 }
-@media (max-width: 1000px){
-    #banner-buscador{
+
+@media (max-width: 1000px) {
+    #banner-buscador {
         display: none;
     }
 }
-@media (max-width: 900px){
+
+@media (max-width: 900px) {
+
     .informacionBanner,
     .tituloBanner,
     .textoBanner,
-    .botonBannerEnlase
-    {
+    .botonBannerEnlase {
         transform: skew(0deg);
         -webkit-transform: skew(0deg);
         -moz-transform: skew(0deg);
         -o-transform: skew(0deg);
     }
 }
-@media (max-width: 700px){
-    .botonBannerEnlase{
-        font-size: 15px;  
-        padding: 5px ;
-        margin-left: 0;  
+
+@media (max-width: 700px) {
+    .botonBannerEnlase {
+        font-size: 15px;
+        padding: 5px;
+        margin-left: 0;
     }
-    .informacionBanner {    
+
+    .informacionBanner {
         width: 100%;
-        padding:30px 5%;
-        left:0;
+        padding: 30px 5%;
+        left: 0;
     }
-    .textoBanner {     
+
+    .textoBanner {
         font-size: 20px;
         margin: 5px 5px 20px 5px;
     }
-    .tituloBanner {     
+
+    .tituloBanner {
         font-size: 30px;
-        margin:0;
+        margin: 0;
     }
-    .anteriorBanner, .siguienteBanner {
+
+    .anteriorBanner,
+    .siguienteBanner {
         display: none;
     }
 }
-@media (max-width: 550px){
+
+@media (max-width: 550px) {
+
     #banner,
     .contenedorBanner,
     .slideBanner,
-    .imgBanner{
+    .imgBanner {
         height: 450px;
     }
-    .textoBanner {     
+
+    .textoBanner {
         font-size: 17px;
         margin: 5px 5px 20px 5px;
     }
-    .tituloBanner {     
+
+    .tituloBanner {
         font-size: 25px;
-        margin:0;
+        margin: 0;
     }
 }
