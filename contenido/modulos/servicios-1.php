@@ -1,6 +1,6 @@
 <?php
 $idModulo = consultaModulo("servicios-1");
-$consulta_historia_modulo = consultaInfoModulo($idModulo, $con);
+$consulta_historia_modulo = consultaInfoModulo($idModulo, $con, $idioma);
 $varindice = 0;
 unset($varcontenido);
 while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {

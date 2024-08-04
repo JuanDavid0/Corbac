@@ -439,7 +439,7 @@ function consultaNotiRela($url) {
 function consultaSubServicios($categoria, $limite) {
     $conexion = connectDB();
     mysqli_set_charset($conexion, "utf8");
-    $sql = "SELECT * FROM servicio WHERE estado = 'activo' AND categoria = '" . $categoria . "' LIMIT 0," . $limite;
+    $sql = "SELECT * FROM servicio WHERE estado = 'activo' AND categoria_pagina = '" . $categoria . "' LIMIT 0," . $limite;
     if (!$result = mysqli_query($conexion, $sql)) {
         die(mysqli_error($conexion));
     }
