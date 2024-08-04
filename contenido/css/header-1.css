@@ -1,12 +1,20 @@
+@font-face {
+    font-family: 'Montserrat-bold';
+    src: url(/contenido/fonts/Montserrat-Bold.ttf);
+    font-weight: bold;
+    font-style: bold;
+}
+
+/*Propiedades generales header*/
 header {
     width: 100%;
     height: auto;
-    position: fixed;
     z-index: 100;
     -webkit-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease-out;
     -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
+    background-color: rgba(255, 255, 255, 1);
 }
 
 .header-sc {
@@ -80,6 +88,7 @@ header {
     background-color: rgba(193, 53, 132, 1);
 }
 
+/*Contenedor principal*/
 #header-contenedor {
     width: 100%;
     padding: 10px 5%;
@@ -87,23 +96,38 @@ header {
     position: relative;
 }
 
+/*Contenedor principal*/
 .header-contenedor {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
+/*Label naranja en el contenedor*/
+#header-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(232, 145, 65, 1);
+    height: 100%;
+    width: 60%;
+    clip-path: polygon(100% 0%, 0% 0%, 8% 50%, 0% 100%, 100% 100%);
+}
+
+/*Menu desplegable movil*/
 #menu-mobile {
     position: absolute;
     display: none;
 }
 
+/*Desplegable en el menu movil*/
 #menumob-mobile {
     display: none;
 }
 
+/*Logo en el contenedor*/
 #logo {
-    opacity: 0;
+    opacity: 1;
     position: relative;
     -webkit-transition: opacity 0.5s ease-out;
     -moz-transition: opacity 0.5s ease-out;
@@ -113,9 +137,12 @@ header {
     text-align: center;
 }
 
+/*Imagen logo en el contenedor*/
 #logo a img {
-    width: 200px;
+    width: 240px;
+    top: 0;
     left: 0;
+    margin: 0 auto;
 }
 
 /*Menu*/
@@ -127,36 +154,39 @@ nav {
     justify-content: center;
 }
 
+/*CSS para los textos en el header*/
 nav a,
 nav p,
 nav span {
     color: rgba(255, 255, 255, 1);
     text-align: center;
     padding: 10px 15px;
-    font-family: 'Titulo', helvetica, verdana, sans-serif;
+    /*font-family: 'Titulo', helvetica, verdana, sans-serif;*/
+    font-family: 'Montserrat-bold';
     border-bottom: 2px solid rgba(2, 82, 86, 0);
     -webkit-transition: all 0.5s linear;
     -moz-transition: all 0.5s linear;
     -o-transition: all 0.5s linear;
     transition: all 0.5s linear;
     width: auto;
-    font-size: 15px;
+    font-size: 17px;
     border-bottom: 3px solid rgba(255, 255, 255, 0);
     box-sizing: border-box;
     position: relative;
 }
 
+/*Primera letra en mayúscula*/
 nav a:first-letter,
 nav p:first-letter,
 nav span:first-letter {
     text-transform: uppercase;
 }
 
+/*Hover en textos*/
 nav a:hover,
 nav p:hover,
 nav span:hover {
-    border-bottom: 3px solid rgba(2, 82, 86, 1);
-
+    border-bottom: 3px solid rgba(255, 255, 255, 1);
     border-image-slice: 1;
     background-color: rgba(255, 255, 255, .2);
     -webkit-border-radius: 5px 5px 0px 0px;
@@ -175,9 +205,9 @@ nav span:hover {
     border-image-slice: 1;
 }
 
+/*CSS cuando se está sobre un item*/
 .navActivo {
-    border-bottom: 3px solid rgba(2, 82, 86, 1);
-    background-color: rgb(211, 205, 37);
+    border-bottom: 3px solid rgba(255, 255, 255, 1);
     border-image-slice: 1;
     background-color: rgba(255, 255, 255, .2);
     -webkit-border-radius: 5px 5px 0px 0px;
@@ -257,19 +287,25 @@ nav span:hover .submenu {
     top: 55px;
 }
 
+/*CSS para dimensiones inferiores a 1000px*/
 @media (max-width: 1000px) {
+
+    /*Configuraciones generales Header*/
     header {
+        position: fixed;
         z-index: 101;
     }
 
+    /*CSS para el logo*/
     #logo {
         position: initial;
     }
 
+    /*CSS para la imagen del logo*/
     #logo a img {
         position: relative;
         top: 0;
-        width: 95px;
+        width: 150px;
         left: auto;
         right: auto;
         transform: translate(0%, 0%);
@@ -280,11 +316,18 @@ nav span:hover .submenu {
         display: none;
     }
 
+    /*CSS para el contenedor del header*/
     #header-contenedor {
         justify-content: center;
         padding: 10px 5%;
     }
 
+    /*CSS para el label naranja*/
+    #header-label {
+        display: none;
+    }
+
+    /*CSS para el nav del header*/
     #nav {
         display: none;
     }
@@ -298,13 +341,15 @@ nav span:hover .submenu {
         display: none;
     }
 
+    /*Boton Menu desplegable para movil*/
     #menu-mobile {
         display: block;
         top: 27px;
         left: 30px;
-        color: rgba(2, 82, 86, 1);
+        color: rgba(232, 145, 65, 1);
     }
 
+    /*Caja deplegable*/
     #menumob-mobile {
         display: block;
         position: fixed;
@@ -334,6 +379,7 @@ nav span:hover .submenu {
         z-index: 1;
     }
 
+    /*CSS para la caja desplegable del menu*/
     #menumob-opciones-mobile {
         position: absolute;
         width: 300px;
@@ -346,19 +392,21 @@ nav span:hover .submenu {
         -o-transition: left 0.5s ease-out;
         transition: left 0.5s ease-out;
         z-index: 5;
-        background-color: rgba(255, 255, 255, 1);
+        background-color: rgba(232, 145, 65, 1);
     }
 
+    /*Parte superior caja desplegable movil*/
     #menumob-presentacion-mobile {
         width: 100%;
         height: auto;
         padding: 15px 0px;
         box-sizing: border-box;
-        background-color: rgba(2, 82, 86, .2);
+        background-color: rgba(255, 255, 255, 1);
         text-align: center;
-        border-bottom: 2px dotted rgba(180, 180, 180, 1);
+        /*border-bottom: 2px dotted rgba(180, 180, 180, 1);*/
     }
 
+    /*Imagen desplegable parte superiorr movil*/
     #menumob-presentacion-mobile img {
         width: 140px;
         height: auto;
@@ -423,23 +471,26 @@ nav span:hover .submenu {
         max-height: 250px;
     }
 
+    /*Contenido menu en movil*/
     .menumob-conte-opcion-mobile {
-        font-size: 13px;
+        font-size: 15px;
         text-align: left;
         padding: 10px 0px;
         box-sizing: border-box;
-        border-bottom: 1px dotted rgba(2, 82, 86, 1);
+        border-bottom: 2px dotted rgba(255, 255, 255, 1);
     }
 
+    /*Primera letra del contenido en el menu en movil*/
     .menumob-conte-opcion-mobile:first-letter {
         text-transform: uppercase;
     }
 
+    /*Textos en el menu movil*/
     .menumob-conte-opcion-mobile a,
     .menumob-conte-opcion-mobile p,
     .menumob-conte-opcion-mobile span {
-        color: rgba(2, 82, 86, 1);
-        font-family: 'Titulo', helvetica, verdana, sans-serif;
+        color: rgba(255, 255, 255, 1);
+        font-family: 'Montserrat-bold';
         text-decoration: none;
         position: relative;
     }
@@ -481,22 +532,24 @@ nav span:hover .submenu {
         transform: rotate(180deg);
     }
 
+    /*CSS para el circulo de cierre en menu movil*/
     #menumob-cerrar-mobile {
         width: 40px;
         height: 40px;
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;
         border-radius: 50%;
-        background-color: rgba(2, 82, 86, 1);
+        background-color: rgba(255, 255, 255, 1);
         text-align: center;
         z-index: 7;
         position: relative;
         margin: 0px auto;
     }
 
+    /*Icono X en el menu de cierre movil*/
     #menumob-cerrar-mobile span {
         font-size: 1.3em;
-        color: rgba(255, 255, 255, 1);
+        color: rgba(232, 145, 65, 1);
         position: relative;
         top: 8px;
     }

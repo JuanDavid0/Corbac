@@ -8,8 +8,7 @@
     <div class="contenedorBanner">
         <?php while ($banners = mysqli_fetch_array($consulta)) { ?>
             <div class="slideBanner">
-                <div style="background-image: url('<?php echo $rutaFinal; ?>contenido/assets/<?php echo $banners['imagen']; ?>')"
-                    class="imgBanner"></div>
+                <div style="background-image: url('<?php echo $rutaFinal; ?>contenido/assets/<?php echo $banners['imagen']; ?>')" class="imgBanner"></div>
                 <div class="slideBanner-capa"></div>
                 <div id="disposicionTextoBaner<?php echo $banners['disposicion']; ?>" class="informacionBanner">
                     <?php if ($banners['titulo'] != null) { ?>
@@ -19,8 +18,7 @@
                         <div class="textoBanner"><?php echo $banners['texto'] ?></div>
                     <?php } ?>
                     <?php if ($banners['url'] != null) { ?>
-                        <a class="botonBannerEnlase"
-                            href="<?php echo $banners['url'] ?>"><?php echo $banners['texto_boton'] ?></a>
+                        <a class="botonBannerEnlase" href="<?php echo $banners['url'] ?>"><?php echo $banners['texto_boton'] ?></a>
                     <?php } ?>
                 </div>
             </div>
@@ -29,6 +27,8 @@
     <div class="anteriorBanner left" onclick="bannerClick(-1)"></div>
     <div class="siguienteBanner right" onclick="bannerClick(1);"></div>
     <div class="botonesBanner">
-        <script> iniciar();</script>
+        <script>
+            iniciar();
+        </script>
     </div>
 </div>

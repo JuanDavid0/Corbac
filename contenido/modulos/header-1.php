@@ -9,12 +9,14 @@
                 <?php
                 $consultageneral = consultaGeneralSinIdioma('logo');
                 while ($resgeneral = mysqli_fetch_array($consultageneral)) {
-                    ?>
-                    <img src="<?php echo $rutaFinal ?>contenido/assets/<?php echo $resgeneral['variable']; ?>"
-                        alt="<?php echo $resgeneral['descripcion']; ?>">
+                ?>
+                    <img src="<?php echo $rutaFinal ?>contenido/assets/<?php echo $resgeneral['variable']; ?>" alt="<?php echo $resgeneral['descripcion']; ?>">
                 <?php } ?>
             </a>
         </div>
+
+        <div id="header-label"></div>
+
         <nav id="nav">
             <?php
             $consultamenu = consultaMenu($idioma);
@@ -23,10 +25,9 @@
                     // el comHeader es la variable que se obtiene de la url
                     if ($comHeader == $idioma . "/" . $resmenu['identificador']) {
                         // este if es solo para poner un sombreado en el menu sobre la pagina que esta actualmente    
-                        ?>
-                        <a class="navActivo"
-                            href="<?php echo $ruta ?><?php echo $resmenu['identificador']; ?>"><?php echo $resmenu['nombre']; ?></a>
-                        <?php
+            ?>
+                        <a class="navActivo" href="<?php echo $ruta ?><?php echo $resmenu['identificador']; ?>"><?php echo $resmenu['nombre']; ?></a>
+                    <?php
                     } else { ?>
                         <a href="<?php echo $ruta ?><?php echo $resmenu['identificador']; ?>"><?php echo $resmenu['nombre']; ?></a>
                     <?php }
@@ -37,14 +38,13 @@
                         echo $resmenu['nombre'];
                         $consultasubmenuex = consultaExistenciaHijos($resmenu['identificador'], $idioma);
                         if ($consultasubmenuex != 0) {
-                            ?>
+                        ?>
                             <div class="submenu">
                                 <?php
                                 $consultasubmenu = consultaMenuHijos($resmenu['identificador'], $idioma);
                                 while ($ressubmenu = mysqli_fetch_array($consultasubmenu)) {
-                                    ?>
-                                    <a href="<?php echo $ruta ?><?php echo $ressubmenu['identificador']; ?>"
-                                        class="submenu-op"><?php echo $ressubmenu['nombre']; ?></a>
+                                ?>
+                                    <a href="<?php echo $ruta ?><?php echo $ressubmenu['identificador']; ?>" class="submenu-op"><?php echo $ressubmenu['nombre']; ?></a>
                                 <?php } ?>
                             </div>
                         <?php } ?>
@@ -61,21 +61,20 @@
                     <?php
                     $consultageneral = consultaGeneralSinIdioma('logo');
                     while ($resgeneral = mysqli_fetch_array($consultageneral)) {
-                        ?>
-                        <img src="<?php echo $rutaFinal ?>contenido/assets/<?php echo $resgeneral['variable']; ?>"
-                            alt="<?php echo $resgeneral['descripcion']; ?>">
+                    ?>
+                        <img src="<?php echo $rutaFinal ?>contenido/assets/<?php echo $resgeneral['variable']; ?>" alt="<?php echo $resgeneral['descripcion']; ?>">
                     <?php } ?>
                 </a>
                 <?php
                 $consultageneral = consultaGeneral('telefono-header', $idioma);
                 while ($resgeneral = mysqli_fetch_array($consultageneral)) {
-                    ?>
+                ?>
                     <a href="tel:<?php echo $resgeneral['variable']; ?>" class="telefono"></a>
                 <?php } ?>
                 <?php
                 $consultageneral = consultaGeneral('email-header', $idioma);
                 while ($resgeneral = mysqli_fetch_array($consultageneral)) {
-                    ?>
+                ?>
                     <a href="mailto:<?php echo $resgeneral['variable']; ?>" class="email"></a>
                 <?php } ?>
             </div>
@@ -85,10 +84,9 @@
                 $contsubmm = 0;
                 while ($resmenu = mysqli_fetch_array($consultamenu)) {
                     if ($resmenu['archivo'] != '') {
-                        ?>
+                ?>
                         <div class="menumob-conte-opcion-mobile">
-                            <a
-                                href="<?php echo $ruta ?><?php echo $resmenu['identificador']; ?>"><?php echo $resmenu['nombre']; ?></a>
+                            <a href="<?php echo $ruta ?><?php echo $resmenu['identificador']; ?>"><?php echo $resmenu['nombre']; ?></a>
                         </div>
                     <?php } else { ?>
                         <div class="menumob-conte-opcion-mobile">
@@ -97,20 +95,19 @@
                                 echo $resmenu['nombre'];
                                 $consultasubmenuex = consultaExistenciaHijos($resmenu['identificador'], $idioma);
                                 if ($consultasubmenuex != 0) {
-                                    ?>
-                                <div class="submenum">
-                                    <?php
+                                ?>
+                            <div class="submenum">
+                                <?php
                                     $consultasubmenu = consultaMenuHijos($resmenu['identificador'], $idioma);
                                     while ($ressubmenu = mysqli_fetch_array($consultasubmenu)) {
-                                        ?>
-                                        <a href="<?php echo $ruta ?><?php echo $ressubmenu['identificador']; ?>"
-                                            class="submenum-op"><?php echo $ressubmenu['nombre']; ?></a>
-                                    <?php } ?>
-                                </div>
-                            <?php } ?>
-                            </p>
+                                ?>
+                                    <a href="<?php echo $ruta ?><?php echo $ressubmenu['identificador']; ?>" class="submenum-op"><?php echo $ressubmenu['nombre']; ?></a>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
+                        </p>
                         </div>
-                        <?php $contsubmm++;
+                    <?php $contsubmm++;
                     } ?>
                 <?php } ?>
             </div>
