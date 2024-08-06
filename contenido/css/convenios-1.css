@@ -26,7 +26,6 @@
 }
 
 #convenios-1-titulo {
-	/*color: rgba(0,150,136,.8);*/
 	color: rgba(6, 38, 63, 1);
 	font-family: 'Titulo', helvetica, verdana, sans-serif;
 	font-size: 50px;
@@ -48,25 +47,16 @@
 .convenios-1-serv-titulo {
 	padding: 10px 50px 10px 10px;
 	box-sizing: border-box;
-	color: #0D1E2C;
-	/*color:rgba(6, 38, 63, 1);*/
+	/* color: #0D1E2C; */
+	color: rgba(6, 38, 63, 1);
 	text-align: left;
 	font-size: 19px;
 	font-family: 'Titulo', helvetica, verdana, sans-serif;
-	width: 270px;
+	width: 50%;
 	font-style: italic;
-}
-
-.convenios-1-serv:nth-child(1) .convenios-1-serv-titulo {
-	background-color: rgba(165, 18, 18, 1);
-}
-
-.convenios-1-serv:nth-child(2) .convenios-1-serv-titulo {
-	background-color: rgba(61, 90, 154, 1);
-}
-
-.convenios-1-serv:nth-child(3) .convenios-1-serv-titulo {
-	background-color: rgba(0, 173, 23, 1);
+	background-color: rgba(232, 145, 65, 1);
+	clip-path: polygon(0% 0%, 100% 0%, 92% 50%, 100% 100%, 0% 100%);
+	margin-bottom: inherit;
 }
 
 .convenios-1-serv-titulo:before {
@@ -78,101 +68,63 @@
 	margin-top: -10px;
 }
 
-.convenios-1-serv:nth-child(1) .convenios-1-serv-titulo:before {
-	border-left: 43px solid rgba(165, 18, 18, 1);
-}
-
-.convenios-1-serv:nth-child(2) .convenios-1-serv-titulo:before {
-	border-left: 43px solid rgba(61, 90, 154, 1);
-}
-
-.convenios-1-serv:nth-child(3) .convenios-1-serv-titulo:before {
-	border-left: 43px solid rgba(0, 173, 23, 1);
-}
-
-.convenios-1-servesp {
-	display: inline-flex;
+.card {
+	display: inline-block;
 	flex-direction: column;
-	align-items: center;
-	justify-content: flex-start;
+	width: 15rem;
+	height: 280px;
+	max-height: 330px;
+	background: linear-gradient(to bottom, rgba(232, 145, 65, 1), rgba(254, 254, 254));
+	border-radius: 10px;
+	box-shadow: 0px 10px 12px rgba(6, 38, 63, 0.08), -4px -4px 12px rgba(0, 123, 255, 0.08);
+	overflow: hidden;
+	transition: all 0.3s;
+	cursor: pointer;
 	box-sizing: border-box;
-	padding: 15px;
+	padding: 7px;
+	margin: 5px 20px;
 }
 
-.convenios-1-servesp-img {
-	width: 200px;
-	height: 200px;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0px 20px 20px rgba(254, 179, 33, 0.1),
+		/* Rojo oscuro con opacidad del 10% */
+		-4px -4px 12px rgba(232, 179, 2, 0.08);
+	/* Azul oscuro con opacidad del 8% */
 }
 
-.convenios-1-servesp-img img {
-	border-radius: 50px;
+
+.card-image-container {
+	width: 100%;
+	height: 80%;
+	border-radius: 10px;
+	margin-bottom: 12px;
+	overflow: hidden;
+	background-color: #ffffff;
+	display: ruby-text;
+}
+
+.card-image-container img {
 	width: 100%;
 	height: 100%;
-	object-fit: contain;
+	object-fit: cover;
+	border-radius: 10px;
+	padding: 10px;
+	transition: opacity 0.3s ease;
 }
 
-.convenios-1-servesp-img img:hover {
-	transform: scale(1.1);
-	transition: transform 0.5s ease-out;
+.card-image-container:hover img {
+	opacity: 0.5;
 }
 
-.convenios-1-servesp-contenido {
-	width: 100%;
-	margin-top: 10px;
-}
 
-.convenios-1-servesp-contenido-titulo {
-	font-size: 19px;
-	font-family: 'Titulo', helvetica, verdana, sans-serif;
-	margin: 10px 0;
-}
-
-.convenios-1-servesp-contenido-titulo a {
-	color: rgba(6, 38, 63, 1);
-	transition: color 0.5s ease-out;
-}
-
-.convenios-1-servesp-contenido-titulo a:hover {
-	text-decoration: underline;
-	color: rgba(0, 150, 136, .4);
-}
-
-.convenios-1-servesp-contenido-boton {
-	display: inline-block;
-	padding: 10px 25px;
-	margin-top: 10px;
-	text-align: center;
-	font-family: 'Opcional', helvetica, verdana, sans-serif;
-	color: rgba(255, 255, 255, 1);
-	border-radius: 50px;
-	transition: background-color 0.5s ease-out;
-	background-color: rgba(254, 179, 33, 1);
-	font-weight: bold;
-}
-
-.convenios-1-servesp-contenido-boton:hover {
-	background-color: rgba(5, 144, 228, 1);
-}
-
-@media (max-width: 700px) {
-	.convenios-1-servesp-img {
-		width: 80%;
-		-webkit-background-size: auto 100%;
-		-moz-background-size: auto 100%;
-		-o-background-size: auto 100%;
-		display: block;
-		margin: 0px auto;
-	}
-
-	.convenios-1-servesp-contenido {
-		padding-left: 0;
-		width: 100%;
-		margin: 20px auto;
-	}
+.card-title {
+	margin: 0;
+	font-size: 17px;
+	font-weight: 600;
+	color: #1797b8;
+	cursor: default;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	line-clamp: 1;
 }

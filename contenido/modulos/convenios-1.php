@@ -25,18 +25,18 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
                 $consultasubcat = consultaSubServicios($resservicios['titulo'], 4);
                 while ($ressubcat = mysqli_fetch_array($consultasubcat)) {
                     ?>
-                    <div class="convenios-1-servesp">
-                        <a href="<?php echo $rutaFinal . $resservicios['url_amigable'] . '/' . $ressubcat['url_amigable']; ?>"
-                            class="convenios-1-servesp-img">
-                            <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $ressubcat['imagen']; ?>"
-                                alt="Imagen">
-                        </a>
-                        <div class="convenios-1-servesp-contenido">
-                            <h3 class="convenios-1-servesp-contenido-titulo">
-                                <a
-                                    href="<?php echo $rutaFinal . $resservicios['url_amigable'] . '/' . $ressubcat['url_amigable']; ?>"><?php echo $ressubcat['titulo']; ?></a>
-                            </h3>
+                    <div class="card">
+                        <div class="card-image-container">
+                            <a
+                                href="<?php echo $rutaFinal . $resservicios['url_amigable'] . '/' . $ressubcat['url_amigable']; ?>">
+                                <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $ressubcat['imagen']; ?>"
+                                    alt="Imagen">
+                            </a>
                         </div>
+                        <p class="card-title">
+                            <a
+                                href="<?php echo $rutaFinal . $resservicios['url_amigable'] . '/' . $ressubcat['url_amigable']; ?>"><?php echo $ressubcat['titulo']; ?></a>
+                        </p>
                     </div>
                 <?php } ?>
             </div>
