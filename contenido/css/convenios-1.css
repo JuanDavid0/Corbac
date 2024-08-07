@@ -3,12 +3,12 @@
 	margin: 0px auto;
 	padding: 50px 5%;
 	box-sizing: border-box;
-	max-width: 1500px;
-	border-top: 10px double rgba(5, 32, 54, 1);
+	/*max-width: 1500px;*/
 	position: relative;
 	/*agregado*/
 	/*background-color:rgba(241, 245, 250, 1);*/
-	background-color: rgba(254, 254, 254, 1);
+	/*background-color: rgba(254, 254, 254, 1);*/
+	background: linear-gradient(to top, rgba(254, 254, 254), #06263Fa6, #ffff);
 }
 
 #convenios-1:before {
@@ -26,7 +26,7 @@
 }
 
 #convenios-1-titulo {
-	color: rgba(6, 38, 63, 1);
+	color: rgba(232, 145, 65, 1);
 	font-family: 'Titulo', helvetica, verdana, sans-serif;
 	font-size: 50px;
 	text-align: center;
@@ -72,7 +72,7 @@
 	display: inline-block;
 	flex-direction: column;
 	width: 15rem;
-	height: 280px;
+	height: 24rem;
 	max-height: 330px;
 	background: linear-gradient(to bottom, rgba(232, 145, 65, 1), rgba(254, 254, 254));
 	border-radius: 10px;
@@ -82,7 +82,7 @@
 	cursor: pointer;
 	box-sizing: border-box;
 	padding: 7px;
-	margin: 5px 20px;
+	margin: 5px 1.5rem;
 }
 
 .card:hover {
