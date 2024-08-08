@@ -1,5 +1,11 @@
+@font-face {
+    font-family: 'Montserrat-bold';
+    src: url(/contenido/fonts/Montserrat-Bold.ttf);
+    font-weight: bold;
+    font-style: bold;
+}
+
 footer{
-    background-image: url(../assets/1.jpg);
     width: 100%;
     position: relative;
     box-sizing: border-box;
@@ -12,6 +18,8 @@ footer{
     -moz-background-size: cover;
     -o-background-size: cover;
 }
+
+/*
 footer::before{
     width: 100%;
     content: " ";
@@ -31,6 +39,8 @@ footer::before{
 	-ms-transform: rotate(180deg);
 	transform: rotate(180deg);
 }
+*/
+
 #footer-contenedor{
     position: relative;
     top: 0;
@@ -44,16 +54,17 @@ footer::before{
     justify-content: center;
     position: relative;
 }
+
 #footer-capa{
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to right, #026aa5, #0c6fb2, #1b74be, #2a78cb, #3a7cd7, #2f86e0, #1f90e9, #009af1, #00aaf2, #00b9ed, #00c6e4, #33d1da);
+    background-color: rgba(6, 38, 63, 1);
     z-index: 1;
-    opacity: .4;
     top:0;
     left: 0;
 }
+
 #footer-logo{
     width: 33%;
     text-align: center;
@@ -62,10 +73,12 @@ footer::before{
     position: relative;
     margin-bottom: 20px;
 }
+
 #footer-logo img{
     width: 150px;
     height: auto;
 }
+
 #footer-redes{
     width: 33%;
     padding:10px 0px 30px 0px;
@@ -76,8 +89,9 @@ footer::before{
     display: flex;
     justify-content: center;
 }
+
 .footer-red{
-    color: rgba(2,82,86,1);
+    color: rgba(255,255,255,1);
     margin:0px 10px;
     font-size: .8em;
     width: 40px;
@@ -85,7 +99,7 @@ footer::before{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255,255,255,1);
+    background-color: rgba(232, 145, 65,1);
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -95,24 +109,31 @@ footer::before{
     transition: all 0.5s ease-out;
     cursor: pointer;
 }
+
 .footer-red:hover{
     transform: rotate(360deg);
 }
+
 .footer-facebook{
-    background-color: rgba(255,255,255,1);
+    background-color: rgba(232, 145, 65,1);
 }
+
 .footer-twitter{
     background-color: rgba(255,255,255,1);
 }
+
 .footer-instagram{
-    background-color: rgba(255,255,255,1);
+    background-color: rgba(232, 145, 65,1);
 }
+
 .footer-google{
     background-color: rgba(255,255,255,1);
 }
+
 .footer-whatsapp{
     background-color: rgba(255,255,255,1);
 }
+
 #footer-info{
     width: 33%;
     margin:0px auto;
@@ -124,7 +145,7 @@ footer::before{
 }
 #footer-info p{
     color: rgba(255,255,255,1);
-    font-family: 'Principal',helvetica,verdana,sans-serif;
+    font-family: 'Montserrat-bold';
     font-size: 17px;
     text-align: center;
     padding:5px 0px;
@@ -137,14 +158,31 @@ footer::before{
 #footer-info p a{
     color: rgba(255,255,255,1);
 }
+
 #footer-info p a:hover{
     text-decoration: underline;
 }
+
 #footer-info .telefono:before,
 #footer-info .email:before,
 #footer-info .localizador:before{
     margin:0px 5px 0px 0px;
 }
+
+#footer-certif {
+    width: 33%;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 10;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#footer-certif img {
+    width: 150px;
+    height: auto;
+}
+
 #footer-marca{
     width: 100%;
     padding:10px 5%;
@@ -154,6 +192,7 @@ footer::before{
     position: relative;
     z-index: 10;
 }
+
 #footer-copy{
     display: inline-block;
     font-size: 13px;
@@ -179,6 +218,7 @@ footer::before{
     -webkit-filter: invert(100%);
     filter: invert(100%);
 }
+
 @media (max-width: 900px){
     footer{
         background-attachment: scroll;

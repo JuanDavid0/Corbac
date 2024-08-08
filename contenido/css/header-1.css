@@ -219,11 +219,10 @@ nav span:hover {
 .submenu {
     width: 300px;
     position: absolute;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     height: auto;
-    background-color: #30c5ed;
-    background-color: rgba(53, 136, 149, .9);
+    background-color: rgba(232, 145, 65, 1);
     -webkit-border-radius: 0px 6px 6px 6px;
     -moz-border-radius: 0px 6px 6px 6px;
     border-radius: 0px 6px 6px 6px;
@@ -247,6 +246,7 @@ nav span:hover {
     left: 0;
 }
 
+/*
 .submenu::after {
     content: "";
     width: 0px;
@@ -257,6 +257,7 @@ nav span:hover {
     top: -15px;
     left: 0;
 }
+*/
 
 .submenu-op {
     width: 100%;
@@ -284,7 +285,8 @@ nav span:hover .submenu {
     display: block;
     opacity: 1;
     visibility: visible;
-    top: 55px;
+    top: 45px;
+    z-index: 3;
 }
 
 /*CSS para dimensiones inferiores a 1000px*/
@@ -523,6 +525,10 @@ nav span:hover .submenu {
         position: absolute;
         left: 0;
         top: 5px;
+    }
+
+    .submenum a::first-letter {
+        text-transform: uppercase;
     }
 
     .arriba::before {
