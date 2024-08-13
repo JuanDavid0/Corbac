@@ -81,7 +81,7 @@ if ($con == 'servicio') {
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    
+
     <meta name="twitter:site" content="<?php if ($varEspecifico != null) {
         echo $ruta . $con . "/" . $varEspecifico['url_amigable'];
     } else {
@@ -145,6 +145,20 @@ if ($con == 'servicio') {
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo $rutaFinal ?>contenido/css/general.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Montserrat-Bold';
+            src: url('<?php echo $rutaFinal; ?>contenido/fonts/Montserrat-Bold.ttf') format('truetype');
+            /* Cambia 'mifuente.ttf' por el nombre de tu archivo de fuente */
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'Montserrat-Bold', sans-serif;
+            background: #f0f0f0;
+        }
+    </style>
     <?php
     // Consulta de estilos necesarios de los modulos llamados
     $consultaCssModulo = consultaModulos($con);
@@ -154,7 +168,7 @@ if ($con == 'servicio') {
             <link rel="stylesheet" type="text/css" href="<?php echo $rutaFinal ?>contenido/css/<?php echo $resmod[0]; ?>.css">
         <?php }
     } ?>
-    
+
     <!-- JS -->
     <?php
     // Consulta de estilos necesarios de los modulos llamados

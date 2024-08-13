@@ -3,12 +3,7 @@
 	margin: 0px auto;
 	padding: 50px 5%;
 	box-sizing: border-box;
-	/*max-width: 1500px;*/
 	position: relative;
-	/*agregado*/
-	/*background-color:rgba(241, 245, 250, 1);*/
-	/*background-color: rgba(254, 254, 254, 1);*/
-	background: linear-gradient(to top, rgba(254, 254, 254), #06263Fa6, #ffff);
 }
 
 #convenios-1:before {
@@ -26,7 +21,7 @@
 }
 
 #convenios-1-titulo {
-	color: rgba(232, 145, 65, 1);
+	color: #e89141;
 	font-family: 'Titulo', helvetica, verdana, sans-serif;
 	font-size: 50px;
 	text-align: center;
@@ -48,13 +43,13 @@
 	padding: 10px 50px 10px 10px;
 	box-sizing: border-box;
 	/* color: #0D1E2C; */
-	color: rgba(6, 38, 63, 1);
+	color: #e89141;
 	text-align: left;
 	font-size: 19px;
 	font-family: 'Titulo', helvetica, verdana, sans-serif;
 	width: 50%;
 	font-style: italic;
-	background-color: rgba(232, 145, 65, 1);
+	background-color: #06263F;
 	clip-path: polygon(0% 0%, 100% 0%, 92% 50%, 100% 100%, 0% 100%);
 	margin-bottom: inherit;
 }
@@ -73,58 +68,170 @@
 	flex-direction: column;
 	width: 15rem;
 	height: 24rem;
-	max-height: 330px;
-	background: linear-gradient(to bottom, rgba(232, 145, 65, 1), rgba(254, 254, 254));
+	max-height: 24rem;
 	border-radius: 10px;
-	box-shadow: 0px 10px 12px rgba(6, 38, 63, 0.08), -4px -4px 12px rgba(0, 123, 255, 0.08);
 	overflow: hidden;
 	transition: all 0.3s;
 	cursor: pointer;
 	box-sizing: border-box;
-	padding: 7px;
 	margin: 5px 1.5rem;
+	background-color: transparent;
 }
-
-.card:hover {
-	transform: translateY(-10px);
-	box-shadow: 0px 20px 20px rgba(254, 179, 33, 0.1),
-		/* Rojo oscuro con opacidad del 10% */
-		-4px -4px 12px rgba(232, 179, 2, 0.08);
-	/* Azul oscuro con opacidad del 8% */
-}
-
 
 .card-image-container {
 	width: 100%;
 	height: 80%;
-	border-radius: 10px;
-	margin-bottom: 12px;
 	overflow: hidden;
-	background-color: #ffffff;
+	background-color: transparent;
 	display: ruby-text;
+	padding: 0 2px;
 }
 
 .card-image-container img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	border-radius: 10px;
-	padding: 10px;
 	transition: opacity 0.3s ease;
 }
-
-.card-image-container:hover img {
-	opacity: 0.5;
-}
-
 
 .card-title {
 	margin: 0;
 	font-size: 17px;
 	font-weight: 600;
-	color: #1797b8;
 	cursor: default;
 	display: -webkit-box;
-	-webkit-line-clamp: 1;
-	line-clamp: 1;
+	color: #e89141;
+}
+
+.flip-card-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+}
+
+.card:hover .flip-card-inner {
+	transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	border-radius: 1rem;
+}
+
+.flip-card-front {
+	background: #06263F;
+}
+
+.flip-card-back {
+	background-color: #e89141;
+	transform: rotateY(180deg);
+	padding: 10px;
+	/* Añade padding para que el contenido no quede pegado a los bordes */
+	box-sizing: border-box;
+	/* Asegura que el padding se incluya en el tamaño total del elemento */
+	height: 100%;
+	/* Asegura que el div ocupe todo el espacio disponible */
+	overflow: hidden;
+	/* Oculta cualquier contenido que se desborde */
+}
+
+.card-title-back {
+	font-size: 20px;
+	font-weight: 600;
+	color: #f0f0f0;
+	text-align: center;
+	/* Centra el título */
+}
+
+.card-info-back {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: auto;
+	padding: 10px;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.card-subtitle {
+	color: #f0f0f0;
+	font-size: 16px;
+}
+
+.card-text-back {
+	color: #06263F;
+	padding-bottom: 1rem;
+	font-size: 14px;
+}
+
+.card-subtitle,
+.card-text-back {
+	margin: 0;
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+button {
+	border: unset;
+    border-radius: 15px;
+    color: #06263F;
+    z-index: 1;
+	background: #f0f0f0;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    transition: all 250ms;
+    overflow: hidden;
+    width: 7.5rem;
+    height: 2.5rem;
+}
+
+button::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	border-radius: 15px;
+	background-color: #06263F;
+	z-index: -1;
+	-webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+	box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+	transition: all 250ms
+}
+
+button:hover {
+	color: #e89141;
+}
+
+button:hover::before {
+	width: 100%;
+}
+@media screen and (max-width: 1024px) {
+	.card {
+		max-height: 20rem;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.card {
+		max-height: 20rem;
+	}
+	#convenios-1-titulo{
+		font-size: 2rem;
+	}
 }

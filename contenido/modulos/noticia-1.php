@@ -22,8 +22,8 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
             <figure class="noticias">
                 <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resnoticialim['imagen_p']; ?>"
                     alt="pr-sample13" />
-                <div class="date"><span class="day"><?php echo $dia; ?></span><span
-                        class="month"><?php echo $mes; ?></span></div>
+                <div class="date"><span class="day"><?php echo $dia; ?></span><span class="month"><?php echo $mes; ?></span>
+                </div>
                 <figcaption>
                     <h3><?php echo $resnoticialim['nombre']; ?></h3>
                     <p><?php echo $resnoticialim['presentacion']; ?></p>

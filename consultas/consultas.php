@@ -506,3 +506,16 @@ function consultaPago($pagina,$idioma){
     disconnectDB($conexion);
     return $result;
 }
+
+
+function consultaConvenios() {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM convenio WHERE estado = 'activo'";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
