@@ -38,6 +38,31 @@ function blogNivel($categoria,$idioma) {
     disconnectDB($conexion);
     return $result;
 }
+
+//NivelOferta
+function ofertaNivel($categoria,$idioma) {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT identificador FROM pagina WHERE categoria = '".$categoria."'  AND idioma = '".$idioma."'";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
+
+function noticiaNivel($categoria,$idioma) {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT identificador FROM pagina WHERE categoria = '".$categoria."'  AND idioma = '".$idioma."'";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
 function idiomas($url) {
     $conexion = connectDB();
     mysqli_set_charset($conexion, "utf8");
@@ -321,6 +346,22 @@ function consultaNoticiasLim($limite,$idioma) {
     disconnectDB($conexion);
     return $result;
 }
+
+// Funcion para consultar las ofertas del include de oferta academica
+// esta funcion recibe un parametro de limite para consultar el limite
+// maximo de noticias
+function consultaOfertaLim($limite,$idioma) {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM oferta_academica WHERE estado = 'activo' AND idioma = '".$idioma."' ORDER BY fecha DESC LIMIT 0," . $limite;
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
+
 // Funcion para consultar las ultimas noticias excepto la noticia en la que 
 // se esta en ese momento leyendo. 
 // esta funcion recibe dos parametros, uno de identificador de la noticia especifica, otro del limite de las noticias que se van a consultar para mostrar
@@ -342,6 +383,18 @@ function consultaGaleria($modulo, $pagina,$idioma) {
     $conexion = connectDB();
     mysqli_set_charset($conexion, "utf8");
     $sql = "SELECT * FROM galeria WHERE estado = 'activo' AND identificador_pagina = '" . $pagina . "' AND modulo = '" . $modulo . "' AND idioma = '".$idioma."' ORDER BY orden ASC";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
+
+function consultaGaleriaNoticias($modulo, $pagina,$nombreNoticia,$idioma) {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM galeria WHERE estado = 'activo' AND identificador_pagina = '" . $pagina . "' AND modulo = '" . $modulo . "' AND idioma = '".$idioma."' AND nombre = '" . $nombreNoticia . "'ORDER BY orden ASC";
     if (!$result = mysqli_query($conexion, $sql)) {
         die(mysqli_error($conexion));
     }
@@ -499,6 +552,19 @@ function consultaPago($pagina,$idioma){
     $conexion = connectDB();
     mysqli_set_charset($conexion, "utf8");
     $sql = "SELECT * FROM pago WHERE estado = 'activo' AND id_servicio = '". $pagina ."' AND idioma = '". $idioma ."' ORDER BY orden ASC";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
+
+
+function consultaConvenios() {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM convenio WHERE estado = 'activo'";
     if (!$result = mysqli_query($conexion, $sql)) {
         die(mysqli_error($conexion));
     }
