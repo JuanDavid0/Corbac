@@ -38,6 +38,18 @@ function blogNivel($categoria,$idioma) {
     disconnectDB($conexion);
     return $result;
 }
+
+function noticiaNivel($categoria,$idioma) {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT identificador FROM pagina WHERE categoria = '".$categoria."'  AND idioma = '".$idioma."'";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
 function idiomas($url) {
     $conexion = connectDB();
     mysqli_set_charset($conexion, "utf8");
@@ -342,6 +354,18 @@ function consultaGaleria($modulo, $pagina,$idioma) {
     $conexion = connectDB();
     mysqli_set_charset($conexion, "utf8");
     $sql = "SELECT * FROM galeria WHERE estado = 'activo' AND identificador_pagina = '" . $pagina . "' AND modulo = '" . $modulo . "' AND idioma = '".$idioma."' ORDER BY orden ASC";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
+
+function consultaGaleriaNoticias($modulo, $pagina,$nombreNoticia,$idioma) {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM galeria WHERE estado = 'activo' AND identificador_pagina = '" . $pagina . "' AND modulo = '" . $modulo . "' AND idioma = '".$idioma."' AND nombre = '" . $nombreNoticia . "'ORDER BY orden ASC";
     if (!$result = mysqli_query($conexion, $sql)) {
         die(mysqli_error($conexion));
     }

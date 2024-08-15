@@ -26,7 +26,9 @@ else if (count($nuevaCadena) == 2) {
     $paginas = paginasNivel(1, $idioma);
     $ruta = $rutaFinal . $idioma . "/";
     $con = "";
-
+    if ($nuevaCadena[1] == 'noticia') {
+        header("Location: " . $ruta . "inicio");
+    }
     while ($resultados = mysqli_fetch_array($paginas)) {
         if ($nuevaCadena[1] == $resultados['identificador']) {
             $con = $resultados['identificador'];
@@ -50,8 +52,8 @@ else if (count($nuevaCadena) == 2) {
 
     while ($resultados = mysqli_fetch_array($paginas)) {
         if ($nuevaCadena[1] == $resultados['identificador']) {
-            $con1 = $resultados['categoria'];
-            $con = ($con1 == "servicio") ? "servicio" : $resultados['identificador'];
+            $con1 = $resultados['categoria']; // info-noticia
+            $con = ($con1 == "servicio") ? "servicio" : $resultados['identificador']; //noticia
             break;
         }
     }
@@ -61,6 +63,7 @@ else if (count($nuevaCadena) == 2) {
     }
 
     if ($con != "") {
+        //noticia-n1, info-noticia
         $varEspecifico = consultaUrlEspecifico($url, $con1);
         if ($varEspecifico != NULL) {
             include './contenido/inicio.php';

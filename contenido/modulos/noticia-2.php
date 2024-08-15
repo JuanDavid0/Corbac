@@ -1,5 +1,6 @@
 <?php
 $idModulo = consultaModulo("noticia-2");
+$identificador_noticias = mysqli_fetch_row(noticiaNivel('noticia', $idioma));
 $consulta_historia_modulo = consultaInfoModulo($idModulo, $con, $idioma);
 $varindice = 0;
 unset($varcontenido);
@@ -27,9 +28,9 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
                             class="month"><?php echo $mes; ?></span></div>
                     <figcaption>
                         <h3><?php echo $resnoticialim['nombre']; ?></h3>
-                        <p><?php echo $resnoticialim['presentacion']; ?></p>
                     </figcaption>
                     <div class="hover"><i class="ion-android-open"></i></div>
+                    <a href="<?php echo $ruta.$identificador_noticias[0]; ?>/<?php echo $resnoticialim['url_amigable'];?>" ></a>
                 </figure>
             </div>
         <?php } ?>

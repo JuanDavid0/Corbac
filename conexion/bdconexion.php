@@ -2,12 +2,12 @@
 // Conectar
 function connectDB()
 {
-    /*
-    $server = "auth-db805.hstgr.io";
-    $user = "u116500482_ucorbac";
-    $pass = "5v#BFB;N";
-    $bd = "u116500482_corbac";
-    */
+
+    // $server = "auth-db805.hstgr.io";
+    // $user = "u116500482_ucorbac";
+    // $pass = "5v#BFB;N";
+    // $bd = "u116500482_corbac";
+
 
     $server = "localhost";
     $user = "root";

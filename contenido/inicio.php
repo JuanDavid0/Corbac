@@ -73,7 +73,7 @@ if ($con == 'servicio') {
         if ($con != "noticia") {
             echo $rutaFinal . "contenido/assets/" . $varEspecifico['imagen'];
         } else {
-            echo $rutaFinalNoticias . "contenido/assets/" . $varEspecifico['imagen'] . ".jpg";
+            echo $rutaFinalNoticias . "contenido/assets/" . $varEspecifico['imagen_p'];
         }
     } else {
         echo $rutaFinal . "contenido/assets/" . $resmetatag['imagen'] . ".jpg";
@@ -121,7 +121,7 @@ if ($con == 'servicio') {
         if ($con != "noticia") {
             echo $rutaFinal . "contenido/assets/" . $varEspecifico['imagen'];
         } else {
-            echo $rutaFinalNoticias . "contenido/assets/" . $varEspecifico['imagen'] . ".jpg";
+            echo $rutaFinalNoticias . "contenido/assets/" . $varEspecifico['imagen_p'] . ".jpg";
         }
     } else {
         echo $rutaFinal . "contenido/assets/" . $resmetatag['imagen'] . ".jpg";
