@@ -2,17 +2,17 @@
 // Conectar
 function connectDB()
 {
-
+    /*
     $server = "auth-db805.hstgr.io";
     $user = "u116500482_ucorbac";
     $pass = "5v#BFB;N";
     $bd = "u116500482_corbac";
+    */
 
-
-    // $server = "localhost";
-    // $user = "root";
-    // $pass = "root";
-    // $bd = "corbacv2";
+    $server = "localhost";
+    $user = "root";
+    $pass = "";
+    $bd = "corbac";
 
     $conexion = mysqli_connect($server, $user, $pass, $bd);
 
