@@ -543,3 +543,15 @@ function consultaConvenios() {
     disconnectDB($conexion);
     return $result;
 }
+
+function consultaInfoLanding($pagina, $idioma, $fecha) {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM landing WHERE estado = 'activo' and fecha_fin > '". $fecha."' and pagina = '". $pagina."' and idioma = '". $idioma."'";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
