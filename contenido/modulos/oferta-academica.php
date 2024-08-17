@@ -2,7 +2,7 @@
 $idModulo = consultaModulo("oferta-academica");
 $consulta_historia_modulo = consultaInfoModuloGolbal($idModulo, $idioma);
 $varindice = 0;
-$identificador_oferta = mysqli_fetch_row(ofertaNivel('oferta-academica', $idioma));
+$identificador_oferta = mysqli_fetch_row(ofertaNivel('oferta_academica', $idioma));
 unset($varcontenido);
 while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
     $varcontenido[$varindice] = $rescontenido['contenido'];
