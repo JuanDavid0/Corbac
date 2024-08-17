@@ -39,6 +39,18 @@ function blogNivel($categoria,$idioma) {
     return $result;
 }
 
+function noticiaNivel($categoria,$idioma) {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT identificador FROM pagina WHERE categoria = '".$categoria."'  AND idioma = '".$idioma."'";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
+
 //NivelOferta
 function ofertaNivel($categoria,$idioma) {
     $conexion = connectDB();
@@ -402,6 +414,18 @@ function consultaGaleriaNoticias($modulo, $pagina,$nombreNoticia,$idioma) {
     disconnectDB($conexion);
     return $result;
 }
+
+function consultaGaleriaNoticias($modulo, $pagina,$nombreNoticia,$idioma) {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM galeria WHERE estado = 'activo' AND identificador_pagina = '" . $pagina . "' AND modulo = '" . $modulo . "' AND idioma = '".$idioma."' AND nombre = '" . $nombreNoticia . "'ORDER BY orden ASC";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
 // --------------------------------------------------------
 function consultaGaleriaP($pagina) {
     $conexion = connectDB();
@@ -552,6 +576,19 @@ function consultaPago($pagina,$idioma){
     $conexion = connectDB();
     mysqli_set_charset($conexion, "utf8");
     $sql = "SELECT * FROM pago WHERE estado = 'activo' AND id_servicio = '". $pagina ."' AND idioma = '". $idioma ."' ORDER BY orden ASC";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
+
+
+function consultaConvenios() {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM convenio WHERE estado = 'activo'";
     if (!$result = mysqli_query($conexion, $sql)) {
         die(mysqli_error($conexion));
     }

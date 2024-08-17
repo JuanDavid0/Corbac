@@ -13,33 +13,52 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
         <?php echo $varcontenido[0]; ?>
     </h3>
     <div id="convenios-1-contenedor">
-        <?php
-        $consultaservicios = consultaServicios(0);
-        while ($resservicios = mysqli_fetch_array($consultaservicios)) {
-            ?>
             <div class="convenios-1-serv">
                 <h4 class="convenios-1-serv-titulo">
-                    <?php echo $resservicios['titulo']; ?>
+                    <?php echo $varcontenido[1]; ?>
                 </h4>
                 <?php
-                $consultasubcat = consultaSubServicios($resservicios['titulo'], 4);
-                while ($ressubcat = mysqli_fetch_array($consultasubcat)) {
+                $consultaConv = consultaConvenios();
+                while ($ressubcat = mysqli_fetch_array($consultaConv)) {
                     ?>
                     <div class="card">
-                        <div class="card-image-container">
-                            <a
-                                href="<?php echo $rutaFinal . $resservicios['url_amigable'] . '/' . $ressubcat['url_amigable']; ?>">
-                                <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $ressubcat['imagen']; ?>"
-                                    alt="Imagen">
-                            </a>
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-image-container">
+                                    <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $ressubcat['imagen']; ?>"
+                                        alt="Imagen">
+                                </div>
+                                <p class="card-title">
+                                    <?php echo $ressubcat['nombre']; ?>
+                                </p>
+                            </div>
+                            <div class="flip-card-back">
+                                <h1 class="card-title-back">
+                                    <?php echo $ressubcat['nombre']; ?>
+                                </h1>
+                                <div class="card-info-back">
+                                    <h3 class="card-subtitle"><?php echo $varcontenido[2]; ?></h3>
+                                    <p class="card-text-back">
+                                        <?php echo $ressubcat['vigencia']; ?>
+                                    </p>
+                                    <h3 class="card-subtitle"><?php echo $varcontenido[3]; ?></h3>
+                                    <p class="card-text-back">
+                                        <?php echo $ressubcat['contacto']; ?>
+                                    </p>
+                                    <h3 class="card-subtitle"><?php echo $varcontenido[4]; ?></h3>
+                                    <p class="card-text-back">
+                                        <?php echo $ressubcat['email']; ?>
+                                    </p>
+                                    <a href="<?php echo $ressubcat['url']; ?>" target="_blank">
+                                        <button>
+                                            <p>Visitar web</p>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <p class="card-title">
-                            <a
-                                href="<?php echo $rutaFinal . $resservicios['url_amigable'] . '/' . $ressubcat['url_amigable']; ?>"><?php echo $ressubcat['titulo']; ?></a>
-                        </p>
                     </div>
                 <?php } ?>
             </div>
-        <?php } ?>
     </div>
 </div>

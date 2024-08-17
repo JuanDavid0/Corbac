@@ -1,36 +1,83 @@
+<?php
+$idModulo = consultaModulo("post-1");
+$url_noticia = $varEspecifico['url_amigable'];
+$consulta_galeria_noticia = consultaGaleriaNoticias($idModulo, $con, $url_noticia, $idioma);
+?>
 <div id="post-1">
-    <div id="post-1-conta">
-        <h2 id="post-1-contaco-titulo"><?php echo $varEspecifico['nombre']; ?></h2>
-        <img src="<?php echo $rutaFinal ?>contenido/assets/<?php echo $varEspecifico['imagen'] ?>.jpg" alt="<?php echo $varEspecifico['alt'] ?>" id="post-1-conta-img">
-        <div id="post-1-contaco">
-            <p id="post-1-contaco-introduccion"><?php echo $varEspecifico['descripcion'] ?></p>
-        </div>
+    <div class="titulo-centrado">
+        <h1><?php echo $varEspecifico['nombre']; ?></h1>
+        <p>
+            <?php echo $varEspecifico['descripcion']; ?>
+        </p>
     </div>
-    <div id="post-compartir">
-        <p>Compartelo en tus redes sociales</p>
-        <a href="http://www.facebook.com/sharer/sharer.php?u=<?php echo $rutaFinal ?>contenido/noticia/<?php echo $varEspecifico['url_amigable']; ?>&title=<?php echo $varEspecifico['nombre']; ?>&description=<?php echo $varEspecifico['descripcion']; ?>&imagen=<?php echo $rutaFinalNoticias ?>contenido/assets/<?php echo $varEspecifico['imagen_p']; ?>.jpg"
-           class="post-compartir-red facebook compartir-facebook" target="_blank"></a>
-        <a href="http://twitter.com/intent/tweet?status=<?php echo $varEspecifico['descripcion']; ?> - <?php echo $rutaFinal ?>contenido/noticia/<?php echo $varEspecifico['url_amigable']; ?> "
-           class="post-compartir-red twitter compartir-twitter" target="_blank"></a>                    
-    </div>          
+    <div id="post-1-conta">
+        <article class="article">
+            <section class="content">
+                <h2 class="headline">Desarrollo del evento</h2>
+                <p>
+                    <?php echo $varEspecifico['contenido1']; ?>
+                </p>
+            </section>
+            <div class="img-container">
+                <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $varEspecifico['imagen1']; ?>"
+                    alt="Image">
+            </div>
+        </article>
+    </div>
     <?php
+    if ($varEspecifico['contenido2'] != '') {
+        ?>
+        <div id="post-1-conta">
+            <article class="article-2">
+                <div class="img-container">
+                    <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $varEspecifico['imagen2']; ?>"
+                        alt="Image">
+                </div>
+                <section class="content">
+                    <h2 class="headline">Impacto y Reflexiones</h2>
+                    <p>
+                        <?php echo $varEspecifico['contenido2']; ?>
+                    </p>
+                </section>
+            </article>
+        </div>
+        <?php
+    }
     if (($varEspecifico['video'] != '') || ($varEspecifico['video'] != null)) {
         ?>
         <div id="post-1-video">
             <div id="post-1-video-cont">
-                <h3 id="post-1-video-titulo"><?php echo $varEspecifico['tvideo'] ?></h3>
-                <p id="post-1-video-contenido"><?php echo $varEspecifico['cvideo'] ?></p>
+                <section class="content">
+                    <h2 class="headline"><?php echo $varEspecifico['tvideo']; ?></h2>
+                    <p>
+                        <?php echo $varEspecifico['cvideo']; ?>
+                    </p>
+                </section>
             </div>
             <div id="post-1-video-video">
-                <?php echo $varEspecifico['video'] ?>
+                <iframe src="https://www.youtube.com/embed/xjiaYzpFco8" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
-    <?php } ?>
-    <?php
-    if (($varEspecifico['contenido'] != '') || ($varEspecifico['contenido'] != null)) {
+    <?php }
+    if (mysqli_num_rows($consulta_galeria_noticia) > 0) {
         ?>
-        <div id="post-1-contenido">
-            <p><?php echo $varEspecifico['contenido']; ?></p>
+        <div class="container">
+            <h2 class="text-center">Galeria</h2>
+            <div class="lightbox-gallery">
+                <?php
+                while ($resgaleriaNoticia = mysqli_fetch_array($consulta_galeria_noticia)) {
+                    ?>
+                    <div><img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resgaleriaNoticia['imagen']; ?>"
+                            alt="Image">
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
         </div>
-    <?php } ?>
+        <?php
+    }
+    ?>
 </div>

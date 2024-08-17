@@ -1,0 +1,117 @@
+@font-face {
+    font-family: 'Montserrat-bold';
+    src: url(/contenido/fonts/Montserrat-Bold.ttf);
+    font-weight: bold;
+    font-style: bold;
+}
+
+#nosotros-1 {
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 5%;
+    box-sizing: border-box;
+    max-width: 1500px;
+    border-top: 10px double rgba(5, 32, 54, 1);
+    position: relative;
+    background-color: rgba(254, 254, 254, 1);
+}
+
+#nosotros-1-titulo {
+    color: rgba(6, 38, 63, 1);
+    font-family: 'Titulo', helvetica, verdana, sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+#nosotros-1-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.nosotros-1-tarjeta {
+    background-color: rgba(232, 145, 65, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+    width: 30%;
+    margin: 10px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.nosotros-1-img {
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.nosotros-1-texto {
+    padding: 10px;
+    width: 100%;
+}
+
+.nosotros-1-texto p {
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Montserrat-bold';
+    font-size: 0.8em;
+    line-height: 1.5em;
+    text-align: justify;
+}
+
+.nosotros-1-contenedor .nosotros-1-tarjeta:hover {
+    transform: scale(1.05);
+}
+
+.nosotros-1-contenedor:hover > .nosotros-1-tarjeta:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.95);
+}
+
+@media (max-width: 1200px) {
+    .nosotros-1-tarjeta {
+        width: 45%;
+    }
+
+    #nosotros-1-titulo {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nosotros-1-tarjeta {
+        width: 90%;
+    }
+
+    #nosotros-1-titulo {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    #nosotros-1 {
+        padding: 20px 5%;
+    }
+
+    .nosotros-1-tarjeta {
+        width: 100%;
+    }
+
+    #nosotros-1-titulo {
+        font-size: 30px;
+    }
+
+    .nosotros-1-texto p {
+        font-size: 0.7em;
+    }
+}
