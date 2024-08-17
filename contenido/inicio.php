@@ -70,7 +70,7 @@ if ($con == 'servicio') {
 
     <meta property="og:image" content="<?php
     if ($varEspecifico != null) {
-        if ($con != "noticia") {
+        if ($con != "noticia" && $con != "oferta") {
             echo $rutaFinal . "contenido/assets/" . $varEspecifico['imagen'];
         } else {
             echo $rutaFinalNoticias . "contenido/assets/" . $varEspecifico['imagen_p'];
@@ -118,7 +118,7 @@ if ($con == 'servicio') {
 
     <meta name="twitter:image:src" content="<?php
     if ($varEspecifico != null) {
-        if ($con != "noticia") {
+        if ($con != "noticia" && $con != "oferta") {
             echo $rutaFinal . "contenido/assets/" . $varEspecifico['imagen'];
         } else {
             echo $rutaFinalNoticias . "contenido/assets/" . $varEspecifico['imagen_p'] . ".jpg";

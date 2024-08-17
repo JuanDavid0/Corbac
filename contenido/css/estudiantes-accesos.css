@@ -1,0 +1,51 @@
+/* Estilos generales para el contenedor de accesos de estudiantes */
+.estudiantes-accesos {
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.estudiantes-accesos .titulo h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: rgba(6, 38, 63, 1);
+    margin-bottom: 20px;
+}
+
+.estudiantes-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* Estilo para el contenedor de cada estudiante */
+.estudiantes-contenido {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(232, 145, 65, 1);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para la imagen del estudiante */
+.estudiantes-contenido img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Estilo para el nombre y el enlace del estudiante */
+.estudiantes-contenido p {
+    margin: 0;
+}
+
+.estudiantes-contenido a {
+    color: rgba(255, 255, 255, 1);
+    font-size: 1rem;
+    font-weight: bold;
+}

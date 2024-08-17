@@ -1,0 +1,11 @@
+.desafios-nosotros {
+    padding: 50px 5%;
+    background-image: url("../assets/backg_corbac.webp");
+}
+
+.desafios-nosotros p {
+    color: rgba(255, 255, 255, 1);
+    text-align: justify;
+    line-height: 1.5em;
+    font-size: 17px;
+}

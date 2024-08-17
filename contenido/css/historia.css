@@ -1,0 +1,145 @@
+#historia {
+    width: 100%;
+    padding: 50px 5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+}
+
+#historia-img {
+    width: 40%;
+    height: 50%;
+    position: relative;
+    margin-top: 4em
+}
+
+#historia-cont {
+    width: 60%;
+    padding: 0px 5% 0px 0px;
+    box-sizing: border-box;
+}
+
+#historia-titulo {
+    width: 300px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Montserrat-bold';
+    color: rgba(232, 145, 65, 1);
+    font-size: 35px;
+    text-transform: uppercase;
+    position: relative;
+    margin: 0px auto;
+}
+
+#historia-titulo::before {
+    width: 100%;
+    content: " ";
+    background-image: url(../assets/logo.webp);
+    position: absolute;
+    left: -20%;
+    top: 0px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: 60px auto;
+    -webkit-background-size: 130px auto;
+    -moz-background-size: 60px auto;
+    -o-background-size: 60px auto;
+    z-index: 1;
+}
+
+#historia-contenido {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: justify;
+    margin: 20px auto 0px auto;
+    font-family: 'Raleway';
+    color: rgba(6, 38, 63, 1);
+    font-size: 17px;
+    line-height: 1.6em;
+}
+
+[aria-label="contenido"] {
+    border: 2px solid rgba(232, 145, 65, 1);
+    overflow-x: scroll;
+}
+
+[aria-label="contenido"] ul {
+    display: flex;
+}
+
+[aria-label="contenido"] li {
+    list-style: none;
+    flex: 0 0 100%;
+    padding: 2rem;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+@media (max-width: 1200px) {
+
+    [aria-label="contenido"] li {
+        flex: 0 0 100%;
+        padding: 1rem;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 900px) {
+    #historia {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #historia-img {
+        width: 100%;
+        display: block;
+        margin: 0px auto;
+    }
+
+    #historia-cont {
+        width: 100%;
+        margin: 20px auto;
+        padding: 0;
+        display: block;
+    }
+
+    #historia-contenido {
+        text-align: justify;
+    }
+
+    [aria-label="contenido"] ul {
+        flex-wrap: wrap;
+    }
+
+    [aria-label="contenido"] li {
+        flex: 0 0 100%;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #historia {
+        padding: 25px 5%;
+    }
+
+    #historia-img {
+        width: 100%;
+    }
+
+    #historia-cont {
+        width: 100%;
+    }
+
+    #historia-contenido {
+        font-size: 15px;
+    }
+
+    [aria-label="contenido"] li {
+        padding: 0.5rem;
+        font-size: 14px;
+    }
+}
