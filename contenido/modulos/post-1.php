@@ -13,7 +13,9 @@ $consulta_galeria_noticia = consultaGaleriaNoticias($idModulo, $con, $url_notici
     <div id="post-1-conta">
         <article class="article">
             <section class="content">
-                <h2 class="headline">Desarrollo del evento</h2>
+                <h2 class="headline">
+                    <?php echo $varEspecifico['titulo1']; ?>
+                </h2>
                 <p>
                     <?php echo $varEspecifico['contenido1']; ?>
                 </p>
@@ -34,7 +36,9 @@ $consulta_galeria_noticia = consultaGaleriaNoticias($idModulo, $con, $url_notici
                         alt="Image">
                 </div>
                 <section class="content">
-                    <h2 class="headline">Impacto y Reflexiones</h2>
+                    <h2 class="headline">
+                        <?php echo $varEspecifico['titulo2']; ?>
+                    </h2>
                     <p>
                         <?php echo $varEspecifico['contenido2']; ?>
                     </p>
