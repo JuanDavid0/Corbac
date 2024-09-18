@@ -1,46 +1,44 @@
-#landing-1 {
-	background: rgb(232, 145, 65);
-	background: linear-gradient(171deg, rgba(232, 145, 65, 1) 23%, rgba(6, 38, 63, 1) 81%);
-	width: 100vw;
-	/* 100% del ancho de la ventana */
-	height: 100vh;
-	max-height: 900px;
-	/* 100% del alto de la ventana */
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
 .cont-landing {
-	margin: 3%;
-	height: 100%;
+    position: fixed;
+    background: rgb(232, 145, 65, 1);
+    background: linear-gradient(171deg, rgba(232, 145, 65, 1) 23%, rgba(6, 38, 63, 1) 81%);
+    width: 100vw;
+    height: 100vh;
+    max-height: 900px;
+    z-index: 9999;
+    display: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.info-lading {
-	width: 100%;
-	height: 100%;
-	padding: 12px;
-	border-radius: 5px;
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	gap: 10px;
+.info-landing {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    flex-direction: column; */
 }
 
-.info-lading section {
-	width: 60%;
-	height: 100%;
-	border-radius: 1rem;
+.info-landing section {
+    width: 60%;
+    height: 100%;
+    border-radius: 1rem;
 }
 
 .landing {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .landing .text1 {
-	flex: 1;
 	padding: 20px;
 	display: flex;
 	justify-content: space-between;
@@ -48,12 +46,12 @@
 }
 
 .text1 h1 {
-	font-size: 3rem;
-	color: #06263f;
+    font-size: 3rem;
+    color: #06263f;
 }
 
 .landing .text2 {
-	flex: 7.5;
+    flex: 1;
 	padding: 20px;
 	display: flex;
 	justify-content: space-between;
@@ -61,7 +59,7 @@
 }
 
 .titulo-landing {
-	font-size: larger;
+    font-size: larger;
 	position: relative;
 	height: 70%;
 	width: 70%;
@@ -70,22 +68,18 @@
 }
 
 .titulo-landing h1 {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	margin: 0;
-	padding: 10px;
-	color: rgba(0, 17, 52, 1);
-	font-weight: bold;
-	text-transform: uppercase;
-	font-size: 3rem;
-	letter-spacing: 1px;
-	text-shadow: 3px 2px 5px rgb(0 0 0 / 36%);
+    position: absolute;
+    font-size: 3rem;
+    padding: 10px;
+    color: rgba(0, 17, 52, 1);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 3px 2px 5px rgb(0 0 0 / 36%);
 }
 
 .descripcion-landing {
-	position: relative;
+    position: relative;
 	height: 10%;
 	width: 65%;
 	margin: auto 0;
@@ -121,153 +115,167 @@
 }
 
 .landing .text3 {
-	flex: 0.5;
-	padding: 20px;
+    flex: 0.5;
+	padding: 30px;
 	display: flex;
 	align-items: center;
 	position: relative;
 }
 
 .text3 a {
-	display: flex;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e89141;
+	color: #06263f;
+    text-decoration: none;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    margin-top: 20px;
 	justify-content: center;
-	align-items: center;
-	width: 70%;
-	height: 100%;
-	border-radius: 1rem;
-	background-color: #e89141;
-	text-decoration: none;
-	color: inherit;
-	padding: 10px;
+	align-items: center;	
 	box-shadow: 17px 13px 8px rgba(0, 0, 0, 0.2);
 	transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.text3 a p {
-	margin: 0;
-	color: #06263f;
+.text a p {
+    margin: 0;
 	font-weight: bold;
 	text-align: center;
 }
 
 .text3 a:hover {
-	background-color: #C0C0C0;
-	box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    background-color: #C0C0C0;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .formulario {
-	border-radius: 1rem;
-	box-shadow: 0px 5px 7px 0px black;
-	width: 40%;
-	height: 90%;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	align-items: center;
-
+    border-radius: 1rem;
+    box-shadow: 0px 5px 7px 0px black;
+    width: 50%;
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
 }
 
 .formulario .promesa {
-	font-size: larger;
-	width: 90%;
-	text-align: center;
-	margin: 0 auto;
-	padding: 10px;
-	color: rgba(0, 17, 52, 1);
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	text-shadow: 3px 2px 5px rgb(0 0 0 / 36%);
+    font-size: larger;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+    color: rgba(0, 17, 52, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 3px 2px 5px rgb(0 0 0 / 36%);
 }
 
 .formulario h3 {
-	padding: 10px;
-	color: rgba(0, 17, 52, 1);
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	text-shadow: 3px 2px 5px rgb(0 0 0 / 36%);
+    padding: 10px;
+    color: rgba(0, 17, 52, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 3px 2px 5px rgb(0 0 0 / 36%);
 }
-
-
 
 .formulario iframe {
-	width: 95%;
-	height: 80%;
-	border-radius: 5px;
-	display: block;
-	transform-origin: center;
-	/* Escala desde el centro */
+    width: 100%;
+    height: 400px;
+    border-radius: 5px;
+    display: block;
+    transform-origin: center;
 }
 
-@media only screen and (max-width: 1040px) {
-	.titulo-landing h1 {
-		font-size: 2rem;
-	}
 
-	.descripcion-landing p {
-		font-size: 1rem;
-	}
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
 
-	.texto-landing p {
-		font-size: 1rem;
-	}
+@media only screen and (max-width: 1172px) {
+    .titulo-landing h1 {
+        font-size: 2rem;
+    }
 
+    .descripcion-landing p {
+        font-size: 1rem;
+    }
 
-	.titulo-landing,
-	.descripcion-landing,
-	.texto-landing {
-		width: 90%;
-		height: fit-content;
-		position: relative;
-	}
+    .texto-landing p {
+        font-size: 1rem;
+    }
 
-	.titulo-landing h1,
+    .titulo-landing, .descripcion-landing, .texto-landing {
+        width: 90%;
+        height: fit-content;
+        position: relative;
+    }
+
+    .titulo-landing h1,
 	.descripcion-landing p,
 	.texto-landing p {
 		position: relative;
+        font-size: 1rem;
 	}
 
-	.landing .text2 {
-		padding: 20px;
-		flex-direction: column;
-		flex: none;
-	}
+    .landing .text2 {
+        padding: 20px;
+        flex-direction: column;
+        flex: none;
+    }
 
-	#landing-1 {
-		padding: 1rem 1rem;
-		max-height: fit-content;
-	}
+    .close-button {
+        top: 0;
+        right: 0;
+        font-size: 1rem;
+    }
 }
 
-@media only screen and (max-width: 900px) {
-	#landing-1 {
-		padding: 1rem 1rem;
-		height: fit-content;
-	}
+@media only screen and (max-width: 700px) {
 
-	.info-lading {
-		flex-direction: column;
-	}
+    .text1 h1 {
+        font-size: 1rem;
+    }
 
-	.info-lading section {
-		width: 100%;
-		height: fit-content;
-	}
+    .info-landing {
+        flex-direction: column;
+    }
 
-	.texto-landing {
-		width: 100%;
-	}
+    .info-landing section {
+        width: 100%;
+        height: fit-content;
+    }
 
-	.formulario {
-		width: 90%;
-	}
+    .texto-landing {
+        width: 100%;
+    }
 
-	.landing .text3 {
-		justify-content: center;
-	}
+    .formulario {
+        width: 90%;
+    }
 
+    .landing .text3 {
+        justify-content: center;
+        padding: 0;
+    }
 
-	.landing .text1 {
-		justify-content: center;
-		padding: 10px;
-	}
+    .landing .text1 {
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .landing .text2 {
+        padding: 10px;
+    }
 }

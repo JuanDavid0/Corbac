@@ -1,0 +1,510 @@
+/*-------------------------------------------------------------------------*/
+/*Reseteo*/
+/*-------------------------------------------------------------------------*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-style: normal;
+}
+.fclear{
+    clear: both;
+}
+/*scroll*/
+::-webkit-scrollbar
+{
+    width: 8px;
+    height: 2px;
+    background-color: rgba(220,220,220,1);
+}
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(120,120,120,.2);
+    background-color: rgba(120,120,120,1);
+}
+/*-------------------------------------------------------------------------*/
+/*Fuentes*/
+/*-------------------------------------------------------------------------*/
+@font-face {
+    font-family: 'Principal';
+    src: url('../fonts/Roboto-Light.eot');
+    src: url('../fonts/Roboto-Light.woff2') format('woff2'),
+        url('../fonts/Roboto-Light?#iefix') format('embedded-opentype');
+    src: url('../fonts/Roboto-Light.woff') format('woff'),
+        url('../fonts/Roboto-Light.ttf') format('truetype'),
+        url('../fonts/Roboto-Light.svg#Roboto-Light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Titulo';
+    src: url('../fonts/Roboto-Bold.eot');
+    src: url('../fonts/Roboto-Bold.woff2') format('woff2'),
+        url('../fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype');
+    src: url('../fonts/Roboto-Bold.woff') format('woff'),
+        url('../fonts/Roboto-Bold.ttf') format('truetype'),
+        url('../fonts/Roboto-Bold.svg#Roboto-Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Opcional';
+    src: url('../fonts/camphor-w04-thin.eot');
+    src: url('../fonts/camphor-w04-thin.woff2') format('woff2'),
+        url('../fonts/camphor-w04-thin.eot?#iefix') format('embedded-opentype');
+    src: url('../fonts/camphor-w04-thin.woff') format('woff'),
+        url('../fonts/camphor-w04-thin.ttf') format('truetype'),
+        url('../fonts/camphor-w04-thin.svg#camphor-w04-thin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Logo';
+    src: url('../fonts/Raleway-ExtraBoldItalic.eot');
+    src: url('../fonts/Raleway-ExtraBoldItalic.woff2') format('woff2'),
+        url('../fonts/Raleway-ExtraBoldItalic.eot?#iefix') format('embedded-opentype');
+    src: url('../fonts/Raleway-ExtraBoldItalic.woff') format('woff'),
+        url('../fonts/Raleway-ExtraBoldItalic.ttf') format('truetype'),
+        url('../fonts/Raleway-ExtraBoldItalic.svg#Raleway-ExtraBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
+    src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/*Alertas generales*/
+.alerta, .confirmar{
+    width: 350px;
+    height: 250px;
+    padding:20px;
+    position: absolute;
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,1);
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    overflow: hidden;
+    left: 50%;
+    right: 50%;
+    top: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    box-shadow: 0 3px 5px 0.3px rgba(0,0,0,.24);
+    font-family: 'Titulo',helvetica,verdana,sans-serif;
+    font-size: 17px;
+    text-align: center;
+    display: none;
+}
+.alerta-icono{
+    width: 100%;
+    text-align: center;
+    font-size: 2.5em;
+    margin:10px auto;
+}
+.alerta-texto{
+    color: rgba(117,117,117,1);
+    font-family: 'Principal',helvetica,verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.4em;
+    display: block;
+}
+.alerta-boton{
+    display: block;
+    padding: 10px 25px;
+    margin:10px auto 0px auto;
+    box-sizing: border-box;
+    max-width: 160px;
+    text-align: center;
+    cursor: pointer;
+    border:none;
+    font-family: 'Titulo',helvetica,verdana,sans-serif;
+    color: rgba(255,255,255,1);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+}
+.alerta-error-color{
+    color: rgba(122,22,0,1);
+}
+.alerta-error-color1{
+    color: rgba(255,101,82,1);
+}
+.alerta-error-fondo{
+    background-color: rgba(122,22,0,1);
+}
+.alerta-error-fondo1{
+    background-color: rgba(255,101,82,1);
+}
+
+.alerta-ok-color{
+    color: rgba(0,200,0,1);
+}
+.alerta-ok-fondo{
+    background-color: rgba(0,200,0,1);
+}
+/*MediaQueries*/
+@media (max-width: 400px){
+    .alerta, .formulario_reportes{
+        width: 280px;
+    }
+}
+/*Iconos*/
+.coma:before {
+    font-family: 'FontAwesome';
+    content: "\f10d";
+    font-size: 1.4em;
+    margin:0px 5px;
+    display: inline-block;
+}
+.comc:after {
+    font-family: 'FontAwesome';
+    content: "\f10e";
+    font-size: 1.4em;
+    margin:0px 5px;
+    display: inline-block;
+}
+.facebook:before{
+    font-family: 'FontAwesome';
+    content: "\f09a";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.google:before{
+    font-family: 'FontAwesome';
+    content: "\f0d5";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.youtube:before{
+    font-family: 'FontAwesome';
+    content: "\f16a";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.whatsapp:before{
+    font-family: 'FontAwesome';
+    content: "\f232";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.instagram:before{
+    font-family: 'FontAwesome';
+    content: "\f16d";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.twitter:before{
+    font-family: 'FontAwesome';
+    content: "\f099";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.telefono:before{
+    font-family: 'FontAwesome';
+    content: "\f095";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.localizador:before{
+    font-family: 'FontAwesome';
+    content: "\f124";
+    font-size: 1.4em;
+    display: inline-block;
+    margin:0px 5px 0px 0px;
+}
+.up:before{
+    font-family: 'FontAwesome';
+    content: "\f139";
+    font-size: 1.4em;
+    display: inline-block;
+    margin:0px 5px 0px 0px;
+}
+.coffee:before{
+    font-family: 'FontAwesome';
+    content: "\f0f4";
+    font-size: 1.4em;
+    display: inline-block;
+    margin:0px 5px 0px 0px;
+}
+.search:before{
+    font-family: 'FontAwesome';
+    content: "\f002";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.htl:before{
+    font-family: 'FontAwesome';
+    content: "\f0fd";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.rest:before{
+    font-family: 'FontAwesome';
+    content: "\f0f5";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.masc:before{
+    font-family: 'FontAwesome';
+    content: "\f1b0";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.salud:before{
+    font-family: 'FontAwesome';
+    content: "\f21e";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.entr:before{
+    font-family: 'FontAwesome';
+    content: "\f008";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.trv:before{
+    font-family: 'FontAwesome';
+    content: "\f072";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.bar:before{
+    font-family: 'FontAwesome';
+    content: "\f000";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.edu:before{
+    font-family: 'FontAwesome';
+    content: "\f19d";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.hogar:before{
+    font-family: 'FontAwesome';
+    content: "\f015";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.byb:before{
+    font-family: 'FontAwesome';
+    content: "\f016";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.cc:before{
+    font-family: 'FontAwesome';
+    content: "\f291";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.moda:before{
+    font-family: 'FontAwesome';
+    content: "\f292";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.cul:before{
+    font-family: 'FontAwesome';
+    content: "\f293";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.autom:before{
+    font-family: 'FontAwesome';
+    content: "\f0e4";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.left:before{
+    font-family: 'FontAwesome';
+    content: "\f053";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.right:before{
+    font-family: 'FontAwesome';
+    content: "\f054";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.domicilioi:before{
+    font-family: 'FontAwesome';
+    content: "\f21c";
+    font-size: 1.4em;
+    display: inline-block;
+}
+.calificacion:before{
+    font-family: 'FontAwesome';
+    content: "\f006";
+    font-size: 1.4em;
+    display: inline-block;
+    margin-right: 1px;
+}
+.street:before{
+    font-family: 'FontAwesome';
+    content: "\f018";
+    font-size: 1em;
+    display: inline-block; 
+    margin-right: 1px;
+}
+.wp:before{
+    font-family: 'FontAwesome';
+    content: "\f232";
+    font-size: 1em;
+    display: inline-block; 
+    margin-right: 1px;
+}
+.handup:before{
+    font-family: 'FontAwesome';
+    content: "\f25a";
+    font-size: 1em;
+    display: inline-block; 
+    margin-right: 5px;
+}
+.close:after{    
+    font-family: 'FontAwesome';
+    content: "\f00d";
+    font-size: 13px;
+    display: inline; 
+    margin-left: 4px;
+    cursor: pointer;     
+}
+.menui:before{
+    font-family: 'FontAwesome';
+    content: "\f0c9";
+    font-size: 1.4em;
+    display: block;
+}
+.fa-nuevo:before{
+    font-family: 'FontAwesome';
+    content: "\f196";
+    font-size: 2em;
+    display: block;
+}
+.fa-search1:before{
+    font-family: 'FontAwesome';
+    content: "\f002";
+    font-size: 2em;
+    display: block;
+}
+.fa-editar:before{
+    font-family: 'FontAwesome';
+    content: "\f040";
+    font-size: 1.3em;
+    display: inline-block;
+    margin-right: 8px;
+}
+.fa-eliminar:before{
+    font-family: 'FontAwesome';
+    content: "\f014";
+    font-size: 1.3em;
+    display: inline-block;
+    margin-right: 8px;
+}
+.fa-galeria:before{
+    font-family: 'FontAwesome';
+    content: "\f03e";
+    font-size: 1.3em;
+    display: inline-block;
+    margin-right: 8px;
+}
+.usuario:before{
+    font-family: 'FontAwesome';
+    content: "\f007";
+    font-size: 1.3em;
+    display: inline-block;
+}
+.passw:before{
+    font-family: 'FontAwesome';
+    content: "\f023";
+    font-size: 1.3em;
+    display: inline-block;
+}
+.closec:before{
+    font-family: 'FontAwesome';
+    content: "\f057";
+    font-size: 1.3em;
+    display: inline-block;
+}
+.ico-notificacion:before{
+    font-family: 'FontAwesome';
+    content: "\f0f3";
+    font-size: 1.3em;
+    display: inline-block;
+}
+.ico-persona:before{
+    font-family: 'FontAwesome';
+    content: "\f183";
+    font-size: 1.3em;
+    display: inline-block;
+}
+.ico-agregar:before{
+    font-family: 'FontAwesome';
+    content: "\f067";
+    font-size: 1.3em;
+    display: inline-block;
+}
+.ico-check:before{
+    font-family: 'FontAwesome';
+    content: "\f058";
+    font-size: 1.2em;
+    display: inline-block; 
+}
+.up:before{
+    font-family: 'FontAwesome';
+    content: "\f106";
+    font-size: 1.3em;
+    display: inline-block;
+}
+.down:before{
+    font-family: 'FontAwesome';
+    content: "\f107";
+    font-size: 1.3em;
+    display: inline-block;
+}
+.download:before{
+    font-family: 'FontAwesome';
+    content: "\f019";
+    font-size: 1.3em;
+    margin-right: 5px;
+    display: inline-block;
+}
+.formularioRecargo:after{
+    font-family: 'FontAwesome';
+    content: "\f2d2";
+    font-size: 1.3em;
+    display: inline-block;
+    margin-left: 5px;
+}
+.see:after{
+    font-family: 'FontAwesome';
+    content: "\f06e";
+    font-size: 1.3em;
+    display: inline-block;
+    margin-left: 5px;
+}
+.pdf:after{
+    font-family: 'FontAwesome';
+    content: "\f1c1";
+    font-size: 1.3em;
+    display: inline-block;
+    margin-left: 5px;
+}
+.holidays:before{
+    font-family: 'FontAwesome';
+    content: "\f0e9";
+    font-size: 1.3em;
+    display: inline-block;
+    margin-right: 15px;
+}

@@ -1,0 +1,8 @@
+# carpeta assets
+assets/
+
+# Carpeta fonts
+fonts/
+
+# .zip
+*.zip

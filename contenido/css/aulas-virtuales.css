@@ -1,0 +1,100 @@
+.aulas-virtuales {
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.aulas-virtuales .titulo h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: rgba(6, 38, 63, 1);
+    margin-bottom: 20px;
+}
+
+.aulas-contenedor {
+    width: 90%;
+    height: auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin: 0px auto;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+
+}
+
+.link-aulas {
+    max-width: 310px;
+    min-width: 250px;
+    margin-bottom: 40px;
+    float: left;
+    border-radius: 13px;
+    position: relative;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.link-aulas img {
+    width: 100%;
+    height: 250px;
+    padding: 8px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.aulas-texto {
+    position: relative;
+    float: left;
+    bottom: 0px;
+    padding: 11px 12px;
+}
+
+.aulas-texto h3 {
+    margin-bottom: 40px;
+    font-size: 24px;
+    color: rgba(0, 17, 52, 1);
+}
+
+.boton {
+    border: unset;
+    border-radius: 15px;
+    color: rgba(0, 17, 52, 1);
+    background-color: #e89141;
+    position: absolute;
+    font-weight: 1000;
+    font-size: 15px;
+    padding: 9px 15px;
+    float: left;
+    text-align: center;
+    margin-top: 22px;
+    transition: all 250ms;
+    overflow: hidden;
+    z-index: 1;
+    bottom: 10px;
+    left: 10px;
+}
+
+.boton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #06263F;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms
+}
+
+.link-aulas:hover .boton {
+    color: #e89141
+}
+
+.link-aulas:hover .boton::before {
+    width: 100%;
+}

@@ -11,10 +11,13 @@ $idModulo = consultaModulo("estudiantes-accesos");
         $consultarEstudiantes = consultaInfoEstudiantes();
         while ($resEstudiantes = mysqli_fetch_array($consultarEstudiantes)) {
         ?>
-            <div class="estudiantes-contenido">
+            <a href="<?php echo $resEstudiantes["url"] ?>" class="link-estudiantes">
                 <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resEstudiantes['icono']; ?>" alt="<?php echo $resEstudiantes["icono"] ?>">
-                <p><a href="<?php echo $resEstudiantes["url"] ?>"><?php echo $resEstudiantes["nombre"] ?></a></p>
-            </div>
+                <span class="estudiantes-texto">
+                    <h3><?php echo $resEstudiantes["nombre"] ?></h3>
+                </span>
+                <p class="boton">Ver más</p>
+            </a>
         <?php } ?>
     </div>
 </div>

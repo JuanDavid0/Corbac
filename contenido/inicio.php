@@ -21,17 +21,17 @@ if ($con == 'servicio') {
     <title> CORBAC </title>
 
     <!-- <meta name="description" content="<?php if (($varEspecifico != null) && ($con != 'servicio')) {
-        echo $varEspecifico['descripcion'];
-    } else if (($varEspecifico != null) && ($con == 'servicio')) {
-        echo $varEspecifico['descripcion_Corta'];
-    } else {
-        echo $resmetatag['descripcion'];
-    } ?>">
+                                                echo $varEspecifico['descripcion'];
+                                            } else if (($varEspecifico != null) && ($con == 'servicio')) {
+                                                echo $varEspecifico['descripcion_Corta'];
+                                            } else {
+                                                echo $resmetatag['descripcion'];
+                                            } ?>">
     <meta name="theme-color" content="#<?php if ($con == 'servicio') {
-        echo $resmetatag_ser['color_movil'];
-    } else {
-        echo $resmetatag['color_movil'];
-    } ?>"> 
+                                            echo $resmetatag_ser['color_movil'];
+                                        } else {
+                                            echo $resmetatag['color_movil'];
+                                        } ?>"> 
     -->
 
     <!-- Favicon -->
@@ -41,103 +41,103 @@ if ($con == 'servicio') {
 
     <!-- og tags Facebook -->
     <meta property="og:url" content="<?php if ($varEspecifico != null) {
-        echo $ruta . $con . "/" . $varEspecifico['url_amigable'];
-    } else {
-        echo $ruta . $con;
-    } ?>" />
+                                            echo $ruta . $con . "/" . $varEspecifico['url_amigable'];
+                                        } else {
+                                            echo $ruta . $con;
+                                        } ?>" />
 
     <meta property="og:type" content="<?php if ($con == 'servicio') {
-        echo $resmetatag_ser['typefb'];
-    } else {
-        echo $resmetatag['typefb'];
-    } ?>" />
+                                            echo $resmetatag_ser['typefb'];
+                                        } else {
+                                            echo $resmetatag['typefb'];
+                                        } ?>" />
 
     <meta property="og:title" content="<?php if (($varEspecifico != null) && ($con != 'servicio')) {
-        echo $varEspecifico['nombre'] . $resmetatag['titulo'];
-    } else if (($varEspecifico != null) && ($con == 'servicio')) {
-        echo $resmetatag_ser['titulo'];
-    } else {
-        echo $resmetatag['titulo'];
-    } ?>" />
+                                            echo $varEspecifico['nombre'] . $resmetatag['titulo'];
+                                        } else if (($varEspecifico != null) && ($con == 'servicio')) {
+                                            echo $resmetatag_ser['titulo'];
+                                        } else {
+                                            echo $resmetatag['titulo'];
+                                        } ?>" />
 
     <meta property="og:description" content="<?php if (($varEspecifico != null) && ($con != 'servicio')) {
-        echo $varEspecifico['descripcion'];
-    } else if (($varEspecifico != null) && ($con == 'servicio')) {
-        echo $varEspecifico['descripcion_Corta'];
-    } else {
-        echo $resmetatag['descripcion'];
-    } ?>" />
+                                                    echo $varEspecifico['descripcion'];
+                                                } else if (($varEspecifico != null) && ($con == 'servicio')) {
+                                                    echo $varEspecifico['descripcion_Corta'];
+                                                } else {
+                                                    echo $resmetatag['descripcion'];
+                                                } ?>" />
 
     <meta property="og:image" content="<?php
-    if ($varEspecifico != null) {
-        if ($con != "noticia" && $con != "oferta") {
-            echo $rutaFinal . "contenido/assets/" . $varEspecifico['imagen'];
-        } else {
-            echo $rutaFinalNoticias . "contenido/assets/" . $varEspecifico['imagen_p'];
-        }
-    } else {
-        echo $rutaFinal . "contenido/assets/" . $resmetatag['imagen'] . ".jpg";
-    } ?>" />
+                                        if ($varEspecifico != null) {
+                                            if ($con != "noticia" && $con != "oferta") {
+                                                echo $rutaFinal . "contenido/assets/" . $varEspecifico['imagen'];
+                                            } else {
+                                                echo $rutaFinalNoticias . "contenido/assets/" . $varEspecifico['imagen_p'];
+                                            }
+                                        } else {
+                                            echo $rutaFinal . "contenido/assets/" . $resmetatag['imagen'] . ".jpg";
+                                        } ?>" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
 
     <meta name="twitter:site" content="<?php if ($varEspecifico != null) {
-        echo $ruta . $con . "/" . $varEspecifico['url_amigable'];
-    } else {
-        echo $ruta . $con;
-    } ?>" />
+                                            echo $ruta . $con . "/" . $varEspecifico['url_amigable'];
+                                        } else {
+                                            echo $ruta . $con;
+                                        } ?>" />
 
     <meta name="twitter:title" content="<?php if (($varEspecifico != null) && ($con != 'servicio')) {
-        echo $varEspecifico['nombre'] . $resmetatag['titulo'];
-    } else if (($varEspecifico != null) && ($con == 'servicio')) {
-        echo $resmetatag_ser['titulo'];
-    } else {
-        echo $resmetatag['titulo'];
-    } ?>" />
+                                            echo $varEspecifico['nombre'] . $resmetatag['titulo'];
+                                        } else if (($varEspecifico != null) && ($con == 'servicio')) {
+                                            echo $resmetatag_ser['titulo'];
+                                        } else {
+                                            echo $resmetatag['titulo'];
+                                        } ?>" />
 
     <meta name="twitter:description" content="<?php if (($varEspecifico != null) && ($con != 'servicio')) {
-        echo $varEspecifico['descripcion'];
-    } else if (($varEspecifico != null) && ($con == 'servicio')) {
-        echo $varEspecifico['descripcion_Corta'];
-    } else {
-        echo $resmetatag['descripcion'];
-    } ?>" />
+                                                    echo $varEspecifico['descripcion'];
+                                                } else if (($varEspecifico != null) && ($con == 'servicio')) {
+                                                    echo $varEspecifico['descripcion_Corta'];
+                                                } else {
+                                                    echo $resmetatag['descripcion'];
+                                                } ?>" />
 
     <meta name="twitter:creator" content="<?php
-    if ($varEspecifico != null) {
-        if ($con != "noticia") {
-            echo $resmetatag_ser['creatortw'];
-        } else {
-            echo $resmetatag['creatortw'];
-        }
-    } else {
-        echo $resmetatag['creatortw'];
-    }
-    ?>" />
+                                            if ($varEspecifico != null) {
+                                                if ($con != "noticia") {
+                                                    echo $resmetatag_ser['creatortw'];
+                                                } else {
+                                                    echo $resmetatag['creatortw'];
+                                                }
+                                            } else {
+                                                echo $resmetatag['creatortw'];
+                                            }
+                                            ?>" />
 
     <meta name="twitter:image:src" content="<?php
-    if ($varEspecifico != null) {
-        if ($con != "noticia" && $con != "oferta") {
-            echo $rutaFinal . "contenido/assets/" . $varEspecifico['imagen'];
-        } else {
-            echo $rutaFinalNoticias . "contenido/assets/" . $varEspecifico['imagen_p'] . ".jpg";
-        }
-    } else {
-        echo $rutaFinal . "contenido/assets/" . $resmetatag['imagen'] . ".jpg";
-    } ?>" />
+                                            if ($varEspecifico != null) {
+                                                if ($con != "noticia" && $con != "oferta") {
+                                                    echo $rutaFinal . "contenido/assets/" . $varEspecifico['imagen'];
+                                                } else {
+                                                    echo $rutaFinalNoticias . "contenido/assets/" . $varEspecifico['imagen_p'] . ".jpg";
+                                                }
+                                            } else {
+                                                echo $rutaFinal . "contenido/assets/" . $resmetatag['imagen'] . ".jpg";
+                                            } ?>" />
 
     <meta name="twitter:domain" content="<?php
-    if ($varEspecifico != null) {
-        if ($con != "noticia") {
-            echo $resmetatag_ser['domaintw'];
-        } else {
-            echo $resmetatag['domaintw'];
-        }
-    } else {
-        echo $resmetatag['domaintw'];
-    }
-    ?>" />
+                                            if ($varEspecifico != null) {
+                                                if ($con != "noticia") {
+                                                    echo $resmetatag_ser['domaintw'];
+                                                } else {
+                                                    echo $resmetatag['domaintw'];
+                                                }
+                                            } else {
+                                                echo $resmetatag['domaintw'];
+                                            }
+                                            ?>" />
 
     <!-- canonical 
     <link rel="canonical" href="<?php echo $ruta . $con . "/" . $varEspecifico['url_amigable']; ?>" />
@@ -146,27 +146,14 @@ if ($con == 'servicio') {
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo $rutaFinal ?>contenido/css/general.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
-    <style>
-        @font-face {
-            font-family: 'Montserrat-Bold';
-            src: url('<?php echo $rutaFinal; ?>contenido/fonts/Montserrat-Bold.ttf') format('truetype');
-            /* Cambia 'mifuente.ttf' por el nombre de tu archivo de fuente */
-            font-weight: normal;
-            font-style: normal;
-        }
-        body {
-            font-family: 'Montserrat-Bold', sans-serif;
-            background: #f0f0f0;
-        }
-    </style>
     <?php
     // Consulta de estilos necesarios de los modulos llamados
     $consultaCssModulo = consultaModulos($con);
     while ($resmod = mysqli_fetch_array($consultaCssModulo)) {
         if ($resmod[0] !== "") {
-            ?>
+    ?>
             <link rel="stylesheet" type="text/css" href="<?php echo $rutaFinal ?>contenido/css/<?php echo $resmod[0]; ?>.css">
-        <?php }
+    <?php }
     } ?>
 
     <!-- JS -->
@@ -175,11 +162,12 @@ if ($con == 'servicio') {
     $consultaJsModulo = consultaModulos($con);
     while ($resmod = mysqli_fetch_array($consultaJsModulo)) {
         if ($resmod[1] != "") {
-            ?>
+    ?>
             <script src="<?php echo $rutaFinal ?>contenido/js/<?php echo $resmod[1]; ?>.js" type="text/javascript"></script>
-            <?php
+    <?php
         }
     } ?>
+    <script src="../contenido/js/landing-1.js"></script>
 </head>
 
 <body>
@@ -187,7 +175,7 @@ if ($con == 'servicio') {
     // Llamado de modulos que conforman la pagina
     $consultamodulo1 = consultaModulos($con);
     while ($resmod1 = mysqli_fetch_array($consultamodulo1)) {
-        include ("modulos/" . $resmod1[0] . ".php");
+        include("modulos/" . $resmod1[0] . ".php");
     }
     ?>
 </body>

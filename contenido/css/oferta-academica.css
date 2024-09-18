@@ -27,125 +27,58 @@
     gap: 40px;
 }
 
-.oferta-card {
-    position: relative;
+.link-oferta-academica {
     max-width: 310px;
     min-width: 250px;
-    background: #e89141;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    font-weight: bold;
-    border-radius: 15px;
-    cursor: pointer;
+    margin-bottom: 40px;
+    float: left;
+    background-color: #e89141;
+    border-radius: 13px;
+    position: relative;
+    text-decoration: none;
     overflow: hidden;
-    box-sizing: border-box;
 }
 
-.oferta-card::before,
-.oferta-card::after {
-    position: absolute;
-    content: "";
-    width: 20%;
-    height: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    font-weight: bold;
-    background-color: #06263F;
-    transition: all 0.5s;
-}
-
-.oferta-card::before {
-    top: 0;
-    right: 0;
-    border-radius: 0 15px 0 100%;
-}
-
-.oferta-card::after {
-    bottom: 0;
-    left: 0;
-    border-radius: 0 100% 0 15px;
-}
-
-.oferta-card:hover::before,
-.oferta-card:hover::after {
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-}
-
-.oferta-academica-texto {
-    font-size: 20px;
-    text-align: center;
-    z-index: 1;
-    margin: 0;
-    padding: 8px;
-    color: rgba(255, 255, 255, 1);
-}
-
-.oferta-card img {
+.link-oferta-academica img {
     width: 100%;
     height: 250px;
     padding: 8px;
     object-fit: cover;
 }
 
-.oferta-card-button-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0.5s, opacity 0.5s;
+.oferta-academica-texto {
+    position: relative;
+    float: left;
+    bottom: 0px;
+    padding: 11px 12px;
 }
 
-.oferta-card:hover .oferta-card-button-container {
-    visibility: visible;
-    opacity: 1;
-    z-index: 1;
-    font-size: 30px;
+.oferta-academica-texto h3 {
+    margin-bottom: 40px;
+    font-size: 24px;
+    color: rgba(0, 17, 52, 1);
 }
 
-.oferta-card-button-container a{
-    color: rgba(255, 255, 255, 1);
-}
-
-.oferta-card-button {
-    background-color: orange;
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-button {
+.boton {
     border: unset;
     border-radius: 15px;
-    color: #06263F;
-    z-index: 1;
-    background: #e89141;
-    position: relative;
+    color: rgba(0, 17, 52, 1);
+    background-color: rgba(255, 255, 255, 1);
+    position: absolute;
     font-weight: 1000;
-    font-size: 17px;
+    font-size: 15px;
+    padding: 9px 15px;
+    float: left;
+    text-align: center;
+    margin-top: 22px;
     transition: all 250ms;
     overflow: hidden;
-    width: 13.5rem;
-    height: 2.5rem;
-    cursor: pointer;
+    z-index: 1;
+    bottom: 10px;
+    left: 10px;
 }
 
-button::before {
+.boton::before{
     content: "";
     position: absolute;
     top: 0;
@@ -160,17 +93,21 @@ button::before {
     transition: all 250ms
 }
 
-button:hover {
-    color: #e89141;
+.link-oferta-academica:hover .boton {
+    color: #e89141
 }
 
-button:hover::before {
+.link-oferta-academica:hover .boton::before {
     width: 100%;
+}
+
+button {
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
 
-    #galeria-6-titulo {
+    #oferta-academica-titulo {
         font-size: 35px;
     }
 
