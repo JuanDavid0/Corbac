@@ -646,3 +646,29 @@ function consultaInfoEstudiantes()
     disconnectDB($conexion);
     return $result;
 }
+
+function consultaInfoNormativas()
+{
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM normativas";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
+
+function consultaInfoAulas()
+{
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM aulas_virtuales WHERE estado = 'activo'";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}

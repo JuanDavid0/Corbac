@@ -1,4 +1,3 @@
-/* Estilos generales para el contenedor de accesos de estudiantes */
 .estudiantes-accesos {
     padding: 20px;
     margin: 0 auto;
@@ -12,40 +11,91 @@
 }
 
 .estudiantes-contenedor {
+    width: 90%;
+    height: auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin: 0px auto;
+    padding: 40px;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 40px;
-    justify-content: center;
-    align-items: center;
 
 }
 
-/* Estilo para el contenedor de cada estudiante */
-.estudiantes-contenido {
-    text-align: center;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: rgba(232, 145, 65, 1);
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.link-estudiantes {
+    max-width: 310px;
+    min-width: 250px;
+    margin-bottom: 40px;
+    float: left;
+    background-color: #e89141;
+    border-radius: 13px;
+    position: relative;
+    text-decoration: none;
+    overflow: hidden;
 }
 
-/* Estilo para la imagen del estudiante */
-.estudiantes-contenido img {
-    width: 50px;
-    height: 50px;
+.link-estudiantes img {
+    width: 100%;
+    height: 250px;
+    padding: 8px;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 40%;
 }
 
-/* Estilo para el nombre y el enlace del estudiante */
-.estudiantes-contenido p {
-    margin: 0;
+.estudiantes-texto {
+    position: relative;
+    float: left;
+    bottom: 0px;
+    padding: 11px 12px;
 }
 
-.estudiantes-contenido a {
-    color: rgba(255, 255, 255, 1);
-    font-size: 1rem;
-    font-weight: bold;
+.estudiantes-texto h3 {
+    margin-bottom: 40px;
+    font-size: 24px;
+    color: rgba(0, 17, 52, 1);
+}
+
+.boton {
+    border: unset;
+    border-radius: 15px;
+    color: rgba(0, 17, 52, 1);
+    background-color: rgba(255, 255, 255, 1);
+    position: absolute;
+    font-weight: 1000;
+    font-size: 15px;
+    padding: 9px 15px;
+    float: left;
+    text-align: center;
+    margin-top: 22px;
+    transition: all 250ms;
+    overflow: hidden;
+    z-index: 1;
+    bottom: 10px;
+    left: 10px;
+}
+
+.boton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #06263F;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms
+}
+
+.link-estudiantes:hover .boton {
+    color: #e89141
+}
+
+.link-estudiantes:hover .boton::before {
+    width: 100%;
 }

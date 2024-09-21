@@ -12,7 +12,7 @@ function connectDB()
     $server = "localhost";
     $user = "root";
     $pass = "root";
-    $bd = "corbacv3";
+    $bd = "corbacestable";
 
     $conexion = mysqli_connect($server, $user, $pass, $bd);
 
