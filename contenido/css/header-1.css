@@ -1,10 +1,3 @@
-@font-face {
-    font-family: 'Montserrat-bold';
-    src: url(/contenido/fonts/Montserrat-Bold.ttf);
-    font-weight: bold;
-    font-style: bold;
-}
-
 /*Propiedades generales header*/
 header {
     width: 100%;
@@ -91,7 +84,7 @@ header {
 /*Contenedor principal*/
 #header-contenedor {
     width: 100%;
-    padding: 10px 5%;
+    padding: 10px;
     box-sizing: border-box;
     position: relative;
 }
@@ -161,8 +154,6 @@ nav span {
     color: rgba(255, 255, 255, 1);
     text-align: center;
     padding: 10px 15px;
-    /*font-family: 'Titulo', helvetica, verdana, sans-serif;*/
-    font-family: 'Montserrat-bold';
     border-bottom: 2px solid rgba(2, 82, 86, 0);
     -webkit-transition: all 0.5s linear;
     -moz-transition: all 0.5s linear;
@@ -269,7 +260,6 @@ nav span:hover {
     margin-top: 5px;
     border-bottom: 1px dashed rgba(255, 255, 255, 1);
     box-sizing: border-box;
-    font-family: 'Titulo', helvetica, verdana, sans-serif;
     -webkit-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease-out;
     -o-transition: all 0.5s ease-out;
@@ -289,8 +279,16 @@ nav span:hover .submenu {
     z-index: 3;
 }
 
+@media (max-width: 1300px){
+
+    #header-label {
+        width: 75%
+    }
+
+}
+
 /*CSS para dimensiones inferiores a 1000px*/
-@media (max-width: 1000px) {
+@media (max-width: 1120px) {
 
     /*Configuraciones generales Header*/
     header {
@@ -492,7 +490,6 @@ nav span:hover .submenu {
     .menumob-conte-opcion-mobile p,
     .menumob-conte-opcion-mobile span {
         color: rgba(255, 255, 255, 1);
-        font-family: 'Montserrat-bold';
         text-decoration: none;
         position: relative;
     }

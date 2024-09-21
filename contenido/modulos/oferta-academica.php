@@ -2,7 +2,7 @@
 $idModulo = consultaModulo("oferta-academica");
 $consulta_historia_modulo = consultaInfoModuloGolbal($idModulo, $idioma);
 $varindice = 0;
-$identificador_oferta = mysqli_fetch_row(ofertaNivel('oferta-academica', $idioma));
+$identificador_oferta = mysqli_fetch_row(ofertaNivel('oferta_academica', $idioma));
 unset($varcontenido);
 while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
     $varcontenido[$varindice] = $rescontenido['contenido'];
@@ -16,13 +16,13 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
         $consultaOfertaLim = consultaOfertaLim($varcontenido[1], $idioma);
         while ($resOfertaLim = mysqli_fetch_array($consultaOfertaLim)) {
         ?>
-            <div class="oferta-card">
+            <a href="<?php echo $ruta . $resOfertaLim['url_amigable']; ?>" class="link-oferta-academica">
                 <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resOfertaLim['imagen_p']; ?>" />
-                <h4 class="oferta-academica-texto"><?php echo $resOfertaLim['nombre'] ?></h4>
-                <div class="oferta-card-button-container">
-                    <a href="<?php echo $ruta . $identificador_oferta[0]; ?>/<?php echo $resOfertaLim['url_amigable']; ?>">Ver más</a>
-                </div>
-            </div>
+                <span class="oferta-academica-texto">
+                    <h3 class="oferta-academica-texto"><?php echo $resOfertaLim['nombre'] ?></h4>
+                </span>
+                <p class="boton">Ver Programa</p>
+            </a>
         <?php } ?>
     </div>
     <div>

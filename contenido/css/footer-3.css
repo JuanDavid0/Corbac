@@ -1,10 +1,3 @@
-@font-face {
-    font-family: 'Montserrat-bold';
-    src: url(/contenido/fonts/Montserrat-Bold.ttf);
-    font-weight: bold;
-    font-style: bold;
-}
-
 footer{
     width: 100%;
     position: relative;
@@ -145,7 +138,6 @@ footer::before{
 }
 #footer-info p{
     color: rgba(255,255,255,1);
-    font-family: 'Montserrat-bold';
     font-size: 17px;
     text-align: center;
     padding:5px 0px;

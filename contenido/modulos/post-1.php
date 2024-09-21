@@ -55,7 +55,7 @@ $consulta_galeria_noticia = consultaGaleriaNoticias($idModulo, $con, $url_notici
                 </section>
             </div>
             <div id="post-1-video-video">
-                <iframe src="https://www.youtube.com/embed/xjiaYzpFco8" frameborder="0"
+                <iframe src="<?php echo $varEspecifico['video'] ?>" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>

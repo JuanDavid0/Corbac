@@ -52,13 +52,13 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
             $consultageneral = consultaGeneral('sede2-footer', $idioma);
             while ($resgeneral = mysqli_fetch_array($consultageneral)) {
             ?>
-                <p><?php echo $resgeneral['variable']; ?></p>
+                <p><?php echo $varcontenido[5]; ?> <?php echo $resgeneral['variable']; ?></p>
             <?php } ?>
             <?php
             $consultageneral = consultaGeneral('sede3-footer', $idioma);
             while ($resgeneral = mysqli_fetch_array($consultageneral)) {
             ?>
-                <p><?php echo $resgeneral['variable']; ?></p>
+                <p><?php echo $varcontenido[6]; ?> <?php echo $resgeneral['variable']; ?></p>
             <?php } ?>
         </div>
         <div id="footer-certif">

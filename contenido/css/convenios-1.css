@@ -227,11 +227,11 @@ button:hover::before {
 	}
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 768px) {
 	.card {
 		max-height: 20rem;
 	}
 	#convenios-1-titulo{
-		font-size: 2rem;
+		font-size: 35px;
 	}
 }

@@ -1,24 +1,14 @@
-@font-face {
-    font-family: 'Montserrat-bold';
-    src: url(/contenido/fonts/Montserrat-Bold.ttf);
-    font-weight: bold;
-    font-style: bold;
-}
-
 #nosotros-1 {
     width: 100%;
     margin: 0 auto;
     padding: 50px 5%;
     box-sizing: border-box;
     max-width: 1500px;
-    border-top: 10px double rgba(5, 32, 54, 1);
     position: relative;
-    background-color: rgba(254, 254, 254, 1);
 }
 
 #nosotros-1-titulo {
-    color: rgba(6, 38, 63, 1);
-    font-family: 'Titulo', helvetica, verdana, sans-serif;
+    color: rgba(232, 145, 65, 1);
     font-size: 50px;
     text-align: center;
 }
@@ -31,7 +21,7 @@
 }
 
 .nosotros-1-tarjeta {
-    background-color: rgba(232, 145, 65, 1);
+    background-color: rgba(6, 38, 63, 1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,18 +63,9 @@
     transform: scale(1.05);
 }
 
-.nosotros-1-contenedor:hover > .nosotros-1-tarjeta:not(:hover) {
-    filter: blur(10px);
-    transform: scale(0.95);
-}
-
 @media (max-width: 1200px) {
     .nosotros-1-tarjeta {
         width: 45%;
-    }
-
-    #nosotros-1-titulo {
-        font-size: 40px;
     }
 }
 
