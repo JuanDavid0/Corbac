@@ -1,0 +1,16 @@
+#Impedir que se pueda ver el listado de contenidos de un directorio
+#Deny from all
+Options All -Indexes
+# URL Amigables
+RewriteEngine On
+RewriteRule ^([-a-zA-Z0-9/]+)$ index.php?h=$1
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} (www\.)?vivoalegria.com
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+<Files robots.txt>
+Order allow,deny
+Deny from all
+</Files>
