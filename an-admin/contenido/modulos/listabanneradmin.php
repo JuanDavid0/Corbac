@@ -1,15 +1,14 @@
 <?php
-require_once './contenido/clases/banner.php';
-$registros = Banner::listarBanner('banner');
+require_once './contenido/clases/banner.php'; // En este caso para las consultas enfocodas al banner, se utiliza como tipo de objeto en el cual los valores de las consultas se almacenan en los atributos de esta clase banner, por lo cual contien las consultas y los tributos donde se van a alamcenar las respuestas en cada conulta.
+$registros = Banner::listarBanner('banner'); // por medio de la consulta se trae todos los registros de la tabla banner
 ?>
 <div id="contenedor-AreaTrabajo-Admin">        
-    <div class="contenedor-Agregar-personas">        
-        <a class="ico-agregar Agregar-persona" href="<?php echo $rutaFinal;?>crearbanneradmin">Crear</a>                      
-        <!-- <form id="contenedor-Herramientas-personas" action="" onsubmit="filtrarValor(); return false;">
-            <input id="inputFiltroDistribuidor" type="text" placeholder="Nombre o Ciudad" autocomplete="off">
-            <button class="fa-search1" type="submit"></button>        
-        </form> -->
+    <div class="contenedor-Agregar-personas">   
+        <!-- redirige al modulo de crear banner con el boton CREAR-->     
+        <a class="ico-agregar Agregar-persona" href="<?php echo $rutaFinal;?>crearbanneradmin">Crear</a>
     </div>
+
+    <!-- Contenedor de la respuesta de las operaciones de eliminar, editar y crear banner FALTA REVISAR A DETALLE -->
     <div id="contenedorRespuesta" class="contenedorRespuesta">
         <div id="confirmeEliminar" class="confirmar">
             <input id="idEliminar" type="text" style="display: none;">
@@ -55,16 +54,22 @@ $registros = Banner::listarBanner('banner');
         </script>
         <?php } ?>                  
     </div>
+
+
     <div id="contenedor-personas-admin">
         <?php        
         $xhtml = "";
         $xhtml .= "<div id=\"contenedor-personas-admin-label\"><div>Imagen</div><div>Texto</div><div>Idioma</div><div>Acciones</div></div>";
         foreach ($registros as $indice => $campo) {       
            $xhtml .= "<div class=\"contenedor-persona-admin\">"; 
-           $xhtml .= "<p class=\"tit-persona-admin img-banner-admin\" style=\"background-image:url('".$rutaFinal."contenido/assets/".$campo['imagen']."');\"></p>";
+           $xhtml .= "<p class=\"tit-persona-admin img-banner-admin\" style=\"background-image:url('".$rutaFinalAssets."contenido/assets/".$campo['imagen']."');\"></p>";
+           
+           //informaciond del banner
            $xhtml .= "<p class=\"tit-persona-admin\">".$campo['texto']."</p>";  
            $xhtml .= "<p class=\"tit-persona-admin\">".$campo['idioma']."</p>";  
            $xhtml .= "<p class=\"tit-persona-admin\">";
+
+            //botones para editar y eliminar
            $xhtml .= "<a title=\"Editar\" class=\"log-persona-admin log-persona-ed fa-editar\" href=\"".$rutaFinal."editarbanneradmin/".$campo['identificador']."\"></a>"; 
            $xhtml .= "<a class=\"log-persona-admin log-persona-ed fa-eliminar\" onclick=\"mostrarConfirmar('confirmeEliminar',".$campo['identificador'].") \"></a>";           
            $xhtml .= "</p>";          

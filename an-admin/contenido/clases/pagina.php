@@ -34,10 +34,11 @@ class pagina {
     }
 
 // Funcion para retornar el menu de nivel 1 
+// * Se reemplazó gerarquia por archivo
     function consultaMenu() {
         $objConexion = new conexionBaseDatosPagina();
         $conexion = $objConexion->connectDB();
-        $sql = $conexion->prepare("SELECT identificador, nombre, imagen_p, categoria FROM pagina WHERE estado = 'activo' AND gerarquia = 1 AND nivel = 0 ORDER BY orden");
+        $sql = $conexion->prepare("SELECT * FROM pagina WHERE estado = 'activo' AND archivo = 'menu' AND nivel = 0 ORDER BY orden;");
         $sql->execute();
         $objConexion->disconnectDB($conexion);
         return $sql->fetchAll();

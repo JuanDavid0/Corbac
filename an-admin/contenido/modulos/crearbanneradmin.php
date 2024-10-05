@@ -24,13 +24,7 @@
             <label style="display: none" class="label-form-act-admin">Imagen Pequeña:</label>
             <label style="display: none" class="label-form-act-admin">Tamaño recomendado: 350px X 350px</label>
             <input style="display: none" id="inputImagenP" name="imagen_p" class="input-form-act-admin" type="file" accept=".jpg, .png"/>          
-            <img style="display: none" id="previsuaP" src="" style="display: block; width: 50%; height: 150px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;"/>
-            <label style="display: none" class="label-form-act-admin">Ubicacion Imagen Pequeña</label>
-            <select style="display: none" name="$disposicion_imagen_p" class="input-form-act-admin">
-                <option value="0" selected="">Izquierda</option>
-                <option value="1">Centro</option>
-                <option value="2">Derecha</option>               
-            </select>                 
+            <img style="display: none" id="previsuaP" src="" style="display: block; width: 50%; height: 150px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;"/>        
             <label class="label-form-act-admin">Fecha inicio:</label>
             <input name="fecha_inicio" class="input-form-act-admin" type="date" required>
             <label class="label-form-act-admin">Fecha final:</label>
