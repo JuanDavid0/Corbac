@@ -29,7 +29,7 @@ class Banner
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
-        $sql = "SELECT * FROM $tabla";
+        $sql = "SELECT * FROM $tabla WHERE identificador_pagina = 'inicio'";
         $consulta = $conexion->prepare($sql);
         $consulta->execute();
         return $consulta->fetchAll();
@@ -83,14 +83,18 @@ class Banner
     {
         $conn = new Conexion();
         $stmt = $conn->connectDB();
-        $consulta = $stmt->prepare("UPDATE $tabla SET imagen = '$banner->imagen',"
-            . "alt = '$banner->alt',"
-            . "titulo = '$banner->titulo',"
-            . "texto = '$banner->texto', texto_boton = '$banner->texto_boton',"
-            . "url = '$banner->url', fecha_inicio = '$banner->fecha_inicio',"
-            . "fecha_final = '$banner->fecha_final', orden = '$banner->orden',"
-            . "disposicion = '$banner->disposicion',"
-            . "estado = '$banner->estado', idioma = '$banner->idioma' WHERE identificador = '$banner->identificador';");
+        $consulta = $stmt->prepare("UPDATE $tabla SET 
+            imagen = '$banner->imagen',
+            alt = '$banner->alt',
+            titulo = '$banner->titulo',
+            texto = '$banner->texto',
+            texto_boton = '$banner->texto_boton',
+            url = '$banner->url',
+            fecha_inicio = '$banner->fecha_inicio',
+            fecha_final = '$banner->fecha_final',
+            estado = '$banner->estado',
+            idioma = '$banner->idioma'
+            WHERE identificador = '$banner->identificador';");
         if ($consulta->execute()) {
             unset($stmt);
             return 1;

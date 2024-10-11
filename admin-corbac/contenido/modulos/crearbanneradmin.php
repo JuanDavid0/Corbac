@@ -5,14 +5,18 @@
         <form id="contenedor-form-Admin" method="POST" action="<?php echo $rutaFinal ?>contenido/ajax/ajaxBanner.php" enctype="multipart/form-data">                  
             <label class="label-form-act-admin">Imagen de fondo:</label>
             <label class="label-form-act-admin">Tamaño recomendado: 1600px X 800px</label>
-            <input id="inputNoticiaImagen" name="imagen" class="input-form-act-admin" type="file" accept=".jpg" required/>          
+            <input id="inputNoticiaImagen" name="imagen" class="input-form-act-admin" type="file" accept=".jpg, .webp" required/>          
             <img id="previsua" src="" style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;"/>
+
             <label class="label-form-act-admin">Titulo:</label>
             <input name="titulo" class="input-form-act-admin" type="text" required placeholder="informacion"> 
+
             <label class="label-form-act-admin">Texto:</label>
             <input name="texto" class="input-form-act-admin" type="text" required placeholder="informacion">
+
             <label class="label-form-act-admin">Texto Boton:</label>
             <input name="texto_boton" class="input-form-act-admin" type="text" placeholder="informacion">
+
             <label class="label-form-act-admin">Url boton:</label>
             <input name="url_boton" class="input-form-act-admin" type="text" placeholder="informacion">
             <label style="display: none" class="label-form-act-admin">Ubicacion Texto</label>

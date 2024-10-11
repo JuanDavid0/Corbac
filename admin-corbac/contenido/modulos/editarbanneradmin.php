@@ -9,55 +9,46 @@ $bannerF = Banner::buscarBanner('banner',$testimonio); // se trae toda la infoma
 <div id="contenedor-AreaTrabjo-Admin">
     <div class="contenedor-Agregar-minas"></div>
     <div id="AreaTrabjo-Admin-cont">
-        <h2>EDITAR BANNER</h2>           
+    <h2>EDITAR BANNER</h2>           
         <form id="contenedor-form-Admin" method="POST" action="<?php echo $rutaFinal ?>contenido/ajax/ajaxBanner.php" enctype="multipart/form-data">                  
             <label class="label-form-act-admin">Imagen de fondo:</label>
             <label class="label-form-act-admin">Tamaño recomendado: 1600px X 600px</label>
-            <input id="inputNoticiaImagen" name="imagen" class="input-form-act-admin" type="file" accept=".jpg, .webp"/>          
+            <input id="inputBannerImagen" name="imagen" class="input-form-act-admin" type="file" accept=".jpg, .webp"/>
+
             <img id="previsua" src="<?php echo $rutaFinalAssets.'contenido/assets/'.$bannerF['imagen']; ?>" style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;"/>
             
-            <label class="label-form-act-admin">Titulo:</label>
+            <label class="label-form-act-admin">Título:</label>
             <input name="titulo" class="input-form-act-admin" type="text" required value="<?php echo $bannerF['titulo']; ?>"> 
 
             <label class="label-form-act-admin">Texto:</label>
             <input name="texto" class="input-form-act-admin" type="text" required value="<?php echo $bannerF['texto']; ?>">
 
-            <label class="label-form-act-admin">Texto Boton:</label>
+            <label class="label-form-act-admin">Texto Botón:</label>
             <input name="texto_boton" class="input-form-act-admin" type="text" value="<?php echo $bannerF['texto_boton']; ?>">
 
-            <label class="label-form-act-admin">Url boton:</label>
-            <input name="url_boton" class="input-form-act-admin" type="text" value="<?php echo $bannerF['url']; ?>">
+            <label class="label-form-act-admin">URL del botón:</label>
+            <input name="url" class="input-form-act-admin" type="text" value="<?php echo $bannerF['url']; ?>">
 
-            <!-- 
-            // se habilitó el campo de ubicacion
-            -->
-            <label class="label-form-act-admin">Ubicacion Texto</label>
-            <select name="disposicion" class="input-form-act-admin" required>
-                <option value="0" <?php if($bannerF['disposicion'] == 0 ){ } echo 'selected=""' ?> >Izquierda</option>
-                <option value="1" <?php if($bannerF['disposicion'] == 1 ){ } echo 'selected=""' ?>>Centro</option>
-                <option value="2" <?php if($bannerF['disposicion'] == 2 ){ } echo 'selected=""' ?>>Derecha</option>               
-            </select>
-
-            <!--
-            // * Se elimino lo de disposicion_imagen_p, ya que no se usa en CORBAC
-            -->
             <label class="label-form-act-admin">Fecha inicio:</label>
             <input name="fecha_inicio" class="input-form-act-admin" type="date" value="<?php echo $bannerF['fecha_inicio']; ?>"> 
             <label class="label-form-act-admin">Fecha final:</label>
             <input name="fecha_final" class="input-form-act-admin" type="date" value="<?php echo $bannerF['fecha_final']; ?>">
-             <label class="label-form-act-admin">Idioma</label>
+
+            <label class="label-form-act-admin">Idioma</label>
             <select name="idioma" class="input-form-act-admin">
-                <option value="es" <?php if($bannerF['idioma'] === 'es' ){  echo 'selected=""' ;}?>>Español</option>
-                <option value="en" <?php if($bannerF['idioma'] === 'en' ){  echo 'selected=""'; } ?>>Ingles</option>               
+                <option value="es" <?php if($bannerF['idioma'] === 'es' ){ echo 'selected=""'; } ?>>Español</option>
+                <option value="en" <?php if($bannerF['idioma'] === 'en' ){ echo 'selected=""'; } ?>>Inglés</option>               
             </select> 
+
             <label class="label-form-act-admin">Estado</label>
             <select name="estado" class="input-form-act-admin">
-                <option value="activo" <?php if($bannerF['estado'] === 'activo' ){  echo 'selected=""' ;}?>>Activo</option>
-                <option value="inactivo" <?php if($bannerF['estado'] === 'inactivo' ){  echo 'selected=""'; } ?>>Inactivo</option>               
+                <option value="activo" <?php if($bannerF['estado'] === 'activo'){ echo 'selected=""'; } ?>>Activo</option>
+                <option value="inactivo" <?php if($bannerF['estado'] === 'inactivo'){ echo 'selected=""'; } ?>>Inactivo</option>               
             </select>  
+
             <input name="accion" value="editar" type="hidden" readonly required>
             <input name="identificador" value="<?php echo $bannerF['identificador']; ?>" type="hidden" readonly required>
-            <button class="inputSubmitForm" type="submit" >Editar</button>   
+            <button class="inputSubmitForm" type="submit">Editar</button>   
         </form>
     </div>
 </div>
@@ -88,7 +79,7 @@ $bannerF = Banner::buscarBanner('banner',$testimonio); // se trae toda la infoma
             reader.readAsDataURL(input.files[0]);
         }
     }
-    var fileUpload = document.getElementById('inputNoticiaImagen');
+    var fileUpload = document.getElementById('inputBannerImagen');
     fileUpload.onchange = function (e) {
         mostrarImagen(e.srcElement);
     };
