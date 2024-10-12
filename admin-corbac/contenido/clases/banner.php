@@ -1,10 +1,4 @@
 <?php
-
-/**
- * Description of Banner
- * @author Anbu Business Group SAS
- * Andres Nicolas Lopez Robles
- */
 require_once "conexion.php";
 
 class Banner
@@ -60,25 +54,37 @@ class Banner
         }
     }
     static function crearBanner($tabla, $banner)
-    {
-        $conn = new Conexion();
-        $stmt = $conn->connectDB();
-        $consulta = $stmt->prepare("INSERT INTO $tabla (identificador_pagina, "
-            . "imagen, alt, titulo, texto, "
-            . "texto_boton, url, fecha_inicio, fecha_final, orden,"
-            . "disposicion, estado, idioma) "
-            . " VALUES ('$banner->identificador_pagina','$banner->imagen','$banner->titulo',"
-            . "'$banner->titulo', '$banner->texto', "
-            . "'$banner->texto_boton' ,'$banner->url', '$banner->fecha_inicio',"
-            . "'$banner->fecha_final', '$banner->orden', '$banner->disposicion', '$banner->estado','$banner->idioma'); ");
-        if ($consulta->execute()) {
-            unset($stmt);
-            return 1;
-        } else {
-            unset($stmt);
-            return 0;
-        }
+{
+    $conn = new Conexion();
+    $stmt = $conn->connectDB();
+    $consulta = $stmt->prepare("INSERT INTO $tabla (identificador_pagina, 
+        imagen, alt, titulo, texto, 
+        texto_boton, url, fecha_inicio, fecha_final, orden,
+        disposicion, estado, idioma) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+    if ($consulta->execute([
+        $banner->identificador_pagina,
+        $banner->imagen,
+        $banner->alt,           
+        $banner->titulo,
+        $banner->texto,
+        $banner->texto_boton,
+        $banner->url,
+        $banner->fecha_inicio,
+        $banner->fecha_final,
+        $banner->orden,         
+        $banner->disposicion,
+        $banner->estado,        
+        $banner->idioma
+    ])) {
+        unset($stmt);
+        return 1; 
+    } else {
+        unset($stmt);
+        return 0;
     }
+}
+
     static function editarBanner($tabla, $banner)
     {
         $conn = new Conexion();

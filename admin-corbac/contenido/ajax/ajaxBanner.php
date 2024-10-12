@@ -16,14 +16,14 @@ if ($accion == "crear") {
     $banner->fecha_inicio = filter_input(INPUT_POST, 'fecha_inicio', FILTER_SANITIZE_STRING);
     $banner->fecha_final = filter_input(INPUT_POST, 'fecha_final', FILTER_SANITIZE_STRING);
     $banner->orden = filter_input(INPUT_POST, 'orden', FILTER_SANITIZE_STRING);
-    $banner->url = filter_input(INPUT_POST, 'url', FILTER_SANITIZE_STRING); // Cambiado de url_boton a url
+    $banner->url = filter_input(INPUT_POST, 'url_boton', FILTER_SANITIZE_STRING);
     $banner->disposicion = filter_input(INPUT_POST, 'disposicion', FILTER_SANITIZE_STRING);
     $banner->imagen = basename($_FILES['imagen']['name']);
     $banner->estado = 'activo';
     $banner->idioma = filter_input(INPUT_POST, 'idioma', FILTER_SANITIZE_STRING);
 
     if ($banner->imagen != '') {
-        $img_rute = "../assets/" . basename($_FILES['imagen']['name']);
+        $img_rute = $rutaFisicaAssets . basename($_FILES['imagen']['name']);
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $img_rute)) {
             $banner->alt = basename($_FILES['imagen']['name']);
             $respuesta = ControladorBanner::crearBanner($banner);
@@ -38,13 +38,10 @@ if ($accion == "crear") {
 if ($accion == "editar") {
     $banner = new Banner();
     $banner->identificador = filter_input(INPUT_POST, 'identificador', FILTER_SANITIZE_STRING);
-
-    // Buscar el banner actual en la base de datos
     $bannerActual = ControladorBanner::buscarBanner($banner);
 
     if ($bannerActual != null) {
-        // Solo actualizamos los campos que estén en el formulario
-        $banner->identificador_pagina = 'inicio'; // Esto podría ser dinámico si lo deseas
+        $banner->identificador_pagina = 'inicio';
         $banner->titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING) ?: $bannerActual['titulo'];
         $banner->texto = filter_input(INPUT_POST, 'texto', FILTER_SANITIZE_STRING) ?: $bannerActual['texto'];
         $banner->texto_boton = filter_input(INPUT_POST, 'texto_boton', FILTER_SANITIZE_STRING) ?: $bannerActual['texto_boton'];
@@ -56,8 +53,6 @@ if ($accion == "editar") {
         $banner->idioma = filter_input(INPUT_POST, 'idioma', FILTER_SANITIZE_STRING) ?: $bannerActual['idioma'];
         $banner->estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_STRING) ?: $bannerActual['estado'];
 
-
-        // Manejo de la imagen
         if (!empty($_FILES['imagen']['name'])) {
             $banner->imagen = basename($_FILES['imagen']['name']);
             $img_rute = $rutaFisicaAssets . $banner->imagen;
@@ -70,12 +65,9 @@ if ($accion == "editar") {
                 die('Ocurrió un error al subir la imagen.');
             }
         } else {
-            // Si no se subió una nueva imagen, mantenemos la anterior
             $banner->imagen = $bannerActual['imagen'];
             $banner->alt = $bannerActual['alt'];
         }
-
-        // Editamos el banner con los valores actualizados
         $respuesta = ControladorBanner::editarBanner($banner);
         header("Location: " . $rutaFinal . "banneradmin/");
     } else {
@@ -91,7 +83,7 @@ if ($accion == "eliminar") {
     $bannerActual = ControladorBanner::buscarBanner($banner);
 
     if ($bannerActual != null) {
-        unlink("../assets/" . $bannerActual['imagen']); // Eliminar la imagen asociada
+        unlink($rutaFisicaAssets . $bannerActual['imagen']);
     }
 
     echo ControladorBanner::eliminarBanner($banner);
