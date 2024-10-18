@@ -14,7 +14,7 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
         <?php
         $consultaOfertaLim = consultaOfertaLim($varcontenido[0], $idioma);
         while ($resOfertaLim = mysqli_fetch_array($consultaOfertaLim)) {
-            if ($resOfertaLim['oferta-padre'] === null) {
+            if ($resOfertaLim['oferta_padre'] === null) {
         ?>
                 <a href="<?php echo $ruta . $resOfertaLim['url_amigable']; ?>" class="link-oferta-educativa">
                     <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resOfertaLim['imagen_p']; ?>" />

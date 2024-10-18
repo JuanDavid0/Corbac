@@ -7,79 +7,90 @@
     overflow: auto;
     top: 0;
     right: 0;
-    background-color: rgba(229,229,229,1);
+    background-color: rgba(229, 229, 229, 1);
 }
-.contenedor-Agregar-minas{
-    width: calc(100% - 280px);   
-    border-bottom: 1px solid rgba(200,200,200,1);
-    background-color: rgba(245,245,245,1);
-    padding:10px 3%;
+
+.contenedor-Agregar-minas {
+    width: calc(100% - 280px);
+    border-bottom: 1px solid rgba(200, 200, 200, 1);
+    background-color: rgba(245, 245, 245, 1);
+    padding: 10px 3%;
     display: flex;
     justify-content: space-between;
     min-height: 62px;
     position: fixed;
 }
-#AreaTrabjo-Admin-cont{
+
+#AreaTrabjo-Admin-cont {
     width: 95%;
     display: block;
     height: auto;
     min-height: 350px;
-    margin:92px auto 20px auto;
-    background-color: rgba(255,255,255,1);
+    margin: 92px auto 20px auto;
+    background-color: rgba(255, 255, 255, 1);
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
-    border:1px solid rgba(200,200,200,1);
+    border: 1px solid rgba(200, 200, 200, 1);
     box-sizing: border-box;
-    box-shadow: 0 3px 5px 0.3px rgba(0,0,0,.24);
+    box-shadow: 0 3px 5px 0.3px rgba(0, 0, 0, .24);
     overflow: hidden;
     max-width: 600px;
 }
-#contenedor-AreaTrabjo-Admin h2{
-    font-family: 'Principal',helvetica,verdana,sans-serif;  
-    background-color: rgba(130,163,55,.8);
-    color: rgba(255,255,255,1);
+
+#contenedor-AreaTrabjo-Admin h2 {
+    font-family: 'Principal', helvetica, verdana, sans-serif;
+    background-color: rgba(130, 163, 55, .8);
+    color: rgba(255, 255, 255, 1);
     font-size: 23px;
     text-align: center;
     padding: 15px 5%;
     width: 100%;
-    box-sizing: border-box;  
+    box-sizing: border-box;
 }
-#contenedor-form-Admin, #contenedor-form-Admin1 {
+
+#contenedor-form-Admin,
+#contenedor-form-Admin1 {
     margin: auto;
     width: 70%;
     text-align: center;
 }
+
 .label-form-act-admin {
-    font-family: 'Principal',helvetica,verdana,sans-serif;  
+    font-family: 'Principal', helvetica, verdana, sans-serif;
     height: auto;
-    text-align: left;  
+    text-align: left;
     display: block;
-    margin:15px auto 5px auto;  
-    font-size: 15px; 
+    margin: 15px auto 5px auto;
+    font-size: 15px;
 }
-.input-form-act-admin, .select-form-not-admin {
+
+.input-form-act-admin,
+.select-form-not-admin {
     border: none;
-    border: 1px solid rgba(200,200,200,1);
+    border: 1px solid rgba(200, 200, 200, 1);
     width: 100%;
     max-width: 600px;
-    padding:8px 10px;
+    padding: 8px 10px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    font-family: 'Principal',helvetica,verdana,sans-serif;
+    font-family: 'Principal', helvetica, verdana, sans-serif;
     -webkit-transition: border 0.5s ease-out;
     -moz-transition: border 0.5s ease-out;
     -o-transition: border 0.5s ease-out;
     transition: border 0.5s ease-out;
 }
-.input-form-act-admin:focus, .select-form-not-admin:focus{
+
+.input-form-act-admin:focus,
+.select-form-not-admin:focus {
     outline: none;
-    border: 1px solid rgba(33,86,178,1);
+    border: 1px solid rgba(33, 86, 178, 1);
 }
+
 .inputSubmitForm {
     position: relative;
-    margin:20px 10px;
+    margin: 20px 10px;
     border: none;
     display: inline-block;
     vertical-align: top;
@@ -88,9 +99,9 @@
     box-sizing: border-box;
     width: 160px;
     text-align: center;
-    font-family: 'Titulo',helvetica,verdana,sans-serif;
-    color: rgba(255,255,255,1);
-    border:2px solid rgba(33,86,178,0);
+    font-family: 'Titulo', helvetica, verdana, sans-serif;
+    color: rgba(255, 255, 255, 1);
+    border: 2px solid rgba(33, 86, 178, 0);
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px;
@@ -98,19 +109,21 @@
     -moz-transition: background-color 0.5s ease-out;
     -o-transition: background-color 0.5s ease-out;
     transition: background-color 0.5s ease-out;
-    background-color: rgba(130,163,55,.8);
+    background-color: rgba(130, 163, 55, .8);
     cursor: pointer;
     outline: none;
-    box-shadow: 0px 2px 4px 0px rgba(0,0,0,.4);
-    -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,.4);
-    -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,.4);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .4);
 }
-.inputSubmitForm:hover {    
-    background-color: rgba(130,163,55,1);
+
+.inputSubmitForm:hover {
+    background-color: rgba(130, 163, 55, 1);
 }
+
 .inputReturn {
     position: relative;
-    margin:20px 10px;
+    margin: 20px 10px;
     border: none;
     display: inline-block;
     vertical-align: top;
@@ -119,8 +132,8 @@
     box-sizing: border-box;
     width: 160px;
     text-align: center;
-    font-family: 'Titulo',helvetica,verdana,sans-serif;
-    border:2px solid rgba(33,86,178,.8);
+    font-family: 'Titulo', helvetica, verdana, sans-serif;
+    border: 2px solid rgba(33, 86, 178, .8);
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px;
@@ -128,13 +141,14 @@
     -moz-transition: background-color 0.5s ease-out;
     -o-transition: background-color 0.5s ease-out;
     transition: background-color 0.5s ease-out;
-    color: rgba(33,86,178,.8);
+    color: rgba(33, 86, 178, .8);
     cursor: pointer;
     outline: none;
-    box-shadow: 0px 2px 4px 0px rgba(0,0,0,.4);
-    -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,.4);
-    -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,.4);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .4);
 }
-.inputReturn:hover {    
-    background-color: rgba(33,86,178,.4);     
+
+.inputReturn:hover {
+    background-color: rgba(33, 86, 178, .4);
 }

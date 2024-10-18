@@ -141,12 +141,12 @@ class pagina {
         return $sql->fetch();
     }
     /**
-    CLASES PARA CRUD DE PAGINAS MODIFICACION DE CONTENIDO Y DEMAS    
+    * CLASES PARA CRUD DE PAGINAS MODIFICACION DE CONTENIDO Y DEMAS    
     */    
     static function paginasNivel1($tabla) {
         $objConexion = new conexionBaseDatosPagina();
         $conexion = $objConexion->connectDB();
-        $sql = $conexion->prepare("SELECT * FROM $tabla WHERE estado = 'activo' AND gerarquia = 0 AND nivel = '1' ORDER BY orden ASC");
+        $sql = $conexion->prepare("SELECT * FROM $tabla WHERE estado = 'activo' AND nivel = '1' ORDER BY orden ASC");
         $sql->execute();
         $objConexion->disconnectDB($conexion);
         return $sql->fetchAll();

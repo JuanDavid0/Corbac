@@ -19,7 +19,7 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
         <?php
         $consultaOfertaLim = consultaOfertaLim($varcontenido[0], $idioma);
         while ($resOfertaLim = mysqli_fetch_array($consultaOfertaLim)) {
-            if ($resOfertaLim['oferta-padre'] === $categoriaPadre) {
+            if ($resOfertaLim['oferta_padre'] === $categoriaPadre) {
         ?>
                 <a href="<?php echo $ruta . $identificador_oferta[0]; ?>/<?php echo $resOfertaLim['url_amigable']; ?>" class="link-oferta-educativa">
                     <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resOfertaLim['imagen_p']; ?>" />

@@ -15,8 +15,8 @@ class Conexion {
     public function __construct() {
         $this->servidor = "localhost";
         $this->usuario  = "root";
-        $this->pass = "root";        
-        $this->bd = "bdcorbac";
+        $this->pass = "";        
+        $this->bd = "corbac";
         //$this->bd = "megaproyectos";   
     }
 
