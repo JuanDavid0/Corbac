@@ -5,6 +5,7 @@
         </div>
         <div id="contenedor-login">
             <img src="<?php echo $rutaFinal; ?>contenido/assets/logo.webp" alt="Logo">
+            <!-- <img src="contenido/assets/logo.webp" alt="Logo"> -->
             <h2>Iniciar Sesión</h2>
             <form class="formulario" method="post" action="" onsubmit="logUsuario(); return false;">                
                 <label class="usuario" for="inputUsuario">Usuario</label>

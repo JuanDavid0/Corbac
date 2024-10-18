@@ -58,7 +58,7 @@
     display: block;
     text-align: center;
     font-size: 14px;
-    font-family: 'Principal',helvetica,verdana,sans-serif;
+    font-family: 'Montserrat-Bold';
     padding: 15px 5%;
     box-sizing: border-box;
 }
@@ -153,7 +153,7 @@
 }
 .activoDonde{
     background: rgba(130,163,55,.3);
-    color: rgba(33,86,178,1) !important;
+    color: rgb(178, 33, 33) !important;
     border-left: 5px solid rgba(130,163,55,1) !important;
 }
 .salirAdmin button{
