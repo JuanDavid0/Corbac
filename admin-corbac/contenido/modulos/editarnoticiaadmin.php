@@ -33,7 +33,7 @@ $noticiaF = Noticia::buscarNoticia('noticia', $noticia);
             <input id="inputNoticiaTitulo" value="<?php echo $noticiaF['titulo1']; ?>" name="titulo1" class="input-form-act-admin" type="text" placeholder="Primer Titulo" required />
 
             <label class="label-form-act-admin">Primer Contenido</label>
-            <div id="editor" name="contenido1" style="height: 200px;"><?php print $noticiaF['contenido1']; ?> </div>
+            <textarea id="inputNoticiaContenido1" name="contenido1" class="input-form-act-admin" type="text" placeholder="Presentacion corta de la noticia" maxlength="250" required><?php echo $noticiaF['contenido1']; ?></textarea>
 
             <label class="label-form-act-admin">Imagen del primer contenido </label>
             <label class="label-form-act-admin">Tamaño Recomendado: 750px * 750px</label>
@@ -66,36 +66,36 @@ $noticiaF = Noticia::buscarNoticia('noticia', $noticia);
 
                     <label class="label-form-act-admin">Imagen del segundo contenido </label>
                     <label class="label-form-act-admin">Tamaño Recomendado: 750px * 750px</label>
-                    <input id="inputNoticiaImagen2" name="imagen-contenido2" class="input-form-act-admin inputImagen" type="file" accept=".jpg, .webp" onchange="mostrarImagen(this, 'previsua2')"/>
+                    <input id="inputNoticiaImagen2" name="imagen-contenido2" class="input-form-act-admin inputImagen" type="file" accept=".jpg, .webp" onchange="mostrarImagen(this, 'previsua2')" />
                     <img id="previsua2" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $noticiaF['imagen2']; ?>" style="display: block; width: 70%; height: 150px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:0px auto;" />
                 </div>
             <?php } ?>
-            
+
             <?php if ($noticiaF['video'] != '') { ?>
-            <div id="videoBlock" style="display: block;">
-                <label class="label-form-act-admin">Url Youtube</label>
-                <textarea id="inputNoticiaVideo" name="video" class="input-form-act-admin" type="text" placeholder="Url del video"><?php echo $noticiaF['video']; ?></textarea>
+                <div id="videoBlock" style="display: block;">
+                    <label class="label-form-act-admin">Url Youtube</label>
+                    <textarea id="inputNoticiaVideo" name="video" class="input-form-act-admin" type="text" placeholder="Url del video"><?php echo $noticiaF['video']; ?></textarea>
 
-                <label class="label-form-act-admin">Titulo Video</label>
-                <input id="inputTituloVideo" name="tvideo" class="input-form-act-admin" type="text" value="<?php echo $noticiaF['tvideo']; ?>" placeholder="Titulo de Video" maxlength="200" />
+                    <label class="label-form-act-admin">Titulo Video</label>
+                    <input id="inputTituloVideo" name="tvideo" class="input-form-act-admin" type="text" value="<?php echo $noticiaF['tvideo']; ?>" placeholder="Titulo de Video" maxlength="200" />
 
-                <label class="label-form-act-admin">Contenido Video</label>
-                <textarea id="inputContenidoVideo" name="cvideo" class="input-form-act-admin" type="text" placeholder="Texto informacion sobre video"><?php echo $noticiaF['cvideo']; ?></textarea>
-            </div>
+                    <label class="label-form-act-admin">Contenido Video</label>
+                    <textarea id="inputContenidoVideo" name="cvideo" class="input-form-act-admin" type="text" placeholder="Texto informacion sobre video"><?php echo $noticiaF['cvideo']; ?></textarea>
+                </div>
             <?php } else { ?>
                 <button type="button" id="addVideoBlockBtn" onclick="toggleVideoBlock()">Añadir video</button>
 
                 <div id="newvideoBlock" style="display: none;">
-                <label class="label-form-act-admin">Url Youtube</label>
-                <textarea id="inputNoticiaVideo" name="video" class="input-form-act-admin" type="text" placeholder="<iframe </iframe>"><?php echo $noticiaF['video']; ?></textarea>
+                    <label class="label-form-act-admin">Url Youtube</label>
+                    <textarea id="inputNoticiaVideo" name="video" class="input-form-act-admin" type="text" placeholder="<iframe </iframe>"><?php echo $noticiaF['video']; ?></textarea>
 
-                <label class="label-form-act-admin">Titulo Video</label>
-                <input id="inputTituloVideo" name="tvideo" class="input-form-act-admin" type="text" value="<?php echo $noticiaF['tvideo']; ?>" placeholder="Titulo de Video" maxlength="200" />
+                    <label class="label-form-act-admin">Titulo Video</label>
+                    <input id="inputTituloVideo" name="tvideo" class="input-form-act-admin" type="text" value="<?php echo $noticiaF['tvideo']; ?>" placeholder="Titulo de Video" maxlength="200" />
 
-                <label class="label-form-act-admin">Contenido Video</label>
-                <textarea id="inputContenidoVideo" name="cvideo" class="input-form-act-admin" type="text" placeholder="Texto informacion sobre video"><?php echo $noticiaF['cvideo']; ?></textarea>
+                    <label class="label-form-act-admin">Contenido Video</label>
+                    <textarea id="inputContenidoVideo" name="cvideo" class="input-form-act-admin" type="text" placeholder="Texto informacion sobre video"><?php echo $noticiaF['cvideo']; ?></textarea>
                 </div>
-                <?php } ?>
+            <?php } ?>
 
             <label class="label-form-act-admin">Fecha</label>
             <input id="fecha" name="fecha" class="input-form-act-admin" type="date" value="<?php echo $noticiaF['fecha']; ?>" required />
@@ -192,13 +192,12 @@ $noticiaF = Noticia::buscarNoticia('noticia', $noticia);
 
 <script>
     function mostrarImagen(input, imgId) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById(imgId).src = e.target.result;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById(imgId).src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]); // convertir a base64
         }
-        reader.readAsDataURL(input.files[0]); // convertir a base64
     }
-}
-    
 </script>
