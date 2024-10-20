@@ -104,9 +104,6 @@ $noticiaF = Noticia::buscarNoticia('noticia', $noticia);
                 <option value="es" <?php if ($noticiaF['idioma'] === 'es') {
                                         echo 'selected';
                                     } ?>>Español</option>
-                <option value="en" <?php if ($noticiaF['idioma'] === 'en') {
-                                        echo 'selected';
-                                    } ?>>Inglés</option>
             </select>
             <label class="label-form-act-admin">Estado</label>
             <select name="estado" class="input-form-act-admin">
