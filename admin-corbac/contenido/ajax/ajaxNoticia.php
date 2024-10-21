@@ -17,7 +17,6 @@ if ($accion == "crear") {
     $noticia->titulo1 = filter_input(INPUT_POST, 'titulo1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $noticia->contenido1 = filter_input(INPUT_POST, 'contenido1');
     $noticia->imagen1 = basename($_FILES['imagen-contenido1']['name']);
-    //! ESTOY REVISANDO LOS ALT
     $noticia->alt1 = $noticia->imagen1;
     $noticia->titulo2 = filter_input(INPUT_POST, 'titulo2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $noticia->contenido2 = filter_input(INPUT_POST, 'contenido2');
@@ -164,7 +163,9 @@ if ($accion == "eliminar") {
     $noticia->identificador = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $noticiaActual = ControladorNoticia::buscarNoticia($noticia);
     if ($noticiaActual != null) {
-        unlink("../assets/".$noticiaActual['imagen']);
+        unlink($rutaFisicaAssets . $noticiaActual['imagen_p']);
+        unlink($rutaFisicaAssets . $noticiaActual['imagen1']);
+        unlink($rutaFisicaAssets . $noticiaActual['imagen2']);
     }
     echo ControladorNoticia::eliminarNoticia($noticia);
 }
