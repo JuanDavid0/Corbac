@@ -85,7 +85,11 @@ if ($accion == "eliminar") {
     if ($bannerActual != null) {
         unlink($rutaFisicaAssets . $bannerActual['imagen']);
     }
+    $respuesta = ControladorBanner::eliminarBanner($banner);
 
-    echo ControladorBanner::eliminarBanner($banner);
+    if ($respuesta === 1) {
+        header("Location: " . $rutaFinal . "banneradmin/" . $respuesta);
+    } else {
+        header("Location: " . $rutaFinal . "banneradmin/2");
+    }
 }
-?>

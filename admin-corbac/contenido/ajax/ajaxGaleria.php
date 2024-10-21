@@ -3,69 +3,51 @@
 include '../clases/galeria.php';
 include '../controlador/controladorGaleria.php';
 include '../clases/ruta.php';
-date_default_timezone_set("America/Bogota");
-$fehcaServidor = getdate(time());
-$fecha = "" . $fehcaServidor['year'] . "-" . $fehcaServidor['mon'] . "-" . $fehcaServidor['mday'];
+
 $rutaFinal = Ruta::retornaRutaAdmin();
-$accion = filter_input(INPUT_POST, 'accion', FILTER_SANITIZE_STRING);
+$rutaFisicaAssets = $_SERVER['DOCUMENT_ROOT'] . "/contenido/assets/";
+
+$accion = filter_input(INPUT_POST, 'accion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if ($accion == "crear") {
     $galeria = new Galeria();
-    $galeria->servicio_url_amigable = filter_input(INPUT_POST, 'pagina', FILTER_SANITIZE_STRING);    
-    $galeria->titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
-    $galeria->texto = filter_input(INPUT_POST, 'texto', FILTER_SANITIZE_STRING);
-    $retorno = filter_input(INPUT_POST, 'retorno', FILTER_SANITIZE_STRING);    
-    $galeria->imagen = basename($_FILES['imagen']['name']);                   
-    $galeria->estado = 'activo';        
-    $galeria->video = filter_input(INPUT_POST, 'video');
+
+    $galeria->clase = ' ';
+    $galeria->imagen_p = ' ';
+    $galeria->alt = ' ';
+    $galeria->url = ' ';
+    $galeria->texto = ' ';
+    $galeria->texto_s = ' ';
+
+    $galeria->identificador_pagina = 'noticia';
+    $galeria->modulo = '134';
+    $galeria->nombre = filter_input(INPUT_POST, 'noticia', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $galeria->orden = '1';
+    $galeria->imagen = basename($_FILES['imagen']['name']);
+    $galeria->estado = 'activo';
+    $galeria->idioma = filter_input(INPUT_POST, 'idioma', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $galeria->fecha = filter_input(INPUT_POST, 'fecha', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     if ($galeria->imagen != '') {
-        $img_rute = "../assets/" . basename($_FILES['imagen']['name']);
+        $img_rute = $rutaFisicaAssets . basename($_FILES['imagen']['name']);
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $img_rute)) {
             $respuesta = ControladorGaleria::crearGaleria($galeria);
-         
-            header("Location: " . $rutaFinal.$retorno );
+            var_dump($galeria);
+            header("Location: " . $rutaFinal . "listaregistrosgaleria/" . $respuesta);
         } else {
-            header("Location: " . $rutaFinal.$retorno);
+            header("Location: " . $rutaFinal . "listaregistrosgaleria/" . 2);
         }
     } else {
-        header("Location: " . $rutaFinal.$retorno);
+        header("Location: " . $rutaFinal . "listaregistrosgaleria/2");
     }
 }
-if ($accion == "editar") {
-    $galeria = new Galeria();
-    $galeria->identificador = filter_input(INPUT_POST, 'identificador', FILTER_SANITIZE_STRING);    
-    $galeria->servicio_url_amigable = filter_input(INPUT_POST, 'pagina', FILTER_SANITIZE_STRING);    
-    $galeria->titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
-    $galeria->texto = filter_input(INPUT_POST, 'texto', FILTER_SANITIZE_STRING);
-    $retorno = filter_input(INPUT_POST, 'retorno', FILTER_SANITIZE_STRING);    
-    $galeria->imagen = basename($_FILES['imagen']['name']);                   
-    $galeria->estado = 'activo';        
-    $galeria->video = filter_input(INPUT_POST, 'video');
-    $galeriaActual = ControladorGaleria::buscarGaleria($galeria);
-    if ($galeriaActual != null) {
-        if ($galeria->imagen != '') {
-            $img_rute = "../assets/" . basename($_FILES['imagen']['name']);
-            $img_rute_anterior = "../assets/" . $galeriaActual['imagen_p'];
-            unlink($img_rute_anterior);
-            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $img_rute)) {                
-            }
-        } else {
-            $galeria->imagen = $galeriaActual['imagen'];            
-        }
-        $respuesta = ControladorGaleria::editarGaleria($galeria);
-        echo $respuesta;
-        header("Location: " . $rutaFinal . $retorno);
-    } else {
-       header("Location: " . $rutaFinal . $retorno);
-    }
-}
-$accion = filter_input(INPUT_GET, 'accion', FILTER_SANITIZE_STRING);
+$accion = filter_input(INPUT_GET, 'accion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if ($accion == "eliminar") {
     $galeria = new Galeria();
-    $galeria->identificador = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
+    $galeria->identificador = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $galeriaActual = ControladorGaleria::buscarGaleria($galeria);
     if ($galeriaActual != null) {
-        unlink("../assets/".$galeriaActual['imagen']);
-        unlink("../assets/".$galeriaActual['imagen_p']);
+        unlink($rutaFisicaAssets . $galeriaActual['imagen']);
     }
-    echo ControladorGaleria::eliminarGaleria($galeria);
+    $respuesta = ControladorGaleria::eliminarGaleria($galeria);
+    echo $respuesta;
+    header("Location: " . $rutaFinal . "listaregistrosgaleria/" . $respuesta);
 }
