@@ -14,14 +14,22 @@ class Galeria
     public $estado;
     public $idioma;
     public $fecha;
-    
 
-    static function listarGaleria($tabla, $identificador_pagina)
+    static function listarGaleria($tabla, $noticia = null)
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
-        $sql = "SELECT * FROM $tabla WHERE identificador_pagina = '$identificador_pagina' ORDER BY orden DESC  ";
-        $consulta = $conexion->prepare($sql);
+
+        // Modificar la consulta para filtrar correctamente por noticia si se pasa una
+        if ($noticia) {
+            $sql = "SELECT * FROM $tabla WHERE estado = 'activo' AND nombre = :noticia AND identificador_pagina = 'noticia' ORDER BY orden DESC";
+            $consulta = $conexion->prepare($sql);
+            $consulta->bindParam(':noticia', $noticia, PDO::PARAM_STR);
+        } else {
+            $sql = "SELECT * FROM $tabla WHERE estado = 'activo' AND identificador_pagina = 'noticia' ORDER BY orden DESC";
+            $consulta = $conexion->prepare($sql);
+        }
+
         $consulta->execute();
         return $consulta->fetchAll();
     }
@@ -100,4 +108,5 @@ class Galeria
         $consulta->execute();
         return $consulta->fetchAll();
     }
+
 }

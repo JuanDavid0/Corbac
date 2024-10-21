@@ -47,3 +47,29 @@ if ($accion == "eliminar") {
     echo $respuesta;
     header("Location: " . $rutaFinal . "listaregistrosgaleria/" . $respuesta);
 }
+
+$accion = filter_input(INPUT_POST, 'accion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+if ($accion == "filtrar") {
+    $noticiaSeleccionada = filter_input(INPUT_POST, 'noticia', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    // Llamar a la función que lista la galería filtrada por noticia
+    $registros = Galeria::listarGaleria('galeria', $noticiaSeleccionada);
+
+    // Generar el contenido de la tabla con las imágenes filtradas
+    $xhtml = "<div id=\"contenedor-personas-admin-label\"><div>Imagen</div><div>Noticia</div><div>Acciones</div></div>";
+    if ($registros) {
+        foreach ($registros as $campo) {
+            $xhtml .= "<div class=\"contenedor-persona-admin\">";
+            $xhtml .= "<p class=\"tit-persona-admin img-banner-admin\" style=\"background-image:url('/contenido/assets/" . htmlspecialchars($campo['imagen']) . "');\"></p>";
+            $xhtml .= "<p class=\"tit-persona-admin\">" . htmlspecialchars($campo['nombre']) . "</p>";
+            $xhtml .= "<p class=\"tit-persona-admin\">";
+            $xhtml .= "<a class=\"log-persona-admin log-persona-ed fa-eliminar\" onclick=\"mostrarConfirmar('confirmeEliminar'," . $campo['identificador'] . ") \"></a>";
+            $xhtml .= "</p>";
+            $xhtml .= "</div>";
+        }
+    } else {
+        $xhtml .= "<p>No hay imágenes disponibles.</p>";
+    }
+
+    echo $xhtml;
+}
