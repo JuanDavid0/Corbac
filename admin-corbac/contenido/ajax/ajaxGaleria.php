@@ -10,34 +10,30 @@ $rutaFisicaAssets = $_SERVER['DOCUMENT_ROOT'] . "/contenido/assets/";
 $accion = filter_input(INPUT_POST, 'accion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if ($accion == "crear") {
     $galeria = new Galeria();
-
-    $galeria->clase = ' ';
-    $galeria->imagen_p = ' ';
-    $galeria->alt = ' ';
-    $galeria->url = ' ';
-    $galeria->texto = ' ';
-    $galeria->texto_s = ' ';
-
     $galeria->identificador_pagina = 'noticia';
     $galeria->modulo = '134';
     $galeria->nombre = filter_input(INPUT_POST, 'noticia', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $galeria->texto = ' ';
     $galeria->orden = '1';
-    $galeria->imagen = basename($_FILES['imagen']['name']);
     $galeria->estado = 'activo';
-    $galeria->idioma = filter_input(INPUT_POST, 'idioma', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $galeria->fecha = filter_input(INPUT_POST, 'fecha', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    if ($galeria->imagen != '') {
-        $img_rute = $rutaFisicaAssets . basename($_FILES['imagen']['name']);
-        if (move_uploaded_file($_FILES['imagen']['tmp_name'], $img_rute)) {
-            $respuesta = ControladorGaleria::crearGaleria($galeria);
-            var_dump($galeria);
-            header("Location: " . $rutaFinal . "listaregistrosgaleria/" . $respuesta);
-        } else {
-            header("Location: " . $rutaFinal . "listaregistrosgaleria/" . 2);
+    $galeria->fecha = date('Y-m-d'); 
+    $galeria->idioma = 'es';
+    // Proceso para múltiples imágenes
+    $imagenes = $_FILES['imagenes'];
+    $totalImagenes = count($imagenes['name']);
+
+    for ($i = 0; $i < $totalImagenes; $i++) {
+        if ($imagenes['name'][$i] != '') {
+            $galeria->imagen = basename($imagenes['name'][$i]);
+            $galeria->alt = $galeria->imagen;
+            $img_rute = $rutaFisicaAssets . $galeria->imagen;
+            if (move_uploaded_file($imagenes['tmp_name'][$i], $img_rute)) {
+                $respuesta = ControladorGaleria::crearGaleria($galeria);
+            }
         }
-    } else {
-        header("Location: " . $rutaFinal . "listaregistrosgaleria/2");
     }
+
+    header("Location: " . $rutaFinal . "listaregistrosgaleria/" . $respuesta);
 }
 $accion = filter_input(INPUT_GET, 'accion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if ($accion == "eliminar") {
