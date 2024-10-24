@@ -55,7 +55,7 @@ class Galeria
             return 1;
         } else {
             unset($stmt);
-            return 2;
+            return 0;
         }
     }
     static function crearGaleria($tabla, $galeria)
