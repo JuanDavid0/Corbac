@@ -81,8 +81,6 @@ class Noticia
                 :fecha, :idioma, :estado
             )
         ");
-
-        // Enlazar los parámetros con los datos del objeto $noticia
         $consulta->bindParam(':url_amigable', $noticia->url_amigable);
         $consulta->bindParam(':nombre', $noticia->nombre);
         $consulta->bindParam(':presentacion', $noticia->presentacion);

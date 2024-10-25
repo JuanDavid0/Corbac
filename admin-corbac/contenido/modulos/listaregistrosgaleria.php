@@ -14,6 +14,18 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : ''; // Verificar si $msg está defin
     </div>
 
     <div id="contenedorRespuesta" class="contenedorRespuesta">
+        <div id="confirmeEliminar" class="confirmar">
+            <input id="idEliminar" type="text" style="display: none;">
+            <input id="usuarioEliminar" type="text" style="display: none;">
+            <div class="alerta-titulo alerta-error-color1">¿Realmente desea eliminar este noticia?</div>
+            <div class="alerta-icono closec alerta-error-color1"></div>
+            <div class="alerta-boton alerta-ok-fondo" onclick="eliminarValor(); ocultarConfirmar('confirmeEliminar')">
+                <p>Si</p>
+            </div>
+            <div class="alerta-boton alerta-error-color1" onclick="ocultarConfirmar('confirmeEliminar')">
+                <p>Cancelar</p>
+            </div>
+        </div>
         <?php if ($msg == '1') { ?>
             <div class="alerta">
                 <div class="alerta-titulo alerta-ok-color">Operación Éxitosa</div>

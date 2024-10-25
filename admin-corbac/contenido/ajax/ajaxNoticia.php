@@ -27,8 +27,8 @@ if ($accion == "crear") {
     $noticia->tvideo = filter_input(INPUT_POST, 'tvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $noticia->cvideo = filter_input(INPUT_POST, 'cvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-    $noticia->fecha = filter_input(INPUT_POST, 'fecha', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $noticia->idioma = filter_input(INPUT_POST, 'idioma', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $noticia->fecha = date('Y-m-d');
+    $noticia->idioma = 'es';
     $noticia->estado = 'activo';
 
     if (!empty($noticia->imagen_p)) {
@@ -89,63 +89,50 @@ if ($accion == "editar") {
         // Manejo de imagen 2
         if (isset($_FILES['imagen-contenido2']['name']) && !empty($_FILES['imagen-contenido2']['name'])) {
             $noticia->imagen2 = basename($_FILES['imagen-contenido2']['name']);
-        } else {
-            $noticia->imagen2 = $noticiaActual['imagen2'];
         }
 
         // Manejo de video
         $noticia->video = filter_input(INPUT_POST, 'video', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $noticia->tvideo = filter_input(INPUT_POST, 'tvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $noticia->cvideo = filter_input(INPUT_POST, 'cvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $noticia->cvideo = filter_input(INPUT_POST, 'cvideo') ?: $noticiaActual['cvideo'];
 
-        $noticia->fecha = filter_input(INPUT_POST, 'fecha', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $noticia->idioma = filter_input(INPUT_POST, 'idioma', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $noticia->fecha = date('Y-m-d'); 
+        $noticia->idioma = 'es';
         $noticia->estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        // Subir imagen 1 si es que se seleccionó
         if (!empty($noticia->imagen_p)) {
             $img_rute = $rutaFisicaAssets . $noticia->imagen_p;
             $img_rute_anterior = $rutaFisicaAssets . $noticiaActual['imagen_p'];
             
-            // Verificar si la nueva imagen ya existe
             if (!file_exists($img_rute)) {
-                // Si existe una imagen anterior, se elimina
                 if (file_exists($img_rute_anterior)) {
                     unlink($img_rute_anterior);
                 }
-                // Mover la nueva imagen
                 move_uploaded_file($_FILES['imagen-presentacion']['tmp_name'], $img_rute);
             }
         }
         
-        // Subir imagen 1 si es que se seleccionó y no existe
         if (!empty($noticia->imagen1)) {
             $img_rute = $rutaFisicaAssets . $noticia->imagen1;
             $img_rute_anterior = $rutaFisicaAssets . $noticiaActual['imagen1'];
             
-            // Verificar si la nueva imagen ya existe
             if (!file_exists($img_rute)) {
-                // Si existe una imagen anterior, se elimina
                 if (file_exists($img_rute_anterior)) {
                     unlink($img_rute_anterior);
                 }
-                // Mover la nueva imagen
                 move_uploaded_file($_FILES['imagen-contenido1']['tmp_name'], $img_rute);
             }
         }
         
-        // Subir imagen 2 si es que se seleccionó y no existe
         if (!empty($noticia->imagen2)) {
             $img_rute2 = $rutaFisicaAssets . $noticia->imagen2;
             $img_rute_anterior2 = $rutaFisicaAssets . $noticiaActual['imagen2'];
             
-            // Verificar si la nueva imagen ya existe
             if (!file_exists($img_rute2)) {
-                // Si existe una imagen anterior, se elimina
+                
                 if (file_exists($img_rute_anterior2)) {
                     unlink($img_rute_anterior2);
                 }
-                // Mover la nueva imagen
                 move_uploaded_file($_FILES['imagen-contenido2']['tmp_name'], $img_rute2);
             }
         }
