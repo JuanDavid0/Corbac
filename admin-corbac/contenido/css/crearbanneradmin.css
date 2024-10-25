@@ -53,11 +53,11 @@
 .label-form-act-admin {
     font-family: 'Principal',helvetica,verdana,sans-serif;  
     height: auto;
-    text-align: left;  
-    display: block;
-    margin:15px auto 5px auto;  
+    margin:10px auto 0 auto;  
     font-size: 15px; 
 }
+
+
 .input-form-act-admin, .select-form-not-admin {
     border: none;
     border: 1px solid rgba(200,200,200,1);

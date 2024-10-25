@@ -94,7 +94,7 @@ if ($accion == "editar") {
         // Manejo de video
         $noticia->video = filter_input(INPUT_POST, 'video', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $noticia->tvideo = filter_input(INPUT_POST, 'tvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $noticia->cvideo = filter_input(INPUT_POST, 'cvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $noticia->cvideo = filter_input(INPUT_POST, 'cvideo') ?: $noticiaActual['cvideo'];
 
         $noticia->fecha = date('Y-m-d'); 
         $noticia->idioma = 'es';
