@@ -10,7 +10,8 @@ $accion = filter_input(INPUT_POST, 'accion', FILTER_SANITIZE_FULL_SPECIAL_CHARS)
 
 if ($accion == "crear") {
     $landing = new Landing();
-    $landing->identificador = filter_input(INPUT_POST, 'identificador', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $landing->pagina = 'inicio';
+    $landing->indice = 1;
     $landing->titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $landing->subTitulo = filter_input(INPUT_POST, 'subTitulo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $landing->contenido = filter_input(INPUT_POST, 'contenido', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -23,22 +24,31 @@ if ($accion == "crear") {
     $landing->image2 = basename($_FILES['image2']['name']);
     $landing->fecha_inicio = filter_input(INPUT_POST, 'fecha_inicio', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $landing->fecha_fin = filter_input(INPUT_POST, 'fecha_fin', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $landing->idioma = filter_input(INPUT_POST, 'idioma', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $landing->idioma = 'es';
     $landing->estado = 'activo';
 
-    if ($landing->logo != '' && $landing->image1 != '' && $landing->image2 != '') {
-        $img_rute_logo = $rutaFisicaAssets . basename($_FILES['logo']['name']);
-        $img_rute_image1 = $rutaFisicaAssets . basename($_FILES['image1']['name']);
-        $img_rute_image2 = $rutaFisicaAssets . basename($_FILES['image2']['name']);
-        if (move_uploaded_file($_FILES['logo']['tmp_name'], $img_rute_logo) && move_uploaded_file($_FILES['image1']['tmp_name'], $img_rute_image1) && move_uploaded_file($_FILES['image2']['tmp_name'], $img_rute_image2)) {
-            $respuesta = ControladorLanding::crearLanding($landing);
-            header("Location: " . $rutaFinal . "landingadmin/" . $respuesta);
-        } else {
-            header("Location: " . $rutaFinal . "landingadmin/2");
-        }
+    if (!empty($landing->logo)) {
+        $img_rute = $rutaFisicaAssets . $landing->logo;
+        move_uploaded_file($_FILES['logo']['tmp_name'], $img_rute);
+    }
+
+    if (!empty($landing->image1)) {
+        $img_rute = $rutaFisicaAssets . $landing->image1;
+        move_uploaded_file($_FILES['image1']['tmp_name'], $img_rute);
+    }
+
+    if (!empty($landing->image2)) {
+        $img_rute = $rutaFisicaAssets . $landing->image2;
+        move_uploaded_file($_FILES['image2']['tmp_name'], $img_rute);
+    }
+
+    $resultado = ControladorLanding::crearLanding($landing);
+
+    if ($resultado == 1) {
+        header("Location: " . $rutaFinal . "landingadmin/1");
     } else {
         header("Location: " . $rutaFinal . "landingadmin/2");
-    }
+    }    
 }
 
 if ($accion == "editar") {
@@ -47,6 +57,8 @@ if ($accion == "editar") {
     $landingActual = ControladorLanding::buscarLanding($landing);
 
     if ($landingActual != null) {
+        $landing->pagina = 'inicio';
+        $landing->indice = 1;
         $landing->titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['titulo'];
         $landing->subTitulo = filter_input(INPUT_POST, 'subTitulo', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['subTitulo'];
         $landing->contenido = filter_input(INPUT_POST, 'contenido', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['contenido'];
@@ -56,7 +68,7 @@ if ($accion == "editar") {
         $landing->promesa2 = filter_input(INPUT_POST, 'promesa2', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['promesa2'];
         $landing->fecha_inicio = filter_input(INPUT_POST, 'fecha_inicio', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['fecha_inicio'];
         $landing->fecha_fin = filter_input(INPUT_POST, 'fecha_fin', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['fecha_fin'];
-        $landing->idioma = filter_input(INPUT_POST, 'idioma', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['idioma'];
+        $landing->idioma = 'es';
         $landing->estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['estado'];
 
         if (!empty($_FILES['logo']['name'])) {

@@ -1,25 +1,13 @@
 <?php
-require_once './contenido/clases/usuario.php';
-$registros = Usuario::listarUsuario('admin_users');
+require_once './contenido/clases/landing.php';
+$registros = Landing::listaLanding('landing');
 ?>
 <div id="contenedor-AreaTrabajo-Admin">
     <div class="contenedor-Agregar-personas">
-        <a class="ico-agregar Agregar-persona" href="<?php echo $rutaFinal; ?>crearusuariosadmin">Registrar</a>
+        <a class="ico-agregar Agregar-persona" href="<?php echo $rutaFinal; ?>crearlandingadmin">Crear</a>
     </div>
 
     <div id="contenedorRespuesta" class="contenedorRespuesta">
-        <div id="confirmeEliminar" class="confirmar">
-            <input id="idEliminar" type="text" style="display: none;">
-            <input id="usuarioEliminar" type="text" style="display: none;">
-            <div class="alerta-titulo alerta-error-color1">¿Realmente desea eliminar este usuario?</div>
-            <div class="alerta-icono closec alerta-error-color1"></div>
-            <div class="alerta-boton alerta-ok-fondo" onclick="eliminarValor(); ocultarConfirmar('confirmeEliminar')">
-                <p>Si</p>
-            </div>
-            <div class="alerta-boton alerta-error-color1" onclick="ocultarConfirmar('confirmeEliminar')">
-                <p>Cancelar</p>
-            </div>
-        </div>
         <?php
         if ($msg == '1') {
         ?>
@@ -52,27 +40,30 @@ $registros = Usuario::listarUsuario('admin_users');
             </script>
         <?php } ?>
     </div>
+
     <div id="contenedor-personas-admin">
         <?php
         $xhtml = "";
-        $xhtml .= "<div id=\"contenedor-personas-admin-label\"><div>Correo</div><div>Tipo</div><div>Estado</div><div>Acciones</div></div>";
+        $xhtml .= "<div id=\"contenedor-personas-admin-label\"><div>Titulo</div><div>Contenido</div><div>Fecha final</div><div>Acciones</div></div>";
         foreach ($registros as $indice => $campo) {
             $xhtml .= "<div class=\"contenedor-persona-admin\">";
-            $xhtml .= "<p class=\"tit-persona-admin\">" . $campo['correo'] . "</p>";
-            $xhtml .= "<p class=\"tit-persona-admin\">" . $campo['tipo'] . "</p>";
-            $xhtml .= "<p class=\"tit-persona-admin\">" . $campo['estado'] . "</p>";
+
+            //informaciond del banner
+            $xhtml .= "<p class=\"tit-persona-admin\">" . $campo['titulo'] . "</p>";
+            $xhtml .= "<p class=\"tit-persona-admin\">" . $campo['contenido'] . "</p>";
+
+            $xhtml .= "<p class=\"tit-persona-admin\">" . $campo['fecha_fin'] . "</p>";
             $xhtml .= "<p class=\"tit-persona-admin\">";
-            $xhtml .= "<a title=\"Editar\" class=\"log-persona-admin log-persona-ed fa-editar\" href=\"" . $rutaFinal . "editarusuariosadmin/" . $campo['correo_p'] . "\"></a>";
-            if ($_SESSION['usuario'] != $campo['correo']) {
-                $xhtml .= "<a class=\"log-persona-admin log-persona-ed fa-eliminar\" onclick=\"mostrarConfirmar('confirmeEliminar','" . $campo['correo_p'] . "') \"></a>";
-            }
+
+            //botones para editar y eliminar
+            $xhtml .= "<a title=\"Editar\" class=\"log-persona-admin log-persona-ed fa-editar\" href=\"" . $rutaFinal . "editarlandingadmin/" . $campo['identificador'] . "\"></a>";
             $xhtml .= "</p>";
             $xhtml .= "</div>";
         }
         if ($xhtml !== "") {
             echo $xhtml;
         } else {
-            echo "Aun no hay usuarios registrados";
+            echo "Aun no hay landing registrados";
         }
         ?>
     </div>

@@ -5,6 +5,8 @@ require_once "conexion.php";
 class Landing
 {
     public $identificador;
+    public $pagina;
+    public $indice;
     public $titulo;
     public $subTitulo;
     public $contenido;
@@ -44,10 +46,12 @@ class Landing
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
-        $sql = "UPDATE $tabla SET titulo = :titulo, subTitulo = :subTitulo, contenido = :contenido, cta1 = :cta1, 
+        $sql = "UPDATE $tabla SET pagina = :pagina, indice = :indice, titulo = :titulo, subTitulo = :subTitulo, contenido = :contenido, cta1 = :cta1, 
             cta2 = :cta2, promesa1 = :promesa1, promesa2 = :promesa2, logo = :logo, image1 = :image1, image2 = :image2, fecha_inicio = :fecha_inicio,
             fecha_fin = :fecha_fin, idioma = :idioma, estado = :estado WHERE identificador = :identificador";
         $consulta = $conexion->prepare($sql);
+        $consulta->bindParam(':pagina', $landing->pagina);
+        $consulta->bindParam(':indice', $landing->indice);
         $consulta->bindParam(':titulo', $landing->titulo);
         $consulta->bindParam(':subTitulo', $landing->subTitulo);
         $consulta->bindParam(':contenido', $landing->contenido);
@@ -74,12 +78,14 @@ class Landing
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
-        $sql = "INSERT INTO $tabla (titulo, subTitulo, contenido, cta1, 
+        $sql = "INSERT INTO $tabla (pagina, indice, titulo, subTitulo, contenido, cta1, 
             cta2, promesa1, promesa2, logo, image1, image2, fecha_inicio,
             fecha_fin, idioma, estado) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $consulta = $conexion->prepare($sql);
         if ($consulta->execute([
+            $landing->pagina,
+            $landing->indice,
             $landing->titulo,
             $landing->subTitulo,
             $landing->contenido,
