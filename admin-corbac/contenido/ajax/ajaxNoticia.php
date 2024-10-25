@@ -15,18 +15,32 @@ if ($accion == "crear") {
     $noticia->imagen_p = basename($_FILES['imagen-presentacion']['name']);
     $noticia->descripcion = filter_input(INPUT_POST, 'descripcion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $noticia->titulo1 = filter_input(INPUT_POST, 'titulo1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $noticia->contenido1 = filter_input(INPUT_POST, 'contenido1');
+    $noticia->contenido1 = filter_input(INPUT_POST, 'contenido1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $noticia->imagen1 = basename($_FILES['imagen-contenido1']['name']);
     $noticia->alt1 = $noticia->imagen1;
-    $noticia->titulo2 = filter_input(INPUT_POST, 'titulo2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $noticia->contenido2 = filter_input(INPUT_POST, 'contenido2');
-    $noticia->imagen2 = basename($_FILES['imagen-contenido2']['name']);
-    $noticia->alt2 = $noticia->imagen2;
 
-    $noticia->video = filter_input(INPUT_POST, 'video', FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
-    $noticia->tvideo = filter_input(INPUT_POST, 'tvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $noticia->cvideo = filter_input(INPUT_POST, 'cvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    
+
+    $noticia->contenido2 = filter_input(INPUT_POST, 'contenido2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    if ($noticia->contenido2 == "") {
+        $noticia->titulo2 = "";
+        $noticia->imagen2 = "";
+        $noticia->alt2 = "";
+    } else {
+        $noticia->titulo2 = filter_input(INPUT_POST, 'titulo2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $noticia->imagen2 = basename($_FILES['imagen-contenido2']['name']);
+        $noticia->alt2 = $noticia->imagen2;
+    }
+
+
+    $noticia->video = filter_input(INPUT_POST, 'video', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    if ($noticia->video == "") {
+        $noticia->tvideo = "";
+        $noticia->cvideo = "";
+    } else {
+        $noticia->tvideo = filter_input(INPUT_POST, 'tvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $noticia->cvideo = filter_input(INPUT_POST, 'cvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    }
+
     $noticia->fecha = date('Y-m-d');
     $noticia->idioma = 'es';
     $noticia->estado = 'activo';
@@ -51,20 +65,20 @@ if ($accion == "crear") {
     if ($resultado == 1) {
         header("Location: " . $rutaFinal . "noticiasadmin/1");
     } else {
-        header("Location: " . $rutaFinal . "noticiasadmin/2");
+        header("Location: " . $rutaFinal . "noticiasadmin/0");
     }
 }
 if ($accion == "editar") {
     $noticia = new Noticia();
     $noticia->identificador = filter_input(INPUT_POST, 'identificador', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $noticiaActual = ControladorNoticia::buscarNoticia($noticia);
-    
+
     if ($noticiaActual != null) {
         $noticia->identificador = filter_input(INPUT_POST, 'identificador', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $noticiaActual['identificador'];
         $noticia->url_amigable = filter_input(INPUT_POST, 'url_amigable', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $noticiaActual['url_amigable'];
         $noticia->nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $noticiaActual['nombre'];
         $noticia->presentacion = filter_input(INPUT_POST, 'presentacion', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $noticiaActual['presentacion'];
-        
+
         // Manejo de imagen de presentación
         if (isset($_FILES['imagen-presentacion']['name']) && !empty($_FILES['imagen-presentacion']['name'])) {
             $noticia->imagen_p = basename($_FILES['imagen-presentacion']['name']);
@@ -74,7 +88,7 @@ if ($accion == "editar") {
 
         $noticia->descripcion = filter_input(INPUT_POST, 'descripcion', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $noticiaActual['descripcion'];
         $noticia->titulo1 = filter_input(INPUT_POST, 'titulo1', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $noticiaActual['titulo1'];
-        $noticia->contenido1 = filter_input(INPUT_POST, 'contenido1') ?: $noticiaActual['contenido1'];
+        $noticia->contenido1 = filter_input(INPUT_POST, 'contenido1', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $noticiaActual['contenido1'];
 
         // Manejo de imagen 1
         if (isset($_FILES['imagen-contenido1']['name']) && !empty($_FILES['imagen-contenido1']['name'])) {
@@ -83,27 +97,34 @@ if ($accion == "editar") {
             $noticia->imagen1 = $noticiaActual['imagen1'];
         }
 
-        $noticia->titulo2 = filter_input(INPUT_POST, 'titulo2', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $noticiaActual['titulo2'];
-        $noticia->contenido2 = filter_input(INPUT_POST, 'contenido2') ?: $noticiaActual['contenido2'];
-
-        // Manejo de imagen 2
-        if (isset($_FILES['imagen-contenido2']['name']) && !empty($_FILES['imagen-contenido2']['name'])) {
-            $noticia->imagen2 = basename($_FILES['imagen-contenido2']['name']);
+        $noticia->contenido2 = filter_input(INPUT_POST, 'contenido2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if ($noticia->contenido2 == "") {
+            $noticia->titulo2 = "";
+            $noticia->imagen2 = "";
+        } else {
+            $noticia->titulo2 = filter_input(INPUT_POST, 'titulo2', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $noticiaActual['titulo2'];
+            if (isset($_FILES['imagen-contenido2']['name']) && !empty($_FILES['imagen-contenido2']['name'])) {
+                $noticia->imagen2 = basename($_FILES['imagen-contenido2']['name']);
+            }
         }
 
-        // Manejo de video
         $noticia->video = filter_input(INPUT_POST, 'video', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $noticia->tvideo = filter_input(INPUT_POST, 'tvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $noticia->cvideo = filter_input(INPUT_POST, 'cvideo') ?: $noticiaActual['cvideo'];
+        if ($noticia->video == "") {
+            $noticia->tvideo = "";
+            $noticia->cvideo = "";
+        } else {
+            $noticia->tvideo = filter_input(INPUT_POST, 'tvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $noticiaActual['tvideo'];
+            $noticia->cvideo = filter_input(INPUT_POST, 'cvideo', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $noticiaActual['cvideo'];
+        }
 
-        $noticia->fecha = date('Y-m-d'); 
+        $noticia->fecha = date('Y-m-d');
         $noticia->idioma = 'es';
         $noticia->estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         if (!empty($noticia->imagen_p)) {
             $img_rute = $rutaFisicaAssets . $noticia->imagen_p;
             $img_rute_anterior = $rutaFisicaAssets . $noticiaActual['imagen_p'];
-            
+
             if (!file_exists($img_rute)) {
                 if (file_exists($img_rute_anterior)) {
                     unlink($img_rute_anterior);
@@ -111,11 +132,11 @@ if ($accion == "editar") {
                 move_uploaded_file($_FILES['imagen-presentacion']['tmp_name'], $img_rute);
             }
         }
-        
+
         if (!empty($noticia->imagen1)) {
             $img_rute = $rutaFisicaAssets . $noticia->imagen1;
             $img_rute_anterior = $rutaFisicaAssets . $noticiaActual['imagen1'];
-            
+
             if (!file_exists($img_rute)) {
                 if (file_exists($img_rute_anterior)) {
                     unlink($img_rute_anterior);
@@ -123,13 +144,13 @@ if ($accion == "editar") {
                 move_uploaded_file($_FILES['imagen-contenido1']['tmp_name'], $img_rute);
             }
         }
-        
+
         if (!empty($noticia->imagen2)) {
             $img_rute2 = $rutaFisicaAssets . $noticia->imagen2;
             $img_rute_anterior2 = $rutaFisicaAssets . $noticiaActual['imagen2'];
-            
+
             if (!file_exists($img_rute2)) {
-                
+
                 if (file_exists($img_rute_anterior2)) {
                     unlink($img_rute_anterior2);
                 }

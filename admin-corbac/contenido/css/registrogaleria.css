@@ -33,7 +33,7 @@
     box-sizing: border-box;
     box-shadow: 0 3px 5px 0.3px rgba(0,0,0,.24);
     overflow: hidden;
-    max-width: 600px;
+    max-width: 75%;
 }
 #contenedor-AreaTrabjo-Admin h2{
     font-family: 'Principal',helvetica,verdana,sans-serif;  
@@ -47,7 +47,7 @@
 }
 #contenedor-form-Admin, #contenedor-form-Admin1 {
     margin: auto;
-    width: 70%;
+    width: 85%;
     text-align: center;
 }
 .label-form-act-admin {
@@ -137,4 +137,19 @@
 }
 .inputReturn:hover {    
     background-color: rgba(33,86,178,.4);     
+}
+
+
+.previsualizaciones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px;
+}
+
+.previsualizaciones img {
+    width: 100%;
+    height: auto;
+    max-height: 180px;
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }

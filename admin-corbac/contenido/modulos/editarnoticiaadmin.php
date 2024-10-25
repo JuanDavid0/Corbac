@@ -5,9 +5,7 @@ $noticia->identificador = $msg;
 $noticiaF = Noticia::buscarNoticia('noticia', $noticia);
 function limpiarHTML($html)
 {
-    // Elimina etiquetas vacías o con solo espacios o saltos de línea
     $html = preg_replace('/<[^\/>]*>([\s]|<br\s*\/?>)*<\/[^>]*>/', '', $html);
-    // Quita espacios en blanco al principio y al final
     return trim($html);
 }
 ?>
@@ -219,9 +217,9 @@ function limpiarHTML($html)
         var container = document.querySelector(textAreaId);
 
         quill.on('text-change', function() {
-            container.value = quill.root.innerHTML;
+            container.value = quill.getText().trim();
         });
-        container.value = quill.root.innerHTML;
+        container.value = quill.getText().trim();
     }
 
     initializeQuillEditor('#editor1', '#inputNoticiaContenido1');
