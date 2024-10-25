@@ -2,6 +2,14 @@
 $idModulo = consultaModulo("post-1");
 $url_noticia = $varEspecifico['url_amigable'];
 $consulta_galeria_noticia = consultaGaleriaNoticias($idModulo, $con, $url_noticia, $idioma);
+
+function obtenerLinkEmbebido($url) {
+    if (preg_match('/youtu\.be\/([a-zA-Z0-9_-]+)/', $url, $matches)) {
+        $videoId = $matches[1];
+        return "https://www.youtube.com/embed/" . $videoId;
+    }
+    return $url;
+}
 ?>
 <div id="post-1">
     <div class="titulo-centrado">
@@ -59,8 +67,8 @@ $consulta_galeria_noticia = consultaGaleriaNoticias($idModulo, $con, $url_notici
                 </section>
             </div>
             <div id="post-1-video-video">
-                <iframe src="<?php echo $varEspecifico['video'] ?>" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                <iframe src="<?php echo obtenerLinkEmbebido($varEspecifico['video']); ?>" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share""
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>

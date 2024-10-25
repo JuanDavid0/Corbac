@@ -92,7 +92,7 @@
                 <div id="bloque2">
                     <label class="label-form-act-admin">Url - Youtube</label>
                     <input id="inputNoticiaVideo" name="video" class="input-form-act-admin" type="text"
-                        placeholder="Ej: https://www.youtube.com/watch?v=V1bFr2SWP1I&list=RDV1bFr2SWP1I" />
+                        placeholder="Ej: https://youtu.be/V1bFr2SWP1I" />
                     <label class="label-form-act-admin">Titulo del Video</label>
                     <input id="inputTituloVideo" name="tvideo" class="input-form-act-admin" type="text"
                         placeholder="Titulo de Video" maxlength="300" />
