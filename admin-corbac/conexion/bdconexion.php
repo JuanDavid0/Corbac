@@ -7,7 +7,7 @@ class conexionBaseDatosPagina {
     public function __construct(){
         $this->servidor = "localhost";
         $this->usuario  = "root";
-        $this->pass = "";        
+        $this->pass = "root";        
         // $this->bd = "megapro";   
         $this->bd = "corbac";
     }    

@@ -122,4 +122,41 @@ class Banner
             return 0;
         }
     }
+
+    static function paginasDisponibles()
+    {
+        $conn = new Conexion();
+        $conexion = $conn->connectDB();
+        $sql = "SELECT identificador, nombre 
+                FROM pagina
+                WHERE ARCHIVO IN ('index', 'inicio') 
+                OR CATEGORIA = 'servicio'
+                AND estado = 'activo'
+                order by nombre";
+        $consulta = $conexion->prepare($sql);
+        $consulta->execute();
+        return $consulta->fetchAll();
+    }
+
+    static function noticiasDisponibles()
+    {
+        $conn = new Conexion();
+        $conexion = $conn->connectDB();
+        $sql = "SELECT url_amigable, nombre FROM noticia WHERE estado = 'activo' order by nombre";
+        $consulta = $conexion->prepare($sql);
+        $consulta->execute();
+        return $consulta->fetchAll();
+    }
+
+    static function ofertasDisponibles()
+    {
+        $conn = new Conexion();
+        $conexion = $conn->connectDB();
+        $sql = "SELECT url_amigable, nombre FROM oferta_academica WHERE estado = 'activo' order by nombre";
+        $consulta = $conexion->prepare($sql);
+        $consulta->execute();
+        return $consulta->fetchAll();
+    }
+
+
 }
