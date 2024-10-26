@@ -109,4 +109,17 @@ class Galeria
         return $consulta->fetchAll();
     }
 
+    static function noticiasDisponiblesConGaleria($tablaNoticias, $tablaGaleria)
+    {
+        $conn = new Conexion();
+        $conexion = $conn->connectDB();
+
+        $sql = "SELECT DISTINCT(n.url_amigable) url_amigable, n.nombre nombre
+            FROM $tablaNoticias AS n
+            JOIN $tablaGaleria AS g ON n.url_amigable = g.nombre
+            WHERE n.estado = 'activo'";
+        $consulta = $conexion->prepare($sql);
+        $consulta->execute();
+        return $consulta->fetchAll();
+    }
 }

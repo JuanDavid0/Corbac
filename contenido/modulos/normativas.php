@@ -11,8 +11,10 @@ $idModulo = consultaModulo("normativas");
         while ($resNormativas = mysqli_fetch_array($consultarNormativas)) {
         ?>
             <div class="normativas-contenido">
-                <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resNormativas['imagen']; ?>" alt="<?php echo $resNormativas["imagen"] ?>">
-                <p><a href="<?php echo $resNormativas["url"] ?>"><?php echo $resNormativas["nombre"] ?></a></p>
+                <a href="<?php echo $resNormativas["url"] ?>">
+                    <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resNormativas['imagen']; ?>" alt="<?php echo $resNormativas["imagen"] ?>">
+                    <p><?php echo $resNormativas["nombre"] ?></p>
+                </a>
             </div>
         <?php } ?>
     </div>

@@ -39,9 +39,7 @@ class oferta
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
-        // Utilizamos un placeholder en la consulta para evitar errores y posibles inyecciones SQL
         $sql = $conexion->prepare("SELECT * FROM oferta_academica WHERE estado = 'activo' AND oferta_padre = :oferta_padre");
-        // Enlazamos el parámetro de manera segura
         $sql->bindParam(':oferta_padre', $oferta_padre, PDO::PARAM_STR);
         $sql->execute();
         return $sql->fetchAll();
@@ -60,8 +58,8 @@ class oferta
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
-        $sql = $conexion->prepare("INSERT INTO $tabla (url_amigable, nombre, imagen_p, oferta_padre, fecha, estado)
-        VALUES (?, ?, ?, ?, ?, ?)");
+        $sql = $conexion->prepare("INSERT INTO $tabla (url_amigable, nombre, imagen_p, oferta_padre, fecha, idioma, estado)
+        VALUES (?, ?, ?, ?, ?, ?, ?)");
         if (
             $sql->execute([
                 $oferta->url_amigable,
@@ -69,13 +67,78 @@ class oferta
                 $oferta->imagen_p,
                 $oferta->oferta_padre,
                 $oferta->fecha,
+                $oferta->idioma,
                 $oferta->estado
             ])
         ) {
-            unset($conexion);
+            self::crearPagina($oferta);
+            self::crearModuloPagina($oferta);
             return 1;
         } else {
-            unset($conexion);
+            return 0;
+        }
+    }
+
+    static function crearPagina($oferta)
+    {
+        $conn = new Conexion();
+        $conexion = $conn->connectDB();
+        $sql = $conexion->prepare("INSERT INTO pagina ( identificador, nombre, fecha, categoria, nivel, orden, estado, archivo, destacado, idioma)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        if (
+            $sql->execute([
+                $oferta->url_amigable,
+                $oferta->nombre,
+                $oferta->fecha,
+                'oferta',
+                1,
+                1,
+                'activo',
+                'inicio',
+                0,
+                'es'
+            ])
+        ) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    static function crearModuloPagina($oferta)
+    {
+        $conn = new Conexion();
+        $conexion = $conn->connectDB();
+
+        $sql = $conexion->prepare("INSERT INTO pagina_modulo (identificador_pagina, identificador_modulo, orden, estado)
+            VALUES (?, ?, ?, ?)");
+        $success1 = $sql->execute([
+            $oferta->url_amigable,
+            1,
+            1,
+            'activo'
+        ]);
+        $success2 = $sql->execute([
+            $oferta->url_amigable,
+            129,
+            99,
+            'activo'
+        ]);
+        $success3 = $sql->execute([
+            $oferta->url_amigable,
+            3,
+            2,
+            'activo'
+        ]);
+        $success4 = $sql->execute([
+            $oferta->url_amigable,
+            147,
+            3,
+            'activo'
+        ]);
+        if ($success1 && $success2 && $success3 && $success4) {
+            return 1;
+        } else {
             return 0;
         }
     }
@@ -84,10 +147,11 @@ class oferta
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
-        $sql = $conexion->prepare("INSERT INTO $tabla (url_amigable, nombre, imagen_p, descripcion, contenido1, contenido_duracion, contenido_modalidad, contenido_aprobado, imagen1, alt1, contenido2, imagen2, alt2, contenido3, plan_enlace, contenido4, contenido5, oferta_padre, fecha, estado) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sql = "INSERT INTO $tabla (url_amigable, nombre, imagen_p, descripcion, contenido1, contenido_duracion, contenido_modalidad, contenido_aprobado, imagen1, alt1, contenido2, imagen2, alt2, contenido3, plan_enlace, contenido4, contenido5, oferta_padre, fecha, idioma, estado) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $consulta = $conexion->prepare($sql);
         if (
-            $sql->execute([
+            $consulta->execute([
                 $oferta->url_amigable,
                 $oferta->nombre,
                 $oferta->imagen_p,
@@ -107,13 +171,12 @@ class oferta
                 $oferta->contenido5,
                 $oferta->oferta_padre,
                 $oferta->fecha,
+                $oferta->idioma,
                 $oferta->estado
             ])
         ) {
-            unset($conexion);
             return 1;
         } else {
-            unset($conexion);
             return 0;
         }
     }
@@ -123,31 +186,77 @@ class oferta
         $conn = new Conexion();
         $conexion = $conn->connectDB();
 
-        $sql = $conexion->prepare("UPDATE $tabla SET nombre = :nombre, imagen_p = :imagen_p, oferta_padre = :oferta_padre, fecha = :fecha, estado = :estado WHERE url_amigable = :url_amigable");
-
-        $sql->bindParam(':nombre', $oferta->nombre, PDO::PARAM_STR);
-        $sql->bindParam(':imagen_p', $oferta->imagen_p, PDO::PARAM_STR);
-        $sql->bindParam(':oferta_padre', $oferta->oferta_padre, PDO::PARAM_STR);
-        $sql->bindParam(':fecha', $oferta->fecha, PDO::PARAM_STR);
-        $sql->bindParam(':estado', $oferta->estado, PDO::PARAM_STR);
-        $sql->bindParam(':url_amigable', $oferta->url_amigable, PDO::PARAM_STR);
-
+        $sql = $conexion->prepare("UPDATE $tabla SET 
+        nombre = :nombre, 
+        imagen_p = :imagen_p, 
+        oferta_padre = :oferta_padre, 
+        fecha = :fecha, 
+        idioma = :idioma, 
+        estado = :estado 
+        WHERE identificador = :identificador");
+        $sql->bindParam(':nombre', $oferta->nombre);
+        $sql->bindParam(':imagen_p', $oferta->imagen_p);
+        $sql->bindParam(':oferta_padre', $oferta->oferta_padre);
+        $sql->bindParam(':fecha', $oferta->fecha);
+        $sql->bindParam(':idioma', $oferta->idioma);
+        $sql->bindParam(':estado', $oferta->estado);
+        $sql->bindParam(':identificador', $oferta->identificador);
         if ($sql->execute()) {
-            unset($conexion);
+            self::editarPagina($oferta);
             return 1;
         } else {
-            unset($conexion);
             return 0;
         }
     }
 
+    static function editarPagina($oferta) {
+        $conn = new Conexion();
+        $conexion = $conn->connectDB();
+
+        $categoria = 'oferta';
+        $nivel = 1;
+        $orden = 1;
+        $estado = 'activo';
+        $archivo = 'inicio';
+        $destacado = 0;
+        $idioma = 'es';
+
+        $sql = $conexion->prepare("UPDATE pagina SET
+        nombre = :nombre,
+        fecha = :fecha,
+        categoria = :categoria,
+        nivel = :nivel,
+        orden = :orden,
+        estado = :estado,
+        archivo = :archivo,
+        destacado = :destacado,
+        idioma = :idioma
+        WHERE identificador = :identificador");
+        $sql->bindParam(':nombre', $oferta->nombre);
+        $sql->bindParam(':fecha', $oferta->fecha);
+        $sql->bindParam(':categoria', $categoria);
+        $sql->bindParam(':nivel', $nivel);
+        $sql->bindParam(':orden', $orden);
+        $sql->bindParam(':estado', $estado);
+        $sql->bindParam(':archivo', $archivo);
+        $sql->bindParam(':destacado', $destacado);
+        $sql->bindParam(':idioma', $idioma);
+        $sql->bindParam(':identificador', $oferta->url_amigable);
+
+        if ($sql->execute()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 
     static function editarOfertaEspecifica($tabla, $oferta)
-{
-    $conn = new Conexion();
-    $conexion = $conn->connectDB();
+    {
+        $conn = new Conexion();
+        $conexion = $conn->connectDB();
 
-    $sql = $conexion->prepare("UPDATE $tabla SET 
+        $sql = $conexion->prepare("UPDATE $tabla SET 
+        url_amigable = :url_amigable,
         nombre = :nombre, 
         imagen_p = :imagen_p, 
         descripcion = :descripcion, 
@@ -167,48 +276,46 @@ class oferta
         oferta_padre = :oferta_padre, 
         fecha = :fecha, 
         estado = :estado 
-        WHERE url_amigable = :url_amigable");
+        WHERE identificador = :identificador");
 
-    $sql->bindParam(':nombre', $oferta->nombre);
-    $sql->bindParam(':imagen_p', $oferta->imagen_p);
-    $sql->bindParam(':descripcion', $oferta->descripcion);
-    $sql->bindParam(':contenido1', $oferta->contenido1);
-    $sql->bindParam(':contenido_duracion', $oferta->contenido_duracion);
-    $sql->bindParam(':contenido_modalidad', $oferta->contenido_modalidad);
-    $sql->bindParam(':contenido_aprobado', $oferta->contenido_aprobado);
-    $sql->bindParam(':imagen1', $oferta->imagen1);
-    $sql->bindParam(':alt1', $oferta->alt1);
-    $sql->bindParam(':contenido2', $oferta->contenido2);
-    $sql->bindParam(':imagen2', $oferta->imagen2);
-    $sql->bindParam(':alt2', $oferta->alt2);
-    $sql->bindParam(':contenido3', $oferta->contenido3);
-    $sql->bindParam(':plan_enlace', $oferta->plan_enlace);
-    $sql->bindParam(':contenido4', $oferta->contenido4);
-    $sql->bindParam(':contenido5', $oferta->contenido5);
-    $sql->bindParam(':oferta_padre', $oferta->oferta_padre);
-    $sql->bindParam(':fecha', $oferta->fecha);
-    $sql->bindParam(':estado', $oferta->estado);
-    $sql->bindParam(':url_amigable', $oferta->url_amigable);
+        $sql->bindParam(':url_amigable', $oferta->url_amigable);
+        $sql->bindParam(':nombre', $oferta->nombre);
+        $sql->bindParam(':imagen_p', $oferta->imagen_p);
+        $sql->bindParam(':descripcion', $oferta->descripcion);
+        $sql->bindParam(':contenido1', $oferta->contenido1);
+        $sql->bindParam(':contenido_duracion', $oferta->contenido_duracion);
+        $sql->bindParam(':contenido_modalidad', $oferta->contenido_modalidad);
+        $sql->bindParam(':contenido_aprobado', $oferta->contenido_aprobado);
+        $sql->bindParam(':imagen1', $oferta->imagen1);
+        $sql->bindParam(':alt1', $oferta->alt1);
+        $sql->bindParam(':contenido2', $oferta->contenido2);
+        $sql->bindParam(':imagen2', $oferta->imagen2);
+        $sql->bindParam(':alt2', $oferta->alt2);
+        $sql->bindParam(':contenido3', $oferta->contenido3);
+        $sql->bindParam(':plan_enlace', $oferta->plan_enlace);
+        $sql->bindParam(':contenido4', $oferta->contenido4);
+        $sql->bindParam(':contenido5', $oferta->contenido5);
+        $sql->bindParam(':oferta_padre', $oferta->oferta_padre);
+        $sql->bindParam(':fecha', $oferta->fecha);
+        $sql->bindParam(':estado', $oferta->estado);
+        $sql->bindParam(':identificador', $oferta->identificador);
 
-    if ($sql->execute()) {
-        unset($conexion);
-        return 1;
-    } else {
-        unset($conexion);
-        return 0;
+        if ($sql->execute()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
-}
 
     static function eliminarOfertaEspecifica($tabla, $oferta)
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
-        $sql = $conexion->prepare("DELETE FROM $tabla WHERE identificador = '$oferta'->identificador");
+        $sql = $conexion->prepare("DELETE FROM $tabla WHERE identificador = :identificador");
+        $sql->bindParam(':identificador', $oferta->identificador);
         if ($sql->execute()) {
-            unset($conexion);
             return 1;
         } else {
-            unset($conexion);
             return 0;
         }
     }

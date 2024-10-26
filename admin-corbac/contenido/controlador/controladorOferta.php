@@ -3,7 +3,7 @@
 class ControladorOferta
 {
 
-    public static function crearOferta($oferta)
+    public static function crearOfertaAcademica($oferta)
     {
         $tabla = "oferta_academica";
         $respuesta = Oferta::crearOferta($tabla, $oferta);
@@ -17,7 +17,7 @@ class ControladorOferta
         return $respuesta;
     }
 
-    public static function editarOferta($oferta)
+    public static function editarOfertaAcademica($oferta)
     {
         $tabla = "oferta_academica";
         $respuesta = Oferta::editarOferta($tabla, $oferta);

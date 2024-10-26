@@ -7,23 +7,26 @@
  */
 require_once "conexion.php";
 define('METHOD', 'AES-256-CBC');
-class Usuario {
+class Usuario
+{
 
     public $correo;
     public $correo_p;
-    public $contrasena;    
+    public $contrasena;
     public $estado;
-    public $tipo;    
+    public $tipo;
 
-    static function listarUsuario($tabla) {
+    static function listarUsuario($tabla)
+    {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
         $sql = "SELECT * FROM $tabla";
         $consulta = $conexion->prepare($sql);
         $consulta->execute();
         return $consulta->fetchAll();
-    }   
-    static function buscarUsuario($tabla, $correo) {
+    }
+    static function buscarUsuario($tabla, $correo)
+    {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
         $sql = "SELECT * FROM $tabla WHERE correo_p = '$correo->correo_p'";
@@ -31,9 +34,10 @@ class Usuario {
         $consulta->execute();
         return $consulta->fetch();
     }
-    
-    
-    static function eliminarUsuario($tabla, $usuario) {
+
+
+    static function eliminarUsuario($tabla, $usuario)
+    {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
         $sql = "DELETE FROM $tabla WHERE correo_p = '$usuario->correo_p'";
@@ -46,12 +50,13 @@ class Usuario {
             return 2;
         }
     }
-    static function crearUsuario($tabla, $usuario) {
+    static function crearUsuario($tabla, $usuario)
+    {
         $conn = new Conexion();
         $stmt = $conn->connectDB();
         $consulta = $stmt->prepare("INSERT INTO $tabla (correo, "
-                . "correo_p, contrasena, estado, tipo) VALUES ('$usuario->correo',"
-                . "'$usuario->correo_p','$usuario->contrasena','Activo','Administrador'); ");
+            . "correo_p, contrasena, estado, tipo) VALUES ('$usuario->correo',"
+            . "'$usuario->correo_p','$usuario->contrasena','Activo','Administrador'); ");
         if ($consulta->execute()) {
             unset($stmt);
             return 1;
@@ -60,11 +65,12 @@ class Usuario {
             return 2;
         }
     }
-    static function editarUsuario($tabla, $usuario) {
+    static function editarUsuario($tabla, $usuario)
+    {
         $conn = new Conexion();
         $stmt = $conn->connectDB();
-        $consulta = $stmt->prepare("UPDATE $tabla SET contrasena = '$usuario->contrasena',"                
-                . "estado = '$usuario->estado' WHERE correo_p = '$usuario->correo_p';");
+        $consulta = $stmt->prepare("UPDATE $tabla SET contrasena = '$usuario->contrasena',"
+            . "estado = '$usuario->estado' WHERE correo_p = '$usuario->correo_p';");
         if ($consulta->execute()) {
             unset($stmt);
             return 1;
@@ -73,7 +79,8 @@ class Usuario {
             return 2;
         }
     }
-    static function encriptarUsuario($informacion) {
+    static function encriptarUsuario($informacion)
+    {
         //para que la salida sean datos hexagecimales
         $keyC = $informacion;
         $output = FALSE;
@@ -81,10 +88,9 @@ class Usuario {
         //devuelve un caracter del string
         $iv = substr(hash('sha256', $keyC), 0, 16);
         //encripta los dato 
-        $output = openssl_encrypt($informacion."anbu", METHOD, $key, 0, $iv);
+        $output = openssl_encrypt($informacion . "anbu", METHOD, $key, 0, $iv);
         //codificar en base 64 
         $output = base64_encode($output);
         return $output;
     }
-
 }

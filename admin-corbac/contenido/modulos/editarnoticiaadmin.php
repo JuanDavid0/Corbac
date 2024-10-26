@@ -5,9 +5,7 @@ $noticia->identificador = $msg;
 $noticiaF = Noticia::buscarNoticia('noticia', $noticia);
 function limpiarHTML($html)
 {
-    // Elimina etiquetas vacías o con solo espacios o saltos de línea
     $html = preg_replace('/<[^\/>]*>([\s]|<br\s*\/?>)*<\/[^>]*>/', '', $html);
-    // Quita espacios en blanco al principio y al final
     return trim($html);
 }
 ?>
@@ -130,7 +128,7 @@ function limpiarHTML($html)
                 ?>
                     <div id="bloque2">
                         <label class="label-form-act-admin">Url - Youtube con contenido</label>
-                        <input id="inputNoticiaVideo" name="video" class="input-form-act-admin" type="text" placeholder="Ej: https://www.youtube.com/watch?v=V1bFr2SWP1I&list=RDV1bFr2SWP1I" value="<?php echo $noticiaF['video']; ?>" />
+                        <input id="inputNoticiaVideo" name="video" class="input-form-act-admin" type="text" placeholder="Ej: https://youtu.be/V1bFr2SWP1I" value="<?php echo $noticiaF['video']; ?>" />
 
                         <label class="label-form-act-admin">Titulo del Video</label>
                         <input id="inputTituloVideo" name="tvideo" class="input-form-act-admin" type="text" value="<?php echo $noticiaF['tvideo']; ?>" placeholder="Titulo de Video" maxlength="300" />
@@ -143,7 +141,7 @@ function limpiarHTML($html)
                 <?php } else { ?>
                     <div id="bloque2">
                         <label class="label-form-act-admin">Url - Youtube</label>
-                        <textarea id="inputNoticiaVideo" name="video" class="input-form-act-admin" type="text" placeholder="Ej: https://www.youtube.com/watch?v=V1bFr2SWP1I&list=RDV1bFr2SWP1I" value=""></textarea>
+                        <textarea id="inputNoticiaVideo" name="video" class="input-form-act-admin" type="text" placeholder="Ej: https://youtu.be/V1bFr2SWP1I" value=""></textarea>
 
                         <label class="label-form-act-admin">Titulo del Video</label>
                         <input id="inputTituloVideo" name="tvideo" class="input-form-act-admin" type="text" placeholder="Titulo de Video" maxlength="300" value="" />
@@ -219,9 +217,9 @@ function limpiarHTML($html)
         var container = document.querySelector(textAreaId);
 
         quill.on('text-change', function() {
-            container.value = quill.root.innerHTML;
+            container.value = quill.getText().trim();
         });
-        container.value = quill.root.innerHTML;
+        container.value = quill.getText().trim();
     }
 
     initializeQuillEditor('#editor1', '#inputNoticiaContenido1');

@@ -141,13 +141,13 @@
     width: 40%;
   }
   #contenedor-personas-admin-label div:nth-child(2) , .contenedor-persona-admin p:nth-child(2){
-    width: 40%;
+    width: 30%;
     overflow: hidden;
     max-height: 130px;
     text-align: justify;
   }
   #contenedor-personas-admin-label div:nth-child(3) , .contenedor-persona-admin p:nth-child(3){
-    width: 10%;
+    width: 20%;
   }
   #contenedor-personas-admin-label div:nth-child(4), .contenedor-persona-admin p:nth-child(4) {
     width: 10%;

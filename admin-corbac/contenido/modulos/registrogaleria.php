@@ -17,9 +17,10 @@ $registros = Galeria::noticiasDisponibles('noticia');
                 ?>
             </select>
             <label class="label-form-act-admin">Imagenes:</label>
-            <label class="label-form-act-admin">Tamaño recomendado: 800px X 400px</label>
+            <label style="font-size: smaller; text-align: center; ">Formato Horizontal - Escala de imagen recomendada 16:9 </label>
             <input id="inputNoticiaImagen" name="imagenes[]" class="input-form-act-admin" type="file" accept=".jpg, .webp" multiple required onchange="mostrarImagenes(this, 'previsualizaciones')" />
-            <div id="previsualizaciones" style="display: flex; flex-wrap: wrap;"></div>
+            <div id="previsualizaciones" class="previsualizaciones"></div>
+
             <input name="accion" value="crear" type="hidden" readonly required>
             <button class="inputSubmitForm" type="submit">añadir imagen</button>
         </form>
@@ -35,7 +36,6 @@ $registros = Galeria::noticiasDisponibles('noticia');
                 reader.onload = function(e) {
                     var img = document.createElement('img');
                     img.src = e.target.result;
-                    img.style = 'width: 70%; height: 200px; margin: 5px;';
                     previsualizaciones.appendChild(img);
                 }
                 reader.readAsDataURL(file);

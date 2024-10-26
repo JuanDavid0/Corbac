@@ -35,7 +35,7 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : ''; // Verificar si $msg está defin
                     <p>Cerrar</p>
                 </div>
             </div>
-        <?php } else if ($msg == '2') { ?>
+        <?php } else if ($msg == '0') { ?>
             <div class="alerta">
                 <div class="alerta-titulo alerta-error-color1">Ha ocurrido un error</div>
                 <div class="alerta-icono closec alerta-error-color1"></div>
@@ -47,17 +47,20 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : ''; // Verificar si $msg está defin
         <?php } ?>
     </div>
 
+
     <form id="form-filtro">
-        <label for="filtroNoticia">Filtrar por noticia:</label>
-        <select id="filtroNoticia" name="noticia" onchange="filtrarGaleria()">
-            <option value="">Todas las noticias</option>
-            <?php
-            $noticias = Galeria::noticiasDisponibles('noticia');
-            foreach ($noticias as $noticia) {
-                echo '<option value="' . htmlspecialchars($noticia['url_amigable']) . '"' . ($noticia['url_amigable'] == $noticiaSeleccionada ? ' selected' : '') . '>' . htmlspecialchars($noticia['nombre']) . '</option>';
-            }
-            ?>
-        </select>
+        <div id="opciones-menu">
+            <label for="filtroNoticia">Filtrar por noticia:</label>
+            <select id="filtroNoticia" name="noticia" onchange="filtrarGaleria()">
+                <option value="">Todas las noticias</option>
+                <?php
+                $noticias = Galeria::noticiasDisponiblesConGaleria('noticia', 'galeria');
+                foreach ($noticias as $noticia) {
+                    echo '<option value="' . $noticia['url_amigable'] . '"' . ($noticia['url_amigable'] == $noticiaSeleccionada ? ' selected' : '') . '>' . $noticia['nombre'] . '</option>';
+                }
+                ?>
+            </select>
+        </div>
     </form>
 
     <div id="contenedor-personas-admin">
