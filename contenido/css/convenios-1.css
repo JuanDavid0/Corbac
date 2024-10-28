@@ -51,8 +51,6 @@
     /* width: 50%; */
     font-style: italic;
     background-color: #06263F;
-    clip-path: polygon(0% 0%, 100% 0%, 92% 50%, 100% 100%, 0% 100%);
-    clip-path: polygon(2% 100%, 0 0, 100% 0);
     clip-path: polygon(25% 6%, 80% 6%, 75% 100%, 20% 100%);
     margin-bottom: inherit;
 }
@@ -237,4 +235,7 @@ button:hover::before {
 	#convenios-1-titulo{
 		font-size: 35px;
 	}
+	.convenios-1-serv-titulo {
+		clip-path: none;
+	}	
 }
