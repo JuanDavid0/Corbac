@@ -5,6 +5,7 @@
     box-sizing: border-box;
     position: relative;
     text-align: center;
+    background: linear-gradient(0deg, rgba(237,200,167,0.5) 0%, rgba(237,200,167,0.5) 100%);
 }
 
 #oferta-academica-titulo {

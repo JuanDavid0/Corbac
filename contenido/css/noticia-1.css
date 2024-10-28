@@ -5,6 +5,7 @@
   /*max-width: 1500px;*/
   margin: 0px auto;
   text-align: center;
+  background: linear-gradient(180deg, rgba(232, 145, 65, 0.5) 53%, rgba(6, 38, 63, 0.5) 80%, rgba(6, 38, 63, 1) 100%);
 }
 
 #noticia-1-titulo {

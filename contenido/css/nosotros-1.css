@@ -1,10 +1,10 @@
 #nosotros-1 {
     width: 100%;
-    margin: 0 auto;
-    padding: 25px 2.5% 10px;
+    padding: 25px 8% 10px;
     box-sizing: border-box;
     max-width: 1500px;
     position: relative;
+    background: linear-gradient(0deg, rgba(237, 200, 167, 0.5) 71%, rgba(240, 240, 240, 1) 100%);
 }
 
 #nosotros-1-titulo {
