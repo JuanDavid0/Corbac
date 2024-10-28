@@ -1,12 +1,9 @@
 <?php
-require_once './contenido/clases/misionvision.php';
-
-$registros = MisionVision::listaMisionVision('contenido');
+require_once './contenido/clases/contactos.php';
+$registros = Contacto::listaContacto('contenido');
 ?>
-
 <div id="contenedor-AreaTrabajo-Admin">
-    <div class="contenedor-Agregar-personas">
-    </div>
+    <div class="contenedor-Agregar-personas"></div>
 
     <div id="contenedorRespuesta" class="contenedorRespuesta">
         <?php
@@ -45,7 +42,7 @@ $registros = MisionVision::listaMisionVision('contenido');
     <div id="contenedor-personas-admin">
         <?php
         $xhtml = "";
-        $xhtml .= "<div id=\"contenedor-personas-admin-label\"><div>Mision/Vision</div><div>Contenido</div><div>Acciones</div></div>";
+        $xhtml .= "<div id=\"contenedor-personas-admin-label\"><div>Dirección</div><div>Número</div><div>Acciones</div></div>";
         $contenido = [];
         $titulo = [];
 
@@ -57,32 +54,30 @@ $registros = MisionVision::listaMisionVision('contenido');
             }
         }
         $total = max(count($contenido), count($titulo));
+
         for ($i = 0; $i < $total; $i++) {
             $xhtml .= "<div class=\"contenedor-persona-admin\">";
 
             if (isset($titulo[$i])) {
-                $xhtml .= "<p class=\"tit-persona-admin\">" . htmlspecialchars($titulo[$i]['contenido']) . "</p>";
+                $xhtml .= "<p class=\"tit-persona-admin\">" . $titulo[$i]['contenido'] . "</p>";
             } else {
                 $xhtml .= "<p class=\"tit-persona-admin\"></p>";
             }
 
             if (isset($contenido[$i])) {
-                $xhtml .= "<p class=\"tit-persona-admin\">" . htmlspecialchars($contenido[$i]['contenido']) . "</p>";
+                $xhtml .= "<p class=\"tit-persona-admin\">" . $contenido[$i]['contenido'] . "</p>";
             } else {
                 $xhtml .= "<p class=\"tit-persona-admin\"></p>";
             }
 
             $xhtml .= "<p class=\"tit-persona-admin\">";
 
-            $xhtml .= "<a title=\"Editar\" class=\"log-persona-admin log-persona-ed fa-editar\" href=\"" . $rutaFinal . "editarmisionvisionadmin/" . $contenido[$i]['identificador'] . "\"></a>";
+            $xhtml .= "<a title=\"Editar\" class=\"log-persona-admin log-persona-ed fa-editar\" href=\"" . $rutaFinal . "editarcontactosadmin/" . $contenido[$i]['identificador'] . "\"></a>";
             $xhtml .= "</p>";
             $xhtml .= "</div>";
         }
-        if ($xhtml !== "") {
-            echo $xhtml;
-        } else {
-            echo "Aun no hay datos registrados";
-        }
+
+        echo $xhtml !== "" ? $xhtml : "Aun no hay contactos registrados";
         ?>
     </div>
 </div>

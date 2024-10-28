@@ -1,5 +1,4 @@
 * {
-    font-family: 'Montserrat-bold';
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -23,6 +22,7 @@
 }
 
 .faq-question {
+    font-family: 'Montserrat-bold';
     width: 100%;
     background-color: #e89141;
     border-radius: 10px;

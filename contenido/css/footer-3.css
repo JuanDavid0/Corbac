@@ -12,28 +12,6 @@ footer{
     -o-background-size: cover;
 }
 
-/*
-footer::before{
-    width: 100%;
-    content: " ";
-    background-image: url(../assets/banner.png);
-    position: absolute;
-    left: 0%;
-    top: -1px;
-    height: 70px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    z-index: 3;
-    -webkit-transform: rotate(180deg);
-	-moz-transform: rotate(180deg);
-	-ms-transform: rotate(180deg);
-	transform: rotate(180deg);
-}
-*/
-
 #footer-contenedor{
     position: relative;
     top: 0;

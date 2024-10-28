@@ -20,24 +20,7 @@ function filtrarValor() {
     //enviando los valores a registro.php para que inserte los datos
     xmlhttp.send();
 }
-function eliminarValor() {
-    //cuando el objeto XMLHttpRequest cambia de estado, la función se inicia        
-    var id = document.getElementById("idEliminar").value;
-    if (id !== '') {
-        if (window.XMLHttpRequest) { // para navegadores IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else { // para navegadores IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function () {
-            if ((this.readyState === 4 && this.status === 200)) {
-                window.location = rutaOculta + "normativasadmin/" + this.responseText;
-            }
-        };
-        xmlhttp.open("GET", rutaOculta + "contenido/ajax/ajaxNormativa.php?accion=eliminar&id=" + id, true);
-        xmlhttp.send();
-    }
-}
+
 function mostrarAlerta() {
     var alerta = document.getElementsByClassName("alerta");
     alerta[0].style.display = "block";

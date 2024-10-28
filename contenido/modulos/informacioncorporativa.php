@@ -16,8 +16,13 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
         ?>
             <div class="info-1-esp">
                 <div class="info-1-capa">
+                    <h2><?php echo $resinformacion['titulo']; ?></h2>
+                    <?php if ($resinformacion['imagen'] != "") { ?>
+                        <img src="/contenido/assets/<?php echo $resinformacion['imagen']; ?>" alt="<?php echo $resinformacion['titulo']; ?>" />
+                    <?php } ?>
                     <p><?php echo $resinformacion['contenido']; ?></p>
                 </div>
             </div>
-    <?php } ?>
+        <?php } ?>
+    </div>
 </div>

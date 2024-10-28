@@ -24,7 +24,6 @@ $fecha_hoy = "" . $fehcaServidor['year'] . "-" . $fehcaServidor['mon'] . "-" . $
     <div id="contenedor-menuAdmin-informacion">
         <div id="contenedor-menuAdmin-info-img"><img src="<?php echo $rutaFinal; ?>contenido/assets/logo.webp" alt="Logo"></div>            
         <h3 id="log-usuario">Corbac Administrador</h3>   
-        <br>
             <!-- en este nav-menuAdmin se carga la lista de paginas que van aestar en este menú lateral-->
         <nav class="nav-menuAdmin">      
             <?php

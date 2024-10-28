@@ -43,11 +43,13 @@
     background-size: cover;
     border-radius: 10px;
     margin-bottom: 20px;
+    flex-shrink: 0;
 }
 
 .nosotros-1-texto {
     padding: 10px;
     width: 100%;
+    flex-grow: 1;
 }
 
 .nosotros-1-texto p {

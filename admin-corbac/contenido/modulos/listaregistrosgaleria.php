@@ -50,7 +50,7 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : ''; // Verificar si $msg está defin
 
     <form id="form-filtro">
         <div id="opciones-menu">
-            <label for="filtroNoticia">Filtrar por noticia:</label>
+            <label for="filtroNoticia" style="color: rgb(255, 255, 255)">Filtrar por noticia:</label>
             <select id="filtroNoticia" name="noticia" onchange="filtrarGaleria()">
                 <option value="">Todas las noticias</option>
                 <?php

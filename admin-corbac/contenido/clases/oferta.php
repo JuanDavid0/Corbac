@@ -136,7 +136,13 @@ class oferta
             3,
             'activo'
         ]);
-        if ($success1 && $success2 && $success3 && $success4) {
+        $sucess5 = $sql->execute([
+            $oferta->url_amigable,
+            123,
+            10,
+            'activo'
+        ]);
+        if ($success1 && $success2 && $success3 && $success4 && $sucess5) {
             return 1;
         } else {
             return 0;
