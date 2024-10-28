@@ -9,7 +9,7 @@ class conexionBaseDatosPagina {
         $this->usuario  = "root";
         $this->pass = "root";        
         // $this->bd = "megapro";   
-        $this->bd = "corbac";
+        $this->bd = "corbac_final";
     }    
     public function connectDB() {
         $codificacion ="SET NAMES \"UTF8\"";

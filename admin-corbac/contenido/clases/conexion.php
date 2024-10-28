@@ -16,7 +16,7 @@ class Conexion {
         $this->servidor = "localhost";
         $this->usuario  = "root";
         $this->pass = "root";        
-        $this->bd = "corbac";
+        $this->bd = "corbac_final";
         //$this->bd = "megaproyectos";   
     }
 

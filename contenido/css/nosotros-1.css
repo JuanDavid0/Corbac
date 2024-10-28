@@ -2,7 +2,6 @@
     width: 100%;
     padding: 25px 8% 10px;
     box-sizing: border-box;
-    max-width: 1500px;
     position: relative;
     background: linear-gradient(0deg, rgba(237, 200, 167, 0.5) 71%, rgba(240, 240, 240, 1) 100%);
 }
