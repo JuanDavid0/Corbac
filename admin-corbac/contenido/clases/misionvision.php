@@ -13,7 +13,7 @@ class MisionVision
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
-        $sql = "SELECT * FROM $tabla WHERE identificador_modulo = '138' AND indice in (2, 4)";
+        $sql = "SELECT * FROM $tabla WHERE identificador_modulo = '138' AND indice in (1, 2, 3, 4)";
         $consulta = $conexion->prepare($sql);
         $consulta->execute();
         return $consulta->fetchAll();

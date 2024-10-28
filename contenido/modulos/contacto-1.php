@@ -24,19 +24,19 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
                     <?php echo $varcontenido[2]?>
                     </h3>
                     <li>
-                        <a href="http://wa.me/573006406220"><?php echo $varcontenido[3]?></a>
+                        <a href="http://wa.me/57<?php echo $varcontenido[3]?>"><?php echo preg_replace('/(\d{3})(\d{3})(\d{4})/', '$1 $2 $3', $varcontenido[3]); ?></a>
                     </li>
                     <h3>
                     <?php echo $varcontenido[4]?>
                     </h3>
                     <li>
-                        <a href="http://wa.me/573007730077"><?php echo $varcontenido[5]?></a>
+                        <a href="http://wa.me/57<?php echo $varcontenido[5]?>"><?php echo preg_replace('/(\d{3})(\d{3})(\d{4})/', '$1 $2 $3', $varcontenido[5]); ?></a>
                     </li>
                     <h3>
                     <?php echo $varcontenido[6]?>
                     </h3>
                     <li>
-                        <a href="http://wa.me/573011634744"><?php echo $varcontenido[7]?></a>
+                        <a href="http://wa.me/57<?php echo $varcontenido[7]?>"><?php echo preg_replace('/(\d{3})(\d{3})(\d{4})/', '$1 $2 $3', $varcontenido[7]); ?></a>
                     </li>
                 </ul>
             </section>

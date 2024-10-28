@@ -19,7 +19,7 @@ class Normativa
         return $consulta->fetchAll();
     }
 
-    static function buscaNormativa($tabla, $normativa)
+    static function buscarNormativa($tabla, $normativa)
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();

@@ -29,36 +29,6 @@
     overflow: hidden;
 }
 
-/*
-#banner::before {
-    width: 100%;
-    content: " ";
-    background-image: url(../assets/banner.png);
-    position: absolute;
-    left: 0%;
-    bottom: -1px;
-    height: 70px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    z-index: 3;
-}
-*/
-
-/*#banner::before{
-    content: " ";
-    width: 100%;
-    height: 100px;
-    background-color: rgba(255,255,255,1);
-    border-radius: 100%/ 100%;
-    position: absolute;
-    left: 0;
-    bottom: -50px;
-    z-index: 5;
-}*/
-
 #banner-capa {
     width: 100%;
     height: 100%;
@@ -200,7 +170,7 @@
 
 .informacionBanner {
     position: relative;
-    width: 45%;
+    width: 50%;
     margin-top: 13%;
     height: auto;
     z-index: 5;
@@ -210,8 +180,8 @@
     color: rgba(255, 255, 255, 1);
     -webkit-border-radius: 15px 0px;
     -moz-border-radius: 15px 0px;
-    border-radius: 15px 0px;
-}
+    border-radius: 15px;
+    background-image: linear-gradient(to right, #ffca99, #fbbf88, #f7b578, #f3aa67, #ee9f57, #ee994c, #ee9241, #ee8c35, #f2882b, #f68421, #fb7f14, #ff7a00);}
 
 .textoBanner {
     position: relative;
@@ -226,8 +196,7 @@
 
 /*CSS para el titulo del banner*/
 .tituloBanner {
-    width: 100%;
-    font-size: 70px;
+    font-size: 60px;
     position: relative;
     font-family: 'Raleway';
     z-index: 5;
@@ -466,9 +435,17 @@
     background: rgba(81, 110, 174, 0.1)
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1060px) {
     #banner-buscador {
         display: none;
+    }
+
+    .informacionBanner {
+        width: 50%;
+    }
+
+    .tituloBanner {
+        font-size: 40px;
     }
 }
 
@@ -485,7 +462,15 @@
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 730px) {
+
+    #banner,
+    .contenedorBanner,
+    .slideBanner,
+    .imgBanner {
+        height: 450px;
+    }
+
     .botonBannerEnlase {
         font-size: 15px;
         margin-left: 0;
@@ -498,7 +483,7 @@
     }
 
     .textoBanner {
-        font-size: 20px;
+        font-size: 17px;
         margin: 5px 5px 20px 5px;
     }
 

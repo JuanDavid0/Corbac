@@ -11,7 +11,7 @@ $registros = Normativa::listaNormativa('normativas');
         <div id="confirmeEliminar" class="confirmar">
             <input id="idEliminar" type="text" style="display: none;">
             <input id="usuarioEliminar" type="text" style="display: none;">
-            <div class="alerta-titulo alerta-error-color1">¿Realmente desea eliminar esta FAQ?</div>
+            <div class="alerta-titulo alerta-error-color1">¿Realmente desea eliminar esta Normativa?</div>
             <div class="alerta-icono closec alerta-error-color1"></div>
             <div class="alerta-boton alerta-ok-fondo" onclick="eliminarValor(); ocultarConfirmar('confirmeEliminar')">
                 <p>Si</p>
