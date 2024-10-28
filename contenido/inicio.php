@@ -1,13 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 error_reporting(E_ALL ^ E_NOTICE);
-
-// Funcion para traer los meta tags de esta pagina
-echo "<script>console.log('VALOR DE CON' + '$con');</script>";
-
-$prueba = $varEspecifico['descripcion'];
-echo "<script>console.log('Var especifico' + '$prueba');</script>";
-
 $consultametatags = consultaMetaTags($con);
 $resmetatag = mysqli_fetch_array($consultametatags);
 ?>

@@ -1,7 +1,7 @@
 #convenios-1 {
 	width: 100%;
 	margin: 0px auto;
-	padding: 50px 5%;
+	padding: 25px 0 10px;
 	box-sizing: border-box;
 	position: relative;
 }
@@ -40,18 +40,18 @@
 }
 
 .convenios-1-serv-titulo {
-	padding: 10px 50px 10px 10px;
-	box-sizing: border-box;
-	/* color: #0D1E2C; */
-	color: #e89141;
-	text-align: left;
-	font-size: 19px;
-	font-family: 'Titulo', helvetica, verdana, sans-serif;
-	width: 50%;
-	font-style: italic;
-	background-color: #06263F;
-	clip-path: polygon(0% 0%, 100% 0%, 92% 50%, 100% 100%, 0% 100%);
-	margin-bottom: inherit;
+	padding: 10px 50px 10px 5%;
+    box-sizing: border-box;
+    /* color: #0D1E2C; */
+    color: #e89141;
+    /* text-align: left; */
+    font-size: 19px;
+    font-family: 'Titulo', helvetica, verdana, sans-serif;
+    /* width: 50%; */
+    font-style: italic;
+    background-color: #06263F;
+    /* clip-path: polygon(0% 0%, 100% 0%, 92% 50%, 100% 100%, 0% 100%); */
+    margin-bottom: inherit;
 }
 
 .convenios-1-serv-titulo:before {
