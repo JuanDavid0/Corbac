@@ -31,7 +31,8 @@ function eliminarValor() {
         }
         xmlhttp.onreadystatechange = function () {
             if ((this.readyState === 4 && this.status === 200)) {                                                    
-                window.location = rutaOculta+"ofertaacademicaadmin/";
+                window.location = rutaOculta+"ofertaacademicaadmin/" + this.responseText;
+                location.reload();
             }
         };
         xmlhttp.open("GET", rutaOculta+"contenido/ajax/ajaxOferta.php?accion=eliminarE&id="+id, true);

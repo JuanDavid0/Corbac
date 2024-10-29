@@ -32,6 +32,7 @@ function eliminarValor() {
         xmlhttp.onreadystatechange = function () {
             if ((this.readyState === 4 && this.status === 200)) {
                 window.location = rutaOculta + "faqadmin/" + this.responseText;
+                location.reload();
             }
         };
         xmlhttp.open("GET", rutaOculta + "contenido/ajax/ajaxFaq.php?accion=eliminar&id=" + id, true);

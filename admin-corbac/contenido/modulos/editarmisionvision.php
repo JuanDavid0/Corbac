@@ -28,17 +28,17 @@ $misionvisionF = MisionVision::buscaMisionVision('contenido', $misionvision);
 
 <script>
         var toolbarOptions = [
-        ['bold', 'italic', 'underline', 'strike'],
-        ['blockquote', 'code-block'],
-        [{'header': [1, 2, 3, 4, 5, 6, false]}],
-        [{'list': 'ordered'}, {'list': 'bullet'}],
-        [{'align': []}],
-        [{'script': 'sub'}, {'script': 'super'}],
-        [{'ident': '-1'}, {'ident': '+1'}],
-        [{'direction': 'rtl'}],
-        [{'color': []}, {'background': []}],
-        [{'font': []}]
-    ];
+            ['bold', 'italic', 'underline', 'strike'],
+            [{
+                'list': 'ordered'
+            }, {
+                'list': 'bullet'
+            }],
+            [{
+                'color': []
+            }]
+        ];
+    
     var quill = new Quill('#editor', {
         modules: {
             toolbar: toolbarOptions
