@@ -31,7 +31,8 @@ function eliminarValor() {
         }
         xmlhttp.onreadystatechange = function () {
             if ((this.readyState === 4 && this.status === 200)) {
-                window.location = rutaOculta + "registrosgaleria/" + this.responseText;
+                window.location =  rutaOculta + "listaregistrosgaleria/" + this.responseText;
+                location.reload();
             }
         };
         xmlhttp.open("GET", rutaOculta + "contenido/ajax/ajaxGaleria.php?accion=eliminar&id=" + id, true);
