@@ -8,7 +8,8 @@ class conexionBaseDatosPagina {
         $this->servidor = "localhost";
         $this->usuario  = "root";
         $this->pass = "";        
-        $this->bd = "megapro";   
+        // $this->bd = "megapro";   
+        $this->bd = "corbac";
     }    
     public function connectDB() {
         $codificacion ="SET NAMES \"UTF8\"";

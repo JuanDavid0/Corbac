@@ -683,3 +683,14 @@ function consultaInfoCorporativa() {
     disconnectDB($conexion);
     return $result;
 }
+
+function consultaPreguntasFrecuentes() {
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM preguntas_frecuentes WHERE estado = 'activo'";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    disconnectDB($conexion);
+    return $result;
+}

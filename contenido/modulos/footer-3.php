@@ -34,19 +34,19 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
             $consultageneral = consultaGeneral('telefono-footer', $idioma);
             while ($resgeneral = mysqli_fetch_array($consultageneral)) {
             ?>
-                <p><?php echo $varcontenido[2]; ?> <a href="tel:<?php echo $resgeneral['variable']; ?>"><?php echo $resgeneral['variable']; ?></a></p>
+                <p><strong><?php echo $varcontenido[2]; ?></strong> <a href="tel:<?php echo $resgeneral['variable']; ?>">(+57) <?php echo preg_replace('/(\d{3})(\d{3})(\d{4})/', '$1 $2 $3', $resgeneral['variable']); ?></a></p>
             <?php } ?>
             <?php
             $consultageneral = consultaGeneral('email-footer', $idioma);
             while ($resgeneral = mysqli_fetch_array($consultageneral)) {
             ?>
-                <p><?php echo $varcontenido[3]; ?> <a href="mailto:<?php echo $resgeneral['variable']; ?>"><?php echo $resgeneral['variable']; ?></a></p>
+                <p><strong><?php echo $varcontenido[3]; ?></strong> <a href="mailto:<?php echo $resgeneral['variable']; ?>"><?php echo $resgeneral['variable']; ?></a></p>
             <?php } ?>
             <?php
             $consultageneral = consultaGeneral('sede1-footer', $idioma);
             while ($resgeneral = mysqli_fetch_array($consultageneral)) {
             ?>
-                <p><?php echo $varcontenido[4]; ?> <?php echo $resgeneral['variable']; ?></p>
+                <p><strong><?php echo $varcontenido[4]; ?></strong> <?php echo $resgeneral['variable']; ?></p>
             <?php } ?>
             <?php
             $consultageneral = consultaGeneral('sede2-footer', $idioma);

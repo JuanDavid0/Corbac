@@ -1,8 +1,10 @@
-# carpeta assets
-assets/
+
 
 # Carpeta fonts
 fonts/
 
 # .zip
 *.zip
+
+#an-admin
+an-admin/

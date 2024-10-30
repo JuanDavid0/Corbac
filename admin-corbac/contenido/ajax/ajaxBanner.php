@@ -3,38 +3,39 @@ include '../clases/banner.php';
 include '../controlador/controladorBanner.php';
 include '../clases/ruta.php';
 $rutaFinal = Ruta::retornaRutaAdmin();
-$accion = filter_input(INPUT_POST, 'accion', FILTER_SANITIZE_STRING);
+$rutaFisicaAssets = $_SERVER['DOCUMENT_ROOT'] . "/contenido/assets/";
+
+$accion = filter_input(INPUT_POST, 'accion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
 if ($accion == "crear") {
     $banner = new Banner();
     $banner->identificador_pagina = 'inicio';
-    $banner->titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
-    $banner->texto = filter_input(INPUT_POST, 'texto', FILTER_SANITIZE_STRING);
-    $banner->texto_boton = filter_input(INPUT_POST, 'texto_boton', FILTER_SANITIZE_STRING);
-    $banner->fecha_inicio = filter_input(INPUT_POST, 'fecha_inicio', FILTER_SANITIZE_STRING);
-    $banner->fecha_final = filter_input(INPUT_POST, 'fecha_final', FILTER_SANITIZE_STRING);
-    $banner->orden = filter_input(INPUT_POST, 'orden', FILTER_SANITIZE_STRING);
-    $banner->url = filter_input(INPUT_POST, 'url_boton', FILTER_SANITIZE_STRING);
-    $banner->disposicion = filter_input(INPUT_POST, 'disposicion', FILTER_SANITIZE_STRING);
-    $banner->disposicion_imagen_p = filter_input(INPUT_POST, 'disposicion_imagen_p', FILTER_SANITIZE_STRING);
+    $banner->titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $banner->texto = filter_input(INPUT_POST, 'texto', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $banner->texto_boton = filter_input(INPUT_POST, 'texto_boton', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $banner->fecha_inicio = filter_input(INPUT_POST, 'fecha_inicio', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $banner->fecha_final = filter_input(INPUT_POST, 'fecha_final', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $banner->orden = filter_input(INPUT_POST, 'orden', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $banner->url = filter_input(INPUT_POST, 'url_boton', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    if ($banner->url === 'noticia') {
+        $banner->url .= '/' . filter_input(INPUT_POST, 'noticiaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    }
+    if ($banner->url === 'oferta') {
+        $banner->url .= '/' . filter_input(INPUT_POST, 'ofertaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    }
+
+    $banner->disposicion = filter_input(INPUT_POST, 'disposicion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $banner->imagen = basename($_FILES['imagen']['name']);
-    $banner->imagen_p = basename($_FILES['imagen_p']['name']);
     $banner->estado = 'activo';
-    $banner->idioma = filter_input(INPUT_POST, 'idioma', FILTER_SANITIZE_STRING);
+    $banner->idioma = 'es';
+
     if ($banner->imagen != '') {
-        $img_rute = "../assets/" . basename($_FILES['imagen']['name']);
+        $img_rute = $rutaFisicaAssets . basename($_FILES['imagen']['name']);
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $img_rute)) {
             $banner->alt = basename($_FILES['imagen']['name']);
-            if ($banner->imagen_p != '') {
-                $img_rute = "../assets/" . basename($_FILES['imagen_p']['name']);
-                if (move_uploaded_file($_FILES['imagen_p']['tmp_name'], $img_rute)) {
-                    $banner->alt_p = basename($_FILES['imagen_p']['name']);
-                }
-                $respuesta = ControladorBanner::crearBanner($banner);
-                header("Location: " . $rutaFinal . "banneradmin/" . $respuesta);
-            } else {
-                $respuesta = ControladorBanner::crearBanner($banner);
-                header("Location: " . $rutaFinal . "banneradmin/" . $respuesta);
-            }
+            $respuesta = ControladorBanner::crearBanner($banner);
+            header("Location: " . $rutaFinal . "banneradmin/" . $respuesta);
         } else {
             header("Location: " . $rutaFinal . "banneradmin/2");
         }
@@ -44,57 +45,66 @@ if ($accion == "crear") {
 }
 if ($accion == "editar") {
     $banner = new Banner();
-    $banner->identificador = filter_input(INPUT_POST, 'identificador', FILTER_SANITIZE_STRING);
-    $banner->identificador_pagina = 'inicio';
-    $banner->titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
-    $banner->texto = filter_input(INPUT_POST, 'texto', FILTER_SANITIZE_STRING);
-    $banner->texto_boton = filter_input(INPUT_POST, 'texto_boton', FILTER_SANITIZE_STRING);
-    $banner->fecha_inicio = filter_input(INPUT_POST, 'fecha_inicio', FILTER_SANITIZE_STRING);
-    $banner->fecha_final = filter_input(INPUT_POST, 'fecha_final', FILTER_SANITIZE_STRING);
-    $banner->orden = filter_input(INPUT_POST, 'orden', FILTER_SANITIZE_STRING);
-    $banner->url = filter_input(INPUT_POST, 'url_boton', FILTER_SANITIZE_STRING);
-    $banner->disposicion = filter_input(INPUT_POST, 'disposicion', FILTER_SANITIZE_STRING);
-    $banner->disposicion_imagen_p = filter_input(INPUT_POST, 'disposicion_imagen_p', FILTER_SANITIZE_STRING);
-    $banner->imagen = basename($_FILES['imagen']['name']);
-    $banner->imagen_p = basename($_FILES['imagen_p']['name']);
-    $banner->idioma = filter_input(INPUT_POST, 'idioma', FILTER_SANITIZE_STRING);
-    $banner->estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_STRING);
+    $banner->identificador = filter_input(INPUT_POST, 'identificador', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $bannerActual = ControladorBanner::buscarBanner($banner);
+
     if ($bannerActual != null) {
-        if ($banner->imagen != '') {
-            $img_rute = "../assets/" . basename($_FILES['imagen']['name']);
-            $img_rute_anterior = "../assets/" . $bannerActual['imagen'];
+        $banner->identificador_pagina = 'inicio';
+        $banner->titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['titulo'];
+        $banner->texto = filter_input(INPUT_POST, 'texto', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['texto'];
+        $banner->texto_boton = filter_input(INPUT_POST, 'texto_boton', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['texto_boton'];
+        $banner->fecha_inicio = filter_input(INPUT_POST, 'fecha_inicio', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['fecha_inicio'];
+        $banner->fecha_final = filter_input(INPUT_POST, 'fecha_final', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['fecha_final'];
+        $banner->orden = filter_input(INPUT_POST, 'orden', FILTER_SANITIZE_NUMBER_INT) ?: $bannerActual['orden'];
+        $banner->url = filter_input(INPUT_POST, 'url_boton', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['url'];
+        if ($banner->url === 'noticia') {
+            $banner->url .= '/' . filter_input(INPUT_POST, 'noticiaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        }
+        if ($banner->url === 'oferta') {
+            $banner->url .= '/' . filter_input(INPUT_POST, 'ofertaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        }
+    
+        $banner->disposicion = filter_input(INPUT_POST, 'disposicion', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['disposicion'];
+        $banner->idioma = 'es';
+        $banner->estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['estado'];
+
+        if (!empty($_FILES['imagen']['name'])) {
+            $banner->imagen = basename($_FILES['imagen']['name']);
+            $img_rute = $rutaFisicaAssets . $banner->imagen;
+            $img_rute_anterior = $rutaFisicaAssets . $bannerActual['imagen'];
             unlink($img_rute_anterior);
             if (move_uploaded_file($_FILES['imagen']['tmp_name'], $img_rute)) {
                 $banner->alt = basename($_FILES['imagen']['name']);
+            } else {
+                error_log('Error al subir el archivo: ' . $_FILES['imagen']['name']);
+                die('Ocurrió un error al subir la imagen.');
             }
-        } else{
+        } else {
             $banner->imagen = $bannerActual['imagen'];
-        }
-        if ($banner->imagen_p != '') {
-            $img_rute = "../assets/" . basename($_FILES['imagen_p']['name']);
-            $img_rute_anterior = "../assets/" . $bannerActual['imagen_p'];
-            unlink($img_rute_anterior);
-            if (move_uploaded_file($_FILES['imagen_p']['tmp_name'], $img_rute)) {
-                $banner->alt_p = basename($_FILES['imagen_p']['name']);
-            }
-        }else{
-            $banner->imagen_p = $bannerActual['imagen_p'];
+            $banner->alt = $bannerActual['alt'];
         }
         $respuesta = ControladorBanner::editarBanner($banner);
-        header("Location: " . $rutaFinal . "banneradmin/".$respuesta);
+        header("Location: " . $rutaFinal . "banneradmin/" . $respuesta);
     } else {
         header("Location: " . $rutaFinal . "banneradmin/2");
     }
 }
-$accion = filter_input(INPUT_GET, 'accion', FILTER_SANITIZE_STRING);
+
+
+$accion = filter_input(INPUT_GET, 'accion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if ($accion == "eliminar") {
     $banner = new Banner();
-    $banner->identificador = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
+    $banner->identificador = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $bannerActual = ControladorBanner::buscarBanner($banner);
+
     if ($bannerActual != null) {
-            unlink("../assets/" . $bannerActual['imagen']);
-             unlink("../assets/" . $bannerActual['imagen_p']);        
-    }   
-    echo ControladorBanner::eliminarBanner($banner);           
+        unlink($rutaFisicaAssets . $bannerActual['imagen']);
+    }
+    $respuesta = ControladorBanner::eliminarBanner($banner);
+
+    if ($respuesta === 1) {
+        header("Location: " . $rutaFinal . "banneradmin/" . $respuesta);
+    } else {
+        header("Location: " . $rutaFinal . "banneradmin/2");
+    }
 }

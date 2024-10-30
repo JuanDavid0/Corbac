@@ -1,8 +1,8 @@
 <?php
 require_once ("../../conexion/bdconexion.php");
 require_once ("../funciones/encriptacion.php");
-$usuario = filter_input(INPUT_GET, 'usuario', FILTER_SANITIZE_STRING);
-$con = filter_input(INPUT_GET, 'contrasena', FILTER_SANITIZE_STRING);
+$usuario = filter_input(INPUT_GET, 'usuario', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$con = filter_input(INPUT_GET, 'contrasena', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $objEncriptar = 
 $conEncript = encriptar(4, $con);
 consultaLogear($usuario, $conEncript);

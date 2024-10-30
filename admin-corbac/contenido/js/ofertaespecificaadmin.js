@@ -22,7 +22,7 @@ function filtrarValor() {
 } 
 function eliminarValor() {
     //cuando el objeto XMLHttpRequest cambia de estado, la función se inicia        
-    var id = document.getElementById("idEliminar").value;    
+    var id = document.getElementById("idEliminar").value;
     if (id !== '') {
         if (window.XMLHttpRequest) { // para navegadores IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
@@ -31,7 +31,8 @@ function eliminarValor() {
         }
         xmlhttp.onreadystatechange = function () {
             if ((this.readyState === 4 && this.status === 200)) {                                                    
-                window.location = rutaOculta+"ofertaacademicaadmin/"+this.responseText;
+                window.location = rutaOculta+"ofertaacademicaadmin/" + this.responseText;
+                location.reload();
             }
         };
         xmlhttp.open("GET", rutaOculta+"contenido/ajax/ajaxOferta.php?accion=eliminarE&id="+id, true);

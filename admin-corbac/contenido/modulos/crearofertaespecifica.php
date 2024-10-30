@@ -53,7 +53,21 @@ require_once './contenido/clases/oferta.php';
             <input name="contenido3" class="input-form-act-admin" type="text" required placeholder="información">
 
             <label class="label-form-act-admin">Enlace al plan de estudios:</label>
-            <input name="plan_enlace" class="input-form-act-admin" type="text" required placeholder="información">
+            <select id="tipoContenido" name="tipo_contenido" class="input-form-act-admin" onchange="toggleInputFields()" required>
+                <option value="">Selecciona una opción</option>
+                <option value="url">URL</option>
+                <option value="pdf">Archivo PDF</option>
+            </select>
+
+            <div id="urlField" style="display: none;">
+                <label class="label-form-act-admin">Url:</label>
+                <input name="plan_enlace" id="inputUrl" class="input-form-act-admin" type="url" placeholder="información" pattern="https?://.+" title="Ingrese una URL válida que comience con http:// o https://">
+            </div>
+
+            <div id="pdfField" style="display: none;">
+                <label class="label-form-act-admin">Archivo PDF:</label>
+                <input name="archivo_pdf" id="inputPdf" class="input-form-act-admin" type="file" accept=".pdf">
+            </div>
 
             <label class="label-form-act-admin">Costos:</label>
             <textarea id="contenido4" style="height: 200px; display: none;" name="contenido4" class="input-form-act-admin" type="text" placeholder="Contenido costos"></textarea>
@@ -254,5 +268,35 @@ require_once './contenido/clases/oferta.php';
     function update3(delta) {
         var html = quill3.root.innerHTML; // Acceder al contenido HTML directamente
         container3.value = html;
+    }
+</script>
+
+<script>
+    function toggleInputFields() {
+        var tipoContenido = document.getElementById('tipoContenido').value;
+        var urlField = document.getElementById('urlField');
+        var pdfField = document.getElementById('pdfField');
+        var inputUrl = document.getElementById('inputUrl');
+        var inputPdf = document.getElementById('inputPdf');
+        
+        // Mostrar el campo correspondiente y establecer la obligatoriedad de cada uno
+        if (tipoContenido === 'url') {
+            urlField.style.display = 'block';
+            pdfField.style.display = 'none';
+            inputUrl.required = true;
+            inputPdf.required = false;
+            inputPdf.value = ''; // Limpiar el campo PDF si se selecciona URL
+        } else if (tipoContenido === 'pdf') {
+            urlField.style.display = 'none';
+            pdfField.style.display = 'block';
+            inputUrl.required = false;
+            inputPdf.required = true;
+            inputUrl.value = ''; // Limpiar el campo URL si se selecciona PDF
+        } else {
+            urlField.style.display = 'none';
+            pdfField.style.display = 'none';
+            inputUrl.required = false;
+            inputPdf.required = false;
+        }
     }
 </script>

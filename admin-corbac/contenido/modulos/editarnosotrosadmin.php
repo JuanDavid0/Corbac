@@ -14,7 +14,7 @@ $nosotrosF = galeriaNosotros::buscaNosotrosInicio('galeria', $nosotrosInicio); /
             <label class="label-form-act-admin">Imagen de fondo:</label>
             <label class="label-form-act-admin">Tamaño recomendado: 1600px X 600px</label>
             <input id="inputNoticiaImagen" name="imagen" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
-            <img id="previsua" src="<?php echo $rutaFinalAssets . '../../../contenido/assets/' . $nosotrosF['imagen']; ?>" style="display: block; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />
+            <img id="previsua" src="<?php echo $rutaFinalAssets . '/contenido/assets/' . $nosotrosF['imagen']; ?>" style="display: block; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />
 
             <label class="label-form-act-admin">Texto:</label>
             <input name="texto" class="input-form-act-admin" type="text" required value="<?php echo $nosotrosF['texto']; ?>">

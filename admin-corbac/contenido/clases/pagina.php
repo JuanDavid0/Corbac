@@ -34,10 +34,11 @@ class pagina {
     }
 
 // Funcion para retornar el menu de nivel 1 
+// * Se reemplazó gerarquia por archivo
     function consultaMenu() {
         $objConexion = new conexionBaseDatosPagina();
         $conexion = $objConexion->connectDB();
-        $sql = $conexion->prepare("SELECT identificador, nombre, imagen_p, categoria FROM pagina WHERE estado = 'activo' AND gerarquia = 1 AND nivel = 0 ORDER BY orden");
+        $sql = $conexion->prepare("SELECT * FROM pagina WHERE estado = 'activo' AND archivo = 'menu' AND nivel = 0 ORDER BY orden;");
         $sql->execute();
         $objConexion->disconnectDB($conexion);
         return $sql->fetchAll();
@@ -140,12 +141,12 @@ class pagina {
         return $sql->fetch();
     }
     /**
-    CLASES PARA CRUD DE PAGINAS MODIFICACION DE CONTENIDO Y DEMAS    
+    * CLASES PARA CRUD DE PAGINAS MODIFICACION DE CONTENIDO Y DEMAS    
     */    
     static function paginasNivel1($tabla) {
         $objConexion = new conexionBaseDatosPagina();
         $conexion = $objConexion->connectDB();
-        $sql = $conexion->prepare("SELECT * FROM $tabla WHERE estado = 'activo' AND gerarquia = 0 AND nivel = '1' ORDER BY orden ASC");
+        $sql = $conexion->prepare("SELECT * FROM $tabla WHERE estado = 'activo' AND nivel = '1' ORDER BY orden ASC");
         $sql->execute();
         $objConexion->disconnectDB($conexion);
         return $sql->fetchAll();

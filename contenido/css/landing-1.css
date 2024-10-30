@@ -2,32 +2,32 @@
     position: fixed;
     background: rgb(232, 145, 65, 1);
     background: linear-gradient(171deg, rgba(232, 145, 65, 1) 23%, rgba(6, 38, 63, 1) 81%);
-    width: 100vw;
-    height: 100vh;
-    max-height: 900px;
+    width: 80vw;
+    height: 80vh;
+    max-height: 700px;
     z-index: 9999;
     display: none;
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
     box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    overflow: auto;
 }
 
 .info-landing {
+    display: flex;
     width: 100%;
-    height: 100%;
+    height: auto;
     padding: 12px;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    /* text-align: center;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-    flex-direction: column; */
+    gap: 20px; /* Espacio entre el contenido y el formulario */
 }
 
 .info-landing section {
-    width: 60%;
+    width: 60%; /* Ajustamos el ancho de la sección principal */
     height: 100%;
     border-radius: 1rem;
 }
@@ -43,16 +43,16 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+    flex-wrap: wrap;
 }
 
 .text1 h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: #06263f;
 }
 
 .landing .text2 {
     flex: 1;
-	padding: 20px;
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
@@ -60,19 +60,14 @@
 
 .titulo-landing {
     font-size: larger;
-	position: relative;
-	height: 70%;
-	width: 70%;
-	margin-bottom: auto;
-	transition: all;
+    width: 100%;
+    margin-bottom: auto;
 }
 
 .titulo-landing h1 {
-    position: absolute;
-    font-size: 3rem;
+    font-size: 1.5rem;
     padding: 10px;
     color: rgba(0, 17, 52, 1);
-    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
     text-shadow: 3px 2px 5px rgb(0 0 0 / 36%);
@@ -81,14 +76,10 @@
 .descripcion-landing {
     position: relative;
 	height: 10%;
-	width: 65%;
 	margin: auto 0;
 }
 
 .descripcion-landing p {
-	position: absolute;
-	top: 5px;
-	left: 0;
 	width: 100%;
 	margin: 0;
 	padding: 10px;
@@ -97,29 +88,17 @@
 
 .texto-landing {
 	position: relative;
-	width: 95%;
+	width: 75%;
 	height: 25%;
 }
 
 .texto-landing p {
-	position: absolute;
-	top: 5px;
-	left: 0;
 	width: 100%;
 	height: 100%;
 	margin: 0;
 	padding: 10px;
 	color: #fff;
-	font-weight: bold;
 	font-size: 1rem;
-}
-
-.landing .text3 {
-    flex: 0.5;
-	padding: 30px;
-	display: flex;
-	align-items: center;
-	position: relative;
 }
 
 .text3 a {
@@ -149,16 +128,17 @@
 }
 
 .formulario {
-    border-radius: 1rem;
-    box-shadow: 0px 5px 7px 0px black;
-    width: 50%;
-    height: 370px;
+    width: 55%; /* Ajustamos el ancho del formulario para que ocupe el 40% del espacio */
+    height: 100%;
+    margin-top: 6rem;
+    margin-right: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    margin-top: 20px;
+    border-radius: 1rem;
+    box-shadow: 0px 5px 7px 0px black;
 }
 
 .formulario .promesa {
@@ -183,12 +163,9 @@
 
 .formulario iframe {
     width: 100%;
-    height: 400px;
+    height: 360px;
     border-radius: 5px;
-    display: block;
-    transform-origin: center;
 }
-
 
 .close-button {
     position: absolute;
@@ -196,86 +173,98 @@
     right: 20px;
     background-color: transparent;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 1);
     cursor: pointer;
     padding: 10px;
     transition: color 0.3s ease;
 }
 
-@media only screen and (max-width: 1172px) {
-    .titulo-landing h1 {
-        font-size: 2rem;
+@media only screen and (max-width: 1024px) {
+    .info-landing {
+        flex-direction: column; /* Cambia el layout a columnas para que el contenido y el formulario estén apilados */
+        align-items: center;
+        gap: 10px;
     }
 
-    .descripcion-landing p {
-        font-size: 1rem;
+    .info-landing section, .formulario {
+        width: 90%; /* Ambos tomarán un ancho del 90% para mejorar la visualización en pantallas más pequeñas */
+        margin: 0;
     }
 
-    .texto-landing p {
-        font-size: 1rem;
+    .formulario {
+        margin-top: 2rem; /* Reduce el margen superior en pantallas más pequeñas */
+        height: auto; /* Permite que el formulario sea más flexible en altura */
     }
 
-    .titulo-landing, .descripcion-landing, .texto-landing {
-        width: 90%;
-        height: fit-content;
-        position: relative;
-    }
-
-    .titulo-landing h1,
-	.descripcion-landing p,
-	.texto-landing p {
-		position: relative;
-        font-size: 1rem;
-	}
-
-    .landing .text2 {
-        padding: 20px;
-        flex-direction: column;
-        flex: none;
-    }
-
-    .close-button {
-        top: 0;
-        right: 0;
-        font-size: 1rem;
+    .formulario iframe {
+        height: 300px; /* Ajusta la altura del iframe para que no ocupe demasiado espacio */
     }
 }
 
-@media only screen and (max-width: 700px) {
-
-    .text1 h1 {
-        font-size: 1rem;
+@media only screen and (max-width: 768px) {
+    .cont-landing {
+        width: 90vw;
+        height: 90vh;
+        top: 5%; /* Reduce el espacio superior */
     }
 
     .info-landing {
-        flex-direction: column;
+        flex-direction: column; /* Apila los elementos en lugar de mantenerlos en fila */
+        align-items: center;
     }
 
-    .info-landing section {
-        width: 100%;
-        height: fit-content;
+    .info-landing section, .formulario {
+        width: 95%; /* Ancho casi total en móviles */
     }
 
-    .texto-landing {
+    .formulario {
+        margin-top: 1rem;
+        padding: 15px; /* Reduce el padding para ahorrar espacio */
+    }
+
+    .formulario iframe {
+        height: 250px; /* Ajusta el iframe a un tamaño más pequeño */
+    }
+
+    .text1 h1 {
+        font-size: 1.5rem; /* Reduce el tamaño de los encabezados en móviles */
+    }
+
+    .titulo-landing h1, .formulario h3 {
+        font-size: 1.2rem; /* Reduce el tamaño del título para pantallas pequeñas */
+    }
+
+    .descripcion-landing p, .texto-landing p {
+        font-size: 0.9rem; /* Reduce el tamaño del texto de las descripciones */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .cont-landing {
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        transform: none;
+        border-radius: 0;
+    }
+
+    .info-landing section, .formulario {
         width: 100%;
     }
 
     .formulario {
-        width: 90%;
-    }
-
-    .landing .text3 {
-        justify-content: center;
-        padding: 0;
-    }
-
-    .landing .text1 {
-        justify-content: center;
         padding: 10px;
     }
 
-    .landing .text2 {
-        padding: 10px;
+    .formulario iframe {
+        height: 200px; /* Un tamaño aún más reducido en pantallas extremadamente pequeñas */
+    }
+
+    .close-button {
+        top: 10px;
+        right: 10px;
+        font-size: 0.9rem;
     }
 }

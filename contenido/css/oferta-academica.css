@@ -1,10 +1,11 @@
 #oferta-academica {
     width: 100%;
     margin: 0 auto;
-    padding: 50px 0px;
+    padding: 25px 2.5% 10px;
     box-sizing: border-box;
     position: relative;
     text-align: center;
+    background: linear-gradient(0deg, rgba(237,200,167,0.5) 0%, rgba(237,200,167,0.5) 100%);
 }
 
 #oferta-academica-titulo {
@@ -20,7 +21,7 @@
     position: relative;
     z-index: 2;
     margin: 0px auto;
-    padding: 40px;
+    padding: 40px 40px 10px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -30,7 +31,6 @@
 .link-oferta-academica {
     max-width: 310px;
     min-width: 250px;
-    margin-bottom: 40px;
     float: left;
     background-color: #e89141;
     border-radius: 13px;

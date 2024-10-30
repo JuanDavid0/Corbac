@@ -11,12 +11,23 @@ class Conexion {
     private $pass;
     private $bd;
 
+    
     public function __construct() {
         $this->servidor = "localhost";
         $this->usuario  = "root";
         $this->pass = "";        
-        $this->bd = "megapro";  
+        $this->bd = "corbac";
+        //$this->bd = "megaproyectos";   
     }
+
+    // public function __construct()
+    // {
+    //     $this->servidor = "https://auth-db1526.hstgr.io";
+    //     $this->usuario  = "u145597152_ucorbac";
+    //     $this->pass = "eK3>zq6*U";
+    //     $this->bd = "u145597152_bcorbac";
+    // }
+
     public function connectDB() {
         $codificacion ="SET NAMES \"UTF8\"";
         $cadena = "mysql:host={$this->servidor};dbname={$this->bd};";

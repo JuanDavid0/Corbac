@@ -59,7 +59,14 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
             <input name="contenido3" class="input-form-act-admin" type="text" required value="<?php echo $ofertaF['contenido3']; ?>">
 
             <label class="label-form-act-admin">Enlace al plan de estudios:</label>
-            <input name="plan_enlace" class="input-form-act-admin" type="text" required value="<?php echo $ofertaF['plan_enlace']; ?>">
+
+            <input name="plan_enlace" id="inputURL" class="input-form-act-admin" type="url" pattern="https?://.+"
+                title="Ingrese una URL válida que comience con http:// o https://"
+                value="<?php echo $ofertaF['plan_enlace']; ?>"
+                onchange="toggleField('inputPDF', this)" />
+
+            <input name="archivo_pdf" id="inputPDF" class="input-form-act-admin" type="file" accept=".pdf"
+                onchange="toggleField('inputURL', this)" />
 
             <label class="label-form-act-admin">Costos:</label>
             <textarea id="contenido4" style="height: 200px; display: none;" name="contenido4" class="input-form-act-admin" type="text"></textarea>
@@ -119,14 +126,38 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
     var toolbarOptions1 = [
         ['bold', 'italic', 'underline', 'strike'],
         ['blockquote', 'code-block'],
-        [{'header': [1, 2, 3, 4, 5, 6, false]}],
-        [{'list': 'ordered'}, {'list': 'bullet'}],
-        [{'align': []}],
-        [{'script': 'sub'}, {'script': 'super'}],
-        [{'ident': '-1'}, {'ident': '+1'}],
-        [{'direction': 'rtl'}],
-        [{'color': []}, {'background': []}],
-        [{'font': []}]
+        [{
+            'header': [1, 2, 3, 4, 5, 6, false]
+        }],
+        [{
+            'list': 'ordered'
+        }, {
+            'list': 'bullet'
+        }],
+        [{
+            'align': []
+        }],
+        [{
+            'script': 'sub'
+        }, {
+            'script': 'super'
+        }],
+        [{
+            'ident': '-1'
+        }, {
+            'ident': '+1'
+        }],
+        [{
+            'direction': 'rtl'
+        }],
+        [{
+            'color': []
+        }, {
+            'background': []
+        }],
+        [{
+            'font': []
+        }]
     ];
     var quill1 = new Quill('#editor-1', {
         modules: {
@@ -137,22 +168,47 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
     quill1.on('text-change', update1);
     var container1 = document.getElementById('contenido_duracion');
     update1();
+
     function update1(delta) {
-        var html = quill1.root.innerHTML;  // Acceder al contenido HTML directamente
+        var html = quill1.root.innerHTML; // Acceder al contenido HTML directamente
         container1.value = html;
     }
 
     var toolbarOptions2 = [
         ['bold', 'italic', 'underline', 'strike'],
         ['blockquote', 'code-block'],
-        [{'header': [1, 2, 3, 4, 5, 6, false]}],
-        [{'list': 'ordered'}, {'list': 'bullet'}],
-        [{'align': []}],
-        [{'script': 'sub'}, {'script': 'super'}],
-        [{'ident': '-1'}, {'ident': '+1'}],
-        [{'direction': 'rtl'}],
-        [{'color': []}, {'background': []}],
-        [{'font': []}]
+        [{
+            'header': [1, 2, 3, 4, 5, 6, false]
+        }],
+        [{
+            'list': 'ordered'
+        }, {
+            'list': 'bullet'
+        }],
+        [{
+            'align': []
+        }],
+        [{
+            'script': 'sub'
+        }, {
+            'script': 'super'
+        }],
+        [{
+            'ident': '-1'
+        }, {
+            'ident': '+1'
+        }],
+        [{
+            'direction': 'rtl'
+        }],
+        [{
+            'color': []
+        }, {
+            'background': []
+        }],
+        [{
+            'font': []
+        }]
     ];
     var quill2 = new Quill('#editor-2', {
         modules: {
@@ -163,22 +219,47 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
     quill2.on('text-change', update2);
     var container2 = document.getElementById('contenido4');
     update2();
+
     function update2(delta) {
-        var html = quill2.root.innerHTML;  // Acceder al contenido HTML directamente
+        var html = quill2.root.innerHTML; // Acceder al contenido HTML directamente
         container2.value = html;
     }
 
     var toolbarOptions3 = [
         ['bold', 'italic', 'underline', 'strike'],
         ['blockquote', 'code-block'],
-        [{'header': [1, 2, 3, 4, 5, 6, false]}],
-        [{'list': 'ordered'}, {'list': 'bullet'}],
-        [{'align': []}],
-        [{'script': 'sub'}, {'script': 'super'}],
-        [{'ident': '-1'}, {'ident': '+1'}],
-        [{'direction': 'rtl'}],
-        [{'color': []}, {'background': []}],
-        [{'font': []}]
+        [{
+            'header': [1, 2, 3, 4, 5, 6, false]
+        }],
+        [{
+            'list': 'ordered'
+        }, {
+            'list': 'bullet'
+        }],
+        [{
+            'align': []
+        }],
+        [{
+            'script': 'sub'
+        }, {
+            'script': 'super'
+        }],
+        [{
+            'ident': '-1'
+        }, {
+            'ident': '+1'
+        }],
+        [{
+            'direction': 'rtl'
+        }],
+        [{
+            'color': []
+        }, {
+            'background': []
+        }],
+        [{
+            'font': []
+        }]
     ];
     var quill3 = new Quill('#editor-3', {
         modules: {
@@ -189,8 +270,20 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
     quill3.on('text-change', update3);
     var container3 = document.getElementById('contenido5');
     update3();
+
     function update3(delta) {
-        var html = quill3.root.innerHTML;  // Acceder al contenido HTML directamente
+        var html = quill3.root.innerHTML; // Acceder al contenido HTML directamente
         container3.value = html;
     }
+</script>
+
+<script>
+function toggleField(otherFieldId, currentField) {
+    var otherField = document.getElementById(otherFieldId);
+    if (currentField.value) {
+        otherField.disabled = true;
+    } else {
+        otherField.disabled = false;
+    }
+}
 </script>

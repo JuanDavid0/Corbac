@@ -10,7 +10,7 @@ class logueo {
         $objLogue = new logueo();
         $nuevaContra = $objLogue->encriptar($contrasena."anbu", $contrasena);   
         $conexion = $conn->connectDB();
-        $sql = "SELECT tipo FROM log_adminx WHERE correo = '" . $usuario . "' AND contrasena = '" . $nuevaContra . "' AND estado = 'Activo'; ";
+        $sql = "SELECT tipo FROM admin_users WHERE correo = '" . $usuario . "' AND contrasena = '" . $nuevaContra . "' AND estado = 'Activo'; ";
         $consulta = $conexion->prepare($sql);
         $consulta->execute();
         $resultados =$consulta->fetch();               

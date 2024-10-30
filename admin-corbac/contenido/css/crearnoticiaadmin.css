@@ -1,0 +1,267 @@
+#contenedor-AreaTrabjo-Admin {
+    position: absolute;
+    width: calc(100% - 280px);
+    height: 100%;
+    display: block;
+    min-height: 500px;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    background-color: rgba(229, 229, 229, 1);
+}
+
+#AreaTrabjo-Admin-cont {
+    width: 95%;
+    display: block;
+    height: auto;
+    min-height: 350px;
+    margin: 31px auto 20px auto;
+    background-color: rgba(255, 255, 255, 1);
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    border: 1px solid rgba(200, 200, 200, 1);
+    box-sizing: border-box;
+    box-shadow: 0 3px 5px 0.3px rgba(0, 0, 0, .24);
+    overflow: hidden;
+    max-width: 75%;
+}
+
+#Partes-noticia {
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+
+#opciones-menu {
+    display: flex;
+}
+
+#Partes-noticia button {
+    width: 100%;
+    padding: 10px;
+    font-size: medium;
+}
+
+#contenedor-AreaTrabjo-Admin h2 {
+    font-family: 'Principal', helvetica, verdana, sans-serif;
+    background-color: rgba(232, 145, 65, 1);
+    color: rgba(6, 38, 63, 1);
+    font-size: 23px;
+    text-align: center;
+    padding: 15px 5%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#bloque0 {
+    justify-content: space-evenly;
+    display: flex;
+    padding-bottom: 20px;
+    border: 1px solid rgba(200, 200, 200, 1);
+    box-shadow: 0 3px 5px 0.3px rgba(0, 0, 0, .24);
+    border-radius: 5px;
+}
+
+.bloque0-1{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.bloque0-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+.bloque0-2-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.bloque0-2-2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+#bloque1 {
+    justify-content: space-evenly;
+    display: flex;
+    padding-bottom: 20px;
+    padding-bottom: 20px;
+    border: 1px solid rgba(200, 200, 200, 1);
+    box-shadow: 0 3px 5px 0.3px rgba(0, 0, 0, .24);
+    border-radius: 5px;
+}
+
+.bloque1-1{
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+}
+
+.bloque1-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+}
+
+
+#videoBlock{
+    align-items: center;
+    justify-content: center;
+}
+
+#bloque2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 80%; 
+    padding: 20px; 
+}
+
+
+#editor1, #editor2, #editor3 {
+    width: 100%;
+    max-height: 230px;
+    border: 1px solid rgba(200, 200, 200, 1);
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: 'Principal', helvetica, verdana, sans-serif;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+#btn1{
+    background-color: rgba(6, 38, 63, 1);
+    color: rgba(232, 145, 65, 1);
+    border: none;
+}
+#btn2, #btn3{
+    background-color: rgba(6, 38, 63, 0.7);
+    color: rgba(232, 145, 65, 1);
+    border: none;
+}
+
+.Titulos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+
+
+
+
+
+#contenedor-form-Admin,
+#contenedor-form-Admin1 {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+}
+
+.label-form-act-admin {
+    font-family: 'Principal', helvetica, verdana, sans-serif;
+    height: auto;
+    text-align: left;
+    margin: 15px auto 5px auto;
+    font-size: 20px;
+}
+
+.input-form-act-admin,
+.select-form-not-admin {
+    border: none;
+    border: 1px solid rgba(200, 200, 200, 1);
+    width: 100%;
+    max-width: 600px;
+    padding: 8px 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-family: 'Principal', helvetica, verdana, sans-serif;
+    -webkit-transition: border 0.5s ease-out;
+    -moz-transition: border 0.5s ease-out;
+    -o-transition: border 0.5s ease-out;
+    transition: border 0.5s ease-out;
+}
+
+.input-form-act-admin:focus,
+.select-form-not-admin:focus {
+    outline: none;
+    border: 1px solid rgba(33, 86, 178, 1);
+}
+
+.inputSubmitForm {
+    position: relative;
+    margin: 20px 10px;
+    border: none;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px 25px;
+    font-size: 14px;
+    box-sizing: border-box;
+    width: 160px;
+    text-align: center;
+    font-family: 'Titulo', helvetica, verdana, sans-serif;
+    color: rgba(255, 255, 255, 1);
+    border: 2px solid rgba(33, 86, 178, 0);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+    background-color: rgba(232, 145, 65, 1);
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .4);
+}
+
+.inputSubmitForm:hover {
+    background-color: rgb(255, 133, 20);
+}
+
+.inputReturn {
+    position: relative;
+    margin: 20px 10px;
+    border: none;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px 25px;
+    font-size: 14px;
+    box-sizing: border-box;
+    width: 160px;
+    text-align: center;
+    font-family: 'Titulo', helvetica, verdana, sans-serif;
+    border: 2px solid rgba(33, 86, 178, .8);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+    color: rgba(33, 86, 178, .8);
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .4);
+}
+
+.inputReturn:hover {
+    background-color: rgba(33, 86, 178, .4);
+}

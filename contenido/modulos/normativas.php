@@ -9,10 +9,14 @@ $idModulo = consultaModulo("normativas");
         <?php
         $consultarNormativas = consultaInfoNormativas();
         while ($resNormativas = mysqli_fetch_array($consultarNormativas)) {
+            $isExternalUrl = preg_match('/^https?:\/\//', $resNormativas["url"]);
+            $url = $isExternalUrl ? $resNormativas["url"] : $rutaFinal . 'contenido/assets/' . $resNormativas["url"];
         ?>
             <div class="normativas-contenido">
-                <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resNormativas['imagen']; ?>" alt="<?php echo $resNormativas["imagen"] ?>">
-                <p><a href="<?php echo $resNormativas["url"] ?>"><?php echo $resNormativas["nombre"] ?></a></p>
+                <a href="<?php echo $url; ?>">
+                    <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resNormativas['imagen']; ?>" alt="<?php echo $resNormativas["imagen"] ?>">
+                    <p><?php echo $resNormativas["nombre"] ?></p>
+                </a>
             </div>
         <?php } ?>
     </div>

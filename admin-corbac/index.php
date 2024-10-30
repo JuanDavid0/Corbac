@@ -10,6 +10,7 @@ $comHeader = filter_input(INPUT_GET, 'h', FILTER_SANITIZE_STRING);
 $nuevaCadena = explode("/", $comHeader);
 $objRuta = new ruta();
 $rutaFinal = $objRuta->retornaRuta();
+$rutaFinalAssets = $objRuta->retornaRutaAssets();
 $objCms = new pagina();
 //LISTA BLANCA URL'S AMIGABLES
 // Lista Blanca con una variable
