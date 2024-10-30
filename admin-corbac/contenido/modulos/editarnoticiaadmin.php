@@ -9,8 +9,10 @@ function limpiarHTML($html)
     return trim($html);
 }
 ?>
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<link
+    href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css"
+    rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
 <div id="contenedor-AreaTrabjo-Admin">
     <div id="Partes-noticia">
         <h2>Editor de noticias</h2>
@@ -55,7 +57,7 @@ function limpiarHTML($html)
                     <div class="bloque1-1">
                         <label class="label-form-act-admin">Contenido(1)</label>
                         <textarea id="inputNoticiaContenido1" style="display:none;" name="contenido1"></textarea>
-                        <div id="editor1"><?php print $noticiaF['contenido1']; ?></div>
+                        <div id="editor1"><?php echo htmlspecialchars_decode($noticiaF['contenido1']); ?></div>
                     </div>
                     <div class="bloque1-2">
                         <label class="label-form-act-admin">Imagen(1)</label>
@@ -91,7 +93,7 @@ function limpiarHTML($html)
                         <div class="bloque1-1">
                             <label class="label-form-act-admin">Contenido(2)</label>
                             <textarea id="inputNoticiaContenido2" style="display:none;" name="contenido2"></textarea>
-                            <div id="editor2" style="height: 200px;"><?php print $noticiaF['contenido2']; ?></div>
+                            <div id="editor2" style="height: 200px;"><?php echo htmlspecialchars_decode($noticiaF['contenido2']); ?></div>
                         </div>
                         <div class="bloque1-2">
                             <label class="label-form-act-admin">Imagen(2)</label>
@@ -135,7 +137,7 @@ function limpiarHTML($html)
 
                         <label class="label-form-act-admin">Descripcion del Video</label>
                         <textarea id="inputContenidoVideo" style="display:none;" name="cvideo"></textarea>
-                        <div id="editor3" style="height: 150px;"><?php echo limpiarHTML($noticiaF['cvideo']); ?></div>
+                        <div id="editor3" style="height: 150px;"><?php echo htmlspecialchars_decode($noticiaF['cvideo']); ?></div>
 
                     </div>
                 <?php } else { ?>
@@ -215,11 +217,12 @@ function limpiarHTML($html)
         });
 
         var container = document.querySelector(textAreaId);
+        container.value = quill.root.innerHTML;
+        quill.root.innerHTML = container.value;
 
         quill.on('text-change', function() {
-            container.value = quill.getText().trim();
+            container.value = quill.root.innerHTML;
         });
-        container.value = quill.getText().trim();
     }
 
     initializeQuillEditor('#editor1', '#inputNoticiaContenido1');

@@ -21,7 +21,7 @@ $url_noticia = $varEspecifico['url_amigable'];
             </p>
             <h3 class="headline">Duración:</h3>
             <p>
-                <?php echo $varEspecifico['contenido_duracion']; ?>
+                <?php echo htmlspecialchars_decode($varEspecifico['contenido_duracion']); ?>
             </p>
             <h3 class="headline">Modalidad:</h3>
             <p>
@@ -57,13 +57,13 @@ $url_noticia = $varEspecifico['url_amigable'];
             <section class="post-oferta-contenido-3">
                 <h3 class="headline">Costos</h3>
                 <p>
-                    <?php echo $varEspecifico['contenido4']; ?>
+                    <?php echo htmlspecialchars_decode($varEspecifico['contenido4']); ?>
                 </p>
             </section>
             <section class="post-oferta-contenido-4">
                 <h3 class="headline">Requisitos de admisión </h3>
                 <p>
-                    <?php echo $varEspecifico['contenido5']; ?>
+                    <?php echo htmlspecialchars_decode($varEspecifico['contenido5']); ?>
                 </p>
             </section>
         </div>

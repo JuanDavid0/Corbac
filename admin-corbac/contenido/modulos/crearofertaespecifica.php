@@ -2,8 +2,10 @@
 require_once './contenido/clases/oferta.php';
 ?>
 
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<link
+    href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css"
+    rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
 
 <div id="contenedor-AreaTrabjo-Admin">
     <div class="contenedor-Agregar-minas"></div>
@@ -103,156 +105,36 @@ require_once './contenido/clases/oferta.php';
 </script>
 
 <script>
-    var toolbarOptions1 = [
-        ['bold', 'italic', 'underline', 'strike'],
-        ['blockquote', 'code-block'],
-        [{
-            'header': [1, 2, 3, 4, 5, 6, false]
-        }],
-        [{
-            'list': 'ordered'
-        }, {
-            'list': 'bullet'
-        }],
-        [{
-            'align': []
-        }],
-        [{
-            'script': 'sub'
-        }, {
-            'script': 'super'
-        }],
-        [{
-            'ident': '-1'
-        }, {
-            'ident': '+1'
-        }],
-        [{
-            'direction': 'rtl'
-        }],
-        [{
-            'color': []
-        }, {
-            'background': []
-        }],
-        [{
-            'font': []
-        }]
-    ];
-    var quill1 = new Quill('#editor-1', {
-        modules: {
-            toolbar: toolbarOptions1
-        },
-        theme: 'snow'
-    });
-    quill1.on('text-change', update1);
-    var container1 = document.getElementById('contenido_duracion');
-    update1();
+    function initializeQuillEditor(editorId, textAreaId) {
+        var toolbarOptions = [
+            ['bold', 'italic', 'underline', 'strike'],
+            [{
+                'list': 'ordered'
+            }, {
+                'list': 'bullet'
+            }],
+            [{
+                'color': []
+            }]
+        ];
 
-    function update1(delta) {
-        var html = quill1.root.innerHTML; // Acceder al contenido HTML directamente
-        container1.value = html;
+        var quill = new Quill(editorId, {
+            modules: {
+                toolbar: toolbarOptions
+            },
+            theme: 'snow'
+        });
+
+        var container = document.querySelector(textAreaId);
+        container.value = quill.root.innerHTML;
+        quill.root.innerHTML = container.value;
+
+        quill.on('text-change', function() {
+            container.value = quill.root.innerHTML;
+        });
     }
 
-    var toolbarOptions2 = [
-        ['bold', 'italic', 'underline', 'strike'],
-        ['blockquote', 'code-block'],
-        [{
-            'header': [1, 2, 3, 4, 5, 6, false]
-        }],
-        [{
-            'list': 'ordered'
-        }, {
-            'list': 'bullet'
-        }],
-        [{
-            'align': []
-        }],
-        [{
-            'script': 'sub'
-        }, {
-            'script': 'super'
-        }],
-        [{
-            'ident': '-1'
-        }, {
-            'ident': '+1'
-        }],
-        [{
-            'direction': 'rtl'
-        }],
-        [{
-            'color': []
-        }, {
-            'background': []
-        }],
-        [{
-            'font': []
-        }]
-    ];
-    var quill2 = new Quill('#editor-2', {
-        modules: {
-            toolbar: toolbarOptions2
-        },
-        theme: 'snow'
-    });
-    quill2.on('text-change', update2);
-    var container2 = document.getElementById('contenido4');
-    update2();
-
-    function update2(delta) {
-        var html = quill2.root.innerHTML; // Acceder al contenido HTML directamente
-        container2.value = html;
-    }
-
-    var toolbarOptions3 = [
-        ['bold', 'italic', 'underline', 'strike'],
-        ['blockquote', 'code-block'],
-        [{
-            'header': [1, 2, 3, 4, 5, 6, false]
-        }],
-        [{
-            'list': 'ordered'
-        }, {
-            'list': 'bullet'
-        }],
-        [{
-            'align': []
-        }],
-        [{
-            'script': 'sub'
-        }, {
-            'script': 'super'
-        }],
-        [{
-            'ident': '-1'
-        }, {
-            'ident': '+1'
-        }],
-        [{
-            'direction': 'rtl'
-        }],
-        [{
-            'color': []
-        }, {
-            'background': []
-        }],
-        [{
-            'font': []
-        }]
-    ];
-    var quill3 = new Quill('#editor-3', {
-        modules: {
-            toolbar: toolbarOptions3
-        },
-        theme: 'snow'
-    });
-    quill3.on('text-change', update3);
-    var container3 = document.getElementById('contenido5');
-    update3();
-
-    function update3(delta) {
-        var html = quill3.root.innerHTML; // Acceder al contenido HTML directamente
-        container3.value = html;
-    }
+    initializeQuillEditor('#editor-1', '#contenido_duracion');
+    initializeQuillEditor('#editor-2', '#contenido4');
+    initializeQuillEditor('#editor-3', '#contenido5');
 </script>
