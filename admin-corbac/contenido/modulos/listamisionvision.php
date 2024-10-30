@@ -67,12 +67,14 @@ $registros = MisionVision::listaMisionVision('contenido');
             }
 
             if (isset($contenido[$i])) {
-                $xhtml .= "<p class=\"tit-persona-admin\">" . htmlspecialchars($contenido[$i]['contenido']) . "</p>";
+                $contenidoLimpio = str_replace(['<p>', '</p>'], '', htmlspecialchars_decode($contenido[$i]['contenido']));
+                $xhtml .= "<p class=\"tit-persona-admin\">{$contenidoLimpio}</p>";
             } else {
                 $xhtml .= "<p class=\"tit-persona-admin\"></p>";
             }
 
             $xhtml .= "<p class=\"tit-persona-admin\">";
+        
 
             $xhtml .= "<a title=\"Editar\" class=\"log-persona-admin log-persona-ed fa-editar\" href=\"" . $rutaFinal . "editarmisionvisionadmin/" . $contenido[$i]['identificador'] . "\"></a>";
             $xhtml .= "</p>";

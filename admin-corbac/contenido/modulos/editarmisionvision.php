@@ -7,10 +7,8 @@ $misionvision->identificador = $msg;
 $misionvisionF = MisionVision::buscaMisionVision('contenido', $misionvision);
 ?>
 
-<link
-    href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css"
-    rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <div id="contenedor-AreaTrabjo-Admin">
     <div class="contenedor-Agregar-minas"></div>
@@ -29,6 +27,7 @@ $misionvisionF = MisionVision::buscaMisionVision('contenido', $misionvision);
 </div>
 
 <script>
+function initializeQuillEditor(editorId, textAreaId) {
         var toolbarOptions = [
             ['bold', 'italic', 'underline', 'strike'],
             [{
@@ -40,19 +39,23 @@ $misionvisionF = MisionVision::buscaMisionVision('contenido', $misionvision);
                 'color': []
             }]
         ];
-    
-    var quill = new Quill('#editor', {
-        modules: {
-            toolbar: toolbarOptions
-        },
-        theme: 'snow'
-    });
-    quill.on('text-change', update);
-    var container = document.getElementById('contenido');
-    update();
 
-    function update(delta) {
-        var html = quill.root.innerHTML;
-        container.value = html;
+        var quill = new Quill(editorId, {
+            modules: {
+                toolbar: toolbarOptions
+            },
+            theme: 'snow'
+        });
+
+
+        var container = document.querySelector(textAreaId);
+        container.value = quill.root.innerHTML;
+        quill.root.innerHTML = container.value;
+
+        quill.on('text-change', function() {
+            container.value = quill.root.innerHTML;
+        });
     }
+
+    initializeQuillEditor('#editor', '#contenido');
 </script>
