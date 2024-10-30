@@ -43,9 +43,7 @@ if ($accion == "eliminar") {
     if ($galeriaActual != null) {
         unlink($rutaFisicaAssets . $galeriaActual['imagen']);
     }
-    $respuesta = ControladorGaleria::eliminarGaleria($galeria);
-    echo $respuesta;
-    header("Location: " . $rutaFinal . "listaregistrosgaleria/" . $respuesta);
+    echo ControladorGaleria::eliminarGaleria($galeria);
 }
 
 $accion = filter_input(INPUT_POST, 'accion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);

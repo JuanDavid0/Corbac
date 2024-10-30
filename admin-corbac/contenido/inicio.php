@@ -34,7 +34,7 @@ $resmetatag = $objCms->consultaMetaTags($con);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo $rutaFinal ?>contenido/assets/favicon.ico">
-    <title>Anbu Admin</title>
+    <title>Corbac - Admin</title>
     <link rel="stylesheet" type="text/css" href="<?php echo $rutaFinal ?>contenido/css/general.css">
     <?php
     // Consulta de estilos necesarios de los modulos llamados

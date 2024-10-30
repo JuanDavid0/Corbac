@@ -10,7 +10,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 $comHeader = filter_input(INPUT_GET, 'h', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $nuevaCadena = explode("/", $comHeader);
 $rutaFinal = retornaRuta();
-
+$varEspecifico = null;
 $rutaFinalNoticias = retornaRutaNoticias();
 
 //Caso 1

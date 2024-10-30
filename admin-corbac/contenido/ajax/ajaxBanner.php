@@ -17,10 +17,18 @@ if ($accion == "crear") {
     $banner->fecha_final = filter_input(INPUT_POST, 'fecha_final', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $banner->orden = filter_input(INPUT_POST, 'orden', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $banner->url = filter_input(INPUT_POST, 'url_boton', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    if ($banner->url === 'noticia') {
+        $banner->url .= '/' . filter_input(INPUT_POST, 'noticiaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    }
+    if ($banner->url === 'oferta') {
+        $banner->url .= '/' . filter_input(INPUT_POST, 'ofertaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    }
+
     $banner->disposicion = filter_input(INPUT_POST, 'disposicion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $banner->imagen = basename($_FILES['imagen']['name']);
     $banner->estado = 'activo';
-    $banner->idioma = filter_input(INPUT_POST, 'idioma', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $banner->idioma = 'es';
 
     if ($banner->imagen != '') {
         $img_rute = $rutaFisicaAssets . basename($_FILES['imagen']['name']);
@@ -49,8 +57,15 @@ if ($accion == "editar") {
         $banner->fecha_final = filter_input(INPUT_POST, 'fecha_final', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['fecha_final'];
         $banner->orden = filter_input(INPUT_POST, 'orden', FILTER_SANITIZE_NUMBER_INT) ?: $bannerActual['orden'];
         $banner->url = filter_input(INPUT_POST, 'url_boton', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['url'];
+        if ($banner->url === 'noticia') {
+            $banner->url .= '/' . filter_input(INPUT_POST, 'noticiaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        }
+        if ($banner->url === 'oferta') {
+            $banner->url .= '/' . filter_input(INPUT_POST, 'ofertaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        }
+    
         $banner->disposicion = filter_input(INPUT_POST, 'disposicion', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['disposicion'];
-        $banner->idioma = filter_input(INPUT_POST, 'idioma', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['idioma'];
+        $banner->idioma = 'es';
         $banner->estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['estado'];
 
         if (!empty($_FILES['imagen']['name'])) {
