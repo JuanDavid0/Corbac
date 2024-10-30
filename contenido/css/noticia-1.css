@@ -38,6 +38,7 @@
   position: relative;
   text-align: left;
   width: 100%;
+  height: 450px;
   border-radius: 10px;
 }
 
@@ -54,6 +55,8 @@
   position: relative;
   opacity: 0.75;
   min-height: 27rem;
+  height: 100%;
+  width: 100%;
 }
 
 .noticias figcaption {
@@ -192,6 +195,10 @@ button:hover::before {
 
   .noticias img {
     min-height: 10rem;
+  }
+
+  .noticias {
+    height: 400px;
   }
 }
 

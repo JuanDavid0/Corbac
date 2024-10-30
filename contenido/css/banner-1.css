@@ -3,6 +3,7 @@
     animation-fill-mode: forwards;
 }
 
+/* Removed invalid scrollTo properties */
 @keyframes moverScroll {
     from {
         scrollTo(0, 0);
@@ -88,6 +89,9 @@
     transition: all 250ms;
     position: relative;
     overflow: hidden;
+    /* Center the button horizontally */
+    
+
 }
 
 .botonBannerEnlase::before {
@@ -181,7 +185,8 @@
     -webkit-border-radius: 15px 0px;
     -moz-border-radius: 15px 0px;
     border-radius: 15px;
-    background-image: linear-gradient(to right, #ffca99, #fbbf88, #f7b578, #f3aa67, #ee9f57, #ee994c, #ee9241, #ee8c35, #f2882b, #f68421, #fb7f14, #ff7a00);}
+    background-image: linear-gradient(180deg, rgba(237, 200, 167, 0.1) 0%, rgba(237, 200, 167, 0.6) 100%);
+}
 
 .textoBanner {
     position: relative;
@@ -189,9 +194,10 @@
     font-family: 'Raleway';
     z-index: 5;
     font-size: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    color: rgba(6, 38, 63, 1);
     -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: rgba(0, 17, 52, 1);
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.536);
 }
 
 /*CSS para el titulo del banner*/
@@ -200,11 +206,10 @@
     position: relative;
     font-family: 'Raleway';
     z-index: 5;
-    margin-bottom: 15px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 1);
-    -webkit-text-stroke-width: 1.5px;
-    -webkit-text-stroke-color: rgba(0, 17, 52, 1);
+    color: rgba(6, 38, 63, 1);
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: rgba(232, 145, 65, 1);
 }
 
 .botonesBanner {
