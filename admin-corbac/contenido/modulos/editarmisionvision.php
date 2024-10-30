@@ -27,6 +27,7 @@ $misionvisionF = MisionVision::buscaMisionVision('contenido', $misionvision);
 </div>
 
 <script>
+function initializeQuillEditor(editorId, textAreaId) {
         var toolbarOptions = [
             ['bold', 'italic', 'underline', 'strike'],
             [{
@@ -38,19 +39,23 @@ $misionvisionF = MisionVision::buscaMisionVision('contenido', $misionvision);
                 'color': []
             }]
         ];
-    
-    var quill = new Quill('#editor', {
-        modules: {
-            toolbar: toolbarOptions
-        },
-        theme: 'snow'
-    });
-    quill.on('text-change', update);
-    var container = document.getElementById('contenido');
-    update();
 
-    function update(delta) {
-        var html = quill.root.innerHTML;
-        container.value = html;
+        var quill = new Quill(editorId, {
+            modules: {
+                toolbar: toolbarOptions
+            },
+            theme: 'snow'
+        });
+
+
+        var container = document.querySelector(textAreaId);
+        container.value = quill.root.innerHTML;
+        quill.root.innerHTML = container.value;
+
+        quill.on('text-change', function() {
+            container.value = quill.root.innerHTML;
+        });
     }
+
+    initializeQuillEditor('#editor', '#contenido');
 </script>
