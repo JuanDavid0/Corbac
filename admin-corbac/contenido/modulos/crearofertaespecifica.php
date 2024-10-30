@@ -55,7 +55,21 @@ require_once './contenido/clases/oferta.php';
             <input name="contenido3" class="input-form-act-admin" type="text" required placeholder="información">
 
             <label class="label-form-act-admin">Enlace al plan de estudios:</label>
-            <input name="plan_enlace" class="input-form-act-admin" type="text" required placeholder="información">
+            <select id="tipoContenido" name="tipo_contenido" class="input-form-act-admin" onchange="toggleInputFields()" required>
+                <option value="">Selecciona una opción</option>
+                <option value="url">URL</option>
+                <option value="pdf">Archivo PDF</option>
+            </select>
+
+            <div id="urlField" style="display: none;">
+                <label class="label-form-act-admin">Url:</label>
+                <input name="plan_enlace" id="inputUrl" class="input-form-act-admin" type="url" placeholder="información" pattern="https?://.+" title="Ingrese una URL válida que comience con http:// o https://">
+            </div>
+
+            <div id="pdfField" style="display: none;">
+                <label class="label-form-act-admin">Archivo PDF:</label>
+                <input name="archivo_pdf" id="inputPdf" class="input-form-act-admin" type="file" accept=".pdf">
+            </div>
 
             <label class="label-form-act-admin">Costos:</label>
             <textarea id="contenido4" style="height: 200px; display: none;" name="contenido4" class="input-form-act-admin" type="text" placeholder="Contenido costos"></textarea>

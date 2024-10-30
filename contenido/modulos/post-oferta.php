@@ -50,7 +50,13 @@ $url_noticia = $varEspecifico['url_amigable'];
                 <p>
                     <?php echo $varEspecifico['contenido3']; ?>
                 </p>
-                <a href="<?php echo $varEspecifico['plan_enlace'] ?>">Descargar plan de estudios</a>
+                <?php
+                if ($varEspecifico['plan_enlace'] != "") {
+                    $isExternalUrl = preg_match('/^https?:\/\//', $varEspecifico["plan_enlace"]);
+                    $url = $isExternalUrl ? $varEspecifico["plan_enlace"] : $rutaFinal . 'contenido/assets/' . $varEspecifico["plan_enlace"];
+                }
+                ?>
+                <a href="<?php echo $url; ?>">Descargar plan de estudios</a>
             </div>
         </section>
         <div class="section-last">

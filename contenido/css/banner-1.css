@@ -84,14 +84,12 @@
     height: 2.5rem;
     text-align: center;
     padding: 10px;
-    display: block;
+    display: inline-block;
     border-radius: 15px;
     transition: all 250ms;
     position: relative;
     overflow: hidden;
     /* Center the button horizontally */
-    
-
 }
 
 .botonBannerEnlase::before {
@@ -174,7 +172,7 @@
 
 .informacionBanner {
     position: relative;
-    width: 50%;
+    width: fit-content;
     margin-top: 13%;
     height: auto;
     z-index: 5;
@@ -186,6 +184,21 @@
     -moz-border-radius: 15px 0px;
     border-radius: 15px;
     background-image: linear-gradient(180deg, rgba(237, 200, 167, 0.1) 0%, rgba(237, 200, 167, 0.6) 100%);
+}
+
+/* Alineación a la izquierda */
+#disposicionTextoBaner0.informacionBanner {
+    text-align: left;
+}
+
+/* Alineación al centro */
+#disposicionTextoBaner1.informacionBanner {
+    text-align: center;
+}
+
+/* Alineación a la derecha */
+#disposicionTextoBaner2.informacionBanner {
+    text-align: right;
 }
 
 .textoBanner {
@@ -202,7 +215,7 @@
 
 /*CSS para el titulo del banner*/
 .tituloBanner {
-    font-size: 60px;
+    font-size: 55px;
     position: relative;
     font-family: 'Raleway';
     z-index: 5;
