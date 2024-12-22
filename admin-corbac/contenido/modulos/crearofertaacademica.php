@@ -10,10 +10,9 @@
             <img id="previsua" src="" style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;"/>
 
             <label class="label-form-act-admin">Nombre:</label>
-            <input name="nombre" class="input-form-act-admin" type="text" required placeholder="información">
+            <input name="nombre" onkeyup="crearUrl(this.value);" class="input-form-act-admin" type="text" required placeholder="información">
 
-            <label class="label-form-act-admin">url amigable:</label>
-            <input name="url_amigable" class="input-form-act-admin" type="text" required placeholder="información">
+            <input id="inputOfertaUrl" name="url_amigable" class="input-form-act-admin" type="text" placeholder="Url_amigable" style="display: none;" />
 
             <input name="accion" value="crearA" type="hidden" readonly required>
             <button class="inputSubmitForm" type="submit">Crear</button>
@@ -38,5 +37,29 @@
     fileUpload.onchange = function () {
         mostrarImagen(this);
     };
+
+    function crearUrl(cadena) {
+        document.getElementById('inputOfertaUrl').value = normalizar(cadena);
+        console.log(normalizar(cadena));
+    }
+    var normalizar = (function() {
+        var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",
+            to = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
+            mapa = {};
+        for (var i = 0, j = from.length; i < j; i++)
+            mapa[from.charAt(i)] = to.charAt(i);
+        return function(str) {
+            var cadenaFinal = [];
+            for (var i = 0, j = str.length; i < j; i++) {
+                var c = str.charAt(i);
+                if (mapa.hasOwnProperty(str.charAt(i))) {
+                    cadenaFinal.push(mapa[c]);
+                } else {
+                    cadenaFinal.push(c);
+                }
+            }
+            return cadenaFinal.join('').replace(/[^-A-Za-z0-9]+/g, '-').toLowerCase();
+        };
+    })();
 </script>
 

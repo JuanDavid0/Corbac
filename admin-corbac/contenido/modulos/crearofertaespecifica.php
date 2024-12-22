@@ -17,11 +17,9 @@ require_once './contenido/clases/oferta.php';
             <input id="inputBannerImagen" name="imagen_p" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" required onchange="mostrarImagen(this)" />
             <img id="previsua" src="" style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />
 
-            <label class="label-form-act-admin">Url amigable:</label>
-            <input name="url_amigable" class="input-form-act-admin" type="text" required placeholder="información">
-
             <label class="label-form-act-admin">Título:</label>
-            <input name="nombre" class="input-form-act-admin" type="text" required placeholder="información">
+            <input name="nombre" onkeyup="crearUrl(this.value);"  class="input-form-act-admin" type="text" required placeholder="información">
+            <input id="inputOfertaUrl" name="url_amigable" class="input-form-act-admin" type="text" placeholder="Url_amigable" style="display: none;" />
 
             <label class="label-form-act-admin">Texto:</label>
             <input name="descripcion" class="input-form-act-admin" type="text" required placeholder="información">
@@ -151,4 +149,29 @@ require_once './contenido/clases/oferta.php';
     initializeQuillEditor('#editor-1', '#contenido_duracion');
     initializeQuillEditor('#editor-2', '#contenido4');
     initializeQuillEditor('#editor-3', '#contenido5');
+
+    function crearUrl(cadena) {
+        document.getElementById('inputOfertaUrl').value = normalizar(cadena);
+        console.log(normalizar(cadena));
+    }
+    var normalizar = (function() {
+        var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",
+            to = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
+            mapa = {};
+        for (var i = 0, j = from.length; i < j; i++)
+            mapa[from.charAt(i)] = to.charAt(i);
+        return function(str) {
+            var cadenaFinal = [];
+            for (var i = 0, j = str.length; i < j; i++) {
+                var c = str.charAt(i);
+                if (mapa.hasOwnProperty(str.charAt(i))) {
+                    cadenaFinal.push(mapa[c]);
+                } else {
+                    cadenaFinal.push(c);
+                }
+            }
+            return cadenaFinal.join('').replace(/[^-A-Za-z0-9]+/g, '-').toLowerCase();
+        };
+    })();
+
 </script>
