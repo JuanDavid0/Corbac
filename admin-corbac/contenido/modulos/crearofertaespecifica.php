@@ -173,5 +173,33 @@ require_once './contenido/clases/oferta.php';
             return cadenaFinal.join('').replace(/[^-A-Za-z0-9]+/g, '-').toLowerCase();
         };
     })();
-
+</script>
+<script>
+    function toggleInputFields() {
+        var tipoContenido = document.getElementById('tipoContenido').value;
+        var urlField = document.getElementById('urlField');
+        var pdfField = document.getElementById('pdfField');
+        var inputUrl = document.getElementById('inputUrl');
+        var inputPdf = document.getElementById('inputPdf');
+        
+        // Mostrar el campo correspondiente y establecer la obligatoriedad de cada uno
+        if (tipoContenido === 'url') {
+            urlField.style.display = 'block';
+            pdfField.style.display = 'none';
+            inputUrl.required = true;
+            inputPdf.required = false;
+            inputPdf.value = ''; // Limpiar el campo PDF si se selecciona URL
+        } else if (tipoContenido === 'pdf') {
+            urlField.style.display = 'none';
+            pdfField.style.display = 'block';
+            inputUrl.required = false;
+            inputPdf.required = true;
+            inputUrl.value = ''; // Limpiar el campo URL si se selecciona PDF
+        } else {
+            urlField.style.display = 'none';
+            pdfField.style.display = 'none';
+            inputUrl.required = false;
+            inputPdf.required = false;
+        }
+    }
 </script>

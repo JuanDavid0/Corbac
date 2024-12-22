@@ -15,15 +15,19 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
         <?php
         $consultaOfertaLim = consultaOfertaLim($varcontenido[1], $idioma);
         while ($resOfertaLim = mysqli_fetch_array($consultaOfertaLim)) {
+            if ($resOfertaLim['oferta_padre'] === null) {
         ?>
-            <a href="<?php echo $ruta . $resOfertaLim['url_amigable']; ?>" class="link-oferta-academica">
-                <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resOfertaLim['imagen_p']; ?>" />
-                <span class="oferta-academica-texto">
-                    <h3 class="oferta-academica-texto"><?php echo $resOfertaLim['nombre'] ?></h4>
-                </span>
-                <p class="boton">Ver Programa</p>
-            </a>
-        <?php } ?>
+                <a href="<?php echo $ruta . $resOfertaLim['url_amigable']; ?>" class="link-oferta-academica">
+                    <img src="<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resOfertaLim['imagen_p']; ?>" />
+                    <span class="oferta-academica-texto">
+                        <h3 class="oferta-academica-texto"><?php echo $resOfertaLim['nombre'] ?></h4>
+                    </span>
+                    <p class="boton">Ver Programa</p>
+                </a>
+        <?php
+            }
+        }
+        ?>
     </div>
     <div>
         <a href="<?php echo $ruta; ?>oferta-academica">

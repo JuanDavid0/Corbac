@@ -377,7 +377,7 @@ function consultaNoticiasLim($limite, $idioma)
 
 // Funcion para consultar las ofertas del include de oferta academica
 // esta funcion recibe un parametro de limite para consultar el limite
-// maximo de noticias
+// maximo de ofertas
 function consultaOfertaLim($limite, $idioma)
 {
     $conexion = connectDB();
