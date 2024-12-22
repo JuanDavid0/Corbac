@@ -3,8 +3,8 @@
     background: rgb(232, 145, 65, 1);
     background: linear-gradient(171deg, rgba(232, 145, 65, 1) 23%, rgba(6, 38, 63, 1) 81%);
     width: 80vw;
-    height: 80vh;
-    max-height: 700px;
+    height: fit-content;
+    max-height: 90vh;
     z-index: 9999;
     display: none;
     margin: 0 auto;
@@ -29,6 +29,7 @@
 .info-landing section {
     width: 60%; /* Ajustamos el ancho de la sección principal */
     height: 100%;
+    gap: 1.5rem;
     border-radius: 1rem;
 }
 
@@ -83,12 +84,11 @@
 	width: 100%;
 	margin: 0;
 	padding: 10px;
-	color: #ffd700bd;
+	color: #115082;
 }
 
 .texto-landing {
 	position: relative;
-	width: 75%;
 	height: 25%;
 }
 
@@ -171,6 +171,7 @@
     position: absolute;
     top: 20px;
     right: 20px;
+    width: fit-content;
     background-color: transparent;
     border: none;
     font-size: 1rem;
@@ -192,6 +193,10 @@
         margin: 0;
     }
 
+    .text3{
+        text-align: center;
+    }
+
     .formulario {
         margin-top: 2rem; /* Reduce el margen superior en pantallas más pequeñas */
         height: auto; /* Permite que el formulario sea más flexible en altura */
@@ -205,7 +210,8 @@
 @media only screen and (max-width: 768px) {
     .cont-landing {
         width: 90vw;
-        height: 90vh;
+        height: fit-content;
+        max-height: 85vh;
         top: 5%; /* Reduce el espacio superior */
     }
 
@@ -241,17 +247,13 @@
 }
 
 @media only screen and (max-width: 480px) {
-    .cont-landing {
-        width: 100vw;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        transform: none;
-        border-radius: 0;
-    }
 
     .info-landing section, .formulario {
         width: 100%;
+    }
+
+    .text3 {
+        text-align: center;
     }
 
     .formulario {

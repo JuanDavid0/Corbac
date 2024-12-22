@@ -25,7 +25,7 @@ $ofertas = Landing::ofertasDisponibles();
 
             <label class="label-form-act-admin">Contenido:</label>
             <textarea name="contenido" class="input-form-act-admin" type="text" required rows="8" cols="50">
-                <?php echo $landingF['contenido']; ?></textarea>
+                <?php echo htmlspecialchars_decode($landingF['contenido']); ?></textarea>
 
             <label class="label-form-act-admin">LLamado a la acción:</label>
             <input name="cta1" class="input-form-act-admin" type="text" required

@@ -16,7 +16,16 @@ if ($accion == "crear") {
     $landing->subTitulo = filter_input(INPUT_POST, 'subTitulo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $landing->contenido = filter_input(INPUT_POST, 'contenido', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $landing->cta1 = filter_input(INPUT_POST, 'cta1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
     $landing->cta2 = filter_input(INPUT_POST, 'cta2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    if ($landing->cta2 === 'noticia') {
+        $landing->cta2 .= '/' . filter_input(INPUT_POST, 'noticiaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    }
+    if ($landing->cta2 === 'oferta') {
+        $landing->cta2 .= '/' . filter_input(INPUT_POST, 'ofertaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    }
+
     $landing->promesa1 = filter_input(INPUT_POST, 'promesa1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $landing->promesa2 = filter_input(INPUT_POST, 'promesa2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $landing->logo = basename($_FILES['logo']['name']);
@@ -63,7 +72,14 @@ if ($accion == "editar") {
         $landing->subTitulo = filter_input(INPUT_POST, 'subTitulo', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['subTitulo'];
         $landing->contenido = filter_input(INPUT_POST, 'contenido', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['contenido'];
         $landing->cta1 = filter_input(INPUT_POST, 'cta1', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['cta1'];
+
         $landing->cta2 = filter_input(INPUT_POST, 'cta2', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['cta2'];
+        if ($landing->cta2 === 'noticia') {
+            $landing->cta2 .= '/' . filter_input(INPUT_POST, 'noticiaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        }
+        if ($landing->cta2 === 'oferta') {
+            $landing->cta2 .= '/' . filter_input(INPUT_POST, 'ofertaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        }
         $landing->promesa1 = filter_input(INPUT_POST, 'promesa1', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['promesa1'];
         $landing->promesa2 = filter_input(INPUT_POST, 'promesa2', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['promesa2'];
         $landing->fecha_inicio = filter_input(INPUT_POST, 'fecha_inicio', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['fecha_inicio'];
