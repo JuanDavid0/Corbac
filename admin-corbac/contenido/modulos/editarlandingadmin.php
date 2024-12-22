@@ -4,6 +4,9 @@ $landing = new Landing();
 $landing->identificador = $msg;
 
 $landingF = Landing::buscaLanding('landing', $landing);
+$registros = Landing::paginasDisponibles();
+$noticias = Landing::noticiasDisponibles();
+$ofertas = Landing::ofertasDisponibles();
 ?>
 
 <div id="contenedor-AreaTrabjo-Admin">
@@ -21,45 +24,48 @@ $landingF = Landing::buscaLanding('landing', $landing);
                 value="<?php echo $landingF['subTitulo']; ?>">
 
             <label class="label-form-act-admin">Contenido:</label>
-            <input name="contenido" class="input-form-act-admin" type="text" required
-                value="<?php echo $landingF['contenido']; ?>">
+            <textarea name="contenido" class="input-form-act-admin" type="text" required rows="8" cols="50">
+                <?php echo $landingF['contenido']; ?></textarea>
 
-            <label class="label-form-act-admin">cta1:</label>
+            <label class="label-form-act-admin">LLamado a la acción:</label>
             <input name="cta1" class="input-form-act-admin" type="text" required
                 value="<?php echo $landingF['cta1']; ?>">
 
-            <label class="label-form-act-admin">cta2:</label>
-            <input name="cta2" class="input-form-act-admin" type="text"
-                value="<?php echo $landingF['cta2']; ?>">
+            <label class="label-form-act-admin">Página a la que se redirigirá al usuario</label>
+            <select name="cta2" class="input-form-act-admin" id="urlBotonSelect" required>
+                <option value="<?php echo $landingF['cta2']; ?>"><?php echo $landingF['cta2']; ?></option>
+                <?php
+                foreach ($registros as $registro) {
+                    if ($registro['identificador'] === 'inicio') continue;
+                    echo '<option value="' . $registro['identificador'] . '">' . $registro['nombre'] . '</option>';
+                }
+                ?>
+            </select>
+            <div id="selectNoticia" style="display: none;">
+                <label class="label-form-act-admin">Selecciona la noticia</label>
+                <select name="noticiaSeleccionada" class="input-form-act-admin">
+                    <?php
+                    foreach ($noticias as $registro) {
+                        echo '<option value="' . $registro['url_amigable'] . '">' . $registro['nombre'] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+
+            <div id="selectOferta" style="display: none;">
+                <label class="label-form-act-admin">Selecciona la oferta</label>
+                <select name="ofertaSeleccionada" class="input-form-act-admin">
+                    <?php
+                    foreach ($ofertas as $registro) {
+                        echo '<option value="' . $registro['url_amigable'] . '">' . $registro['nombre'] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
 
             <label class="label-form-act-admin">Promesa:</label>
             <input name="promesa1" class="input-form-act-admin" type="text" required
                 value="<?php echo $landingF['promesa1']; ?>">
-
-            <label class="label-form-act-admin">Promesa 2:</label>
-            <input name="promesa2" class="input-form-act-admin" type="text"
-                value="<?php echo $landingF['promesa2']; ?>">
-
-            <label class="label-form-act-admin">Logo:</label>
-            <label class="label-form-act-admin">Tamaño recomendado: 1600px X 600px</label>
-            <input id="inputLogo" name="logo" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
-
-            <img id="previsua" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $landingF['logo']; ?>"
-                style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />
-
-            <label class="label-form-act-admin">Imagen:</label>
-            <label class="label-form-act-admin">Tamaño recomendado: 1600px X 600px</label>
-            <input id="inputImage1" name="image1" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
-
-            <img id="previsua" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $landingF['image1']; ?>"
-                style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />
-
-            <label class="label-form-act-admin">Imagen 2:</label>
-            <label class="label-form-act-admin">Tamaño recomendado: 1600px X 600px</label>
-            <input id="inputImage2" name="image2" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
-
-            <img id="previsua" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $landingF['image2']; ?>"
-                style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />
 
             <label class="label-form-act-admin">Fecha inicio:</label>
             <input name="fecha_inicio" class="input-form-act-admin" type="date" required
@@ -89,60 +95,19 @@ $landingF = Landing::buscaLanding('landing', $landing);
 </div>
 
 <script>
-    function mostrarLogo(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var filePreview = document.getElementById('previsua');
-                filePreview.id = 'file-preview';
-                filePreview.src = e.target.result;
-                var previewZone = document.getElementById('file-preview-zone');
-                previewZone.appendChild(filePreview);
-            };
-            reader.readAsDataURL(input.files[0]);
+    document.getElementById('urlBotonSelect').addEventListener('change', function() {
+        const selectNoticia = document.getElementById('selectNoticia');
+        const selectOferta = document.getElementById('selectOferta');
+        if (this.value === 'noticia') {
+            selectNoticia.style.display = 'block';
+        } else {
+            selectNoticia.style.display = 'none';
         }
-    }
 
-    function mostrarImage1(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var filePreview = document.getElementById('previsua');
-                filePreview.id = 'file-preview';
-                filePreview.src = e.target.result;
-                var previewZone = document.getElementById('file-preview-zone');
-                previewZone.appendChild(filePreview);
-            };
-            reader.readAsDataURL(input.files[0]);
+        if (this.value === 'oferta') {
+            selectOferta.style.display = 'block';
+        } else {
+            selectOferta.style.display = 'none';
         }
-    }
-
-    function mostrarImage2(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var filePreview = document.getElementById('previsua');
-                filePreview.id = 'file-preview';
-                filePreview.src = e.target.result;
-                var previewZone = document.getElementById('file-preview-zone');
-                previewZone.appendChild(filePreview);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    var fileUpload = document.getElementById('inputLogo');
-    fileUpload.onchange = function(e) {
-        mostrarLogo(e.srcElement);
-    };
-
-    var fileUpload = document.getElementById('inputImage1');
-    fileUpload.onchange = function(e) {
-        mostrarLogo(e.srcElement);
-    };
-
-    var fileUpload = document.getElementById('inputImage2');
-    fileUpload.onchange = function(e) {
-        mostrarLogo(e.srcElement);
-    };
+    });
 </script>

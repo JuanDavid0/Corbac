@@ -26,10 +26,10 @@ if ($resLanding) {
                         <p><?php echo $resLanding['contenido']; ?></p>
                     </div>
                 </div>
-                <div class="text3">
-                    <a href="#">
-                        <p><?php echo $resLanding['cta1']; ?></p>
-                    </a>
+                <div class="text3" class="close-button">
+                    <?php if ($resLanding['cta2'] != null) { ?>
+                        <a href="<?php echo $resLanding['cta2'] ?>"><?php echo $resLanding['cta1'] ?></a>
+                    <?php } ?>
                 </div>
             </section>
             <div class="formulario">

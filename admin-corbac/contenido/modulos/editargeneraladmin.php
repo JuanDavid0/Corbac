@@ -16,11 +16,10 @@ $generalF = General::buscarGeneral('general', $general);
             <?php
             if ($generalF['clase'] === 'Logo') {
             ?>
-                <label class="label-form-act-admin">Tamaño recomendado: 1600px X 600px</label>
-                <input id="inputBannerImagen" name="variable" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
-
                 <img id="previsua" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $generalF['variable']; ?>"
-                    style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />
+                    style="display: block; width: 300px; height: 150px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />
+                <input id="inputBannerImagen" name="variable" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
+                <label style="font-size: smaller; text-align: center; ">Formato Horizontal - Tamaño recomendado 300px x 150px </label>
             <?php
             } else {
             ?>
