@@ -7,9 +7,8 @@ class conexionBaseDatosPagina {
     public function __construct(){
         $this->servidor = "localhost";
         $this->usuario  = "root";
-        $this->pass = "root";        
-        // $this->bd = "megapro";   
-        $this->bd = "corbac_final";
+        $this->pass = "";
+        $this->bd = "corbacdb";
     }    
     public function connectDB() {
         $codificacion ="SET NAMES \"UTF8\"";

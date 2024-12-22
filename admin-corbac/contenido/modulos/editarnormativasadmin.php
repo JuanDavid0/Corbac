@@ -27,11 +27,10 @@ $normativaF = Normativa::buscarNormativa('normativas', $normativa);
                 onchange="toggleField('inputURL', this)" />
 
             <label class="label-form-act-admin">Imagen:</label>
-            <label class="label-form-act-admin">Tamaño recomendado: 1600px X 600px</label>
-            <input id="inputBannerImagen" name="imagen" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
-
             <img id="previsua" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $normativaF['imagen']; ?>"
-                style="display: block; width: 100%; height: 400px; background-position: center; background-size: contain; background-repeat: no-repeat; margin: 5px auto;" />
+                style=" display: block; width: 150px; height: 150px; background-position: center; background-size: contain; background-repeat: no-repeat; margin: 5px auto;" />
+            <input id="inputBannerImagen" name="imagen" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
+            <label style="text-align: center;">Tamaño recomendado: 150px x 150px</label>
 
             <input name="accion" value="editar" type="hidden" readonly required>
             <input name="identificador" value="<?php echo $normativaF['identificador']; ?>" type="hidden" readonly required>
@@ -60,12 +59,12 @@ $normativaF = Normativa::buscarNormativa('normativas', $normativa);
 </script>
 
 <script>
-function toggleField(otherFieldId, currentField) {
-    var otherField = document.getElementById(otherFieldId);
-    if (currentField.value) {
-        otherField.disabled = true;
-    } else {
-        otherField.disabled = false;
+    function toggleField(otherFieldId, currentField) {
+        var otherField = document.getElementById(otherFieldId);
+        if (currentField.value) {
+            otherField.disabled = true;
+        } else {
+            otherField.disabled = false;
+        }
     }
-}
 </script>

@@ -21,7 +21,7 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
                 <div class="nosotros-1-img" style="background-image: url('<?php echo $rutaFinal; ?>contenido/assets/<?php echo $resgaleria['imagen']; ?>');">
                 </div>
                 <div class="nosotros-1-texto">
-                    <p><?php echo $resgaleria['texto']; ?></p>
+                    <p><?php echo htmlspecialchars_decode($resgaleria['texto']); ?></p>
                 </div>
             </div>
         <?php } ?>

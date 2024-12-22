@@ -17,16 +17,16 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
         <h2>EDITAR OFERTA ACADEMICA</h2>
         <form id="contenedor-form-Admin" method="post" action="<?php echo $rutaFinal ?>contenido/ajax/ajaxOferta.php" enctype="multipart/form-data">
             <label class="label-form-act-admin">Imagen de presentación:</label>
-            <label class="label-form-act-admin">Tamaño recomendado: 1600px X 600px</label>
-            <input id="inputBannerImagen" name="imagen_p" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
 
             <img id="previsua" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $ofertaF['imagen_p']; ?>" style="display: block; width: 100%; height: 200px; background-position: center; background-size: contain; background-repeat: no-repeat; margin: 5px auto;" />
 
-            <label class="label-form-act-admin">Url amigable:</label>
-            <input name="url_amigable" class="input-form-act-admin" type="text" required value="<?php echo $ofertaF['url_amigable']; ?>">
+            <input id="inputBannerImagen" name="imagen_p" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
+            <label style="font-size: smaller; text-align: center;">Formato Horizontal - Escala de imagen recomendada 16:9</label>
+
+            <input id="inputOfertaUrl" name="url_amigable" value="<?php echo $ofertaF['url_amigable']; ?>" class="input-form-act-admin" type="text" placeholder="Url_amigable" style="display: none;" />
 
             <label class="label-form-act-admin">Título:</label>
-            <input name="nombre" class="input-form-act-admin" type="text" required value="<?php echo $ofertaF['nombre']; ?>">
+            <input name="nombre" onkeyup="crearUrl(this.value);" class="input-form-act-admin" type="text" required value="<?php echo $ofertaF['nombre']; ?>">
 
             <label class="label-form-act-admin">Texto:</label>
             <input name="descripcion" class="input-form-act-admin" type="text" required value="<?php echo $ofertaF['descripcion']; ?>">
@@ -38,7 +38,7 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
             <textarea id="contenido_duracion" style="display: none;" name="contenido_duracion"></textarea>
             <div id="editor-1" style="height: 200px;">
                 <?php echo htmlspecialchars_decode($ofertaF['contenido_duracion']); ?>
-            </div> 
+            </div>
 
             <label class="label-form-act-admin">Modalidad:</label>
             <input name="contenido_modalidad" class="input-form-act-admin" type="text" required value="<?php echo $ofertaF['contenido_modalidad']; ?>">
@@ -154,4 +154,29 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
     initializeQuillEditor('#editor-1', '#contenido_duracion');
     initializeQuillEditor('#editor-2', '#contenido4');
     initializeQuillEditor('#editor-3', '#contenido5');
+
+
+    function crearUrl(cadena) {
+        document.getElementById('inputOfertaUrl').value = normalizar(cadena);
+        console.log(normalizar(cadena));
+    }
+    var normalizar = (function() {
+        var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",
+            to = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
+            mapa = {};
+        for (var i = 0, j = from.length; i < j; i++)
+            mapa[from.charAt(i)] = to.charAt(i);
+        return function(str) {
+            var cadenaFinal = [];
+            for (var i = 0, j = str.length; i < j; i++) {
+                var c = str.charAt(i);
+                if (mapa.hasOwnProperty(str.charAt(i))) {
+                    cadenaFinal.push(mapa[c]);
+                } else {
+                    cadenaFinal.push(c);
+                }
+            }
+            return cadenaFinal.join('').replace(/[^-A-Za-z0-9]+/g, '-').toLowerCase();
+        };
+    })();
 </script>

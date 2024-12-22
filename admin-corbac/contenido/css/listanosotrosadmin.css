@@ -20,6 +20,11 @@
   min-height: 62px;
   position: fixed;
 }
+.contenido{
+  padding: 10px;
+    width: 100%;
+    flex-grow: 1;
+}
 
 .Agregar-persona {
   border: none;

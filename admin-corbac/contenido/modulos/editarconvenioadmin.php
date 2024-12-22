@@ -12,11 +12,11 @@ $convenioF = Convenio::buscaConvenio('convenio', $convenio);
         <h2>EDITAR CONVENIO</h2>
         <form id="contenedor-form-Admin" method="POST" action="<?php echo $rutaFinal ?>contenido/ajax/ajaxConvenio.php" enctype="multipart/form-data">
             <label class="label-form-act-admin">Imagen de fondo:</label>
-            <label class="label-form-act-admin">Tamaño recomendado: 1600px X 600px</label>
-            <input id="inputConvenioImagen" name="imagen" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
 
             <img id="previsua" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $convenioF['imagen']; ?>"
                 style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />
+            <input id="inputConvenioImagen" name="imagen" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
+            <label style="font-size: smaller; text-align: center;">Formato Vertical - Escala de imagen recomendada 9:16</label>
 
             <label class="label-form-act-admin">Nombre:</label>
             <input name="nombre" class="input-form-act-admin" type="text" required

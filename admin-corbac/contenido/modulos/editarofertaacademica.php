@@ -13,11 +13,13 @@ $ofertaF = Oferta::buscarOferta('oferta_academica',$oferta); // se trae toda la 
         <form id="contenedor-form-Admin" method="POST" action="<?php echo $rutaFinal ?>contenido/ajax/ajaxOfertaA.php"
             enctype="multipart/form-data">
             <label class="label-form-act-admin">Imagen de fondo:</label>
-            <input id="inputBannerImagen" name="imagen_p" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
+            
 
             <img id="previsua" src="<?php echo $rutaFinalAssets.'contenido/assets/'.$ofertaF['imagen_p']; ?>"
                 style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />
-
+                <input id="inputBannerImagen" name="imagen_p" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
+                <label style="font-size: smaller; text-align: center;">Formato Horizontal - Escala de imagen recomendada 16:9</label>
+                
             <label class="label-form-act-admin">Nombre:</label>
             <input name="nombre" class="input-form-act-admin" type="text" required
                 value="<?php echo $ofertaF['nombre']; ?>">
