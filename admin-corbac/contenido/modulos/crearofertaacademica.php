@@ -1,16 +1,19 @@
 <div id="contenedor-AreaTrabjo-Admin">
     <div class="contenedor-Agregar-minas"></div>
     <div id="AreaTrabjo-Admin-cont">
-    <h2>CREAR NUEVA OFERTA</h2>
-    <form id="contenedor-form-Admin" method="POST" action="<?php echo $rutaFinal ?>contenido/ajax/ajaxOfertaA.php" enctype="multipart/form-data">                  
+        <h2>CREAR NUEVA OFERTA</h2>
+        <form id="contenedor-form-Admin" method="POST" action="<?php echo $rutaFinal ?>contenido/ajax/ajaxOfertaA.php" enctype="multipart/form-data">
             <label class="label-form-act-admin">Imagen de fondo:</label>
-            <label class="label-form-act-admin">Tamaño recomendado: 1600px X 800px</label>
-            <input id="inputBannerImagen" name="imagen_p" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" required onchange="mostrarImagen(this)"/>       
 
-            <img id="previsua" src="" style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;"/>
 
-            <label class="label-form-act-admin">Nombre:</label>
-            <input name="nombre" onkeyup="crearUrl(this.value);" class="input-form-act-admin" type="text" required placeholder="información">
+            <img id="previsua" src="" style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />
+            <input id="inputBannerImagen" name="imagen_p" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" required onchange="mostrarImagen(this)" />
+            <label style="font-size: smaller; text-align: center; ">Formato Horizontal - Escala de imagen recomendada 16:9 </label>
+
+            <div>
+                <label class="label-form-act-admin">Nombre:</label>
+                <input name="nombre" onkeyup="crearUrl(this.value);" class="input-form-act-admin" type="text" required placeholder="información">
+            </div>
 
             <input id="inputOfertaUrl" name="url_amigable" class="input-form-act-admin" type="text" placeholder="Url_amigable" style="display: none;" />
 
@@ -23,7 +26,7 @@
     function mostrarImagen(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 var filePreview = document.getElementById('previsua');
                 filePreview.id = 'file-preview';
                 filePreview.src = e.target.result;
@@ -34,7 +37,7 @@
         }
     }
     var fileUpload = document.getElementById('inputBannerImagen');
-    fileUpload.onchange = function () {
+    fileUpload.onchange = function() {
         mostrarImagen(this);
     };
 
@@ -62,4 +65,3 @@
         };
     })();
 </script>
-

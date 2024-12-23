@@ -58,21 +58,34 @@ class oferta
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
-        $sql = $conexion->prepare("INSERT INTO $tabla (url_amigable, nombre, imagen_p, oferta_padre, fecha, idioma, estado)
-        VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $sql = "INSERT INTO $tabla (url_amigable, nombre, imagen_p, descripcion, contenido1, contenido_duracion, contenido_modalidad, contenido_aprobado, imagen1, alt1, contenido2, imagen2, alt2, contenido3, plan_enlace, contenido4, contenido5, oferta_padre, fecha, idioma, estado) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $consulta = $conexion->prepare($sql);
         if (
-            $sql->execute([
+            $consulta->execute([
                 $oferta->url_amigable,
                 $oferta->nombre,
                 $oferta->imagen_p,
+                $oferta->descripcion,
+                $oferta->contenido1,
+                $oferta->contenido_duracion,
+                $oferta->contenido_modalidad,
+                $oferta->contenido_aprobado,
+                $oferta->imagen1,
+                $oferta->alt1,
+                $oferta->contenido2,
+                $oferta->imagen2,
+                $oferta->alt2,
+                $oferta->contenido3,
+                $oferta->plan_enlace,
+                $oferta->contenido4,
+                $oferta->contenido5,
                 $oferta->oferta_padre,
                 $oferta->fecha,
                 $oferta->idioma,
                 $oferta->estado
             ])
         ) {
-            self::crearPagina($oferta);
-            self::crearModuloPagina($oferta);
             return 1;
         } else {
             return 0;
