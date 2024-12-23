@@ -72,14 +72,14 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
             <input name="archivo_pdf" id="inputPDF" class="input-form-act-admin" type="file" accept=".pdf"
                 onchange="toggleField('inputURL', this)" />
 
-                <label class="label-form-act-admin">Costos:</label>
+            <label class="label-form-act-admin">Costos:</label>
             <textarea id="contenido4" style="height: 200px; display: none;" name="contenido4" class="input-form-act-admin" type="text"></textarea>
             <div id="editor-2" name="editor-2" style="height: 200px;"><?php print $ofertaF['contenido4']; ?></div>
 
             <label class="label-form-act-admin">Requisitos de admisión:</label>
             <textarea id="contenido5" style="height: 200px; display: none;" name="contenido5" class="input-form-act-admin" type="text"></textarea>
             <div id="editor-3" name="editor-3" style="height: 200px;"><?php print $ofertaF['contenido5']; ?></div>
-            
+
             <label class="label-form-act-admin">Oferta padre:</label>
             <select name="oferta_padre" class="input-form-act-admin" required>
                 <?php
@@ -184,14 +184,13 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
             return cadenaFinal.join('').replace(/[^-A-Za-z0-9]+/g, '-').toLowerCase();
         };
     })();
-</script>
-<script>
-function toggleField(otherFieldId, currentField) {
-    var otherField = document.getElementById(otherFieldId);
-    if (currentField.value) {
-        otherField.disabled = true;
-    } else {
-        otherField.disabled = false;
+
+    function toggleField(otherFieldId, currentField) {
+        var otherField = document.getElementById(otherFieldId);
+        if (currentField.value) {
+            otherField.disabled = true;
+        } else {
+            otherField.disabled = false;
+        }
     }
-}
 </script>

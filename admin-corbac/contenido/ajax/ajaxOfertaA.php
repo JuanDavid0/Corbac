@@ -43,6 +43,7 @@ if ($accion == "editarA") {
 
     if ($ofertaActual != null) {
         $oferta->nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $oferta->url_amigable = filter_input(INPUT_POST, 'url_amigable', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $ofertaActual['url_amigable'];
         $oferta->oferta_padre = null;
         $oferta->fecha = date('Y-m-d') ?: $ofertaActual['fecha'];
         $oferta->idioma = 'es';
