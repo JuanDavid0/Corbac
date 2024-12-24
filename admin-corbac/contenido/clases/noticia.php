@@ -28,7 +28,7 @@ class Noticia
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
-        $sql = "SELECT * FROM $tabla";
+        $sql = "SELECT * FROM $tabla ORDER BY fecha DESC";
         $consulta = $conexion->prepare($sql);
         $consulta->execute();
         return $consulta->fetchAll();
