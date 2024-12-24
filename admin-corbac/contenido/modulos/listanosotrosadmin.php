@@ -49,7 +49,9 @@ $registros = GaleriaNosotros::listaNosotrosInicio('galeria'); // por medio de la
             $xhtml .= "<p class=\"tit-persona-admin img-banner-admin\" style=\"background-image:url('" . $rutaFinalAssets . "contenido/assets/" . $campo['imagen'] . "');\"></p>";
 
             //informaciond del banner
-            $xhtml .= "<p class=\"tit-persona-admin\">" . $campo['texto'] . "</p>";
+            $xhtml .= "<div class=\"tit-persona-admin\">";
+            $xhtml .= htmlspecialchars_decode($campo['texto']);
+            $xhtml .= "</div>";
             $xhtml .= "<p class=\"tit-persona-admin\">" . $campo['idioma'] . "</p>";
             $xhtml .= "<p class=\"tit-persona-admin\">";
 

@@ -68,7 +68,9 @@ $registros = MisionVision::listaMisionVision('contenido');
 
             if (isset($contenido[$i])) {
                 $contenidoLimpio = str_replace(['<p>', '</p>'], '', htmlspecialchars_decode($contenido[$i]['contenido']));
-                $xhtml .= "<p class=\"tit-persona-admin\">{$contenidoLimpio}</p>";
+                $xhtml .= "<div class=\"tit-persona-admin\">";
+                $xhtml .= $contenidoLimpio;
+                $xhtml .= "</div>";
             } else {
                 $xhtml .= "<p class=\"tit-persona-admin\"></p>";
             }
