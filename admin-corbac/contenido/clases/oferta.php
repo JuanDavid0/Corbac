@@ -73,6 +73,7 @@ class oferta
         ) {
             self::crearPagina($oferta);
             self::crearModuloPagina($oferta);
+            self::crearMetatag($oferta);
             return 1;
         } else {
             return 0;
@@ -149,6 +150,36 @@ class oferta
         }
     }
 
+    static function crearMetatag($oferta)
+    {
+        $conn = new Conexion();
+        $conexion = $conn->connectDB();
+
+        $descripcion = "Sección de cursos sobre {$oferta->nombre}, donde encontrarás distintas opciones para complementar tu formación.";
+
+        $sql = $conexion->prepare("INSERT INTO metatag (id_pagina, titulo, descripcion, url, typefb, imagen, sitiotw, creatortw, domaintw, canonical, color_movil)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        if (
+            $sql->execute([
+                $oferta->url_amigable,
+                $oferta->nombre,
+                $descripcion,
+                $oferta->url_amigable,
+                'website',
+                'logo.webp',
+                'corbac.edu.co',
+                '@anbu_group',
+                '@anbu_group',
+                '',
+                'F0F0F0'
+            ])
+        ) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     static function crearOfertaEspecifica($tabla, $oferta)
     {
         $conn = new Conexion();
@@ -209,13 +240,15 @@ class oferta
         $sql->bindParam(':identificador', $oferta->identificador);
         if ($sql->execute()) {
             self::editarPagina($oferta);
+            self::editarMetatag($oferta);
             return 1;
         } else {
             return 0;
         }
     }
 
-    static function editarPagina($oferta) {
+    static function editarPagina($oferta)
+    {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
 
@@ -255,6 +288,52 @@ class oferta
             return 0;
         }
     }
+
+    static function editarMetatag($oferta)
+{
+    $conn = new Conexion();
+    $conexion = $conn->connectDB();
+
+    $descripcion = "Sección de cursos sobre {$oferta->nombre}, donde encontrarás distintas opciones para complementar tu formación.";
+    $typefb = 'website';
+    $imagen = 'logo.webp';
+    $sitiotw = 'corbac.edu.co';
+    $creatortw = '@anbu_group';
+    $domaintw = '@anbu_group';
+    $canonical = '';
+    $color_movil = 'F0F0F0';
+
+    $sql = $conexion->prepare("UPDATE metatag SET
+        titulo = :titulo,
+        descripcion = :descripcion,
+        url = :url,
+        typefb = :typefb,
+        imagen = :imagen,
+        sitiotw = :sitiotw,
+        creatortw = :creatortw,
+        domaintw = :domaintw,
+        canonical = :canonical,
+        color_movil = :color_movil
+        WHERE id_pagina = :id_pagina");
+
+    $sql->bindParam(':titulo', $oferta->nombre);
+    $sql->bindParam(':descripcion', $descripcion);
+    $sql->bindParam(':url', $oferta->url_amigable);
+    $sql->bindParam(':typefb', $typefb);
+    $sql->bindParam(':imagen', $imagen);
+    $sql->bindParam(':sitiotw', $sitiotw);
+    $sql->bindParam(':creatortw', $creatortw);
+    $sql->bindParam(':domaintw', $domaintw);
+    $sql->bindParam(':canonical', $canonical);
+    $sql->bindParam(':color_movil', $color_movil);
+    $sql->bindParam(':id_pagina', $oferta->url_amigable);
+
+    if ($sql->execute()) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
 
     static function editarOfertaEspecifica($tabla, $oferta)
     {
