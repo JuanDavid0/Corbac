@@ -79,9 +79,9 @@ class Landing
         $conn = new Conexion();
         $conexion = $conn->connectDB();
         $sql = "INSERT INTO $tabla (pagina, indice, titulo, subTitulo, contenido, cta1, 
-            cta2, promesa1, promesa2, logo, image1, image2, fecha_inicio,
+            cta2, promesa1, fecha_inicio,
             fecha_fin, idioma, estado) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $consulta = $conexion->prepare($sql);
         if ($consulta->execute([
             $landing->pagina,
@@ -92,10 +92,6 @@ class Landing
             $landing->cta1,
             $landing->cta2,
             $landing->promesa1,
-            $landing->promesa2,
-            $landing->logo,
-            $landing->image1,
-            $landing->image2,
             $landing->fecha_inicio,
             $landing->fecha_fin,
             $landing->idioma,

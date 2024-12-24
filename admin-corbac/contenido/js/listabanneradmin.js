@@ -50,6 +50,10 @@ function ocultarAlerta() {
     alerta[0].style.display = "none";
     var capaalerta = document.getElementById("contenedorRespuesta");
     capaalerta.style.display = "none";
+    if (window.history && window.history.replaceState) {
+        var cleanUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
 }
 function ocultarConfirmar(formulario) {
     document.getElementById(formulario).style.display = "none";

@@ -170,10 +170,11 @@
 }
 
 .informacionBanner {
-    position: relative;
+    position: absolute;
+    bottom: 50px;
     width: fit-content;
-    margin-top: 13%;
-    height: auto;
+    height: fit-content;
+    max-width: 50%;
     z-index: 5;
     padding: 20px;
     box-sizing: border-box;
@@ -182,7 +183,7 @@
     -webkit-border-radius: 15px 0px;
     -moz-border-radius: 15px 0px;
     border-radius: 15px;
-    background: linear-gradient(0deg, rgba(232,145,64,0.6055672268907564) 0%, rgba(210,134,64,0.2806372549019608) 35%, rgba(6,38,63,0.19380252100840334) 69%, rgba(86,128,160,0.14338235294117652) 87%, rgba(182,197,208,0.5215336134453781) 100%);
+    background: linear-gradient(0deg, rgba(232,145,64,0.6055672268907564) 0%, rgba(210,134,64,0.2806372549019608) 35%, rgba(6,38,63,0.19380252100840334) 50%, rgba(86,128,160,0.14338235294117652) 70%, rgba(182,197,208,0.5215336134453781) 90%);
 }
 
 /* Alineación a la izquierda */
@@ -459,7 +460,7 @@
     }
 
     .informacionBanner {
-        width: 50%;
+        width: 53vw;
     }
 
     .tituloBanner {

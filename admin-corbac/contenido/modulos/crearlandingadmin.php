@@ -1,113 +1,88 @@
+<?php
+require_once './contenido/clases/landing.php';
+$landing = new Landing();
+$landing->identificador = $msg;
+$registros = Landing::paginasDisponibles();
+$noticias = Landing::noticiasDisponibles();
+$ofertas = Landing::ofertasDisponibles();
+?>
 <div id="contenedor-AreaTrabjo-Admin">
     <div class="contenedor-Agregar-minas"></div>
     <div id="AreaTrabjo-Admin-cont">
-    <h2>CREAR NUEVO BANNERA LANDING</h2>
-    <form id="contenedor-form-Admin" method="POST" action="<?php echo $rutaFinal ?>contenido/ajax/ajaxLanding.php" enctype="multipart/form-data">
-    <label class="label-form-act-admin">Título:</label>
+        <h2>CREAR NUEVO BANNERA LANDING</h2>
+        <form id="contenedor-form-Admin" method="POST" action="<?php echo $rutaFinal ?>contenido/ajax/ajaxLanding.php" enctype="multipart/form-data">
+            <label class="label-form-act-admin">Título:</label>
             <input name="titulo" class="input-form-act-admin" type="text" required placeholder="Información">
 
             <label class="label-form-act-admin">Subtítulo:</label>
             <input name="subTitulo" class="input-form-act-admin" type="text" required placeholder="Información">
 
             <label class="label-form-act-admin">Contenido:</label>
-            <input name="contenido" class="input-form-act-admin" type="text" required placeholder="Información">
+            <textarea name="contenido" class="input-form-act-admin" type="text" required rows="8" cols="50"></textarea>
 
-            <label class="label-form-act-admin">cta1:</label>
-            <input name="cta1" class="input-form-act-admin" type="text" required placeholder="Información">
+            <label class="label-form-act-admin">LLamado a la acción:</label>
+            <input name="cta1" class="input-form-act-admin" type="text" required placeholder="Frase de acción">
 
-            <label class="label-form-act-admin">cta2:</label>
-            <input name="cta2" class="input-form-act-admin" type="text" placeholder="Información">
+            <label class="label-form-act-admin">Página a la que se redirigirá al usuario</label>
+            <select name="cta2" class="input-form-act-admin" id="urlBotonSelect" required>
+                <?php
+                foreach ($registros as $registro) {
+                    if ($registro['identificador'] === 'inicio') continue;
+                    echo '<option value="' . $registro['identificador'] . '">' . $registro['nombre'] . '</option>';
+                }
+                ?>
+            </select>
+            <div id="selectNoticia" style="display: none;">
+                <label class="label-form-act-admin">Selecciona la noticia</label>
+                <select name="noticiaSeleccionada" class="input-form-act-admin">
+                    <?php
+                    foreach ($noticias as $registro) {
+                        echo '<option value="' . $registro['url_amigable'] . '">' . $registro['nombre'] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+
+            <div id="selectOferta" style="display: none;">
+                <label class="label-form-act-admin">Selecciona la oferta</label>
+                <select name="ofertaSeleccionada" class="input-form-act-admin">
+                    <?php
+                    foreach ($ofertas as $registro) {
+                        echo '<option value="' . $registro['url_amigable'] . '">' . $registro['nombre'] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
 
             <label class="label-form-act-admin">Promesa:</label>
             <input name="promesa1" class="input-form-act-admin" type="text" required placeholder="Información">
 
-            <label class="label-form-act-admin">Promesa 2:</label>
-            <input name="promesa2" class="input-form-act-admin" type="text" placeholder="Información">
-
-            <label class="label-form-act-admin">Logo:</label>
-            <label class="label-form-act-admin">Tamaño recomendado: 1600px X 800px</label>
-            <input id="inputLogo" name="logo" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" onchange="mostrarLogo(this)"/>        
-            <img id="previsua" src="" style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;"/>
-
-            <label class="label-form-act-admin">Imagen 1:</label>
-            <label class="label-form-act-admin">Tamaño recomendado: 1600px X 800px</label>
-            <input id="inputImage1" name="image1" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" onchange="mostrarImage1(this)"/>        
-              
-            <img id="previsua" src="" style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;"/>
-
-            <label class="label-form-act-admin">Imagen 2:</label>
-            <label class="label-form-act-admin">Tamaño recomendado: 1600px X 800px</label>
-            <input id="inputImage2" name="image2" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" onchange="mostrarImage2(this)"/>        
-              
-            <img id="previsua" src="" style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;"/>
-
             <label class="label-form-act-admin">Fecha inicio:</label>
             <input name="fecha_inicio" class="input-form-act-admin" type="date" required>
-            
+
             <label class="label-form-act-admin">Fecha final:</label>
             <input name="fecha_fin" class="input-form-act-admin" type="date" required>
 
             <input name="accion" value="crear" type="hidden" readonly required>
-            <button class="inputSubmitForm" type="submit">Crear</button>   
+            <button class="inputSubmitForm" type="submit">Crear</button>
         </form>
     </div>
 </div>
 
 <script>
-    function mostrarLogo(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var filePreview = document.getElementById('previsua');
-                filePreview.id = 'file-preview';
-                filePreview.src = e.target.result;
-                var previewZone = document.getElementById('file-preview-zone');
-                previewZone.appendChild(filePreview);
-            };
-            reader.readAsDataURL(input.files[0]);
+    document.getElementById('urlBotonSelect').addEventListener('change', function() {
+        const selectNoticia = document.getElementById('selectNoticia');
+        const selectOferta = document.getElementById('selectOferta');
+        if (this.value === 'noticia') {
+            selectNoticia.style.display = 'block';
+        } else {
+            selectNoticia.style.display = 'none';
         }
-    }
 
-    function mostrarImage1(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var filePreview = document.getElementById('previsua');
-                filePreview.id = 'file-preview';
-                filePreview.src = e.target.result;
-                var previewZone = document.getElementById('file-preview-zone');
-                previewZone.appendChild(filePreview);
-            };
-            reader.readAsDataURL(input.files[0]);
+        if (this.value === 'oferta') {
+            selectOferta.style.display = 'block';
+        } else {
+            selectOferta.style.display = 'none';
         }
-    }
-
-    function mostrarImage2(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var filePreview = document.getElementById('previsua');
-                filePreview.id = 'file-preview';
-                filePreview.src = e.target.result;
-                var previewZone = document.getElementById('file-preview-zone');
-                previewZone.appendChild(filePreview);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    var fileUpload = document.getElementById('inputLogo');
-    fileUpload.onchange = function (e) {
-        mostrarLogo(e.srcElement);
-    };
-
-    var fileUpload = document.getElementById('inputImage1');
-    fileUpload.onchange = function (e) {
-        mostrarImage1(e.srcElement);
-    };
-
-    var fileUpload = document.getElementById('inputImage2');
-    fileUpload.onchange = function (e) {
-        mostrarImage2(e.srcElement);
-    };
+    });
 </script>
