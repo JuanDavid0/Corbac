@@ -225,7 +225,8 @@ class oferta
 
         $sql = $conexion->prepare("UPDATE $tabla SET 
         nombre = :nombre, 
-        imagen_p = :imagen_p, 
+        imagen_p = :imagen_p,
+        url_amigable = :url_amigable,
         oferta_padre = :oferta_padre, 
         fecha = :fecha, 
         idioma = :idioma, 
@@ -233,6 +234,7 @@ class oferta
         WHERE identificador = :identificador");
         $sql->bindParam(':nombre', $oferta->nombre);
         $sql->bindParam(':imagen_p', $oferta->imagen_p);
+        $sql->bindParam(':url_amigable', $oferta->url_amigable);
         $sql->bindParam(':oferta_padre', $oferta->oferta_padre);
         $sql->bindParam(':fecha', $oferta->fecha);
         $sql->bindParam(':idioma', $oferta->idioma);

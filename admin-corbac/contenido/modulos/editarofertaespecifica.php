@@ -60,7 +60,7 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
             <img id="previsua2" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $ofertaF['imagen2']; ?>" style="display: block; width: 100%; height: 200px; background-position: center; background-size: contain; background-repeat: no-repeat; margin: 5px auto;" />
 
             <label class="label-form-act-admin">Plan de estudios:</label>
-            <input name="contenido3" class="input-form-act-admin" type="text" required value="<?php echo $ofertaF['contenido3']; ?>">
+            <input name="contenido3" class="input-form-act-admin" type="text" value="<?php echo $ofertaF['contenido3']; ?>">
 
             <label class="label-form-act-admin">Enlace al plan de estudios:</label>
 
@@ -163,7 +163,6 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
 
     function crearUrl(cadena) {
         document.getElementById('inputOfertaUrl').value = normalizar(cadena);
-        console.log(normalizar(cadena));
     }
     var normalizar = (function() {
         var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",

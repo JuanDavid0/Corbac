@@ -40,7 +40,6 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
             </select>
             <input name="accion" value="editarA" type="hidden" readonly required>
             <input name="identificador" value="<?php echo $ofertaF['identificador']; ?>" type="hidden" readonly required>
-            <input name="url_amigable" value="<?php echo $ofertaF['url_amigable']; ?>" type="hidden" readonly required>
             <button class="inputSubmitForm" type="submit">Editar</button>
         </form>
     </div>
@@ -63,7 +62,6 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
 
     function crearUrl(cadena) {
         document.getElementById('inputOfertaUrl').value = normalizar(cadena);
-        console.log(normalizar(cadena));
     }
     var normalizar = (function() {
         var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",

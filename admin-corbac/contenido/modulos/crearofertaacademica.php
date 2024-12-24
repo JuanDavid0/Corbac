@@ -43,7 +43,6 @@
 
     function crearUrl(cadena) {
         document.getElementById('inputOfertaUrl').value = normalizar(cadena);
-        console.log(normalizar(cadena));
     }
     var normalizar = (function() {
         var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",
