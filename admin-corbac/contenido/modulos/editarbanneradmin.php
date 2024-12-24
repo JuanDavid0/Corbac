@@ -68,9 +68,9 @@ $ofertas = Banner::ofertasDisponibles();
 
                 <label class="label-form-act-admin">Ubicación Texto</label>
                 <select name="disposicion" class="input-form-act-admin" required>
-                    <option value="0">Izquierda</option>
-                    <option value="1" selected="">Centro</option>
-                    <option value="2">Derecha</option>
+                    <option value="0" <?php if ($bannerF['disposicion'] == '0') { echo 'selected'; } ?>>Izquierda</option>
+                    <option value="1" <?php if ($bannerF['disposicion'] == '1') { echo 'selected'; } ?>>Centro</option>
+                    <option value="2" <?php if ($bannerF['disposicion'] == '2') { echo 'selected'; } ?>>Derecha</option>
                 </select>
 
                 <label class="label-form-act-admin">Orden:</label>

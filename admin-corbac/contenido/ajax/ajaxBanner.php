@@ -64,7 +64,7 @@ if ($accion == "editar") {
             $banner->url .= '/' . filter_input(INPUT_POST, 'ofertaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         }
     
-        $banner->disposicion = filter_input(INPUT_POST, 'disposicion', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['disposicion'];
+        $banner->disposicion = filter_input(INPUT_POST, 'disposicion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $banner->idioma = 'es';
         $banner->estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $bannerActual['estado'];
 

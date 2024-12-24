@@ -16,7 +16,6 @@ if ($accion == "crear") {
     $landing->subTitulo = filter_input(INPUT_POST, 'subTitulo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $landing->contenido = filter_input(INPUT_POST, 'contenido', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $landing->cta1 = filter_input(INPUT_POST, 'cta1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
     $landing->cta2 = filter_input(INPUT_POST, 'cta2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     if ($landing->cta2 === 'noticia') {
@@ -27,29 +26,10 @@ if ($accion == "crear") {
     }
 
     $landing->promesa1 = filter_input(INPUT_POST, 'promesa1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $landing->promesa2 = filter_input(INPUT_POST, 'promesa2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $landing->logo = basename($_FILES['logo']['name']);
-    $landing->image1 = basename($_FILES['image1']['name']);
-    $landing->image2 = basename($_FILES['image2']['name']);
     $landing->fecha_inicio = filter_input(INPUT_POST, 'fecha_inicio', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $landing->fecha_fin = filter_input(INPUT_POST, 'fecha_fin', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $landing->idioma = 'es';
     $landing->estado = 'activo';
-
-    if (!empty($landing->logo)) {
-        $img_rute = $rutaFisicaAssets . $landing->logo;
-        move_uploaded_file($_FILES['logo']['tmp_name'], $img_rute);
-    }
-
-    if (!empty($landing->image1)) {
-        $img_rute = $rutaFisicaAssets . $landing->image1;
-        move_uploaded_file($_FILES['image1']['tmp_name'], $img_rute);
-    }
-
-    if (!empty($landing->image2)) {
-        $img_rute = $rutaFisicaAssets . $landing->image2;
-        move_uploaded_file($_FILES['image2']['tmp_name'], $img_rute);
-    }
 
     $resultado = ControladorLanding::crearLanding($landing);
 
@@ -81,41 +61,11 @@ if ($accion == "editar") {
             $landing->cta2 .= '/' . filter_input(INPUT_POST, 'ofertaSeleccionada', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         }
         $landing->promesa1 = filter_input(INPUT_POST, 'promesa1', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['promesa1'];
-        $landing->promesa2 = filter_input(INPUT_POST, 'promesa2', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['promesa2'];
+        
         $landing->fecha_inicio = filter_input(INPUT_POST, 'fecha_inicio', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['fecha_inicio'];
         $landing->fecha_fin = filter_input(INPUT_POST, 'fecha_fin', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['fecha_fin'];
         $landing->idioma = 'es';
         $landing->estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $landingActual['estado'];
-
-        if (!empty($_FILES['logo']['name'])) {
-            $landing->logo = basename($_FILES['logo']['name']);
-            $img_rute_logo = $rutaFisicaAssets . $landing->logo;
-            $img_rute_anterior_logo = $rutaFisicaAssets . $landingActual['logo'];
-            unlink($img_rute_anterior_logo);
-            move_uploaded_file($_FILES['logo']['tmp_name'], $img_rute_logo);
-        } else {
-            $landing->logo = $landingActual['logo'];
-        }
-
-        if (!empty($_FILES['image1']['name'])) {
-            $landing->image1 = basename($_FILES['image1']['name']);
-            $img_rute_image1 = $rutaFisicaAssets . $landing->image1;
-            $img_rute_anterior_image1 = $rutaFisicaAssets . $landingActual['image1'];
-            unlink($img_rute_anterior_image1);
-            move_uploaded_file($_FILES['image1']['tmp_name'], $img_rute_image1);
-        } else {
-            $landing->image1 = $landingActual['image1'];
-        }
-
-        if (!empty($_FILES['image2']['name'])) {
-            $landing->image2 = basename($_FILES['image2']['name']);
-            $img_rute_image2 = $rutaFisicaAssets . $landing->image2;
-            $img_rute_anterior_image2 = $rutaFisicaAssets . $landingActual['image2'];
-            unlink($img_rute_anterior_image2);
-            move_uploaded_file($_FILES['image2']['tmp_name'], $img_rute_image2);
-        } else {
-            $landing->image2 = $landingActual['image2'];
-        }
 
         $respuesta = ControladorLanding::editarLanding($landing);
         header("Location: " . $rutaFinal . "landingadmin/" . $respuesta);
