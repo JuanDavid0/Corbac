@@ -22,21 +22,6 @@ if ($accion == "crearA") {
     $oferta->idioma = 'es';
     $oferta->estado = 'activo';
 
-    $oferta->descripcion = ''; // Valor predeterminado vacío
-    $oferta->contenido1 = '';
-    $oferta->contenido_duracion = '';
-    $oferta->contenido_modalidad = '';
-    $oferta->contenido_aprobado = '';
-    $oferta->imagen1 = '';
-    $oferta->alt1 = '';
-    $oferta->contenido2 = '';
-    $oferta->imagen2 = '';
-    $oferta->alt2 = '';
-    $oferta->contenido3 = '';
-    $oferta->plan_enlace = '';
-    $oferta->contenido4 = '';
-    $oferta->contenido5 = '';
-
     if (!empty($oferta->imagen_p)) {
         $img_rute_p = $rutaFinalAssets . $oferta->imagen_p;
         move_uploaded_file($_FILES['imagen_p']['tmp_name'], $img_rute_p);
@@ -58,7 +43,7 @@ if ($accion == "editarA") {
 
     if ($ofertaActual != null) {
         $oferta->nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $oferta->url_amigable = filter_input(INPUT_POST, 'url_amigable', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: $ofertaActual['url_amigable'];
+        $oferta->url_amigable = filter_input(INPUT_POST, 'url_amigable', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $oferta->oferta_padre = null;
         $oferta->fecha = date('Y-m-d') ?: $ofertaActual['fecha'];
         $oferta->idioma = 'es';
