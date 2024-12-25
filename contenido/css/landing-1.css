@@ -27,7 +27,7 @@
 }
 
 .info-landing section {
-    width: 60%; /* Ajustamos el ancho de la sección principal */
+    width: 70%; /* valor ideal 60% */
     height: 100%;
     gap: 1.5rem;
     border-radius: 1rem;
@@ -132,7 +132,8 @@
     height: 100%;
     margin-top: 6rem;
     margin-right: 1rem;
-    display: flex;
+    /* display: flex; */
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;

@@ -214,6 +214,19 @@ function consultaBanner($fecha, $pagina, $idioma)
     disconnectDB($conexion);
     return $result;
 }
+
+function consultarNombrePagina($pagina)
+{
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT nombre from pagina where identificador = '" . $pagina . "'";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    disconnectDB($conexion);
+    return $result;
+}
+
 function consultaBanner1($pagina, $idioma)
 {
     $conexion = connectDB();

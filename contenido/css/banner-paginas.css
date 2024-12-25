@@ -44,8 +44,8 @@
 }
 
 .informacionBanner {
-    position: relative;
-    width: 45%;
+    /* position: relative;
+    width: 45%; */
     margin-top: 13%;
     height: auto;
     z-index: 5;
@@ -64,13 +64,11 @@
     font-size: 100px;
     position: relative;
     text-align: center;
-    font-family: 'Raleway';
     z-index: 5;
     margin-bottom: 15px;
     text-transform: uppercase;
-    color: rgba(232, 145, 65, 1);
+    color: rgb(0, 0, 0);
     -webkit-text-stroke-width: 1.5px;
-    -webkit-text-stroke-color: rgba(0, 17, 52, 1);
 }
 
 /*CSS para el boton para cambios en el banner*/

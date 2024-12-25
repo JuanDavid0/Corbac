@@ -24,12 +24,11 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
-    background-color: #e89141;
+    background: linear-gradient(180deg, rgba(240,240,240,1) 0%, rgba(238,220,203,1) 65%, rgba(232,145,65,1) 100%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s;
     cursor: pointer;
-
 }
 
 .normativas-contenido:hover {
