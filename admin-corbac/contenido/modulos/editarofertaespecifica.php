@@ -62,15 +62,29 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
             <label class="label-form-act-admin">Plan de estudios:</label>
             <input name="contenido3" class="input-form-act-admin" type="text" value="<?php echo $ofertaF['contenido3']; ?>">
 
-            <label class="label-form-act-admin">Enlace al plan de estudios:</label>
+            <label class="label-form-act-admin">Formato del plan de Estudios</label>
+            <select id="tipoContenido" name="tipo_contenido" class="input-form-act-admin" onchange="toggleInputFields()" required>
+                <option value="url">URL</option>
+                <option value="pdf">Archivo PDF</option>
+            </select>
 
-            <input name="plan_enlace" id="inputURL" class="input-form-act-admin" type="url" pattern="https?://.+"
-                title="Ingrese una URL válida que comience con http:// o https://"
-                value="<?php echo $ofertaF['plan_enlace']; ?>"
-                onchange="toggleField('inputPDF', this)" />
+            <div id="urlField" style="display: none;">
+                <label class="label-form-act-admin">URL:</label>
+                <input name="plan_enlace" id="inputUrl" class="input-form-act-admin" type="url"
+                    placeholder="Ingrese la URL" pattern="https?://.+"
+                    title="Ingrese una URL válida que comience con http:// o https://"
+                    value="<?php echo filter_var($ofertaF['plan_enlace'], FILTER_VALIDATE_URL) ? $ofertaF['plan_enlace'] : ''; ?>">
+            </div>
 
-            <input name="archivo_pdf" id="inputPDF" class="input-form-act-admin" type="file" accept=".pdf"
-                onchange="toggleField('inputURL', this)" />
+            <div id="pdfField" style="display: none;">
+                <label class="label-form-act-admin">Archivo PDF:</label>
+                <?php if (!filter_var($ofertaF['plan_enlace'], FILTER_VALIDATE_URL)): ?>
+                    <p>Archivo actual: <strong><?php echo htmlspecialchars($ofertaF['plan_enlace'], ENT_QUOTES, 'UTF-8'); ?></strong></p>
+                <?php endif; ?>
+                <input name="archivo_pdf" id="inputPdf" class="input-form-act-admin" type="file" accept=".pdf"
+                    data-existing-file="<?php echo !empty($ofertaF['plan_enlace']) ? 'true' : ''; ?>"
+                    <?php echo (!filter_var($ofertaF['plan_enlace'], FILTER_VALIDATE_URL) && empty($ofertaF['plan_enlace'])) ? 'required' : ''; ?>>
+            </div>
 
             <label class="label-form-act-admin">Costos:</label>
             <textarea id="contenido4" style="height: 200px; display: none;" name="contenido4" class="input-form-act-admin" type="text"></textarea>
@@ -82,10 +96,14 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
 
             <label class="label-form-act-admin">Oferta padre:</label>
             <select name="oferta_padre" class="input-form-act-admin" required>
+                <option value="">Selecciona una opción</option> <!-- Opción por defecto -->
                 <?php
-                $ofertaPadre = Oferta::cargarOfertaPadre();
+                $ofertaPadre = Oferta::cargarOfertaPadre(); // Cargar las ofertas disponibles
                 foreach ($ofertaPadre as $campo) {
-                    echo '<option value="' . $campo['url_amigable'] . '"' . ($campo['identificador'] === $ofertaF['oferta_padre'] ? ' selected' : '') . '>' . $campo['nombre'] . '</option>';
+                    $isSelected = ($campo['url_amigable'] === $ofertaF['oferta_padre']) ? ' selected' : ''; // Verificar coincidencia
+                    echo '<option value="' . $campo['url_amigable'] . '"' . $isSelected . '>' .
+                        htmlspecialchars_decode($campo['nombre']) . // Escapar caracteres especiales
+                        '</option>';
                 }
                 ?>
             </select>
@@ -192,4 +210,37 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
             otherField.disabled = false;
         }
     }
+
+    function toggleInputFields() {
+        const tipoContenido = document.getElementById("tipoContenido").value;
+        const urlField = document.getElementById("urlField");
+        const pdfField = document.getElementById("pdfField");
+        const inputPdf = document.getElementById("inputPdf");
+        const inputUrl = document.getElementById("inputUrl");
+
+        if (tipoContenido === "url") {
+            urlField.style.display = "block";
+            pdfField.style.display = "none";
+            inputUrl.required = true;
+            inputPdf.required = false;
+        } else if (tipoContenido === "pdf") {
+            urlField.style.display = "none";
+            pdfField.style.display = "block";
+            // Solo requerir el PDF si no hay uno previamente cargado.
+            inputPdf.required = !inputPdf.hasAttribute("data-existing-file");
+            inputUrl.required = false;
+        } else {
+            urlField.style.display = "none";
+            pdfField.style.display = "none";
+            inputUrl.required = false;
+            inputPdf.required = false;
+        }
+    }
+
+    window.onload = function() {
+        const planEnlace = "<?php echo $ofertaF['plan_enlace']; ?>";
+        const tipoContenido = planEnlace.match(/^https?:\/\//) ? "url" : "pdf"; 
+        document.getElementById("tipoContenido").value = tipoContenido;
+        toggleInputFields(); 
+    };
 </script>

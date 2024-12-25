@@ -13,9 +13,11 @@ require_once './contenido/clases/oferta.php';
         <h2>CREAR NUEVA OFERTA</h2>
         <form id="contenedor-form-Admin" method="POST" action="<?php echo $rutaFinal ?>contenido/ajax/ajaxOferta.php" enctype="multipart/form-data">
             <label class="label-form-act-admin">Imagen de presentación:</label>
-            <label class="label-form-act-admin">Tamaño recomendado: 1600px X 600px</label>
-            <input id="inputBannerImagen" name="imagen_p" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" required onchange="mostrarImagen(this)" />
+            
             <img id="previsua" src="" style="display: block; width: 100%; height: 200px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />
+            <label style="font-size: smaller; text-align: center; ">Formato Horizontal - Escala de imagen recomendada 16:9 </label>
+            <input id="inputBannerImagen" name="imagen_p" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" required onchange="mostrarImagen(this)" />
+            
 
             <label class="label-form-act-admin">Título:</label>
             <input name="nombre" onkeyup="crearUrl(this.value);"  class="input-form-act-admin" type="text" required placeholder="información">

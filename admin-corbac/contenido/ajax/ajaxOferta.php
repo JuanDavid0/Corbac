@@ -99,12 +99,9 @@ if ($accion == "editarE") {
                     unlink($rutaFinalAssets . $ofertaActual['plan_enlace']);
                 }
                 $oferta->plan_enlace = "docs/" . $nombreArchivoPlan;
-            } else {
-                header("Location: " . $rutaFinal . "ofertaacademicaadmin/2");
-                exit;
             }
         } else {
-            $oferta->plan_enlace = filter_input(INPUT_POST, 'plan_enlace', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $oferta->plan_enlace = !empty($_POST['plan_enlace']) ? filter_input(INPUT_POST, 'plan_enlace', FILTER_SANITIZE_FULL_SPECIAL_CHARS) : $ofertaActual['plan_enlace'];
         }
 
         $oferta->contenido4 = filter_input(INPUT_POST, 'contenido4');
