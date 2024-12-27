@@ -390,16 +390,44 @@ function consultaNoticiasLim($limite, $idioma)
 
 // Funcion para consultar las ofertas del include de oferta academica
 // esta funcion recibe un parametro de limite para consultar el limite
-// maximo de ofertas
+// maximo de ofertas padre
 function consultaOfertaLim($limite, $idioma)
 {
     $conexion = connectDB();
     mysqli_set_charset($conexion, "utf8");
-    $sql = "SELECT * FROM oferta_academica WHERE estado = 'activo' AND idioma = '" . $idioma . "' ORDER BY fecha DESC LIMIT 0," . $limite;
+    $sql = "SELECT * FROM oferta_academica WHERE estado = 'activo' AND oferta_padre IS NULL AND idioma = '" . $idioma . "' ORDER BY fecha DESC LIMIT 0," . $limite;
     if (!$result = mysqli_query($conexion, $sql)) {
         die(mysqli_error($conexion));
     }
     //desconectamos la base de datos
+    disconnectDB($conexion);
+    return $result;
+}
+
+// Funcion para consultar las ofertas del include de oferta academica
+// esta funcion recibe un parametro de limite para consultar el limite
+// maximo de ofertas hija
+function consultaOfertaHija($limite, $idioma)
+{
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM oferta_academica WHERE estado = 'activo' AND oferta_padre IS NOT NULL AND idioma = '" . $idioma . "' ORDER BY fecha DESC LIMIT 0," . $limite;
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
+    disconnectDB($conexion);
+    return $result;
+}
+
+//Consultamos ofertas padre
+function consultaNombreOferta()
+{
+    $conexion = connectDB();
+    mysqli_set_charset($conexion, "utf8");
+    $sql = "SELECT * FROM oferta_academica WHERE estado = 'activo' AND oferta_padre IS NULL";
+    if (!$result = mysqli_query($conexion, $sql)) {
+        die(mysqli_error($conexion));
+    }
     disconnectDB($conexion);
     return $result;
 }

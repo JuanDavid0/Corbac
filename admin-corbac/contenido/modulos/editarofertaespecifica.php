@@ -49,7 +49,8 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
             <label class="label-form-act-admin">Imagen de la institución:</label>
             <input id="inputImagen1" name="imagen1" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
 
-            <img id="previsua1" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $ofertaF['imagen1']; ?>" style="display: block; width: 100%; height: 200px; background-position: center; background-size: contain; background-repeat: no-repeat; margin: 5px auto;" />
+            <img id="previsua1" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $ofertaF['imagen1']; ?>" style="display: block; width: 100%; height: 143px; background-position: center; background-size: contain; background-repeat: no-repeat; margin: 5px auto;" />
+            <label style="text-align: center;">Tamaño recomendado: 503px x 142px</label>
 
             <label class="label-form-act-admin">Perfil profesional:</label>
             <input name="contenido2" class="input-form-act-admin" type="text" required value="<?php echo $ofertaF['contenido2']; ?>">
@@ -57,7 +58,8 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
             <label class="label-form-act-admin">Imagen perfil profesional:</label>
             <input id="inputImagen2" name="imagen2" class="input-form-act-admin" type="file" accept=".jpg, .webp, .png" />
 
-            <img id="previsua2" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $ofertaF['imagen2']; ?>" style="display: block; width: 100%; height: 200px; background-position: center; background-size: contain; background-repeat: no-repeat; margin: 5px auto;" />
+            <img id="previsua2" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $ofertaF['imagen2']; ?>" style="display: block; width: 100%; height: 300px; background-position: center; background-size: contain; background-repeat: no-repeat; margin: 5px auto;" />
+            <label style="text-align: center;">Tamaño recomendado: 410px x 300px</label>
 
             <label class="label-form-act-admin">Plan de estudios:</label>
             <input name="contenido3" class="input-form-act-admin" type="text" value="<?php echo $ofertaF['contenido3']; ?>">

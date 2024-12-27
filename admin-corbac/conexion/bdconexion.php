@@ -7,7 +7,7 @@ class conexionBaseDatosPagina {
     public function __construct(){
         $this->servidor = "localhost";
         $this->usuario  = "root";
-        $this->pass = "root";
+        $this->pass = "1234";
         $this->bd = "corbacdb";
     }    
     public function connectDB() {

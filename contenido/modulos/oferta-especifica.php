@@ -14,11 +14,22 @@ while ($rescontenido = mysqli_fetch_array($consulta_historia_modulo)) {
     $varindice++;
 }
 ?>
+<div id="titulo">
+    <?php
+    $consultaTitulo = consultaNombreOferta();
+    while ($resTitulo = mysqli_fetch_array($consultaTitulo)) {
+        if ($resTitulo['url_amigable'] === $categoriaPadre) {
+    ?>
+            <h1><?php echo $resTitulo['nombre']; ?></h1>
+    <?php }
+    }
+    ?>
+</div>
 <div id="oferta-educativa">
     <div class="oferta-educativa-contenido">
         <?php
-        $consultaOfertaLim = consultaOfertaLim($varcontenido[0], $idioma);
-        while ($resOfertaLim = mysqli_fetch_array($consultaOfertaLim)) {
+        $consultaOfertaHija = consultaOfertaHija($varcontenido[0], $idioma);
+        while ($resOfertaLim = mysqli_fetch_array($consultaOfertaHija)) {
             if ($resOfertaLim['oferta_padre'] === $categoriaPadre) {
         ?>
                 <a href="<?php echo $ruta . $identificador_oferta[0]; ?>/<?php echo $resOfertaLim['url_amigable']; ?>" class="link-oferta-educativa">

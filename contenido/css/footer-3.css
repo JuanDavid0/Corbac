@@ -1,8 +1,7 @@
 footer{
     width: 100%;
-    position: relative;
     box-sizing: border-box;
-    position: relative;
+    position: absolute;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,6 +9,7 @@ footer{
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    margin-top: 0;
 }
 
 #footer-contenedor{

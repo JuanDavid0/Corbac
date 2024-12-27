@@ -68,17 +68,9 @@
     margin-top: 10px;
 }
 
-.atencion ul a{
-    color: #06263F;
+.atencion a:hover h3 {
     text-decoration: underline;
-}
-
-.atencion ul a h3{
-    color: #06263F;
-}
-
-.atencion ul a:hover{
-    color: #e89141;
+    text-decoration-color: #e89141;
 }
 
 .formulario {

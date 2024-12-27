@@ -1,150 +1,194 @@
-.post-oferta-titulo {
+/* General Styles */
+.post-oferta {
+    line-height: 1.6;
     color: rgba(0, 17, 52, 1);
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+/* Title Section */
+.post-oferta-titulo {
     text-align: center;
-    position: relative;
-    padding: 50px 5% 0;
+    margin-bottom: 30px;
 }
 
 .post-oferta-titulo h1 {
-    margin: 0;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 .img-container .logo {
-    display: block;
     width: 50%;
-    height: auto;
-    bottom: 0;
-    left: 0;
+    height: 143px;
+    margin: 20px auto;
 }
 
 .post-oferta-titulo h2 {
-    color: rgba(0, 17, 52, 1);
+    font-size: 1.5rem;
+    color: rgba(0, 17, 52, 0.8);
     text-align: left;
-    padding: 0 0 15px;
 }
 
+/* Content Sections */
 .post-oferta-contenido-1 {
-    padding: 50px 5% 0;
+    padding: 20px;
 }
 
 .post-oferta-contenido-1 h3 {
+    font-size: 1.8rem;
     color: rgba(232, 145, 65, 1);
-    line-height: 2em;
+    margin-bottom: 10px;
 }
 
 .post-oferta-contenido-1 p {
-    color: rgba(0, 17, 52, 1);
-    line-height: 1.5em;
+    font-size: 1rem;
+    margin-bottom: 15px;
 }
 
+/* Profile Section */
 .post-oferta-contenido-2 {
-    padding: 30px;
     display: flex;
-    align-items: flex-start;
+    flex-wrap: wrap;
     gap: 20px;
-    /* Espacio entre la imagen y el texto */
+    padding: 20px;
+    align-items: flex-start;
 }
 
 .post-oferta-contenido-2 .img-container {
-    flex-shrink: 0;
-    width: 40%;
+    flex: 1 1 35%;
 }
 
 .post-oferta-contenido-2 .perfil {
-    display: block;
-    width: 100%;
-    height: auto;
+    width: 410px;
+    height: 300px;
+    object-fit: cover;
 }
 
 .post-oferta-contenido-2 .text-container {
+    flex: 1 1 60%;
     display: flex;
     flex-direction: column;
-    /* Coloca h2 sobre el p */
 }
 
 .post-oferta-contenido-2 h2 {
-    color: rgba(0, 17, 52, 1);
-    font-size: 30px;
-    margin: 0;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
 }
 
 .post-oferta-contenido-2 p {
-    color: rgba(0, 17, 52, 1);
-    margin-top: 10px;
-    font-size: 18px;
-    line-height: 26px;
+    font-size: 1rem;
 }
 
-.content .contenedor-content {
-    flex-direction: column;
-    border-left: 6px solid #fff;
-    padding: 25px 0;
-    padding-left: 62px;
-}
-
+/* Study Plan Section */
 .content {
     background: rgba(0, 17, 52, 1);
-    ;
-    display: flex;
-    justify-content: space-between;
-    padding: 30px;
-    gap: 100px;
+    color: rgba(255, 255, 255, 1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
 }
 
 .content h3 {
-    color: rgba(255, 255, 255, 1);
-    margin-top: 25px;
-    text-align: left;
-    font-size: 50px;
+    font-size: 2rem;
+    margin-bottom: 15px;
 }
 
-
 .content p {
-    color: rgba(255, 255, 255, 1);
-    margin: 0;
-    flex-basis: 60%;
+    font-size: 1rem;
+    margin-bottom: 15px;
     text-align: justify;
-    font-size: 18px;
-    line-height: 26px;
 }
 
 .content a {
     display: inline-block;
-    margin-top: 10px;
     padding: 10px 15px;
     background-color: rgba(232, 145, 65, 1);
-    ;
     color: white;
     text-decoration: none;
-    border-radius: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
 }
 
+.content a:hover {
+    background-color: rgba(200, 125, 50, 1);
+}
+
+/* Last Section */
 .section-last {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 20px;
     background: rgba(232, 145, 65, 1);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .post-oferta-contenido-3,
 .post-oferta-contenido-4 {
-    padding: 20px;
-    flex: 1;
-}
-
-.post-oferta-contenido-4 {
-    padding-left: 20px;
+    flex: 1 1 calc(50% - 20px);
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    color: rgba(0, 17, 52, 1);
 }
 
 .post-oferta-contenido-3 h3,
 .post-oferta-contenido-4 h3 {
-    font-size: 24px;
-    line-height: 40px;
-    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
 .post-oferta-contenido-3 p,
 .post-oferta-contenido-4 p {
-    font-size: 16px;
-    line-height: 30px;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .post-oferta-titulo h1 {
+        font-size: 2rem;
+    }
+
+    .post-oferta-titulo h2 {
+        font-size: 1.2rem;
+    }
+
+    .post-oferta-contenido-2 {
+        flex-direction: column;
+    }
+
+    .post-oferta-contenido-2 .img-container,
+    .post-oferta-contenido-2 .text-container {
+        flex: 1 1 100%;
+    }
+
+    .content h3 {
+        font-size: 1.5rem;
+    }
+
+    .section-last {
+        flex-direction: column;
+    }
+
+    .post-oferta-contenido-3,
+    .post-oferta-contenido-4 {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .content p {
+        font-size: 0.9rem;
+    }
+
+    .content a {
+        font-size: 0.9rem;
+    }
+
+    .post-oferta-contenido-3 h3,
+    .post-oferta-contenido-4 h3 {
+        font-size: 1.2rem;
+    }
 }

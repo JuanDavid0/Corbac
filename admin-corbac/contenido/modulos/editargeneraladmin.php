@@ -14,7 +14,7 @@ $generalF = General::buscarGeneral('general', $general);
             <input name="clase" class="input-form-act-admin" type="text" required readonly value="<?php echo $generalF['clase']; ?>">
             <label class="label-form-act-admin">Valor:</label>
             <?php
-            if ($generalF['clase'] === 'Logo') {
+            if ($generalF['clase'] === 'Logo' || $generalF['clase'] === 'Logo certificados') {
             ?>
                 <img id="previsua" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $generalF['variable']; ?>"
                     style="display: block; width: 300px; height: 150px; background-position: center; background-size:contain; background-repeat:no-repeat; margin:5px auto;" />

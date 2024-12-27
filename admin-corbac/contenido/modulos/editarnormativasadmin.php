@@ -15,16 +15,28 @@ $normativaF = Normativa::buscarNormativa('normativas', $normativa);
             <input name="nombre" class="input-form-act-admin" type="text" required value="<?php echo $normativaF['nombre']; ?>">
 
             <label class="label-form-act-admin">Seleccione URL o Archivo PDF:</label>
+            <select id="tipoContenido" name="tipo_contenido" class="input-form-act-admin" onchange="toggleInputFields()" required>
+                <option value="url">URL</option>
+                <option value="pdf">Archivo PDF</option>
+            </select>
 
-            <!-- Campo de URL -->
-            <input name="url" id="inputURL" class="input-form-act-admin" type="url" pattern="https?://.+"
-                title="Ingrese una URL válida que comience con http:// o https://"
-                value="<?php echo $normativaF['url']; ?>"
-                onchange="toggleField('inputPDF', this)" />
+            <div id="urlField" style="display: none;">
+                <label class="label-form-act-admin">URL:</label>
+                <input name="url" id="inputURL" class="input-form-act-admin" type="url"
+                    placeholder="Ingrese la URL" pattern="https?://.+"
+                    title="Ingrese una URL válida que comience con http:// o https://"
+                    value="<?php echo filter_var($normativaF['url'], FILTER_VALIDATE_URL) ? $normativaF['url'] : ''; ?>">
+            </div>
 
-            <!-- Campo de PDF -->
-            <input name="archivo_pdf" id="inputPDF" class="input-form-act-admin" type="file" accept=".pdf"
-                onchange="toggleField('inputURL', this)" />
+            <div id="pdfField" style="display: none;">
+                <label class="label-form-act-admin">Archivo PDF:</label>
+                <?php if (!filter_var($normativaF['url'], FILTER_VALIDATE_URL)): ?>
+                    <p>Archivo actual: <strong><?php echo htmlspecialchars($normativaF['url'], ENT_QUOTES, 'UTF-8'); ?></strong></p>
+                <?php endif; ?>
+                <input name="archivo_pdf" id="inputPDF" class="input-form-act-admin" type="file" accept=".pdf"
+                    data-existing-file="<?php echo !empty($normativaF['url']) ? 'true' : ''; ?>"
+                    <?php echo (!filter_var($normativaF['url'], FILTER_VALIDATE_URL)) && empty($normativaF['url']) ? 'required' : ''; ?>>
+            </div>
 
             <label class="label-form-act-admin">Imagen:</label>
             <img id="previsua" src="<?php echo $rutaFinalAssets . 'contenido/assets/' . $normativaF['imagen']; ?>"
@@ -67,4 +79,37 @@ $normativaF = Normativa::buscarNormativa('normativas', $normativa);
             otherField.disabled = false;
         }
     }
+
+    function toggleInputFields() {
+        const tipoContenido = document.getElementById("tipoContenido").value;
+        const urlField = document.getElementById("urlField");
+        const pdfField = document.getElementById("pdfField");
+        const inputPdf = document.getElementById("inputPdf");
+        const inputUrl = document.getElementById("inputUrl");
+
+        if (tipoContenido === "url") {
+            urlField.style.display = "block";
+            pdfField.style.display = "none";
+            inputUrl.required = true;
+            inputPdf.required = false;
+        } else if (tipoContenido === "pdf") {
+            urlField.style.display = "none";
+            pdfField.style.display = "block";
+            // Solo requerir el PDF si no hay uno previamente cargado.
+            inputPdf.required = !inputPdf.hasAttribute("data-existing-file");
+            inputUrl.required = false;
+        } else {
+            urlField.style.display = "none";
+            pdfField.style.display = "none";
+            inputUrl.required = false;
+            inputPdf.required = false;
+        }
+    }
+
+    window.onload = function() {
+        const normativa = "<?php echo $normativaF['url']; ?>";
+        const tipoContenido = normativa.match(/^https?:\/\//) ? "url" : "pdf"; 
+        document.getElementById("tipoContenido").value = tipoContenido;
+        toggleInputFields(); 
+    };
 </script>

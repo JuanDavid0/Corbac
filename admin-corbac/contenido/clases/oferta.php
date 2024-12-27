@@ -30,7 +30,7 @@ class oferta
     {
         $conn = new Conexion();
         $conexion = $conn->connectDB();
-        $sql = $conexion->prepare("SELECT * FROM oferta_academica WHERE estado = 'activo' AND oferta_padre IS NULL");
+        $sql = $conexion->prepare("SELECT * FROM oferta_academica WHERE oferta_padre IS NULL");
         $sql->execute();
         return $sql->fetchAll();
     }
@@ -127,23 +127,17 @@ class oferta
         ]);
         $success3 = $sql->execute([
             $oferta->url_amigable,
-            3,
-            2,
-            'activo'
-        ]);
-        $success4 = $sql->execute([
-            $oferta->url_amigable,
             147,
             3,
             'activo'
         ]);
-        $sucess5 = $sql->execute([
+        $success4 = $sql->execute([
             $oferta->url_amigable,
             123,
             10,
             'activo'
         ]);
-        if ($success1 && $success2 && $success3 && $success4 && $sucess5) {
+        if ($success1 && $success2 && $success3 && $success4) {
             return 1;
         } else {
             return 0;

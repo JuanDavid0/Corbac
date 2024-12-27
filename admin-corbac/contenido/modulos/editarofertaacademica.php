@@ -21,11 +21,10 @@ $ofertaF = Oferta::buscarOferta('oferta_academica', $oferta);
             <label style="font-size: smaller; text-align: center;">Formato Horizontal - Escala de imagen recomendada 16:9</label>
 
             <label class="label-form-act-admin">Nombre:</label>
-            <input name="nombre" onkeyup="crearUrl(this.value);" class="input-form-act-admin" type="text" required
+            <input name="nombre" class="input-form-act-admin" type="text" required
                 value="<?php echo $ofertaF['nombre']; ?>">
 
-            <input id="inputOfertaUrl" name="url_amigable" value="<?php echo $ofertaF['url_amigable']; ?>" class="input-form-act-admin" type="text" placeholder="Url_amigable" style="display: none;" />
-
+            <input id="url_amigable" name="url_amigable" value="<?php echo $ofertaF['url_amigable']; ?>" class="input-form-act-admin" type="text" placeholder="Url_amigable" style="display: none;" />
 
             <label class="label-form-act-admin">Estado</label>
             <select name="estado" class="input-form-act-admin">
